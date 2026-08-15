@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Core Dark Luxury Neutrals (Industrial SaaS) */
+  --sara-canvas: #0A0C0E;
+  --sara-surface: #111419;
+  --sara-elevated: #181C22;
+  --sara-hover: #20252D;
+  --sara-border: rgba(255, 255, 255, 0.08);
+  --sara-border-highlight: rgba(255, 255, 255, 0.16);
+
+  /* Typography / Content Colors */
+  --content-primary: #F8FAFC;
+  --content-secondary: #94A3B8;
+  --content-tertiary: #64748B;
+
+  /* Primary Brand Highlight - Laranja Âmbar Industrial */
+  --brand-primary: #F59E0B;
+  --brand-primary-hover: #D97706;
+  --brand-primary-light: rgba(245, 158, 11, 0.12);
+  --brand-primary-glow: rgba(245, 158, 11, 0.25);
+
+  /* Secondary Accents */
+  --accent-cyan: #0EA5E9;       /* Tech / Hidráulica / Elétrica */
+  --accent-emerald: #10B981;   /* Status Aprovado / Margem */
+  --accent-amber: #F59E0B;     /* Alerta de Estoque */
+  --accent-rose: #EF4444;      /* Crítico / Déficit */
+
+  /* Typography Tokens */
+  --font-sans: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Border Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+
+  /* Shadows & Depth */
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --shadow-floating: 0 16px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --shadow-glow: 0 0 24px rgba(245, 158, 11, 0.22);
+  --shadow-glow-cyan: 0 0 24px rgba(14, 165, 233, 0.22);
+
+  /* Mobile-First Layout & Touch Targets */
+  --header-height: 60px;
+  --bottom-nav-height: 64px;
+  --touch-target-min: 44px;
+}
+
+/* Base Body Styling */
+body {
+  background-color: var(--sara-canvas);
+  color: var(--content-primary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  selection-background-color: var(--brand-primary);
+  selection-color: #000000;
+}
+
+/* Custom Scrollbar - Minimal Dark */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--sara-canvas);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Vitrified Glassmorphism Utility */
+.sara-glass {
+  background: rgba(17, 20, 25, 0.75);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--sara-border);
+  box-shadow: var(--shadow-card);
+}
+
+.sara-glass-floating {
+  background: rgba(24, 28, 34, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--sara-border-highlight);
+  box-shadow: var(--shadow-floating);
+}
+
+/* Shimmer Highlight Text */
+.shimmer-brand-text {
+  background: linear-gradient(135deg, #F59E0B 0%, #FCD34D 50%, #D97706 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: brandShimmer 4s linear infinite;
+  display: inline-block;
+}
+
+@keyframes brandShimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sara Cota — Design System & UI Components Showcase</title>
+
+  <!-- Google Fonts: Outfit & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            sara: {
+              canvas: '#0A0C0E',
+              surface: '#111419',
+              elevated: '#181C22',
+              hover: '#20252D',
+              border: 'rgba(255, 255, 255, 0.08)',
+              'border-highlight': 'rgba(255, 255, 255, 0.16)',
+            },
+            content: {
+              primary: '#F8FAFC',
+              secondary: '#94A3B8',
+              tertiary: '#64748B',
+            },
+            brand: {
+              DEFAULT: '#F59E0B',
+              hover: '#D97706',
+              light: 'rgba(245, 158, 11, 0.12)',
+            },
+            accent: {
+              cyan: '#0EA5E9',
+              emerald: '#10B981',
+              amber: '#F59E0B',
+              rose: '#EF4444',
+            }
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body {
+      background-color: #0A0C0E;
+      color: #F8FAFC;
+      font-family: 'Outfit', sans-serif;
+    }
+    .sara-glass {
+      background: rgba(17, 20, 25, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+    .sara-glass-floating {
+      background: rgba(24, 28, 34, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+    .shimmer-brand-text {
+      background: linear-gradient(135deg, #F59E0B 0%, #FCD34D 50%, #D97706 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: brandShimmer 4s linear infinite;
+    }
+    @keyframes brandShimmer {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+  </style>
+</head>
+<body class="p-4 sm:p-8 min-h-screen">
+  <div class="max-w-5xl mx-auto space-y-10">
+
+    <!-- Header Banner -->
+    <div class="pb-6 border-b border-sara-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div>
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-light border border-brand/30 text-brand text-xs font-mono mb-2">
+          <span class="w-2 h-2 rounded-full bg-brand inline-block animate-pulse"></span>
+          Sara Cota • Visual Preview (/design-system-preview.html)
+        </div>
+        <h1 class="text-3xl font-bold tracking-tight text-content-primary">
+          Biblioteca de Componentes UI & Design Tokens
+        </h1>
+        <p class="text-sm text-content-secondary font-light mt-1">
+          SaaS Premium para Material de Construção, Elétrica e Hidráulica (Dark Luxury + Laranja Âmbar).
+        </p>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <span class="px-3 py-1.5 rounded-xl bg-sara-surface border border-sara-border text-xs font-mono text-emerald-400 font-bold">
+          100% Tokens Reutilizáveis
+        </span>
+      </div>
+    </div>
+
+    <!-- 1. BUTTONS -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-sm font-mono uppercase tracking-wider text-brand font-semibold">
+          ⚡ 1. Button Component (Variantes, Tamanhos e Estados)
+        </h2>
+        <span class="text-xs text-content-tertiary font-mono">Button.tsx</span>
+      </div>
+
+      <div class="sara-glass p-6 rounded-2xl space-y-6">
+        <div>
+          <span class="text-xs text-content-secondary block mb-2 font-medium">Variantes de Estilo:</span>
+          <div class="flex flex-wrap gap-3">
+            <button class="px-4 py-2.5 rounded-xl bg-brand hover:bg-amber-600 text-black font-semibold text-sm shadow-md active:scale-95 transition-all cursor-pointer">
+              <i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i> Primary (Laranja Âmbar)
+            </button>
+            <button class="px-4 py-2.5 rounded-xl border border-sara-border-highlight hover:bg-sara-hover text-content-primary text-sm active:scale-95 transition-all cursor-pointer">
+              <i class="fa-solid fa-plus mr-1.5"></i> Secondary (Outline)
+            </button>
+            <button class="px-4 py-2.5 rounded-xl hover:bg-sara-hover text-content-secondary text-sm active:scale-95 transition-all cursor-pointer">
+              Ghost
+            </button>
+            <button class="px-4 py-2.5 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 text-sm active:scale-95 transition-all cursor-pointer">
+              <i class="fa-solid fa-trash-can mr-1.5"></i> Destructive
+            </button>
+            <button class="px-4 py-2.5 rounded-xl bg-accent-cyan hover:bg-sky-400 text-black font-semibold text-sm shadow-md active:scale-95 transition-all cursor-pointer">
+              <i class="fa-solid fa-paper-plane mr-1.5"></i> Cyan Accent
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <span class="text-xs text-content-secondary block mb-2 font-medium">Tamanhos (sm, md, lg):</span>
+          <div class="flex flex-wrap items-center gap-3">
+            <button class="px-3 py-1.5 text-xs rounded-lg bg-brand text-black font-semibold">Small (sm)</button>
+            <button class="px-4 py-2.5 text-sm rounded-xl bg-brand text-black font-semibold">Medium (md)</button>
+            <button class="px-6 py-3.5 text-base rounded-xl bg-brand text-black font-semibold">Large (lg) →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. INPUT / TEXTFIELD -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-sm font-mono uppercase tracking-wider text-brand font-semibold">
+          ⚡ 2. Input / TextField (Label Fixa, Ícone, Erro e Fonte Mono)
+        </h2>
+        <span class="text-xs text-content-tertiary font-mono">Input.tsx</span>
+      </div>
+
+      <div class="sara-glass p-6 rounded-2xl grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="space-y-1.5">
+          <label class="text-xs text-content-secondary font-medium">Nome do Produto / SKU</label>
+          <div class="relative">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-content-tertiary text-xs"></i>
+            <input type="text" value="Cabo Flexível SIL 750V 2.5mm²" class="w-full bg-sara-surface border border-sara-border text-content-primary text-sm rounded-xl pl-10 pr-4 py-2.5 focus:outline-none focus:border-brand">
+          </div>
+        </div>
+
+        <div class="space-y-1.5">
+          <label class="text-xs text-content-secondary font-medium">Valor Monetário (Fonte Mono)</label>
+          <div class="relative">
+            <i class="fa-solid fa-dollar-sign absolute left-3.5 top-3.5 text-brand text-xs"></i>
+            <input type="text" value="R$ 14.850,00" class="w-full bg-sara-surface border border-sara-border text-brand font-mono font-bold text-sm rounded-xl pl-10 pr-4 py-2.5 focus:outline-none focus:border-brand">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. CARDS -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-sm font-mono uppercase tracking-wider text-brand font-semibold">
+          ⚡ 3. Card Flutuante (Header, Corpo e Rodapé)
+        </h2>
+        <span class="text-xs text-content-tertiary font-mono">Card.tsx</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="sara-glass p-5 rounded-2xl space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-full text-xs font-mono bg-brand-light text-brand border border-brand/30 uppercase">Cotação #8492</span>
+            <span class="text-xs font-mono text-content-tertiary">SP → SP</span>
+          </div>
+          <h3 class="text-base font-semibold text-content-primary">Obra Reserva das Palmeiras - Bloco C</h3>
+          <p class="text-xs text-content-secondary leading-relaxed">Tubos Esgoto 100mm & Cabos 2.5mm SIL. Economia estimada: <strong class="text-emerald-400 font-mono">R$ 640,00</strong></p>
+          <div class="pt-3 border-t border-sara-border flex items-center justify-between">
+            <span class="text-xs text-content-tertiary">Melhor Lojista: Elétrica SP</span>
+            <button class="px-3 py-1.5 rounded-xl bg-brand text-black text-xs font-semibold">Ver Detalhes</button>
+          </div>
+        </div>
+
+        <div class="sara-glass p-5 rounded-2xl space-y-3 border-brand/40 shadow-lg">
+          <span class="px-2.5 py-1 rounded-full text-xs font-mono bg-sky-500/10 text-accent-cyan border border-sky-500/30 uppercase">Variante Interactive Hover</span>
+          <h3 class="text-base font-semibold text-content-primary">Card com Brilho Âmbar</h3>
+          <p class="text-xs text-content-secondary leading-relaxed">Visual dark luxury vitrificado com resposta tátil a hover e clique.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. BADGES -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-sm font-mono uppercase tracking-wider text-brand font-semibold">
+          ⚡ 4. Badge / Tag (Cores Semânticas por Domínio)
+        </h2>
+        <span class="text-xs text-content-tertiary font-mono">Badge.tsx</span>
+      </div>
+
+      <div class="sara-glass p-5 rounded-2xl flex flex-wrap items-center gap-3">
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 uppercase">Aprovado</span>
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-brand-light text-brand border border-brand/30 uppercase">Em Cotação</span>
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-sky-500/10 text-accent-cyan border border-sky-500/30 uppercase">ICMS-ST Calculado</span>
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/30 uppercase">Déficit de Estoque</span>
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-sara-elevated text-content-secondary border border-sara-border-highlight uppercase">Rascunho</span>
+      </div>
+    </section>
+
+    <!-- 5. BOTTOM SHEET / MODAL -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-sm font-mono uppercase tracking-wider text-brand font-semibold">
+          ⚡ 5. Bottom Sheet (Mobile) & Modal Dialog (Desktop)
+        </h2>
+        <span class="text-xs text-content-tertiary font-mono">Sheet.tsx</span>
+      </div>
+
+      <div class="sara-glass p-5 rounded-2xl flex items-center justify-between">
+        <div class="space-y-0.5">
+          <h3 class="text-sm font-semibold text-content-primary">Comportamento Híbrido Responsivo</h3>
+          <p class="text-xs text-content-secondary">No celular, desliza do fundo com handle nativo. No desktop, centraliza como dialog.</p>
+        </div>
+        <button class="px-4 py-2 rounded-xl bg-brand text-black text-xs font-semibold">Abrir Sheet Demo</button>
+      </div>
+    </section>
+
+    <!-- 6. NAVBAR MOBILE -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-sm font-mono uppercase tracking-wider text-brand font-semibold">
+          ⚡ 6. Navbar / Tab Bar Inferior Mobile (Touch Target 44px)
+        </h2>
+        <span class="text-xs text-content-tertiary font-mono">BottomNav.tsx</span>
+      </div>
+
+      <div class="sara-glass p-2 rounded-2xl">
+        <div class="flex items-center justify-around h-[64px] bg-sara-surface rounded-xl px-2">
+          <button class="flex flex-col items-center text-brand text-xs font-bold">
+            <i class="fa-solid fa-chart-line text-base mb-1"></i> Painel
+          </button>
+          <button class="flex flex-col items-center text-content-tertiary text-xs">
+            <i class="fa-solid fa-file-invoice-dollar text-base mb-1"></i> Cotações
+          </button>
+          <button class="flex flex-col items-center text-content-tertiary text-xs">
+            <i class="fa-solid fa-boxes-stacked text-base mb-1"></i> Catálogo
+          </button>
+          <button class="flex flex-col items-center text-content-tertiary text-xs">
+            <i class="fa-solid fa-truck-ramp-box text-base mb-1"></i> Lojistas
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. SKELETON LOADER -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-sm font-mono uppercase tracking-wider text-brand font-semibold">
+          ⚡ 7. Skeleton Loader com Efeito Shimmer
+        </h2>
+        <span class="text-xs text-content-tertiary font-mono">Skeleton.tsx</span>
+      </div>
+
+      <div class="sara-glass p-5 rounded-2xl grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="space-y-2 p-4 bg-sara-surface rounded-xl border border-sara-border animate-pulse">
+          <div class="h-4 w-3/4 bg-sara-elevated rounded"></div>
+          <div class="h-8 w-full bg-sara-elevated rounded-xl"></div>
+          <div class="h-4 w-1/2 bg-sara-elevated rounded"></div>
+        </div>
+        <div class="space-y-2 p-4 bg-sara-surface rounded-xl border border-sara-border animate-pulse">
+          <div class="h-4 w-2/3 bg-sara-elevated rounded"></div>
+          <div class="h-8 w-full bg-sara-elevated rounded-xl"></div>
+          <div class="h-4 w-1/3 bg-sara-elevated rounded"></div>
+        </div>
+        <div class="space-y-2 p-4 bg-sara-surface rounded-xl border border-sara-border animate-pulse">
+          <div class="h-4 w-4/5 bg-sara-elevated rounded"></div>
+          <div class="h-8 w-full bg-sara-elevated rounded-xl"></div>
+          <div class="h-4 w-2/5 bg-sara-elevated rounded"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. TOAST NOTIFICATIONS -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-sm font-mono uppercase tracking-wider text-brand font-semibold">
+          ⚡ 8. Toast / Notification (Feedbacks Rápidos)
+        </h2>
+        <span class="text-xs text-content-tertiary font-mono">Toast.tsx</span>
+      </div>
+
+      <div class="sara-glass p-5 rounded-2xl flex flex-wrap gap-3">
+        <div class="p-3.5 rounded-xl sara-glass-floating border border-emerald-500/40 text-xs text-emerald-400 font-semibold flex items-center gap-2">
+          <i class="fa-solid fa-circle-check"></i> Cotação #8492 Aprovada com Sucesso!
+        </div>
+        <div class="p-3.5 rounded-xl sara-glass-floating border border-amber-500/40 text-xs text-brand font-semibold flex items-center gap-2">
+          <i class="fa-solid fa-triangle-exclamation"></i> Aviso de Prazo do Lojista
+        </div>
+        <div class="p-3.5 rounded-xl sara-glass-floating border border-red-500/40 text-xs text-red-400 font-semibold flex items-center gap-2">
+          <i class="fa-solid fa-circle-exclamation"></i> Erro de Alíquota ICMS-ST
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
