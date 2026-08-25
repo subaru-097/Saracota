@@ -1,8 +1,6 @@
 /**
- * SARA COTA SAAS — CONFIGURAÇÃO CENTRALIZADA DE API & BACKEND (FIXA E DEFINITIVA)
- *
- * Esta configuração garante que a URL do backend permaneça FIXA e IMUTÁVEL (https://api.saracota.com.br),
- * eliminando a necessidade de alteração manual a cada novo deploy.
+ * SARA COTA SAAS — CONFIGURAÇÃO CENTRALIZADA DE API & BACKEND
+ * Centralizado via variável de ambiente NEXT_PUBLIC_API_URL (TAREFA 2)
  */
 
 export interface ApiConfiguration {
@@ -14,24 +12,28 @@ export interface ApiConfiguration {
   isProduction: boolean;
 }
 
-const DEFAULT_API_BASE_URL = 'https://api.saracota.com.br';
-const DEFAULT_SUPABASE_URL = 'https://api.saracota.com.br/supabase';
+// Fallbacks de produção quando NEXT_PUBLIC_API_URL não for definido
+const PROD_API_BASE_URL = 'https://api.saracota.com.br';
+const DEV_API_BASE_URL = 'http://localhost:3000/api';
 
 export const API_CONFIG: ApiConfiguration = {
   baseUrl:
     process.env.NEXT_PUBLIC_API_URL ||
-    (typeof window !== 'undefined' && window.location.hostname !== 'localhost'
-      ? `${window.location.origin}/api/v1`
-      : DEFAULT_API_BASE_URL),
+    (typeof window !== 'undefined'
+      ? `${window.location.origin}/api`
+      : process.env.NODE_ENV === 'production'
+      ? PROD_API_BASE_URL
+      : DEV_API_BASE_URL),
 
   supabaseUrl:
-    process.env.NEXT_PUBLIC_SUPABASE_URL || DEFAULT_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL || '',
 
   supabaseAnonKey:
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'saracota_prod_anon_key_fixed_v1',
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY || process.env.SUPABASE_KEY || '',
 
   appUrl:
-    process.env.NEXT_PUBLIC_APP_URL || 'https://saracota.com.br',
+    process.env.NEXT_PUBLIC_APP_URL ||
+    (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000'),
 
   environment:
     (process.env.NEXT_PUBLIC_ENVIRONMENT as any) ||

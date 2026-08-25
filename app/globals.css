@@ -79,7 +79,7 @@ body {
   border-radius: var(--radius-sm);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--brand-primary);
 }
 
 /* Vitrified Glassmorphism Utility */
@@ -113,4 +113,21 @@ body {
 @keyframes brandShimmer {
   0% { background-position: 0% center; }
   100% { background-position: 200% center; }
+}
+
+/* Animação suave estilo chat para entrada de novos itens no Bloco de Compras */
+@keyframes chatItemSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-item-entry {
+  animation: chatItemSlideIn 250ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
 }

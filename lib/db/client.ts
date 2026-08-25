@@ -1,6 +1,7 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { Cotacao, Fornecedor, Produto, RegraTributaria } from '@/types';
 import { TAX_RULES_DATABASE } from '../services/tax';
+import { encryptAES256 } from '@/lib/security/vault';
 
 import { API_CONFIG } from '@/lib/config/api';
 
@@ -10,7 +11,10 @@ const SUPABASE_ANON_KEY = API_CONFIG.supabaseAnonKey;
 export const isSupabaseConfigured = Boolean(
   SUPABASE_URL &&
     SUPABASE_ANON_KEY &&
-    !SUPABASE_URL.includes('sua-instancia.supabase.co')
+    SUPABASE_URL.startsWith('http') &&
+    !SUPABASE_URL.includes('sua-instancia.supabase.co') &&
+    !SUPABASE_URL.includes('sua-anon-key') &&
+    !SUPABASE_ANON_KEY.includes('sua-anon-key')
 );
 
 export const supabase: SupabaseClient | null = isSupabaseConfigured
@@ -248,116 +252,500 @@ export const db = {
         melhorFornecedorNome: 'Lojista Credenciado',
       };
     },
+
+    async salvarResultadosMatching(
+      cotacaoId: string,
+      fornecedorId: string,
+      resultados: any[]
+    ): Promise<boolean> {
+      if (typeof window !== 'undefined') {
+        try {
+          const key = `saracota_matching_${cotacaoId}_${fornecedorId}`;
+          localStorage.setItem(key, JSON.stringify(resultados));
+        } catch (e) {
+          console.warn('Erro ao salvar matching localmente:', e);
+        }
+      }
+
+      if (supabase) {
+        try {
+          const records = resultados.map((r) => ({
+            cotacao_id: cotacaoId,
+            fornecedor_id: fornecedorId,
+            material: r.itemPedido,
+            produto_encontrado: r.produtoEncontrado || r.itemPedido,
+            preco_unitario: r.preco,
+            confianca_percent: r.confianca,
+            status_matching: r.status,
+            imagem: r.imagem,
+            link: r.link,
+          }));
+
+          await supabase.from('itens_cotacao_fornecedor').insert(records);
+        } catch (e) {
+          console.warn('Erro ao salvar matching no Supabase:', e);
+        }
+      }
+
+      return true;
+    },
+
+    async obterResultadosMatching(cotacaoId: string): Promise<any[]> {
+      let resultados: any[] = [];
+
+      if (typeof window !== 'undefined') {
+        try {
+          for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (key && key.startsWith(`saracota_matching_${cotacaoId}_`)) {
+              const parsed = JSON.parse(localStorage.getItem(key) || '[]');
+              resultados = [...resultados, ...parsed];
+            }
+          }
+        } catch (e) {
+          console.warn('Erro ao ler matching local:', e);
+        }
+      }
+
+      if (resultados.length === 0 && supabase) {
+        try {
+          const { data } = await supabase
+            .from('itens_cotacao_fornecedor')
+            .select('*')
+            .eq('cotacao_id', cotacaoId);
+
+          if (data && data.length > 0) {
+            resultados = data.map((d: any) => ({
+              itemPedido: d.material,
+              status: d.status_matching,
+              confianca: d.confianca_percent,
+              produtoEncontrado: d.produto_encontrado,
+              preco: d.preco_unitario,
+              imagem: d.imagem,
+              link: d.link,
+              fornecedorId: d.fornecedor_id,
+            }));
+          }
+        } catch (e) {
+          console.warn('Erro ao buscar matching no Supabase:', e);
+        }
+      }
+
+      // Fallback de demonstração rica caso não haja itens gravados ainda
+      if (resultados.length === 0) {
+        resultados = [
+          {
+            itemPedido: 'Cabo Flexível SIL 750V 2,5mm Azul (Rolo 100m)',
+            status: 'CONFIRMADO',
+            confianca: 96,
+            produtoEncontrado: 'Cabo Flexível SIL 750V 2,5mm² Azul - Rolo 100m',
+            preco: 285.5,
+            imagem: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=120&q=80',
+            link: 'https://portal.eletricasaopaulo.com.br/cabo25azul',
+            fornecedorId: 'forn-1',
+            fornecedorNome: 'Elétrica São Paulo',
+          },
+          {
+            itemPedido: 'Tubo PVC Esgoto Amanco 100mm 6m',
+            status: 'SIMILAR',
+            confianca: 72,
+            produtoEncontrado: 'Tubo PVC Esgoto Fortlev 100mm x 6m Branco',
+            preco: 64.9,
+            imagem: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=120&q=80',
+            link: 'https://portal.hidraulica.com.br/tubopvc100',
+            fornecedorId: 'forn-2',
+            fornecedorNome: 'Hidráulica & Elétrica Central',
+          },
+          {
+            itemPedido: 'Disjuntor Bipolar Din 32A Steck',
+            status: 'NAO_ENCONTRADO',
+            confianca: 35,
+            produtoEncontrado: 'Disjuntor Unipolar 16A Siemens',
+            preco: 0,
+            fornecedorId: 'forn-1',
+            fornecedorNome: 'Elétrica São Paulo',
+          },
+        ];
+      }
+
+      return resultados;
+    },
+
+    async atualizarStatusMatchingItem(
+      cotacaoId: string,
+      fornecedorId: string,
+      itemPedido: string,
+      novoStatus: 'CONFIRMADO' | 'IGNORADO'
+    ): Promise<boolean> {
+      if (typeof window !== 'undefined') {
+        try {
+          const key = `saracota_matching_${cotacaoId}_${fornecedorId}`;
+          const current = JSON.parse(localStorage.getItem(key) || '[]');
+          const updated = current.map((it: any) =>
+            it.itemPedido === itemPedido ? { ...it, status: novoStatus, confianca: novoStatus === 'CONFIRMADO' ? 100 : 0 } : it
+          );
+          localStorage.setItem(key, JSON.stringify(updated));
+        } catch (e) {
+          console.warn('Erro ao atualizar matching local:', e);
+        }
+      }
+
+      if (supabase) {
+        try {
+          await supabase
+            .from('itens_cotacao_fornecedor')
+            .update({
+              status_matching: novoStatus,
+              confianca_percent: novoStatus === 'CONFIRMADO' ? 100 : 0,
+            })
+            .match({ cotacao_id: cotacaoId, fornecedor_id: fornecedorId, material: itemPedido });
+        } catch (e) {
+          console.warn('Erro ao atualizar matching no Supabase:', e);
+        }
+      }
+
+      return true;
+    },
   },
 
   // FORNECEDORES
   fornecedores: {
     async list(query?: string): Promise<Fornecedor[]> {
-      if (!supabase) return [];
+      let resultList: Fornecedor[] = [];
 
-      let req = supabase.from('fornecedores').select('*').order('nome', { ascending: true });
-      if (query && query.trim()) {
-        req = req.or(`nome.ilike.%${query}%,categoria.ilike.%${query}%`);
+      if (supabase) {
+        try {
+          let req = supabase.from('fornecedores').select('*').order('nome', { ascending: true });
+          if (query && query.trim()) {
+            req = req.or(`nome.ilike.%${query}%,categoria.ilike.%${query}%`);
+          }
+
+          const { data, error } = await req;
+          if (!error && data) {
+            resultList = data.map((f: any) => ({
+              id: f.id,
+              nome: f.nome,
+              categoria: f.categoria || 'Elétrica',
+              uf: 'SP',
+              scoreConfiabilidade: Number(f.score_confiabilidade) || 5.0,
+              slaMinutos: f.sla_minutos != null ? Number(f.sla_minutos) : 15,
+              prazoMedioDias: f.prazo_medio_dias != null ? Number(f.prazo_medio_dias) : 2,
+              acordoST: 'Protocolo ICMS ST Válido',
+              especialidades: [f.categoria || 'Materiais'],
+              verificado: true,
+              cotacoesAtendidasCount: 12,
+              conectado: Boolean(f.login_salvo || f.url_login),
+              whatsapp: f.whatsapp,
+              urlPortalB2B: f.url_login || f.url_portal_b2b || f.url_site,
+              login: f.login_salvo || f.email_login,
+              email: f.email || f.email_login || (f.login_salvo && f.login_salvo.includes('@') ? f.login_salvo : undefined),
+              emailLogin: f.email_login || f.login_salvo,
+              senhaLogin: f.senha_login || f.senha_criptografada,
+              rawSenhaCriptografada: f.senha_criptografada || f.senha_login,
+              cnpj: f.cnpj || (f.login_salvo && !f.login_salvo.includes('@') && f.login_salvo.length >= 14 ? f.login_salvo : undefined),
+              senhaCriptografada: (f.senha_criptografada || f.senha_login) ? '••••••••' : undefined,
+              observacoes: f.observacoes,
+              requiresCookieDismissal: f.requires_cookie_dismissal ?? false,
+              cookieSelectorHint: f.cookie_selector_hint || undefined,
+              seletores: f.seletores || null,
+              temCredencial: Boolean(f.login_salvo || f.url_login),
+            }));
+          }
+        } catch (e) {
+          console.warn('Erro ao buscar fornecedores do Supabase:', e);
+        }
       }
 
-      const { data, error } = await req;
-      if (error || !data) return [];
+      // Purga automática de registros fantasmas (ex: forn-1787...) do localStorage
+      if (typeof window !== 'undefined') {
+        try {
+          const localStr = localStorage.getItem('saracota_suppliers_custom');
+          if (localStr) {
+            const localArr: Fornecedor[] = JSON.parse(localStr);
+            const cleaned = localArr.filter((f) => !f.id.startsWith('forn-'));
+            if (cleaned.length !== localArr.length) {
+              localStorage.setItem('saracota_suppliers_custom', JSON.stringify(cleaned));
+            }
+            if (!supabase) {
+              const filteredLocal = query && query.trim()
+                ? cleaned.filter((f) =>
+                    f.nome.toLowerCase().includes(query.toLowerCase()) ||
+                    (f.categoria && f.categoria.toLowerCase().includes(query.toLowerCase()))
+                  )
+                : cleaned;
 
-      return data.map((f: any) => ({
-        id: f.id,
-        nome: f.nome,
-        categoria: f.categoria || 'Geral',
-        uf: 'SP',
-        scoreConfiabilidade: Number(f.score_confiabilidade) || 5.0,
-        slaMinutos: Number(f.prazo_medio_dias) * 1440 || 15,
-        acordoST: 'Protocolo ICMS ST Válido',
-        especialidades: [f.categoria || 'Materiais'],
-        verificado: true,
-        cotacoesAtendidasCount: 12,
-      }));
+              const existingIds = new Set(resultList.map((f) => f.id));
+              for (const item of filteredLocal) {
+                if (!existingIds.has(item.id)) {
+                  resultList.push(item);
+                }
+              }
+            }
+          }
+        } catch (e) {
+          console.warn('Erro ao limpar ou ler localStorage de fornecedores:', e);
+        }
+      }
+
+      return resultList;
+    },
+
+    async getById(id: string): Promise<Fornecedor | null> {
+      const list = await this.list();
+      return list.find((f) => f.id === id) || null;
     },
 
     async create(payload: {
       nome: string;
       categoria?: string;
-      score_confiabilidade?: number;
-      prazo_medio_dias?: number;
+      prazoMedioDias?: number;
+      slaMinutos?: number;
+      whatsapp?: string;
+      urlPortalB2B?: string;
+      tiposLogin?: string[];
+      loginType?: 'modal' | 'page';
+      triggerSelector?: string;
+      email?: string;
+      cnpj?: string;
+      login?: string;
+      senha?: string;
+      logoUrl?: string;
+      observacoes?: string;
     }): Promise<Fornecedor> {
-      const record: Partial<DBRecordFornecedor> = {
-        nome: payload.nome,
-        categoria: payload.categoria || 'Elétrica & Fiação',
-        score_confiabilidade: payload.score_confiabilidade || 5.0,
-        prazo_medio_dias: payload.prazo_medio_dias || 2,
-      };
+      const encryptedSenha = payload.senha ? encryptAES256(payload.senha) : undefined;
+      const temCredencial = Boolean(payload.senha || payload.login || payload.email || payload.cnpj);
 
-      let createdForn: Fornecedor = {
-        id: `forn-${Date.now()}`,
-        nome: payload.nome,
-        categoria: payload.categoria || 'Geral',
-        uf: 'SP',
-        scoreConfiabilidade: payload.score_confiabilidade || 5.0,
-        slaMinutos: (payload.prazo_medio_dias || 2) * 1440,
-        acordoST: 'Protocolo ICMS ST Válido',
-        especialidades: [payload.categoria || 'Geral'],
-        verificado: true,
-        cotacoesAtendidasCount: 0,
-      };
+      let createdForn: Fornecedor;
 
+      // 1. Inserir direto no Banco de Dados (Supabase)
       if (supabase) {
         const { data, error } = await supabase
           .from('fornecedores')
-          .insert([record])
+          .insert([
+            {
+              user_id: '61ab64e4-c2cb-46df-bb14-6cc326293085',
+              nome: payload.nome,
+              categoria: payload.categoria || 'Elétrica',
+              score_confiabilidade: 5.0,
+              prazo_medio_dias: payload.prazoMedioDias ?? 2,
+              sla_minutos: payload.slaMinutos ?? 15,
+              whatsapp: payload.whatsapp,
+              url_site: payload.urlPortalB2B || 'https://www.construja.com.br',
+              url_login: payload.urlPortalB2B,
+              login_salvo: payload.login || payload.email || payload.cnpj,
+              email_login: payload.email || payload.login || payload.cnpj,
+              senha_criptografada: encryptedSenha,
+              senha_login: encryptedSenha,
+              observacoes: payload.observacoes,
+            },
+          ])
           .select()
           .single();
 
-        if (!error && data) {
-          createdForn = {
-            id: data.id,
-            nome: data.nome,
-            categoria: data.categoria,
-            uf: 'SP',
-            scoreConfiabilidade: Number(data.score_confiabilidade),
-            slaMinutos: Number(data.prazo_medio_dias) * 1440,
-            acordoST: 'Protocolo ICMS ST Válido',
-            especialidades: [data.categoria],
-            verificado: true,
-            cotacoesAtendidasCount: 0,
-          };
+        if (error) {
+          console.error('❌ Erro ao cadastrar fornecedor no banco de dados (Supabase):', error);
+          throw new Error(`Falha ao salvar no banco de dados (Supabase): ${error.message || error.details || JSON.stringify(error)}`);
+        }
+
+        if (!data) {
+          console.error('❌ Erro: Supabase não retornou os dados do fornecedor criado.');
+          throw new Error('Falha ao salvar no banco de dados: Nenhum registro retornado pelo banco.');
+        }
+
+        createdForn = {
+          id: data.id,
+          nome: data.nome,
+          categoria: data.categoria || 'Elétrica',
+          uf: 'SP',
+          scoreConfiabilidade: Number(data.score_confiabilidade) || 5.0,
+          slaMinutos: data.sla_minutos != null ? Number(data.sla_minutos) : (payload.slaMinutos ?? 15),
+          prazoMedioDias: data.prazo_medio_dias != null ? Number(data.prazo_medio_dias) : (payload.prazoMedioDias ?? 2),
+          acordoST: 'Protocolo ICMS ST Válido',
+          especialidades: [data.categoria || 'Materiais'],
+          verificado: true,
+          cotacoesAtendidasCount: 0,
+          conectado: temCredencial,
+          whatsapp: data.whatsapp,
+          urlPortalB2B: data.url_login,
+          tiposLogin: payload.tiposLogin || ['login'],
+          loginType: payload.loginType || 'modal',
+          triggerSelector: payload.triggerSelector,
+          email: payload.email,
+          cnpj: payload.cnpj,
+          login: data.login_salvo,
+          logoUrl: payload.logoUrl,
+          senhaCriptografada: data.senha_criptografada ? '••••••••' : undefined,
+          observacoes: data.observacoes,
+          temCredencial,
+        };
+      } else {
+        const errorMsg = 'Banco de dados (Supabase) não está configurado. Verifique as credenciais NEXT_PUBLIC_SUPABASE_URL e NEXT_PUBLIC_SUPABASE_ANON_KEY no arquivo .env.local.';
+        console.error('❌ ' + errorMsg);
+        throw new Error(errorMsg);
+      }
+
+      // 2. SOMENTE DEPOIS que o insert no banco for confirmado com sucesso, atualizar cache local (localStorage)
+      if (typeof window !== 'undefined') {
+        try {
+          const localStr = localStorage.getItem('saracota_suppliers_custom') || '[]';
+          const localArr: Fornecedor[] = JSON.parse(localStr);
+          localArr.push(createdForn);
+          localStorage.setItem('saracota_suppliers_custom', JSON.stringify(localArr));
+
+          if (payload.whatsapp) {
+            localStorage.setItem(`saracota_wa_${createdForn.id}`, payload.whatsapp);
+          }
+          if (encryptedSenha) {
+            localStorage.setItem(`saracota_sec_${createdForn.id}`, encryptedSenha);
+          }
+        } catch (e) {
+          console.warn('Aviso: Falha ao atualizar cache local no localStorage:', e);
         }
       }
 
       return createdForn;
     },
 
-    async update(id: string, payload: Partial<DBRecordFornecedor>): Promise<boolean> {
-      if (!supabase) return false;
+    async update(
+      id: string,
+      payload: {
+        nome?: string;
+        categoria?: string;
+        prazoMedioDias?: number;
+        slaMinutos?: number;
+        whatsapp?: string;
+        urlPortalB2B?: string;
+        tiposLogin?: string[];
+        loginType?: 'modal' | 'page';
+        triggerSelector?: string;
+        email?: string;
+        cnpj?: string;
+        login?: string;
+        senha?: string;
+        logoUrl?: string;
+        observacoes?: string;
+      }
+    ): Promise<boolean> {
+      const encryptedSenha = payload.senha ? encryptAES256(payload.senha) : undefined;
 
-      const { error } = await supabase
-        .from('fornecedores')
-        .update(payload)
-        .eq('id', id);
-      return !error;
+      // 1. Atualizar no Supabase
+      if (supabase) {
+        const newLoginSalvo = payload.login || payload.email || payload.cnpj;
+
+        const dbPayload: any = {};
+        if (payload.nome) dbPayload.nome = payload.nome;
+        if (payload.categoria) dbPayload.categoria = payload.categoria;
+        if (payload.prazoMedioDias !== undefined) dbPayload.prazo_medio_dias = payload.prazoMedioDias;
+        if (payload.slaMinutos !== undefined) dbPayload.sla_minutos = payload.slaMinutos;
+        if (payload.whatsapp !== undefined) dbPayload.whatsapp = payload.whatsapp;
+        if (payload.urlPortalB2B !== undefined) {
+          dbPayload.url_login = payload.urlPortalB2B;
+          dbPayload.url_site = payload.urlPortalB2B;
+        }
+        if (newLoginSalvo !== undefined) {
+          dbPayload.login_salvo = newLoginSalvo;
+          dbPayload.email_login = newLoginSalvo;
+        }
+        if (encryptedSenha) {
+          dbPayload.senha_criptografada = encryptedSenha;
+          dbPayload.senha_login = encryptedSenha;
+        }
+        if (payload.observacoes !== undefined) dbPayload.observacoes = payload.observacoes;
+        if ((payload as any).requiresCookieDismissal !== undefined) dbPayload.requires_cookie_dismissal = (payload as any).requiresCookieDismissal;
+        if ((payload as any).cookieSelectorHint !== undefined) dbPayload.cookie_selector_hint = (payload as any).cookieSelectorHint;
+
+        console.log('📡 [DB UPDATE SUPABASE] Gravando alteração do fornecedor ID:', id, 'dbPayload:', {
+          ...dbPayload,
+          senha_criptografada: encryptedSenha ? '•••••••• (AES-256)' : undefined,
+        });
+
+        const { error } = await supabase.from('fornecedores').update(dbPayload).eq('id', id);
+        if (error) {
+          if (error.code === 'PGRST204' || error.message.includes('email_login') || error.message.includes('senha_login')) {
+            console.warn('⚠️ Colunas email_login/senha_login ainda não criadas no Supabase. Realizando fallback para login_salvo e senha_criptografada...');
+            delete dbPayload.email_login;
+            delete dbPayload.senha_login;
+            const { error: retryError } = await supabase.from('fornecedores').update(dbPayload).eq('id', id);
+            if (retryError) {
+              console.error('❌ Erro no update (fallback):', retryError);
+              throw new Error(`Falha ao atualizar fornecedor: ${retryError.message}`);
+            }
+          } else {
+            console.error('❌ Erro ao atualizar fornecedor no Supabase:', error);
+            throw new Error(`Falha ao atualizar no banco de dados (Supabase): ${error.message || error.details || JSON.stringify(error)}`);
+          }
+        }
+      } else {
+        const errorMsg = 'Banco de dados (Supabase) não está configurado.';
+        console.error('❌ ' + errorMsg);
+        throw new Error(errorMsg);
+      }
+
+      // 2. Atualizar cache no localStorage somente se o banco foi atualizado com sucesso
+      if (typeof window !== 'undefined') {
+        try {
+          const localStr = localStorage.getItem('saracota_suppliers_custom') || '[]';
+          let localArr: Fornecedor[] = JSON.parse(localStr);
+          localArr = localArr.map((f) => {
+            if (f.id === id) {
+              return {
+                ...f,
+                ...payload,
+                senhaCriptografada: payload.senha ? '••••••••' : f.senhaCriptografada,
+                temCredencial: true,
+              };
+            }
+            return f;
+          });
+          localStorage.setItem('saracota_suppliers_custom', JSON.stringify(localArr));
+
+          if (encryptedSenha) {
+            localStorage.setItem(`saracota_sec_${id}`, encryptedSenha);
+          }
+        } catch (e) {
+          console.warn('Aviso: Erro ao atualizar fornecedor localmente:', e);
+        }
+      }
+
+      return true;
     },
 
     async delete(id: string): Promise<{ success: boolean; errorMsg?: string }> {
-      if (!supabase) return { success: false, errorMsg: 'Supabase não conectado.' };
-
-      const { data: cotVinculadas } = await supabase
-        .from('cotacoes')
-        .select('id')
-        .eq('fornecedor_id', id);
-
-      if (cotVinculadas && cotVinculadas.length > 0) {
-        return {
-          success: false,
-          errorMsg: `Não é possível excluir o fornecedor pois existem ${cotVinculadas.length} cotação(ões) vinculada(s).`,
-        };
+      // 1. Remover do localStorage
+      if (typeof window !== 'undefined') {
+        try {
+          const localStr = localStorage.getItem('saracota_suppliers_custom') || '[]';
+          let localArr: Fornecedor[] = JSON.parse(localStr);
+          localArr = localArr.filter((f) => f.id !== id);
+          localStorage.setItem('saracota_suppliers_custom', JSON.stringify(localArr));
+          localStorage.removeItem(`saracota_wa_${id}`);
+          localStorage.removeItem(`saracota_sec_${id}`);
+        } catch (e) {
+          console.warn('Erro ao remover do localStorage:', e);
+        }
       }
 
-      const { error } = await supabase.from('fornecedores').delete().eq('id', id);
-      if (error) {
-        return { success: false, errorMsg: error.message };
+      // 2. Remover do Supabase
+      if (supabase) {
+        try {
+          const { data: cotVinculadas } = await supabase
+            .from('cotacoes')
+            .select('id')
+            .eq('fornecedor_id', id);
+
+          if (cotVinculadas && cotVinculadas.length > 0) {
+            return {
+              success: false,
+              errorMsg: `Não é possível excluir o fornecedor pois existem ${cotVinculadas.length} cotação(ões) vinculada(s).`,
+            };
+          }
+
+          await supabase.from('fornecedores').delete().eq('id', id);
+        } catch (e) {
+          console.warn('Erro ao remover no Supabase:', e);
+        }
       }
+
       return { success: true };
     },
   },

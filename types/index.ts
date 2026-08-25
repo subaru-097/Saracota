@@ -40,6 +40,16 @@ export interface Projeto {
   encarregadoNome?: string;
 }
 
+export interface RegistroExecucaoRPA {
+  id: string;
+  timestamp: string;
+  sucesso: boolean;
+  tempoMs: number;
+  categoria: 'Sucesso' | 'Timeout' | 'Credenciais inválidas' | 'Elemento não encontrado' | 'Bloqueio anti-bot' | 'Erro de rede' | 'URL inválida' | 'Erro desconhecido';
+  erroCodigo?: string;
+  mensagem?: string;
+}
+
 export interface Fornecedor {
   id: string;
   clienteId?: string;
@@ -48,13 +58,31 @@ export interface Fornecedor {
   cnpj?: string;
   uf: UF;
   scoreConfiabilidade: number; // 0.0 - 5.0
-  slaMinutos: number;
+  slaMinutos: number; // Tempo de resposta em minutos
+  prazoMedioDias?: number; // Prazo de entrega em dias
   acordoST: string;
   especialidades: string[];
   verificado: boolean;
   cotacoesAtendidasCount: number;
   conectado?: boolean;
   whatsapp?: string;
+  urlPortalB2B?: string;
+  login?: string;
+  email?: string;
+  emailLogin?: string;
+  senhaLogin?: string;
+  tiposLogin?: string[];
+  loginType?: 'modal' | 'page';
+  triggerSelector?: string;
+  requiresCookieDismissal?: boolean;
+  cookieSelectorHint?: string;
+  logoUrl?: string;
+  senhaCriptografada?: string;
+  rawSenhaCriptografada?: string;
+  observacoes?: string;
+  temCredencial?: boolean;
+  seletores?: Record<string, string> | null;
+  historicoExecucoesRPA?: RegistroExecucaoRPA[];
 }
 
 export interface AtributosTecnicos {
@@ -160,6 +188,7 @@ export interface ProductMatchingQuery {
 export interface ItemRascunho {
   id: string;
   texto: string;
+  quantidade?: number;
   origem: 'voz' | 'texto';
   criadoEm: string;
   editadoEm?: string;

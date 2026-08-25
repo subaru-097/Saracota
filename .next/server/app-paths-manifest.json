@@ -1,3 +1,8 @@
 {
+  "/cotacoes/page": "app/cotacoes/page.js",
+  "/login/page": "app/login/page.js",
+  "/historico/page": "app/historico/page.js",
+  "/painel/page": "app/painel/page.js",
+  "/fornecedores/page": "app/fornecedores/page.js",
   "/page": "app/page.js"
 }

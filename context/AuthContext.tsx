@@ -13,7 +13,7 @@ interface AuthContextType {
   loginError: string | null;
   registerError: string | null;
   resetSuccess: string | null;
-  signIn: (email: string, password: string) => Promise<boolean>;
+  signIn: (email: string, password: string) => Promise<any>;
   signUp: (data: { email: string; password: string; nome: string; empresa?: string; role?: UserRole }) => Promise<boolean>;
   signOut: () => Promise<void>;
   resetPassword: (email: string) => Promise<boolean>;
@@ -124,17 +124,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   // 2. Login com Suporte aos Usuários de Teste (proprietario / colaborador)
-  const signIn = async (email: string, password: string): Promise<boolean> => {
+  const signIn = async (email: string, password: string): Promise<any> => {
     clearErrors();
     setIsLoading(true);
     try {
       if (!email || !email.includes('@')) {
         setLoginError('Informe um e-mail válido.');
-        return false;
+        return null;
       }
       if (!password || password.length < 6) {
         setLoginError('A senha deve ter no mínimo 6 caracteres.');
-        return false;
+        return null;
       }
 
       const role = deriveRoleFromEmail(email);
@@ -151,7 +151,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
               ? 'E-mail ou senha incorretos. Verifique suas credenciais.'
               : error.message
           );
-          return false;
+          return null;
         }
 
         if (data?.user) {
@@ -165,7 +165,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           };
           setUser(u);
           localStorage.setItem('saracota_active_user', JSON.stringify(u));
-          return true;
+          return u;
         }
       }
 
@@ -180,10 +180,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
       setUser(testUser);
       localStorage.setItem('saracota_active_user', JSON.stringify(testUser));
-      return true;
+      return testUser;
     } catch (err: any) {
       setLoginError(err.message || 'Erro inesperado ao realizar login.');
-      return false;
+      return null;
     } finally {
       setIsLoading(false);
     }

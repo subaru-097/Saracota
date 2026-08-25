@@ -10,16 +10,21 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.3",
+    "@types/string-similarity": "^4.0.2",
     "clsx": "^2.1.0",
+    "dotenv": "^17.4.2",
     "html2canvas": "^1.4.1",
     "jspdf": "^4.2.1",
     "lucide-react": "^0.344.0",
     "next": "^14.1.0",
+    "playwright": "^1.62.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "string-similarity": "^4.0.4",
     "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "@types/node": "^20.11.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
