@@ -116,18 +116,20 @@ export class BrowserbaseService {
         }
       }
 
-      // 4. SOMENTE APÓS NAVEGAÇÃO E AUTOMAÇÃO, obter debug URL assinado
+      // 4. SOMENTE APÓS NAVEGAÇÃO E AUTOMAÇÃO, obter debug URL assinado (debuggerFullscreenUrl)
       let liveViewUrl = '';
       try {
         const debugLinks = await bb.sessions.debug(session.id);
+        console.log('🔍 [BROWSERBASE SDK DEBUG OBJECT RAW]:', JSON.stringify(debugLinks, null, 2));
+
         liveViewUrl = (debugLinks as any).debuggerFullscreenUrl || (debugLinks as any).debuggerUrl || (debugLinks as any).url || '';
-        console.log(`📌 [BROWSERBASE LIVE VIEW URL GERADA]: "${liveViewUrl}"`);
+        console.log(`📌 [BROWSERBASE LIVE VIEW URL ASSINADA GERADA]: "${liveViewUrl}"`);
       } catch (debugErr: any) {
-        console.warn('💡 [BROWSERBASE WARN] Falha ao obter debug URL via SDK:', debugErr.message);
+        console.warn('⚠️ [BROWSERBASE WARN] Falha ao obter debug URL assinado via SDK:', debugErr.message);
       }
 
       if (!liveViewUrl) {
-        liveViewUrl = `https://www.browserbase.com/v1/sessions/${session.id}/embed`;
+        throw new Error(`Não foi possível gerar a URL de visualização ao vivo assinada para a sessão ${session.id}.`);
       }
 
       return {
