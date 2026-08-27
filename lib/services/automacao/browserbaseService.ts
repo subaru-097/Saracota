@@ -143,6 +143,20 @@ export class BrowserbaseService {
         liveViewUrl = (debugLinks as any).debuggerFullscreenUrl || (debugLinks as any).debuggerUrl || (debugLinks as any).url || '';
 
         console.log("[Browserbase] liveViewUrl retornada:", (debugLinks as any).debuggerFullscreenUrl || liveViewUrl);
+
+        // 4b. LOG MONITOR DE STATUS A CADA 5 SEGUNDOS POR 30 SEGUNDOS APÓS NAVEGAÇÃO
+        (async () => {
+          console.log(`⏱️ [SESSION MONITOR MONITORING START] Iniciando monitoramento de 30s para sessão ${session.id}...`);
+          for (let step = 1; step <= 6; step++) {
+            await new Promise((resolve) => setTimeout(resolve, 5000));
+            try {
+              const currentSess = await bb.sessions.retrieve(session.id);
+              console.log(`⏱️ [SESSION STATUS CHECK ${step * 5}s] id: ${session.id} | status: ${currentSess.status}`);
+            } catch (pollErr: any) {
+              console.warn(`⚠️ [SESSION STATUS CHECK ${step * 5}s ERRO]:`, pollErr.message);
+            }
+          }
+        })();
       } catch (debugErr: any) {
         console.warn('⚠️ [BROWSERBASE WARN] Falha ao obter debug URL assinado via SDK:', debugErr.message);
       }
