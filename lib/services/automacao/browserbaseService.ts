@@ -25,6 +25,123 @@ export class BrowserbaseService {
   }
 
   /**
+   * Cria uma nova sessão remota no Browserbase, conecta via CDP, executa o page.goto()
+   * para o portal do fornecedor e SOMENTE DEPOIS obtém a debuggerFullscreenUrl assinada.
+   */
+  public static async criarEMontarSessaoRemota(params: {
+    fornecedorId: string;
+    fornecedorUrl?: string;
+    itens?: { texto: string; quantidade: number }[];
+  }): Promise<{
+    sessionId: string;
+    connectUrl: string;
+    liveViewUrl: string;
+  }> {
+    const { fornecedorId, fornecedorUrl = '', itens = [] } = params;
+    const { apiKey, projectId } = this.getCredentials();
+
+    // Se estiver em ambiente demo sem chaves reais da Browserbase, gera URLs mock seguras
+    if (apiKey === 'demo-browserbase-api-key' || !process.env.BROWSERBASE_API_KEY) {
+      console.log('💡 [BROWSERBASE DEMO MODE] Gerando sessão remota mock para testes de interface...');
+      const mockSessionId = `bb-sess-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
+      return {
+        sessionId: mockSessionId,
+        connectUrl: `wss://connect.browserbase.com?apiKey=${apiKey}&sessionId=${mockSessionId}`,
+        liveViewUrl: `https://www.browserbase.com/v1/sessions/${mockSessionId}/debug`,
+      };
+    }
+
+    try {
+      // 1. Criar sessão no Browserbase
+      const bb = new Browserbase({ apiKey });
+      const session = await bb.sessions.create({ projectId });
+      const connectUrl = session.connectUrl || `wss://connect.browserbase.com?apiKey=${apiKey}&sessionId=${session.id}`;
+
+      console.log('🚀 [BROWSERBASE SESSÃO CRIADA]', { sessionId: session.id, connectUrl });
+
+      // 2. Conectar Playwright via CDP
+      console.log(`🔌 [BROWSERBASE CDP] Conectando Playwright à sessão remota (${session.id})...`);
+      let browser = null;
+      try {
+        browser = await chromium.connectOverCDP(connectUrl);
+      } catch (cdpErr: any) {
+        console.error('❌ [BROWSERBASE CDP ERRO] Falha ao conectar via CDP:', cdpErr.message);
+        throw new Error(`Falha ao conectar via CDP à sessão remota: ${cdpErr.message}`);
+      }
+
+      const contexts = browser.contexts();
+      const context = contexts.length > 0 ? contexts[0] : await browser.newContext();
+      const pages = context.pages();
+      const page: Page = pages.length > 0 ? pages[0] : await context.newPage();
+
+      // Resolver portal do fornecedor
+      const normFornId = fornecedorId.toLowerCase();
+      const fornecedoresList = await db.fornecedores.list();
+      const fornecedor = fornecedoresList.find((f) => {
+        const fId = f.id.toLowerCase();
+        const fNome = f.nome.toLowerCase();
+        return fId === normFornId || fNome.includes(normFornId) || (normFornId.includes('construj') && fNome.includes('construj'));
+      });
+
+      let urlPortal = fornecedorUrl || fornecedor?.urlPortalB2B || (fornecedor as any)?.url_site;
+      if (!urlPortal) {
+        if (normFornId.includes('cicalfer')) {
+          urlPortal = 'https://www.cicalfer.com.br';
+        } else if (normFornId.includes('construj')) {
+          urlPortal = 'https://www.construja.com.br';
+        } else {
+          urlPortal = 'https://www.cicalfer.com.br';
+        }
+      }
+
+      // 3. Executar page.goto() e AGUARDAR conclusão antes de gerar debug URL
+      console.log(`🌐 [BROWSERBASE NAVIGATE] Executando page.goto("${urlPortal}")...`);
+      try {
+        await page.goto(urlPortal, { waitUntil: 'domcontentloaded', timeout: 20000 });
+        console.log(`✅ [BROWSERBASE NAVIGATE SUCESSO] Navegação para ${urlPortal} concluída! URL atual: ${page.url()}`);
+      } catch (navErr: any) {
+        console.error(`❌ [BROWSERBASE NAVIGATE ERRO] Falha ao navegar para ${urlPortal}:`, navErr.message);
+        throw new Error(`Não foi possível acessar o site do fornecedor (${urlPortal}): ${navErr.message}`);
+      }
+
+      // Adicionar itens se houver
+      if (itens.length > 0) {
+        console.log(`🛒 [BROWSERBASE BUSCA] Adicionando ${itens.length} item(ns) ao carrinho...`);
+        for (let idx = 0; idx < itens.length; idx++) {
+          const item = itens[idx];
+          console.log(`  👉 [ITEM ${idx + 1}/${itens.length}] "${item.texto}" (Qtd: ${item.quantidade})`);
+          await buscarProduto(page, item.texto, fornecedor?.seletores, fornecedorId, item.quantidade).catch((e) => {
+            console.warn(`  ⚠️ [ITEM WARN] Falha ao adicionar "${item.texto}":`, e.message);
+          });
+        }
+      }
+
+      // 4. SOMENTE APÓS NAVEGAÇÃO E AUTOMAÇÃO, obter debug URL assinado
+      let liveViewUrl = '';
+      try {
+        const debugLinks = await bb.sessions.debug(session.id);
+        liveViewUrl = (debugLinks as any).debuggerFullscreenUrl || (debugLinks as any).debuggerUrl || (debugLinks as any).url || '';
+        console.log(`📌 [BROWSERBASE LIVE VIEW URL GERADA]: "${liveViewUrl}"`);
+      } catch (debugErr: any) {
+        console.warn('💡 [BROWSERBASE WARN] Falha ao obter debug URL via SDK:', debugErr.message);
+      }
+
+      if (!liveViewUrl) {
+        liveViewUrl = `https://www.browserbase.com/v1/sessions/${session.id}/embed`;
+      }
+
+      return {
+        sessionId: session.id,
+        connectUrl,
+        liveViewUrl,
+      };
+    } catch (err: any) {
+      console.error('❌ Falha na criação e navegação sequencial da sessão no Browserbase:', err.message);
+      throw err;
+    }
+  }
+
+  /**
    * Instancia uma nova sessão remota no Browserbase e retorna connectUrl e liveViewUrl para Iframe
    */
   public static async criarSessaoRemota(): Promise<{
@@ -52,18 +169,7 @@ export class BrowserbaseService {
       let liveViewUrl = '';
       try {
         const debugLinks = await bb.sessions.debug(session.id);
-        console.log('🔍 [BROWSERBASE SDK DEBUG OBJECT RAW]:', JSON.stringify(debugLinks, null, 2));
-
-        const selectedField = (debugLinks as any).debuggerFullscreenUrl
-          ? 'debuggerFullscreenUrl'
-          : (debugLinks as any).debuggerUrl
-          ? 'debuggerUrl'
-          : (debugLinks as any).url
-          ? 'url'
-          : 'fallback_embed';
-
         liveViewUrl = (debugLinks as any).debuggerFullscreenUrl || (debugLinks as any).debuggerUrl || (debugLinks as any).url || '';
-        console.log(`📌 [BROWSERBASE LIVE VIEW SELEÇÃO]: Campo utilizado = "${selectedField}" | Valor = "${liveViewUrl}"`);
       } catch (debugErr: any) {
         console.warn('💡 [BROWSERBASE WARN] Falha ao obter debug URL via SDK:', debugErr.message);
       }
@@ -73,12 +179,6 @@ export class BrowserbaseService {
       }
 
       const connectUrl = session.connectUrl || `wss://connect.browserbase.com?apiKey=${apiKey}&sessionId=${session.id}`;
-
-      console.log('🚀 [BROWSERBASE SESSÃO CRIADA OFICIAL]', {
-        sessionId: session.id,
-        connectUrl,
-        liveViewUrl,
-      });
 
       return {
         sessionId: session.id,

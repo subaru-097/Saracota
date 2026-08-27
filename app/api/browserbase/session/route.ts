@@ -9,34 +9,32 @@ export async function POST(req: NextRequest) {
     const body = await req.json().catch(() => ({}));
     const { fornecedorId = 'forn-cicalfer', fornecedorNome = 'Cicalfer', fornecedorUrl = '', itens = [] } = body;
 
-    console.log('📡 [API /api/browserbase/session] Criando sessão remota instantânea (Fase 1)...', {
+    console.log('📡 [API /api/browserbase/session] Criando e navegando sessão remota sequencialmente...', {
       fornecedorId,
       fornecedorNome,
       fornecedorUrl,
       itensCount: itens.length,
     });
 
-    // FASE 1: Criar sessão remota e obter Live View URL em < 1.5s
-    const sessaoInfo = await BrowserbaseService.criarSessaoRemota();
-
-    // FASE 2: Iniciar automação do Playwright via CDP em background (sem bloquear a resposta HTTP)
-    BrowserbaseService.executarMontagemCarrinhoBackground({
-      connectUrl: sessaoInfo.connectUrl,
+    // EXECUÇÃO SEQUENCIAL RIGOROSA:
+    // 1º Criar a sessão no Browserbase
+    // 2º Conectar Playwright via CDP e navegar para a URL do fornecedor (page.goto)
+    // 3º Adicionar os itens solicitados ao carrinho
+    // 4º SOMENTE DEPOIS disso, obter a debuggerFullscreenUrl e responder o JSON
+    const sessaoInfo = await BrowserbaseService.criarEMontarSessaoRemota({
       fornecedorId,
       fornecedorUrl,
       itens,
-    }).catch((bgErr) => {
-      console.warn('⚠️ [BROWSERBASE WORKER BACKGROUND] Aviso ao processar automação:', bgErr.message);
     });
 
-    // Retorno instantâneo para o frontend exibir o Iframe imediatamente
+    // Retorno para o frontend exibir o Iframe com a página do fornecedor já carregada
     return NextResponse.json({
       sucesso: true,
-      status: 'SESSAO_REMOTA_CRIADA_INSTANTANEA',
+      status: 'SESSAO_REMOTA_CRIADA_E_NAVEGADA',
       sessionId: sessaoInfo.sessionId,
       connectUrl: sessaoInfo.connectUrl,
       liveViewUrl: sessaoInfo.liveViewUrl,
-      mensagem: `Sessão remota iniciada. Exibindo transmissão ao vivo...`,
+      mensagem: `Sessão remota iniciada. Navegação para o site do fornecedor concluída.`,
       fornecedorNome,
     });
   } catch (error: any) {
