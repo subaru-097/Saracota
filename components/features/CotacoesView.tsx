@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
@@ -87,6 +87,19 @@ export const CotacoesView: React.FC = () => {
   const [isAutosaving, setIsAutosaving] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [waSendingId, setWaSendingId] = useState<string | null>(null);
+
+  // REF PARA CANCELAMENTO DO POLLING NO DESMONTE DO COMPONENTE
+  const pollingIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // CLEANUP NO UNMOUNT (DESMONTE DO COMPONENTE OU TROCA DE ABA)
+  useEffect(() => {
+    return () => {
+      if (pollingIntervalRef.current) {
+        clearInterval(pollingIntervalRef.current);
+        pollingIntervalRef.current = null;
+      }
+    };
+  }, []);
 
   // ESTADO DO MODAL DE COLAGEM MULTILINHA / PARSER INTELIGENTE
   const [isPasteModalOpen, setIsPasteModalOpen] = useState(false);
@@ -387,7 +400,8 @@ export const CotacoesView: React.FC = () => {
           try {
             const elapsed = Date.now() - startTime;
             if (elapsed > MAX_TIMEOUT_MS) {
-              clearInterval(timerId);
+              if (pollingIntervalRef.current) clearInterval(pollingIntervalRef.current);
+              pollingIntervalRef.current = null;
               reject(new Error('Tempo limite de processamento excedido (5 minutos).'));
               return;
             }
@@ -433,18 +447,22 @@ export const CotacoesView: React.FC = () => {
               currentPercent >= 100;
 
             if (isCompleted) {
-              clearInterval(timerId);
+              if (pollingIntervalRef.current) clearInterval(pollingIntervalRef.current);
+              pollingIntervalRef.current = null;
               setProgressPercent(100);
               setProgressStatusMsg('Automação concluída com sucesso! Redirecionando...');
               resolve();
             } else if (data.status === 'erro') {
-              clearInterval(timerId);
+              if (pollingIntervalRef.current) clearInterval(pollingIntervalRef.current);
+              pollingIntervalRef.current = null;
               reject(new Error(data.mensagem || 'Erro retornado pela automação RPA no servidor.'));
             }
           } catch (pollErr) {
             console.warn('Erro na iteração de polling de status:', pollErr);
           }
         }, POLL_INTERVAL_MS);
+
+        pollingIntervalRef.current = timerId;
       });
 
       // 4. Limpar rascunho ativo APENAS APÓS confirmação real de conclusão do polling
