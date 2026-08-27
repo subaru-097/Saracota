@@ -456,6 +456,22 @@ export const db = {
         }
       }
 
+      // Fallback via HTTP API do Next.js se a consulta direta ao Supabase via JS Client retornar vazia no browser
+      if (resultList.length === 0 && typeof window !== 'undefined') {
+        try {
+          const apiEndpoint = `/api/v1/fornecedores${query && query.trim() ? `?q=${encodeURIComponent(query)}` : ''}`;
+          const res = await fetch(apiEndpoint);
+          if (res.ok) {
+            const json = await res.json();
+            if (json.data && Array.isArray(json.data) && json.data.length > 0) {
+              resultList = json.data;
+            }
+          }
+        } catch (apiErr) {
+          console.warn('Erro ao carregar fornecedores via API HTTP fallback:', apiErr);
+        }
+      }
+
       // Purga automática de registros fantasmas (ex: forn-1787...) do localStorage
       if (typeof window !== 'undefined') {
         try {
@@ -466,7 +482,7 @@ export const db = {
             if (cleaned.length !== localArr.length) {
               localStorage.setItem('saracota_suppliers_custom', JSON.stringify(cleaned));
             }
-            if (!supabase) {
+            if (!supabase && resultList.length === 0) {
               const filteredLocal = query && query.trim()
                 ? cleaned.filter((f) =>
                     f.nome.toLowerCase().includes(query.toLowerCase()) ||
