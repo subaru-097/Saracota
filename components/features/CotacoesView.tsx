@@ -364,6 +364,18 @@ export const CotacoesView: React.FC = () => {
     };
 
     try {
+      // 1. Criar cotação no banco de dados e obter o ID gerado
+      const novaCotacao = await enviarCotacaoComFornecedores(obraNomeInput, itensRascunho, selectedSupplierIds);
+      const cotacaoId = novaCotacao?.id;
+
+      // 2. Disparar a automação RPA assíncrona em background no servidor via POST /api/cotacoes/[cotacaoId]/processar
+      if (cotacaoId) {
+        fetch(`/api/cotacoes/${cotacaoId}/processar`, { method: 'POST' }).catch((err) => {
+          console.warn(`⚠️ [RPA AUTOMATION DISPATCH WARN] Erro ao disparar /api/cotacoes/${cotacaoId}/processar:`, err);
+        });
+      }
+
+      // 3. Execução visual das etapas de progresso do robô para os fornecedores selecionados
       for (let sIdx = 0; sIdx < selFornecedores.length; sIdx++) {
         const forn = selFornecedores[sIdx];
 
@@ -414,9 +426,6 @@ export const CotacoesView: React.FC = () => {
       setProgressPercent(100);
       setProgressStatusMsg('Todas as cotações foram concluídas com sucesso! Redirecionando...');
       await sleep(1200);
-
-      // Chamar serviço de envio da cotação
-      await enviarCotacaoComFornecedores(obraNomeInput, itensRascunho, selectedSupplierIds);
 
       // Limpar rascunho ativo
       if (rascunhoId) {
