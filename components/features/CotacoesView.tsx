@@ -386,14 +386,19 @@ export const CotacoesView: React.FC = () => {
       }
 
       // 2. Disparar o processamento da automação RPA em segundo plano via POST /api/cotacoes/[cotacaoId]/processar
-      fetch(`/api/cotacoes/${cotacaoId}/processar`, { method: 'POST' }).catch((err) => {
-        console.warn(`⚠️ [RPA AUTOMATION DISPATCH WARN] Erro ao disparar /api/cotacoes/${cotacaoId}/processar:`, err);
-      });
+      const resProcess = await fetch(`/api/cotacoes/${cotacaoId}/processar`, { method: 'POST' });
+      const dataProcess = await resProcess.json();
+
+      if (!resProcess.ok || !dataProcess || dataProcess.sucesso === false) {
+        throw new Error(dataProcess?.mensagem || 'Falha ao iniciar a automação RPA no servidor.');
+      }
+      console.log('Automação RPA iniciada com sucesso:', dataProcess);
 
       // 3. Polling Real via GET /api/cotacoes/[cotacaoId]/status
       const POLL_INTERVAL_MS = 3000;
       const MAX_TIMEOUT_MS = 300000; // Timeout máximo de 5 minutos
       const startTime = Date.now();
+      let finalStatus: string = 'concluido';
 
       await new Promise<void>((resolve, reject) => {
         const timerId = setInterval(async () => {
@@ -411,6 +416,11 @@ export const CotacoesView: React.FC = () => {
 
             const data = await res.json();
             if (!data || !data.sucesso) return;
+
+            // Guardar o status retornado pela API do servidor
+            if (data.status) {
+              finalStatus = data.status;
+            }
 
             // Atualiza progresso percentual e mensagem principal do modal
             const currentPercent = Math.max(15, Number(data.percentualConcluido) || 15);
@@ -450,7 +460,11 @@ export const CotacoesView: React.FC = () => {
               if (pollingIntervalRef.current) clearInterval(pollingIntervalRef.current);
               pollingIntervalRef.current = null;
               setProgressPercent(100);
-              setProgressStatusMsg('Automação concluída com sucesso! Redirecionando...');
+              setProgressStatusMsg(
+                data.status === 'aguardando_revisao'
+                  ? 'Processamento concluído. Alguns itens precisam de revisão manual.'
+                  : 'Automação concluída com sucesso! Redirecionando...'
+              );
               resolve();
             } else if (data.status === 'erro') {
               if (pollingIntervalRef.current) clearInterval(pollingIntervalRef.current);
@@ -472,16 +486,28 @@ export const CotacoesView: React.FC = () => {
       }
       setItensRascunho([]);
 
-      // 5. Fechar modal e notificar sucesso
+      // 5. Fechar modal e notificar com base no status final (sucesso x pendências de revisão)
       setIsProgressModalOpen(false);
 
-      addNotification({
-        title: 'Cotação Realizada com Sucesso! 🚀',
-        description: `Cotação processada para ${selectedSupplierIds.length} fornecedor(es). Resultados gerados com sucesso.`,
-        type: 'success',
-        category: 'cotacao',
-        linkTab: 'historico',
-      });
+      if (finalStatus === 'aguardando_revisao') {
+        addNotification({
+          title: 'Cotação Concluída com Pendências ⚠️',
+          description: `Cotação processada para ${selectedSupplierIds.length} fornecedor(es). Alguns itens precisam de revisão manual.`,
+          type: 'warning',
+          category: 'cotacao',
+          linkTab: 'historico',
+        });
+      } else {
+        addNotification({
+          title: 'Cotação Realizada com Sucesso! 🚀',
+          description: `Cotação processada para ${selectedSupplierIds.length} fornecedor(es). Resultados gerados com sucesso.`,
+          type: 'success',
+          category: 'cotacao',
+          linkTab: 'historico',
+        });
+      }
+
+      setSubAba('resultado');
 
       setSubAba('resultado');
     } catch (err: any) {
