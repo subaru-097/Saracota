@@ -72,7 +72,7 @@ export class BrowserbaseService {
       const session = await bb.sessions.create({
         projectId,
         keepAlive: true,
-        timeout: 600,
+        timeout: 180,
       } as any);
       const connectUrl = session.connectUrl || `wss://connect.browserbase.com?apiKey=${apiKey}&sessionId=${session.id}`;
 
@@ -204,7 +204,7 @@ export class BrowserbaseService {
       const session = await bb.sessions.create({
         projectId,
         keepAlive: true,
-        timeout: 600,
+        timeout: 180,
       } as any);
 
       console.log("[Browserbase] sessionId criado:", session.id);

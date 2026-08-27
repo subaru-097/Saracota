@@ -171,7 +171,7 @@ export async function obterSessaoLogada(fornecedorId: string): Promise<{
         const session = await bb.sessions.create({
           projectId: bbProjectId,
           keepAlive: true,
-          timeout: 600,
+          timeout: 180,
         } as any);
         const connectUrl = session.connectUrl || `wss://connect.browserbase.com?apiKey=${bbApiKey}&sessionId=${session.id}`;
         browser = await chromium.connectOverCDP(connectUrl);

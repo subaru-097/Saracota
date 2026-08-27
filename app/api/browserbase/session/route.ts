@@ -30,6 +30,24 @@ export async function POST(req: NextRequest) {
       }
     }
 
+    // ENCERRAMENTO EXPLÍCITO DA SESSÃO AO FECHAR O MODAL (ECONOMIA RIGOROSA DE MINUTOS)
+    if (action === 'close' && sessionId) {
+      console.log(`⏹️ [API CLOSE] Solicitando encerramento explícito da sessão ${sessionId} no Browserbase...`);
+      const { Browserbase } = require('@browserbasehq/sdk');
+      const apiKey = process.env.BROWSERBASE_API_KEY || 'demo-browserbase-api-key';
+
+      if (apiKey !== 'demo-browserbase-api-key') {
+        const bb = new Browserbase({ apiKey });
+        await bb.sessions.update(sessionId, { status: 'REQUESTED' } as any).catch(() => {});
+        return NextResponse.json({
+          sucesso: true,
+          success: true,
+          sessionId,
+          mensagem: 'Sessão encerrada com sucesso no servidor.',
+        });
+      }
+    }
+
     console.log('📡 [API /api/browserbase/session] Criando e navegando sessão remota sequencialmente...', {
       fornecedorId,
       fornecedorNome,

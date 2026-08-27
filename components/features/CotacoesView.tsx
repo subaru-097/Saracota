@@ -158,12 +158,36 @@ export const CotacoesView: React.FC = () => {
   const [browserbaseLiveUrl, setBrowserbaseLiveUrl] = useState('');
   const [browserbaseFornNome, setBrowserbaseFornNome] = useState('');
   const [browserbaseSessionId, setBrowserbaseSessionId] = useState('');
+  const [browserbaseFornId, setBrowserbaseFornId] = useState('');
   const [isLoadingBrowserbase, setIsLoadingBrowserbase] = useState(false);
   const [browserbaseErrorMsg, setBrowserbaseErrorMsg] = useState<string | null>(null);
+
+  const handleCloseBrowserbaseModal = () => {
+    setIsBrowserbaseModalOpen(false);
+
+    // ENCERRAMENTO EXPLÍCITO DA SESSÃO REMOTA NO BROWSERBASE AO FECHAR O MODAL PARA ECONOMIZAR MINUTOS
+    if (browserbaseSessionId) {
+      console.log(`⏹️ [FECHAR MODAL] Encessando sessão remota ${browserbaseSessionId} no Browserbase...`);
+      fetch('/api/browserbase/session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'close', sessionId: browserbaseSessionId }),
+      }).catch((err) => console.warn('Aviso ao solicitar encerramento de sessão:', err.message));
+
+      if (browserbaseFornId) {
+        setSupplierSessionsCache((prev) => {
+          const updated = { ...prev };
+          delete updated[browserbaseFornId];
+          return updated;
+        });
+      }
+    }
+  };
 
   const handleAbrirCarrinhoBrowserbase = async (forn: FornecedorCotado) => {
     const targetForn = forn || { id: 'forn-cicalfer', nome: 'Cicalfer Material Elétrico' };
     setBrowserbaseFornNome(targetForn.nome);
+    setBrowserbaseFornId(targetForn.id);
     setIsBrowserbaseModalOpen(true);
     setBrowserbaseErrorMsg(null);
 
@@ -2010,7 +2034,7 @@ export const CotacoesView: React.FC = () => {
       {/* MODAL DE NAVEGADOR REMOTO TRANSMISSÃO AO VIVO BROWSERBASE (CDP EMBED) */}
       <BrowserbaseLiveViewModal
         isOpen={isBrowserbaseModalOpen}
-        onClose={() => setIsBrowserbaseModalOpen(false)}
+        onClose={handleCloseBrowserbaseModal}
         liveViewUrl={browserbaseLiveUrl}
         fornecedorNome={browserbaseFornNome}
         sessionId={browserbaseSessionId}
