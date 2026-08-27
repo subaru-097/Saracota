@@ -253,6 +253,110 @@ export const db = {
       };
     },
 
+    async salvarProgresso(
+      cotacaoId: string,
+      progresso: {
+        status: 'processando' | 'concluido' | 'aguardando_revisao' | 'erro';
+        itensProcessados: number;
+        totalItens: number;
+        percentualConcluido: number;
+        mensagens: string[];
+      }
+    ): Promise<boolean> {
+      // 1. Armazenar no cache global Node (compartilhado entre chamadas no mesmo processo)
+      if (!(globalThis as any).__saracota_progress_store) {
+        (globalThis as any).__saracota_progress_store = {};
+      }
+      (globalThis as any).__saracota_progress_store[cotacaoId] = {
+        ...progresso,
+        cotacaoId,
+        timestamp: new Date().toISOString(),
+      };
+
+      // 2. Persistir no Supabase / PostgreSQL
+      if (supabase) {
+        try {
+          const dbStatus = progresso.status === 'concluido' ? 'concluida' : progresso.status === 'aguardando_revisao' ? 'aguardando_revisao' : 'em_analise';
+          await supabase.from('cotacoes').update({
+            status: dbStatus,
+          }).eq('id', cotacaoId);
+        } catch (e) {
+          console.warn('Erro ao atualizar progresso da cotação no Supabase:', e);
+        }
+      }
+
+      // 3. Persistir no localStorage (se executando no browser)
+      if (typeof window !== 'undefined') {
+        try {
+          localStorage.setItem(`saracota_progress_${cotacaoId}`, JSON.stringify(progresso));
+        } catch (e) {
+          console.warn('Erro ao salvar progresso no localStorage:', e);
+        }
+      }
+
+      return true;
+    },
+
+    async obterProgresso(cotacaoId: string): Promise<{
+      cotacaoId: string;
+      status: 'processando' | 'concluido' | 'aguardando_revisao' | 'erro';
+      itensProcessados: number;
+      totalItens: number;
+      percentualConcluido: number;
+      mensagens: string[];
+      timestamp: string;
+    } | null> {
+      // 1. Tentar ler do cache global de progresso
+      if ((globalThis as any).__saracota_progress_store && (globalThis as any).__saracota_progress_store[cotacaoId]) {
+        return (globalThis as any).__saracota_progress_store[cotacaoId];
+      }
+
+      // 2. Tentar ler do localStorage (se no cliente)
+      if (typeof window !== 'undefined') {
+        try {
+          const saved = localStorage.getItem(`saracota_progress_${cotacaoId}`);
+          if (saved) {
+            return JSON.parse(saved);
+          }
+        } catch (e) {
+          console.warn('Erro ao ler progresso do localStorage:', e);
+        }
+      }
+
+      // 3. Consultar estado real no banco Supabase
+      if (supabase) {
+        try {
+          const { data: cotacao } = await supabase.from('cotacoes').select('*').eq('id', cotacaoId).maybeSingle();
+          const { data: matchingItens } = await supabase.from('itens_cotacao_fornecedor').select('*').eq('cotacao_id', cotacaoId);
+
+          if (cotacao) {
+            const statusStr = cotacao.status || '';
+            const isConcluido = statusStr === 'aprovada' || statusStr === 'concluida' || statusStr === 'finalizada';
+            const isAguardando = statusStr === 'aguardando_revisao';
+
+            const itensCount = matchingItens?.length || 0;
+            const percentual = isConcluido || isAguardando ? 100 : itensCount > 0 ? 75 : 20;
+
+            return {
+              cotacaoId,
+              status: isConcluido ? 'concluido' : isAguardando ? 'aguardando_revisao' : 'processando',
+              itensProcessados: itensCount,
+              totalItens: Math.max(1, itensCount),
+              percentualConcluido: percentual,
+              mensagens: [
+                `Cotação em andamento no banco de dados (${statusStr || 'processando'}).`
+              ],
+              timestamp: new Date().toISOString(),
+            };
+          }
+        } catch (e) {
+          console.warn('Erro ao ler progresso do Supabase:', e);
+        }
+      }
+
+      return null;
+    },
+
     async salvarResultadosMatching(
       cotacaoId: string,
       fornecedorId: string,

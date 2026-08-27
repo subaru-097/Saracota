@@ -195,14 +195,15 @@ const statusProgressStore: Record<
 > = {};
 
 /**
- * Retorna o status atual de processamento de uma cotação no servidor (para polling do frontend)
+ * Retorna o status atual de processamento de uma cotação no servidor (lendo do banco real)
  */
 export async function obterStatusCotacao(cotacaoId: string) {
-  if (statusProgressStore[cotacaoId]) {
-    return statusProgressStore[cotacaoId];
+  const progressoDb = await db.cotacoes.obterProgresso(cotacaoId);
+  if (progressoDb) {
+    return progressoDb;
   }
 
-  // Se não estiver no statusStore em memória, consulta o banco real
+  // Se ainda não houver registro de progresso, consulta o banco de cotações
   const cotacao = await db.cotacoes.getById(cotacaoId);
   const matchingItens = await db.cotacoes.obterResultadosMatching(cotacaoId);
 
@@ -215,7 +216,7 @@ export async function obterStatusCotacao(cotacaoId: string) {
     status: isConcluido ? 'concluido' : isAguardando ? 'aguardando_revisao' : 'processando',
     itensProcessados: matchingItens.length,
     totalItens: cotacao?.itens?.length || matchingItens.length || 1,
-    percentualConcluido: isConcluido || isAguardando ? 100 : matchingItens.length > 0 ? 50 : 0,
+    percentualConcluido: isConcluido || isAguardando ? 100 : matchingItens.length > 0 ? 100 : 15,
     mensagens: [
       `Cotação ${cotacaoId} em estado "${cotacao?.status || 'processando'}".`,
     ],
@@ -230,17 +231,18 @@ export async function processarCotacaoTodosFornecedores(cotacaoId: string): Prom
   const cotacao = await db.cotacoes.getById(cotacaoId);
   const fornecedorIds = (cotacao as any)?.fornecedorIds || ['forn-1'];
   const totalItensCount = cotacao?.itens?.length || 2;
+  const totalGeral = totalItensCount * fornecedorIds.length;
 
-  // Registrar início no statusStore do servidor
-  statusProgressStore[cotacaoId] = {
-    cotacaoId,
+  const mensagensStore = [`Iniciando processamento autônomo no servidor para ${fornecedorIds.length} fornecedor(es)...`];
+
+  // Registrar início no banco de dados
+  await db.cotacoes.salvarProgresso(cotacaoId, {
     status: 'processando',
     itensProcessados: 0,
-    totalItens: totalItensCount * fornecedorIds.length,
-    percentualConcluido: 10,
-    mensagens: [`Iniciando processamento autônomo no servidor para ${fornecedorIds.length} fornecedor(es)...`],
-    timestamp: new Date().toISOString(),
-  };
+    totalItens: totalGeral,
+    percentualConcluido: 15,
+    mensagens: mensagensStore,
+  });
 
   console.log(`[RPA Servidor Autônomo] Iniciando cotação ${cotacaoId} para ${fornecedorIds.length} fornecedor(es)...`);
 
@@ -250,17 +252,19 @@ export async function processarCotacaoTodosFornecedores(cotacaoId: string): Prom
       const resForn = await processarCotacaoFornecedor(cotacaoId, fId);
       contagemItens += resForn.itensProcessados.length;
 
-      statusProgressStore[cotacaoId].itensProcessados = contagemItens;
-      statusProgressStore[cotacaoId].percentualConcluido = Math.min(
-        90,
-        Math.round((contagemItens / (totalItensCount * fornecedorIds.length)) * 100)
-      );
-      statusProgressStore[cotacaoId].mensagens.push(
-        `Fornecedor ${resForn.fornecedorNome || fId} processado: ${resForn.itensProcessados.length} item(ns).`
-      );
+      const pct = Math.min(90, Math.round((contagemItens / totalGeral) * 100));
+      mensagensStore.push(`Fornecedor ${resForn.fornecedorNome || fId} processado: ${resForn.itensProcessados.length} item(ns).`);
+
+      await db.cotacoes.salvarProgresso(cotacaoId, {
+        status: 'processando',
+        itensProcessados: contagemItens,
+        totalItens: totalGeral,
+        percentualConcluido: Math.max(30, pct),
+        mensagens: mensagensStore,
+      });
     } catch (e: any) {
       console.warn(`[RPA Servidor Autônomo] Falha no fornecedor ${fId}:`, e);
-      statusProgressStore[cotacaoId].mensagens.push(`Falha no fornecedor ${fId}: ${e.message}`);
+      mensagensStore.push(`Falha no fornecedor ${fId}: ${e.message}`);
     }
   }
 
@@ -278,18 +282,17 @@ export async function processarCotacaoTodosFornecedores(cotacaoId: string): Prom
     (it: any) => it.status === 'SIMILAR' || it.status === 'NAO_ENCONTRADO'
   ).length;
 
-  // Atualizar statusStore do servidor
-  statusProgressStore[cotacaoId] = {
-    cotacaoId,
+  const msgConclusao = `Concluído: ${confirmadosCount} itens confirmados, ${revisaoCount} precisam de revisão.`;
+  mensagensStore.push(msgConclusao);
+
+  // Gravar conclusão final de 100% no banco de dados real
+  await db.cotacoes.salvarProgresso(cotacaoId, {
     status: temDuvidosos ? 'aguardando_revisao' : 'concluido',
     itensProcessados: matchingItens.length,
     totalItens: matchingItens.length,
     percentualConcluido: 100,
-    mensagens: [
-      `Concluído: ${confirmadosCount} itens confirmados, ${revisaoCount} precisam de revisão.`,
-    ],
-    timestamp: new Date().toISOString(),
-  };
+    mensagens: mensagensStore,
+  });
 
   // 4. Gravar notificação persistida no banco do servidor para exibição in-app quando o usuário reabrir
   if (typeof window !== 'undefined') {

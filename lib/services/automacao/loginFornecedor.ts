@@ -159,18 +159,51 @@ export async function obterSessaoLogada(fornecedorId: string): Promise<{
     console.log(`   - Length da senha descriptografada (.trim()): ${senhaPlana.length}`);
     console.log(`   - Hash SHA-256 da senha descriptografada: ${senhaHashSHA256}`);
 
-    browser = await chromium.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    });
+    // Instanciar browser remoto no Browserbase (para ambiente Vercel serverless) ou fallback local
+    const bbApiKey = process.env.BROWSERBASE_API_KEY;
+    const bbProjectId = process.env.BROWSERBASE_PROJECT_ID;
 
-    const context = await browser.newContext({
+    if (bbApiKey && bbApiKey !== 'demo-browserbase-api-key') {
+      try {
+        console.log(`🔌 [RPA LOGIN REMOTO] Conectando ao Browserbase remoto via CDP...`);
+        const { Browserbase } = require('@browserbasehq/sdk');
+        const bb = new Browserbase({ apiKey: bbApiKey });
+        const session = await bb.sessions.create({ projectId: bbProjectId });
+        const connectUrl = session.connectUrl || `wss://connect.browserbase.com?apiKey=${bbApiKey}&sessionId=${session.id}`;
+        browser = await chromium.connectOverCDP(connectUrl);
+        console.log(`✅ [RPA LOGIN REMOTO] Conectado à sessão remota do Browserbase (${session.id})!`);
+      } catch (bbErr: any) {
+        console.warn('⚠️ [RPA LOGIN REMOTO WARN] Falha ao conectar ao Browserbase, tentando launch local:', bbErr.message);
+        browser = await chromium.launch({
+          headless: true,
+          args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        }).catch(() => null);
+      }
+    } else {
+      browser = await chromium.launch({
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      }).catch(() => null);
+    }
+
+    if (!browser) {
+      console.warn('⚠️ [RPA LOGIN REMOTO] Impossível abrir o navegador Chromium no ambiente atual.');
+      return {
+        sucesso: false,
+        status: 'TIMEOUT',
+        mensagem: 'Ambiente serverless sem suporte a Chromium local. Configure BROWSERBASE_API_KEY no painel da Vercel.',
+      };
+    }
+
+    const contexts = browser.contexts();
+    const context = contexts.length > 0 ? contexts[0] : await browser.newContext({
       viewport: { width: 1280, height: 800 },
       userAgent:
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
     });
 
-    const page = await context.newPage();
+    const pages = context.pages();
+    const page: Page = pages.length > 0 ? pages[0] : await context.newPage();
     page.setDefaultTimeout(15000);
     page.setDefaultNavigationTimeout(15000);
 
