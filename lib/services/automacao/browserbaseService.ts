@@ -113,7 +113,7 @@ export class BrowserbaseService {
     try {
       try {
         browser = await chromium.connectOverCDP(connectUrl);
-        console.log(`[BROWSERBASE WORKER BACKGROUND] Conectado via CDP remoto com sucesso!`);
+        console.log(`📌 [BROWSERBASE ETAPA 2] Conexão CDP remota estabelecida com sucesso!`);
       } catch (cdpErr: any) {
         console.error('[BROWSERBASE WORKER BACKGROUND] Falha ao conectar via CDP remoto:', cdpErr);
         throw new Error(`Falha ao conectar à sessão remota Browserbase: ${cdpErr.message}`);
@@ -143,25 +143,29 @@ export class BrowserbaseService {
         }
       }
 
-      console.log(`[BROWSERBASE WORKER BACKGROUND] Navegando para a URL do fornecedor: ${urlPortal}`);
+      console.log(`🏬 [BROWSERBASE ETAPA 3] Fornecedor identificado: "${fornecedor?.nome || fornecedorId}" | URL: "${urlPortal}"`);
+      console.log(`🌐 [BROWSERBASE ETAPA 4] Navegando para o portal B2B do fornecedor: ${urlPortal}...`);
+
       try {
         await page.goto(urlPortal, { waitUntil: 'domcontentloaded', timeout: 20000 });
-        console.log(`[BROWSERBASE WORKER BACKGROUND] Navegação concluída com sucesso! URL atual: ${page.url()}`);
+        console.log(`✅ [BROWSERBASE ETAPA 4 SUCESSO] Navegação concluída! URL atual: ${page.url()}`);
       } catch (navErr: any) {
-        console.error(`[BROWSERBASE WORKER BACKGROUND] ERRO ao navegar para ${urlPortal}:`, navErr);
+        console.error(`❌ [BROWSERBASE ETAPA 4 ERRO] ERRO ao navegar para ${urlPortal}:`, navErr);
         throw new Error(`Não foi possível acessar o site do fornecedor (${urlPortal}): ${navErr.message}`);
       }
 
       if (itens.length > 0) {
-        console.log(`🛒 [BROWSERBASE WORKER BACKGROUND] Adicionando ${itens.length} item(ns)...`);
-        for (const item of itens) {
+        console.log(`🛒 [BROWSERBASE ETAPA 5] Adicionando ${itens.length} item(ns) ao carrinho...`);
+        for (let idx = 0; idx < itens.length; idx++) {
+          const item = itens[idx];
+          console.log(`  👉 [ITEM ${idx + 1}/${itens.length}] "${item.texto}" (Qtd: ${item.quantidade})`);
           await buscarProduto(page, item.texto, fornecedor?.seletores, fornecedorId, item.quantidade).catch((e) => {
-            console.warn(`[BROWSERBASE WORKER WARN] Falha ao adicionar item "${item.texto}":`, e.message);
+            console.warn(`  ⚠️ [ITEM ${idx + 1} WARN] Falha ao adicionar "${item.texto}":`, e.message);
           });
         }
       }
 
-      console.log(`🎉 [BROWSERBASE WORKER BACKGROUND] Automação remota concluída com sucesso!`);
+      console.log(`🎉 [BROWSERBASE ETAPA 6] Automação remota de montagem do carrinho concluída com sucesso!`);
     } catch (error: any) {
       console.error('❌ [BROWSERBASE WORKER BACKGROUND] Erro crítico na automação:', error.message);
       throw error;

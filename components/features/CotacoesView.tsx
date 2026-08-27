@@ -462,51 +462,8 @@ export const CotacoesView: React.FC = () => {
       strategyUsed: isCicalfer ? 'CART_STRATEGY: manual_fallback_no_cart_link' : 'CART_STRATEGY: session_param',
     });
 
-    // BROWSERBASE INTEGRATION: Iniciar sessão remota via CDP e exibir Iframe Live View
-    if (isCicalfer || forn.urlCarrinhoDireto?.includes('browserbase')) {
-      handleAbrirCarrinhoBrowserbase(forn);
-      return;
-    }
-
-    const cartUrl = forn.urlCarrinhoDireto;
-    const isExpira = forn.sessaoValidaAte && new Date().getTime() > new Date(forn.sessaoValidaAte).getTime();
-    const isSessaoAtiva = forn.sessaoAtiva !== false && !isExpira;
-
-    if (!cartUrl) {
-      addNotification({
-        title: 'URL do Carrinho Indisponível ⚠️',
-        description: `O link direto do carrinho para ${forn.nome} não foi gerado nesta cotação. Clique em "Cotar" para gerar a sessão de automação.`,
-        type: 'warning',
-        category: 'cotacao',
-      });
-      return;
-    }
-
-    if (!isSessaoAtiva) {
-      addNotification({
-        title: 'Sessão Expirada ⚠️',
-        description: 'Sessão expirada – cotação ainda válida, mas link do carrinho não pode ser reaberto. Clique em "Cotar" para renovar a sessão do robô.',
-        type: 'warning',
-        category: 'cotacao',
-      });
-      return;
-    }
-
-    let finalUrl = cartUrl.trim();
-    if (!finalUrl.startsWith('http://') && !finalUrl.startsWith('https://')) {
-      finalUrl = `https://${finalUrl}`;
-    }
-
-    if (typeof window !== 'undefined') {
-      window.open(finalUrl, '_blank');
-    }
-
-    addNotification({
-      title: 'Carrinho Autenticado Aberto 🛒',
-      description: `Abrindo página do carrinho de ${forn.nome} em nova aba (${finalUrl}).`,
-      type: 'info',
-      category: 'cotacao',
-    });
+    // BROWSERBASE INTEGRATION: Iniciar sessão remota via CDP e exibir Iframe Live View para qualquer fornecedor (Cicalfer, Construjá, etc.)
+    handleAbrirCarrinhoBrowserbase(forn);
   };
 
   const handleAceitarAlternativa = async (item: ItemCotadoDetalhado) => {
