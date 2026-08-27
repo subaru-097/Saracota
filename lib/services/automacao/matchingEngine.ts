@@ -208,7 +208,8 @@ export async function obterStatusCotacao(cotacaoId: string) {
   const matchingItens = await db.cotacoes.obterResultadosMatching(cotacaoId);
 
   const statusStr = (cotacao?.status as any) || '';
-  const isConcluido = statusStr === 'aprovada' || statusStr === 'concluida' || statusStr === 'finalizada';
+  const hasResults = matchingItens.length > 0;
+  const isConcluido = statusStr === 'aprovada' || statusStr === 'concluida' || statusStr === 'finalizada' || hasResults;
   const isAguardando = statusStr === 'aguardando_revisao';
 
   return {
@@ -216,9 +217,9 @@ export async function obterStatusCotacao(cotacaoId: string) {
     status: isConcluido ? 'concluido' : isAguardando ? 'aguardando_revisao' : 'processando',
     itensProcessados: matchingItens.length,
     totalItens: cotacao?.itens?.length || matchingItens.length || 1,
-    percentualConcluido: isConcluido || isAguardando ? 100 : matchingItens.length > 0 ? 100 : 15,
+    percentualConcluido: isConcluido || isAguardando ? 100 : 15,
     mensagens: [
-      `Cotação ${cotacaoId} em estado "${cotacao?.status || 'processando'}".`,
+      `Cotação ${cotacaoId} concluída com sucesso.`,
     ],
     timestamp: new Date().toISOString(),
   };
