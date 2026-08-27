@@ -19,6 +19,7 @@ import { db } from '@/lib/db/client';
 import { ItemRascunho } from '@/types';
 import { isMultiLinePaste, parseMultiItemPaste, ParsedPastedItem } from '@/lib/utils/parseMultiItemPaste';
 import { MultiItemPasteModal } from '@/components/features/MultiItemPasteModal';
+import { BrowserbaseLiveViewModal } from '@/components/features/BrowserbaseLiveViewModal';
 import {
   FileText,
   Mic,
@@ -134,6 +135,78 @@ export const CotacoesView: React.FC = () => {
       type: 'success',
       category: 'cotacao',
     });
+  };
+
+  // ESTADO DO MODAL DE LIVE VIEW DO BROWSERBASE (CDP REMOTE SESSION)
+  const [isBrowserbaseModalOpen, setIsBrowserbaseModalOpen] = useState(false);
+  const [browserbaseLiveUrl, setBrowserbaseLiveUrl] = useState('');
+  const [browserbaseFornNome, setBrowserbaseFornNome] = useState('');
+  const [browserbaseSessionId, setBrowserbaseSessionId] = useState('');
+  const [isLoadingBrowserbase, setIsLoadingBrowserbase] = useState(false);
+  const [browserbaseErrorMsg, setBrowserbaseErrorMsg] = useState<string | null>(null);
+
+  const handleAbrirCarrinhoBrowserbase = async (forn: FornecedorCotado) => {
+    const targetForn = forn || { id: 'forn-cicalfer', nome: 'Cicalfer Material Elétrico' };
+    setBrowserbaseFornNome(targetForn.nome);
+    setIsBrowserbaseModalOpen(true);
+    setIsLoadingBrowserbase(true);
+    setBrowserbaseErrorMsg(null);
+    setBrowserbaseLiveUrl('');
+
+    // AbortController com timeout de 25s para impedir o loading infinito no frontend
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 25000);
+
+    try {
+      const res = await fetch('/api/browserbase/session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal: controller.signal,
+        body: JSON.stringify({
+          fornecedorId: targetForn.id,
+          fornecedorNome: targetForn.nome,
+          fornecedorUrl: (targetForn as any)?.url_site || (targetForn as any)?.urlPortalB2B || '',
+          itens: ((currentCotacao as any)?.itens || []).map((it: any) => ({
+            texto: it.nomeSolicitado || it.material?.nome || 'Material',
+            quantidade: it.quantidade || 1,
+          })),
+        }),
+      });
+
+      clearTimeout(timeoutId);
+      const data = await res.json();
+
+      if (data.sucesso && data.liveViewUrl) {
+        setBrowserbaseLiveUrl(data.liveViewUrl);
+        setBrowserbaseSessionId(data.sessionId || '');
+        addNotification({
+          title: 'Sessão Remota Browserbase Conectada 🚀',
+          description: `Transmissão ao vivo iniciada para ${targetForn.nome}. Finalize seu pedido no modal.`,
+          type: 'success',
+          category: 'cotacao',
+        });
+      } else {
+        throw new Error(data.error || 'Falha ao obter Live View URL do Browserbase');
+      }
+    } catch (err: any) {
+      clearTimeout(timeoutId);
+      console.warn('💡 Erro/Timeout ao conectar Browserbase:', err);
+
+      const isTimeout = err.name === 'AbortError' || err.message?.includes('abort');
+      const msg = isTimeout
+        ? 'Não foi possível conectar ao navegador remoto no tempo limite (25s). Tente novamente.'
+        : `Erro ao conectar sessão remota: ${err.message || 'Verifique a chave de API do Browserbase.'}`;
+
+      setBrowserbaseErrorMsg(msg);
+      addNotification({
+        title: 'Falha de Conexão Remota ⚠️',
+        description: msg,
+        type: 'warning',
+        category: 'cotacao',
+      });
+    } finally {
+      setIsLoadingBrowserbase(false);
+    }
   };
 
   const currentCotacao = cotacaoSelecionadaParaResultado || cotacoesAtivas[0];
@@ -389,17 +462,9 @@ export const CotacoesView: React.FC = () => {
       strategyUsed: isCicalfer ? 'CART_STRATEGY: manual_fallback_no_cart_link' : 'CART_STRATEGY: session_param',
     });
 
-    // BUG 3: Cicalfer - Exibe aviso informativo sobre autenticação POST individual e lista cotada completa
-    if (isCicalfer) {
-      addNotification({
-        title: 'Cicalfer Material Elétrico 🛒',
-        description: 'CART_STRATEGY: manual_fallback_no_cart_link — Plataforma com autenticação POST individual. Apresentando lista cotada completa no modal Sara Cota.',
-        type: 'info',
-        category: 'cotacao',
-      });
-      if (typeof window !== 'undefined') {
-        window.open('https://www.cicalfer.com.br', '_blank');
-      }
+    // BROWSERBASE INTEGRATION: Iniciar sessão remota via CDP e exibir Iframe Live View
+    if (isCicalfer || forn.urlCarrinhoDireto?.includes('browserbase')) {
+      handleAbrirCarrinhoBrowserbase(forn);
       return;
     }
 
@@ -1882,6 +1947,18 @@ export const CotacoesView: React.FC = () => {
         onClose={() => setIsPasteModalOpen(false)}
         onConfirm={handleConfirmarItensColados}
         initialItems={itemsColadosParaPreview}
+      />
+
+      {/* MODAL DE NAVEGADOR REMOTO TRANSMISSÃO AO VIVO BROWSERBASE (CDP EMBED) */}
+      <BrowserbaseLiveViewModal
+        isOpen={isBrowserbaseModalOpen}
+        onClose={() => setIsBrowserbaseModalOpen(false)}
+        liveViewUrl={browserbaseLiveUrl}
+        fornecedorNome={browserbaseFornNome}
+        sessionId={browserbaseSessionId}
+        isLoading={isLoadingBrowserbase}
+        errorMessage={browserbaseErrorMsg}
+        onRetry={() => handleAbrirCarrinhoBrowserbase({ id: 'forn-cicalfer', nome: browserbaseFornNome } as any)}
       />
     </div>
   );
