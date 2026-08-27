@@ -82,11 +82,11 @@ export async function POST(req: NextRequest) {
   } catch (error: any) {
     console.error('❌ Erro no endpoint /api/browserbase/session:', error);
 
-    const msg = error.message || '';
+    const msg = (error.message || '').toLowerCase();
     let httpStatus = 500;
-    if (msg.includes('429') || msg.includes('simultâneas') || msg.includes('concorrência')) {
+    if (msg.includes('429') || msg.includes('simult') || msg.includes('concorr')) {
       httpStatus = 429;
-    } else if (msg.includes('402') || msg.includes('minutos')) {
+    } else if (msg.includes('402') || msg.includes('minut') || msg.includes('plan')) {
       httpStatus = 402;
     }
 
