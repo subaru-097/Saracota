@@ -91,7 +91,8 @@ export function compararProdutos(
  */
 export async function processarCotacaoFornecedor(
   cotacaoId: string,
-  fornecedorId: string
+  fornecedorId: string,
+  onProgressMsg?: (msg: string) => Promise<void>
 ): Promise<ResultadoProcessamentoFornecedor> {
   const startTime = Date.now();
   const itensProcessados: ItemMatchResultado[] = [];
@@ -105,11 +106,16 @@ export async function processarCotacaoFornecedor(
 
   // 2. Abrir a sessão de login Playwright reaproveitada (Prompt 7.1)
   const sessao = await obterSessaoLogada(fornecedorId);
+  const fornecedorNome = sessao.fornecedor?.nome || fornecedorId;
+
   if (!sessao.sucesso || !sessao.page || !sessao.browser) {
+    if (onProgressMsg) {
+      await onProgressMsg(`[${fornecedorNome}] Falha ao conectar ao portal: ${sessao.mensagem || 'Erro de conexão'}`);
+    }
     return {
       cotacaoId,
       fornecedorId,
-      fornecedorNome: sessao.fornecedor?.nome || fornecedorId,
+      fornecedorNome,
       sucesso: false,
       tempoTotalMs: Date.now() - startTime,
       itensProcessados: itensParaCotar.map((it: any) => ({
@@ -129,8 +135,13 @@ export async function processarCotacaoFornecedor(
     for (const itemObj of itensParaCotar) {
       const itemAny = itemObj as any;
       const nomeItem = typeof itemObj === 'string' ? itemObj : itemAny.material || itemAny.nomeOriginal || itemAny.texto || 'Material';
-
       const qtd = Number(itemAny.quantidade) || 1;
+
+      // Emitir mensagem granular de início da busca
+      if (onProgressMsg) {
+        await onProgressMsg(`[${fornecedorNome}] Buscando item: ${nomeItem}...`);
+      }
+
       // Busca do produto na página (Prompt 7.2) com suporte ao JSON de seletores
       const buscaRes = await buscarProduto(page, nomeItem, fornecedor?.seletores, fornecedorId, qtd);
 
@@ -158,6 +169,11 @@ export async function processarCotacaoFornecedor(
           preco: 0,
           fornecedorId,
         });
+      }
+
+      // Emitir mensagem granular de conclusão do item
+      if (onProgressMsg) {
+        await onProgressMsg(`[${fornecedorNome}] Item adicionado: ${nomeItem}`);
       }
     }
 
@@ -250,18 +266,29 @@ export async function processarCotacaoTodosFornecedores(cotacaoId: string): Prom
   let contagemItens = 0;
   for (const fId of fornecedorIds) {
     try {
-      const resForn = await processarCotacaoFornecedor(cotacaoId, fId);
+      const resForn = await processarCotacaoFornecedor(cotacaoId, fId, async (granularMsg) => {
+        mensagensStore.push(granularMsg);
+        const currentPct = Math.min(90, Math.round(((contagemItens + 0.5) / totalGeral) * 100));
+        await db.cotacoes.salvarProgresso(cotacaoId, {
+          status: 'processando',
+          itensProcessados: contagemItens,
+          totalItens: totalGeral,
+          percentualConcluido: Math.max(20, currentPct),
+          mensagens: [...mensagensStore],
+        });
+      });
+
       contagemItens += resForn.itensProcessados.length;
 
       const pct = Math.min(90, Math.round((contagemItens / totalGeral) * 100));
-      mensagensStore.push(`Fornecedor ${resForn.fornecedorNome || fId} processado: ${resForn.itensProcessados.length} item(ns).`);
+      mensagensStore.push(`[${resForn.fornecedorNome || fId}] Processamento do fornecedor concluído (${resForn.itensProcessados.length} item(ns)).`);
 
       await db.cotacoes.salvarProgresso(cotacaoId, {
         status: 'processando',
         itensProcessados: contagemItens,
         totalItens: totalGeral,
         percentualConcluido: Math.max(30, pct),
-        mensagens: mensagensStore,
+        mensagens: [...mensagensStore],
       });
     } catch (e: any) {
       console.warn(`[RPA Servidor Autônomo] Falha no fornecedor ${fId}:`, e);
