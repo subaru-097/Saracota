@@ -38,12 +38,13 @@ export async function POST(req: NextRequest) {
 
       if (apiKey !== 'demo-browserbase-api-key') {
         const bb = new Browserbase({ apiKey });
-        await bb.sessions.update(sessionId, { status: 'REQUESTED' } as any).catch(() => {});
+        const projectId = process.env.BROWSERBASE_PROJECT_ID;
+        await bb.sessions.update(sessionId, { projectId, status: 'REQUEST_RELEASE' } as any).catch(() => {});
         return NextResponse.json({
           sucesso: true,
           success: true,
           sessionId,
-          mensagem: 'Sessão encerrada com sucesso no servidor.',
+          mensagem: 'Sessão liberada com sucesso (REQUEST_RELEASE).',
         });
       }
     }

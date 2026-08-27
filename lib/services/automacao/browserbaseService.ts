@@ -54,28 +54,62 @@ export class BrowserbaseService {
     try {
       const bb = new Browserbase({ apiKey });
 
-      // 0. LIMPEZA PREVENTIVA DE SESSÕES ANTIGAS PARA NÃO EXCEDER O LIMITE CONCORRENTE DE 3
+      // 0a. REUSAR SESSÃO RUNNING ATIVA EXISTENTE SE HOUVER
       try {
-        const activeList = await bb.sessions.list();
+        const activeList = await bb.sessions.list({ status: 'RUNNING' } as any);
         const runningList = (activeList as any[]).filter((s) => s.status === 'RUNNING');
+
+        if (runningList.length > 0) {
+          const existingSession = runningList[0];
+          console.log(`⚡ [BROWSERBASE REUSE] Reutilizando sessão RUNNING ativa (${existingSession.id})...`);
+          const debugLinks = await bb.sessions.debug(existingSession.id);
+          const liveViewUrl = (debugLinks as any).debuggerFullscreenUrl || (debugLinks as any).debuggerUrl || '';
+          const connectUrl = existingSession.connectUrl || `wss://connect.browserbase.com?apiKey=${apiKey}&sessionId=${existingSession.id}`;
+
+          if (liveViewUrl) {
+            console.log("[Browserbase] sessionId reutilizado:", existingSession.id);
+            console.log("[Browserbase] status antes do debug: RUNNING");
+            console.log("[Browserbase] liveViewUrl retornada:", liveViewUrl);
+            return {
+              sessionId: existingSession.id,
+              connectUrl,
+              liveViewUrl,
+            };
+          }
+        }
+
+        // 0b. LIMPEZA PREVENTIVA COM REQUEST_RELEASE SE HOUVER SESSÕES ÓRFÃS
         if (runningList.length >= 2) {
-          console.log(`🧹 [BROWSERBASE CLEANUP] Encerrando ${runningList.length} sessões antigas para manter limite de concorrência < 3...`);
+          console.log(`🧹 [BROWSERBASE CLEANUP] Encerrando ${runningList.length} sessões órfãs com REQUEST_RELEASE...`);
           for (const oldSess of runningList) {
-            await bb.sessions.update(oldSess.id, { status: 'REQUESTED' } as any).catch(() => {});
+            await bb.sessions.update(oldSess.id, { projectId, status: 'REQUEST_RELEASE' } as any).catch(() => {});
           }
         }
       } catch (cleanErr: any) {
-        console.warn('💡 [BROWSERBASE CLEANUP WARN] Aviso ao verificar/limpar sessões antigas:', cleanErr.message);
+        console.warn('💡 [BROWSERBASE CLEANUP WARN] Aviso ao verificar/limpar sessões:', cleanErr.message);
       }
 
-      // 1. Criar sessão no Browserbase
-      const session = await bb.sessions.create({
-        projectId,
-        keepAlive: true,
-        timeout: 180,
-      } as any);
-      const connectUrl = session.connectUrl || `wss://connect.browserbase.com?apiKey=${apiKey}&sessionId=${session.id}`;
+      // 1. Criar nova sessão no Browserbase com captura explícita de erro 429/402
+      let session = null;
+      try {
+        session = await bb.sessions.create({
+          projectId,
+          timeout: 180,
+        } as any);
+      } catch (createErr: any) {
+        const errMsg = createErr.message || '';
+        if (errMsg.includes('429') || errMsg.includes('concurrent') || errMsg.includes('limit')) {
+          console.error('❌ [BROWSERBASE LIMIT ERRO 429] Limite de sessões simultâneas atingido:', errMsg);
+          throw new Error('Limite de sessões simultâneas atingido no Browserbase (Erro 429). Por favor, feche as abas abertas ou aguarde 1 minuto.');
+        }
+        if (errMsg.includes('402') || errMsg.includes('minutes')) {
+          console.error('❌ [BROWSERBASE MINUTOS ERRO 402] Limite de minutos do plano atingido:', errMsg);
+          throw new Error('Limite de minutos do plano gratuito atingido no Browserbase (Erro 402). Por favor, atualize o plano ou tente mais tarde.');
+        }
+        throw createErr;
+      }
 
+      const connectUrl = session.connectUrl || `wss://connect.browserbase.com?apiKey=${apiKey}&sessionId=${session.id}`;
       console.log("[Browserbase] sessionId criado:", session.id);
 
       // 2. Conectar Playwright via CDP
