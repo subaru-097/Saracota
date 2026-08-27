@@ -168,7 +168,11 @@ export async function obterSessaoLogada(fornecedorId: string): Promise<{
         console.log(`🔌 [RPA LOGIN REMOTO] Conectando ao Browserbase remoto via CDP...`);
         const { Browserbase } = require('@browserbasehq/sdk');
         const bb = new Browserbase({ apiKey: bbApiKey });
-        const session = await bb.sessions.create({ projectId: bbProjectId });
+        const session = await bb.sessions.create({
+          projectId: bbProjectId,
+          keepAlive: true,
+          timeout: 600,
+        } as any);
         const connectUrl = session.connectUrl || `wss://connect.browserbase.com?apiKey=${bbApiKey}&sessionId=${session.id}`;
         browser = await chromium.connectOverCDP(connectUrl);
         console.log(`✅ [RPA LOGIN REMOTO] Conectado à sessão remota do Browserbase (${session.id})!`);

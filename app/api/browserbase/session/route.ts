@@ -30,10 +30,12 @@ export async function POST(req: NextRequest) {
     // Retorno para o frontend exibir o Iframe com a página do fornecedor já carregada
     return NextResponse.json({
       sucesso: true,
+      success: true,
       status: 'SESSAO_REMOTA_CRIADA_E_NAVEGADA',
       sessionId: sessaoInfo.sessionId,
       connectUrl: sessaoInfo.connectUrl,
       liveViewUrl: sessaoInfo.liveViewUrl,
+      iframeUrl: sessaoInfo.liveViewUrl,
       mensagem: `Sessão remota iniciada. Navegação para o site do fornecedor concluída.`,
       fornecedorNome,
     });

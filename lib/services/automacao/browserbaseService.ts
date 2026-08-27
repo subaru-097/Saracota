@@ -54,10 +54,14 @@ export class BrowserbaseService {
     try {
       // 1. Criar sessão no Browserbase
       const bb = new Browserbase({ apiKey });
-      const session = await bb.sessions.create({ projectId });
+      const session = await bb.sessions.create({
+        projectId,
+        keepAlive: true,
+        timeout: 600,
+      } as any);
       const connectUrl = session.connectUrl || `wss://connect.browserbase.com?apiKey=${apiKey}&sessionId=${session.id}`;
 
-      console.log('🚀 [BROWSERBASE SESSÃO CRIADA]', { sessionId: session.id, connectUrl });
+      console.log("[Browserbase] sessionId criado:", session.id);
 
       // 2. Conectar Playwright via CDP
       console.log(`🔌 [BROWSERBASE CDP] Conectando Playwright à sessão remota (${session.id})...`);
@@ -106,12 +110,19 @@ export class BrowserbaseService {
 
       // 4. GERAR LIVE VIEW URL ASSINADA IMEDIATAMENTE APÓS A NAVEGAÇÃO
       let liveViewUrl = '';
+      let statusRetrieved = 'RUNNING';
       try {
-        const debugLinks = await bb.sessions.debug(session.id);
-        console.log('🔍 [BROWSERBASE SDK DEBUG OBJECT RAW]:', JSON.stringify(debugLinks, null, 2));
+        const sessObj = await bb.sessions.retrieve(session.id).catch(() => null);
+        if (sessObj && (sessObj as any).status) {
+          statusRetrieved = (sessObj as any).status;
+        }
 
+        console.log("[Browserbase] status antes do debug:", statusRetrieved);
+
+        const debugLinks = await bb.sessions.debug(session.id);
         liveViewUrl = (debugLinks as any).debuggerFullscreenUrl || (debugLinks as any).debuggerUrl || (debugLinks as any).url || '';
-        console.log(`📌 [BROWSERBASE LIVE VIEW URL ASSINADA GERADA]: "${liveViewUrl}"`);
+
+        console.log("[Browserbase] liveViewUrl retornada:", (debugLinks as any).debuggerFullscreenUrl || liveViewUrl);
       } catch (debugErr: any) {
         console.warn('⚠️ [BROWSERBASE WARN] Falha ao obter debug URL assinado via SDK:', debugErr.message);
       }
@@ -175,12 +186,28 @@ export class BrowserbaseService {
 
     try {
       const bb = new Browserbase({ apiKey });
-      const session = await bb.sessions.create({ projectId });
+      const session = await bb.sessions.create({
+        projectId,
+        keepAlive: true,
+        timeout: 600,
+      } as any);
+
+      console.log("[Browserbase] sessionId criado:", session.id);
 
       let liveViewUrl = '';
+      let statusRetrieved = 'RUNNING';
       try {
+        const sessObj = await bb.sessions.retrieve(session.id).catch(() => null);
+        if (sessObj && (sessObj as any).status) {
+          statusRetrieved = (sessObj as any).status;
+        }
+
+        console.log("[Browserbase] status antes do debug:", statusRetrieved);
+
         const debugLinks = await bb.sessions.debug(session.id);
         liveViewUrl = (debugLinks as any).debuggerFullscreenUrl || (debugLinks as any).debuggerUrl || (debugLinks as any).url || '';
+
+        console.log("[Browserbase] liveViewUrl retornada:", (debugLinks as any).debuggerFullscreenUrl || liveViewUrl);
       } catch (debugErr: any) {
         console.warn('💡 [BROWSERBASE WARN] Falha ao obter debug URL via SDK:', debugErr.message);
       }

@@ -152,8 +152,15 @@ export const BrowserbaseLiveViewModal: React.FC<BrowserbaseLiveViewModalProps> =
               className={`w-full ${isFullscreen ? 'h-[75vh]' : 'h-[520px]'} border-0`}
               allow="fullscreen; clipboard-read; clipboard-write"
             />
+          ) : !isLoading ? (
+            <div className="flex flex-col items-center justify-center h-[520px] p-6 text-center space-y-3 bg-sara-surface/95 font-mono">
+              <div className="w-10 h-10 rounded-full bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400">
+                <RefreshCw className="w-5 h-5" />
+              </div>
+              <p className="text-sm font-bold text-rose-400">Sessão remota indisponível</p>
+            </div>
           ) : (
-            <div className="flex flex-col items-center justify-center h-[520px] text-content-tertiary space-y-2">
+            <div className="flex flex-col items-center justify-center h-[520px] text-content-tertiary space-y-2 font-mono">
               <Sparkles className="w-8 h-8 text-brand animate-bounce" />
               <p className="text-xs">Aguardando inicialização da URL da transmissão ao vivo...</p>
             </div>

@@ -183,8 +183,8 @@ export async function processarCotacaoFornecedor(
   } catch (err: any) {
     console.error(`[RPA Processar] Erro no processamento do fornecedor ${fornecedorId}:`, err);
   } finally {
-    // 5. FECHAR A SESSÃO DO NAVEGADOR ao final de todos os itens daquele fornecedor
-    await browser.close().catch(() => {});
+    // 5. A sessão do Browserbase deve permanecer viva (keepAlive: true) para transmissão ao vivo no Iframe
+    // await browser.close().catch(() => {});
   }
 
   return {
