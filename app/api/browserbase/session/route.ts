@@ -81,12 +81,21 @@ export async function POST(req: NextRequest) {
     });
   } catch (error: any) {
     console.error('❌ Erro no endpoint /api/browserbase/session:', error);
+
+    const msg = error.message || '';
+    let httpStatus = 500;
+    if (msg.includes('429') || msg.includes('simultâneas') || msg.includes('concorrência')) {
+      httpStatus = 429;
+    } else if (msg.includes('402') || msg.includes('minutos')) {
+      httpStatus = 402;
+    }
+
     return NextResponse.json(
       {
         sucesso: false,
         error: error.message || 'Erro interno ao criar sessão no Browserbase',
       },
-      { status: 500 }
+      { status: httpStatus }
     );
   }
 }
