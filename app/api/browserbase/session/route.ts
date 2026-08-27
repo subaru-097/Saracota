@@ -7,7 +7,28 @@ export const dynamic = 'force-dynamic';
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json().catch(() => ({}));
-    const { fornecedorId = 'forn-cicalfer', fornecedorNome = 'Cicalfer', fornecedorUrl = '', itens = [] } = body;
+    const { action, sessionId, fornecedorId = 'forn-cicalfer', fornecedorNome = 'Cicalfer', fornecedorUrl = '', itens = [] } = body;
+
+    // RENOVAÇÃO DO TOKEN JWT DA LIVE VIEW URL (RE-SIGNING SILENCIOSO)
+    if (action === 'refresh' && sessionId) {
+      console.log(`🔄 [API REFRESH] Renovando token JWT assinado para sessão ${sessionId}...`);
+      const { Browserbase } = require('@browserbasehq/sdk');
+      const apiKey = process.env.BROWSERBASE_API_KEY || 'demo-browserbase-api-key';
+
+      if (apiKey !== 'demo-browserbase-api-key') {
+        const bb = new Browserbase({ apiKey });
+        const debugLinks = await bb.sessions.debug(sessionId);
+        const liveViewUrl = (debugLinks as any).debuggerFullscreenUrl || (debugLinks as any).debuggerUrl || '';
+        return NextResponse.json({
+          sucesso: true,
+          success: true,
+          sessionId,
+          liveViewUrl,
+          iframeUrl: liveViewUrl,
+          mensagem: 'Token assinado renovado com sucesso.',
+        });
+      }
+    }
 
     console.log('📡 [API /api/browserbase/session] Criando e navegando sessão remota sequencialmente...', {
       fornecedorId,

@@ -52,8 +52,23 @@ export class BrowserbaseService {
     }
 
     try {
-      // 1. Criar sessão no Browserbase
       const bb = new Browserbase({ apiKey });
+
+      // 0. LIMPEZA PREVENTIVA DE SESSÕES ANTIGAS PARA NÃO EXCEDER O LIMITE CONCORRENTE DE 3
+      try {
+        const activeList = await bb.sessions.list();
+        const runningList = (activeList as any[]).filter((s) => s.status === 'RUNNING');
+        if (runningList.length >= 2) {
+          console.log(`🧹 [BROWSERBASE CLEANUP] Encerrando ${runningList.length} sessões antigas para manter limite de concorrência < 3...`);
+          for (const oldSess of runningList) {
+            await bb.sessions.update(oldSess.id, { status: 'REQUESTED' } as any).catch(() => {});
+          }
+        }
+      } catch (cleanErr: any) {
+        console.warn('💡 [BROWSERBASE CLEANUP WARN] Aviso ao verificar/limpar sessões antigas:', cleanErr.message);
+      }
+
+      // 1. Criar sessão no Browserbase
       const session = await bb.sessions.create({
         projectId,
         keepAlive: true,

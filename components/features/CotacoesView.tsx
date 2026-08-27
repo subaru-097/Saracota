@@ -150,7 +150,10 @@ export const CotacoesView: React.FC = () => {
     });
   };
 
-  // ESTADO DO MODAL DE LIVE VIEW DO BROWSERBASE (CDP REMOTE SESSION)
+  // ESTADO DO MODAL DE LIVE VIEW DO BROWSERBASE (CDP REMOTE SESSION) E CACHE DE SESSÕES
+  const [supplierSessionsCache, setSupplierSessionsCache] = useState<
+    Record<string, { sessionId: string; liveViewUrl: string; criacaoEm: number }>
+  >({});
   const [isBrowserbaseModalOpen, setIsBrowserbaseModalOpen] = useState(false);
   const [browserbaseLiveUrl, setBrowserbaseLiveUrl] = useState('');
   const [browserbaseFornNome, setBrowserbaseFornNome] = useState('');
@@ -162,8 +165,21 @@ export const CotacoesView: React.FC = () => {
     const targetForn = forn || { id: 'forn-cicalfer', nome: 'Cicalfer Material Elétrico' };
     setBrowserbaseFornNome(targetForn.nome);
     setIsBrowserbaseModalOpen(true);
-    setIsLoadingBrowserbase(true);
     setBrowserbaseErrorMsg(null);
+
+    // 1. VERIFICAR CACHE DE SESSÃO ATIVA (MENOS DE 8 MINUTOS DE USO)
+    const existingSess = supplierSessionsCache[targetForn.id];
+    const LIMIT_TEMPO_CACHE_MS = 8 * 60 * 1000;
+
+    if (existingSess && Date.now() - existingSess.criacaoEm < LIMIT_TEMPO_CACHE_MS && existingSess.liveViewUrl) {
+      console.log(`⚡ [BROWSERBASE CACHE HIT] Reutilizando sessão remota ativa para ${targetForn.nome}:`, existingSess.sessionId);
+      setBrowserbaseLiveUrl(existingSess.liveViewUrl);
+      setBrowserbaseSessionId(existingSess.sessionId);
+      setIsLoadingBrowserbase(false);
+      return;
+    }
+
+    setIsLoadingBrowserbase(true);
     setBrowserbaseLiveUrl('');
 
     // AbortController com timeout de 25s para impedir o loading infinito no frontend
@@ -192,6 +208,17 @@ export const CotacoesView: React.FC = () => {
       if (data.sucesso && data.liveViewUrl) {
         setBrowserbaseLiveUrl(data.liveViewUrl);
         setBrowserbaseSessionId(data.sessionId || '');
+
+        // Salvar sessão ativa no cache local por fornecedor
+        setSupplierSessionsCache((prev) => ({
+          ...prev,
+          [targetForn.id]: {
+            sessionId: data.sessionId || '',
+            liveViewUrl: data.liveViewUrl,
+            criacaoEm: Date.now(),
+          },
+        }));
+
         addNotification({
           title: 'Sessão Remota Browserbase Conectada 🚀',
           description: `Transmissão ao vivo iniciada para ${targetForn.nome}. Finalize seu pedido no modal.`,
@@ -1990,6 +2017,7 @@ export const CotacoesView: React.FC = () => {
         isLoading={isLoadingBrowserbase}
         errorMessage={browserbaseErrorMsg}
         onRetry={() => handleAbrirCarrinhoBrowserbase({ id: 'forn-cicalfer', nome: browserbaseFornNome } as any)}
+        onUpdateLiveUrl={(newUrl) => setBrowserbaseLiveUrl(newUrl)}
       />
     </div>
   );

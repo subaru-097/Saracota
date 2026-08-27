@@ -15,6 +15,7 @@ export interface BrowserbaseLiveViewModalProps {
   isLoading?: boolean;
   errorMessage?: string | null;
   onRetry?: () => void;
+  onUpdateLiveUrl?: (newUrl: string) => void;
 }
 
 export const BrowserbaseLiveViewModal: React.FC<BrowserbaseLiveViewModalProps> = ({
@@ -26,9 +27,33 @@ export const BrowserbaseLiveViewModal: React.FC<BrowserbaseLiveViewModalProps> =
   isLoading = false,
   errorMessage,
   onRetry,
+  onUpdateLiveUrl,
 }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [iframeKey, setIframeKey] = useState(0);
+
+  // RENOVAÇÃO SILENCIOSA DO TOKEN JWT DA LIVE VIEW URL A CADA 4 MINUTOS
+  React.useEffect(() => {
+    if (!isOpen || !sessionId) return;
+    const intervalId = setInterval(async () => {
+      try {
+        console.log(`🔄 [BROWSERBASE TOKEN REFRESH] Renovando token assinado para sessão ${sessionId}...`);
+        const res = await fetch('/api/browserbase/session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'refresh', sessionId }),
+        });
+        const data = await res.json();
+        if (data.sucesso && data.liveViewUrl && onUpdateLiveUrl) {
+          onUpdateLiveUrl(data.liveViewUrl);
+        }
+      } catch (err: any) {
+        console.warn('⚠️ [BROWSERBASE REFRESH WARN] Falha ao renovar token da live view:', err.message);
+      }
+    }, 4 * 60 * 1000); // 4 minutos
+
+    return () => clearInterval(intervalId);
+  }, [isOpen, sessionId, onUpdateLiveUrl]);
 
   const handleRefreshIframe = () => {
     setIframeKey((prev) => prev + 1);
