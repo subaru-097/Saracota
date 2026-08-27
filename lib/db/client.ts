@@ -261,7 +261,7 @@ export const db = {
       (globalThis as any).__saracota_sessions_store[cacheKey] = sessionId;
       (globalThis as any).__saracota_sessions_store[cotacaoId] = sessionId; // Fallback compatibilidade
 
-      console.log(`💾 [DB SESSION SAVE] Salvando session ${sessionId} para cotacao: ${cotacaoId} | fornecedor: ${fornecedorId}`);
+      console.log(`💾 [DB SESSION SAVE ATTEMPT] cotacaoId: "${cotacaoId}" | fornecedorId: "${fornecedorId}" | cacheKey: "${cacheKey}" | sessionId: "${sessionId}"`);
 
       if (supabase) {
         try {
@@ -271,12 +271,12 @@ export const db = {
           }).eq('id', cotacaoId);
 
           if (error) {
-            console.error(`❌ [SUPABASE ERRO UPDATE browserbase_session_id] cotacaoId: ${cotacaoId} | fornecedorId: ${fornecedorId}:`, error.message || error);
+            console.error(`❌ [SUPABASE SAVE SESSION ERROR] cotacaoId: "${cotacaoId}" | fornecedorId: "${fornecedorId}" | errorMsg:`, error.message, error);
           } else {
-            console.log(`✅ [SUPABASE SUCCESS UPDATE] browserbase_session_id (${sessionId}) salvo com sucesso no Supabase!`);
+            console.log(`✅ [SUPABASE SAVE SESSION SUCCESS] cotacaoId: "${cotacaoId}" | fornecedorId: "${fornecedorId}" | sessionId: "${sessionId}" salvo com sucesso no Supabase!`);
           }
         } catch (e: any) {
-          console.error(`❌ [SUPABASE EXCEÇÃO UPDATE browserbase_session_id] cotacaoId: ${cotacaoId}:`, e.message || e);
+          console.error(`❌ [SUPABASE SAVE SESSION EXCEPTION] cotacaoId: "${cotacaoId}" | errorMsg:`, e.message || e, e);
         }
       }
       return true;

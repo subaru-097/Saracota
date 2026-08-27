@@ -130,6 +130,14 @@ export async function processarCotacaoFornecedor(
   }
 
   const { page, browser, fornecedor } = sessao;
+  const activeSessionId = (sessao as any)?.sessionId;
+
+  // LOG DIAGNÓSTICO IMEDIATO APÓS A SESSÃO SER GERADA NO BROWSERBASE
+  if (activeSessionId) {
+    console.log(`📌 [SESSION CREATED LOG] cotacaoId: "${cotacaoId}" | fornecedorId: "${fornecedorId}" | sessionId: "${activeSessionId}"`);
+    console.log(`💾 [SAVE SESSION START] Salvando sessionId "${activeSessionId}" no banco para a chave "${cotacaoId}_${fornecedorId}"...`);
+    await db.cotacoes.salvarBrowserbaseSessionId(cotacaoId, fornecedorId, activeSessionId);
+  }
 
   try {
     // 3. Processar cada item da cotação sequencialmente na mesma sessão
