@@ -368,77 +368,98 @@ export const CotacoesView: React.FC = () => {
       const novaCotacao = await enviarCotacaoComFornecedores(obraNomeInput, itensRascunho, selectedSupplierIds);
       const cotacaoId = novaCotacao?.id;
 
-      // 2. Disparar a automação RPA assíncrona em background no servidor via POST /api/cotacoes/[cotacaoId]/processar
-      if (cotacaoId) {
-        fetch(`/api/cotacoes/${cotacaoId}/processar`, { method: 'POST' }).catch((err) => {
-          console.warn(`⚠️ [RPA AUTOMATION DISPATCH WARN] Erro ao disparar /api/cotacoes/${cotacaoId}/processar:`, err);
-        });
+      if (!cotacaoId) {
+        throw new Error('Falha ao obter ID da cotação salva no banco.');
       }
 
-      // 3. Execução visual das etapas de progresso do robô para os fornecedores selecionados
-      for (let sIdx = 0; sIdx < selFornecedores.length; sIdx++) {
-        const forn = selFornecedores[sIdx];
+      // 2. Disparar o processamento da automação RPA em segundo plano via POST /api/cotacoes/[cotacaoId]/processar
+      fetch(`/api/cotacoes/${cotacaoId}/processar`, { method: 'POST' }).catch((err) => {
+        console.warn(`⚠️ [RPA AUTOMATION DISPATCH WARN] Erro ao disparar /api/cotacoes/${cotacaoId}/processar:`, err);
+      });
 
-        // 1. Acessando site
-        pushLog(forn.id, `${forn.nome}: Acessando site do portal B2B...`, 'info', 'in_progress');
-        etapasConcluidas++;
-        setProgressPercent(Math.round((etapasConcluidas / totalEtapas) * 100));
-        setProgressStatusMsg(`Automação em execução: ${forn.nome}`);
-        await sleep(700);
+      // 3. Polling Real via GET /api/cotacoes/[cotacaoId]/status
+      const POLL_INTERVAL_MS = 3000;
+      const MAX_TIMEOUT_MS = 300000; // Timeout máximo de 5 minutos
+      const startTime = Date.now();
 
-        // 2. Login realizado com sucesso
-        pushLog(forn.id, `${forn.nome}: Login realizado com sucesso`, 'success');
-        etapasConcluidas++;
-        setProgressPercent(Math.round((etapasConcluidas / totalEtapas) * 100));
-        await sleep(700);
+      await new Promise<void>((resolve, reject) => {
+        const timerId = setInterval(async () => {
+          try {
+            const elapsed = Date.now() - startTime;
+            if (elapsed > MAX_TIMEOUT_MS) {
+              clearInterval(timerId);
+              reject(new Error('Tempo limite de processamento excedido (5 minutos).'));
+              return;
+            }
 
-        // 3. Filial se houver
-        if (forn.seletores?.botao_selecionar_filial) {
-          pushLog(forn.id, `${forn.nome}: Filial selecionada e confirmada`, 'info');
-          await sleep(500);
-        }
+            const res = await fetch(`/api/cotacoes/${cotacaoId}/status`);
+            if (!res.ok) return;
 
-        // 4. Buscando itens
-        for (let iIdx = 0; iIdx < listaItens.length; iIdx++) {
-          const itemObj = listaItens[iIdx];
-          const nomeItem = itemObj.texto;
+            const data = await res.json();
+            if (!data || !data.sucesso) return;
 
-          pushLog(forn.id, `${forn.nome}: Buscando item ${iIdx + 1}/${listaItens.length} - ${nomeItem}...`, 'info');
-          await sleep(750);
+            // Atualiza progresso percentual e mensagem principal do modal
+            const currentPercent = Math.max(15, Number(data.percentualConcluido) || 15);
+            setProgressPercent(currentPercent);
 
-          pushLog(forn.id, `${forn.nome}: Item adicionado ao carrinho`, 'success');
-          etapasConcluidas++;
-          setProgressPercent(Math.round((etapasConcluidas / totalEtapas) * 100));
-          await sleep(650);
-        }
+            if (data.mensagens && Array.isArray(data.mensagens) && data.mensagens.length > 0) {
+              const latestMsg = data.mensagens[data.mensagens.length - 1];
+              setProgressStatusMsg(latestMsg);
 
-        // 5. Validação do carrinho (disabled check)
-        pushLog(forn.id, `${forn.nome}: Aguardando liberação do carrinho (botão ativado)`, 'info');
-        await sleep(700);
+              // Atualiza os logs no modal por fornecedor
+              setSupplierLogs((prevLogs) =>
+                prevLogs.map((s) => {
+                  const fornMsgs = data.mensagens.filter((m: string) =>
+                    m.toLowerCase().includes(s.nome.toLowerCase()) || m.toLowerCase().includes(s.id.toLowerCase())
+                  );
+                  if (fornMsgs.length > 0) {
+                    const isDone = data.status === 'concluido' || data.status === 'aguardando_revisao';
+                    return {
+                      ...s,
+                      status: isDone ? 'success' : 'in_progress',
+                      logs: fornMsgs.map((m: string) => ({ timestamp: getTime(), text: m, type: 'info' as const })),
+                    };
+                  }
+                  return s;
+                })
+              );
+            }
 
-        pushLog(forn.id, `${forn.nome}: Cotação finalizada com sucesso!`, 'success', 'success');
-        etapasConcluidas++;
-        setProgressPercent(Math.round((etapasConcluidas / totalEtapas) * 100));
-        await sleep(600);
-      }
+            // Condição de Conclusão Real
+            const isCompleted =
+              data.status === 'concluido' ||
+              data.status === 'aguardando_revisao' ||
+              data.status === 'finalizada' ||
+              currentPercent >= 100;
 
-      // Conclusão Geral
-      setProgressPercent(100);
-      setProgressStatusMsg('Todas as cotações foram concluídas com sucesso! Redirecionando...');
-      await sleep(1200);
+            if (isCompleted) {
+              clearInterval(timerId);
+              setProgressPercent(100);
+              setProgressStatusMsg('Automação concluída com sucesso! Redirecionando...');
+              resolve();
+            } else if (data.status === 'erro') {
+              clearInterval(timerId);
+              reject(new Error(data.mensagem || 'Erro retornado pela automação RPA no servidor.'));
+            }
+          } catch (pollErr) {
+            console.warn('Erro na iteração de polling de status:', pollErr);
+          }
+        }, POLL_INTERVAL_MS);
+      });
 
-      // Limpar rascunho ativo
+      // 4. Limpar rascunho ativo APENAS APÓS confirmação real de conclusão do polling
       if (rascunhoId) {
         await db.rascunhos.finalizar(rascunhoId, usuarioId);
         setRascunhoId(null);
       }
       setItensRascunho([]);
 
+      // 5. Fechar modal e notificar sucesso
       setIsProgressModalOpen(false);
 
       addNotification({
         title: 'Cotação Realizada com Sucesso! 🚀',
-        description: `Cotação processada para ${selectedSupplierIds.length} fornecedor(es). Resultados gerados.`,
+        description: `Cotação processada para ${selectedSupplierIds.length} fornecedor(es). Resultados gerados com sucesso.`,
         type: 'success',
         category: 'cotacao',
         linkTab: 'historico',
@@ -447,8 +468,8 @@ export const CotacoesView: React.FC = () => {
       setSubAba('resultado');
     } catch (err: any) {
       addNotification({
-        title: 'Erro ao Enviar Cotação',
-        description: err.message || 'Falha ao processar envio para fornecedores.',
+        title: 'Erro no Processamento da Cotação',
+        description: err.message || 'Falha ao processar envio em tempo real.',
         type: 'error',
         category: 'cotacao',
       });
