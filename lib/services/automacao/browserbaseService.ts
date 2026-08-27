@@ -104,22 +104,27 @@ export class BrowserbaseService {
 
       let urlPortal = fornecedorUrl || fornecedor?.urlPortalB2B || (fornecedor as any)?.url_site;
       if (!urlPortal) {
-        if (normFornId.includes('cicalfer')) {
+        const fornNomeLower = fornecedor?.nome?.toLowerCase() || '';
+        if (normFornId.includes('cicalfer') || fornNomeLower.includes('cicalfer')) {
           urlPortal = 'https://www.cicalfer.com.br';
-        } else if (normFornId.includes('construj')) {
+        } else if (normFornId.includes('construj') || fornNomeLower.includes('construj')) {
           urlPortal = 'https://www.construja.com.br';
         } else {
           urlPortal = 'https://www.cicalfer.com.br';
         }
       }
 
+      if (urlPortal && !urlPortal.startsWith('http://') && !urlPortal.startsWith('https://')) {
+        urlPortal = `https://${urlPortal}`;
+      }
+
       // 3. Executar page.goto() e AGUARDAR conclusão antes de gerar debug URL
-      console.log(`🌐 [BROWSERBASE NAVIGATE] Executando page.goto("${urlPortal}")...`);
+      console.log(`🌐 [NAVIGATE BEFORE] Executando page.goto("${urlPortal}")... | URL atual do navegador remoto: "${page.url()}"`);
       try {
-        await page.goto(urlPortal, { waitUntil: 'domcontentloaded', timeout: 20000 });
-        console.log(`✅ [BROWSERBASE NAVIGATE SUCESSO] Navegação para ${urlPortal} concluída! URL atual: ${page.url()}`);
+        const navRes = await page.goto(urlPortal, { waitUntil: 'domcontentloaded', timeout: 30000 });
+        console.log(`✅ [NAVIGATE AFTER] page.goto("${urlPortal}") concluído! Status HTTP: ${navRes?.status() || 200} | URL final no navegador: "${page.url()}"`);
       } catch (navErr: any) {
-        console.error(`❌ [BROWSERBASE NAVIGATE ERRO] Falha ao navegar para ${urlPortal}:`, navErr.message);
+        console.error(`❌ [NAVIGATE ERRO] Falha ao navegar para "${urlPortal}":`, navErr.stack || navErr.message);
         throw new Error(`Não foi possível acessar o site do fornecedor (${urlPortal}): ${navErr.message}`);
       }
 

@@ -229,9 +229,17 @@ export async function obterSessaoLogada(fornecedorId: string): Promise<{
       }
     });
 
+    let targetUrlPortal = urlPortal;
+    if (targetUrlPortal && !targetUrlPortal.startsWith('http://') && !targetUrlPortal.startsWith('https://')) {
+      targetUrlPortal = `https://${targetUrlPortal}`;
+    }
+
+    console.log(`🌐 [RPA NAVIGATE BEFORE] Executando page.goto("${targetUrlPortal}")... | URL atual: "${page.url()}"`);
     try {
-      await page.goto(urlPortal, { waitUntil: 'domcontentloaded', timeout: 15000 });
+      const navRes = await page.goto(targetUrlPortal, { waitUntil: 'domcontentloaded', timeout: 25000 });
+      console.log(`✅ [RPA NAVIGATE AFTER] page.goto("${targetUrlPortal}") concluído! Status HTTP: ${navRes?.status() || 200} | URL final: "${page.url()}"`);
     } catch (navError: any) {
+      console.error(`❌ [RPA NAVIGATE ERRO] Erro ao navegar para "${targetUrlPortal}":`, navError.stack || navError.message);
       const screenshotDir = ensureScreenshotDir();
       const screenshotPath = path.join(screenshotDir, `timeout_${fornecedorId}.png`);
       await page.screenshot({ path: screenshotPath, fullPage: true }).catch(() => {});
@@ -239,7 +247,7 @@ export async function obterSessaoLogada(fornecedorId: string): Promise<{
       return {
         sucesso: false,
         status: 'TIMEOUT',
-        mensagem: `Timeout ao carregar portal do fornecedor (${urlPortal}).`,
+        mensagem: `Timeout ao carregar portal do fornecedor (${targetUrlPortal}): ${navError.message}`,
       };
     }
 
