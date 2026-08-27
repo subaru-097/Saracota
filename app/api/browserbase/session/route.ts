@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json().catch(() => ({}));
-    const { action, sessionId, cotacaoId } = body;
+    const { action, sessionId, cotacaoId, fornecedorId } = body;
 
     const { Browserbase } = require('@browserbasehq/sdk');
     const apiKey = process.env.BROWSERBASE_API_KEY || 'demo-browserbase-api-key';
@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
     let targetSessionId = sessionId;
 
     if (!targetSessionId && cotacaoId) {
-      targetSessionId = await db.cotacoes.obterBrowserbaseSessionId(cotacaoId);
+      targetSessionId = await db.cotacoes.obterBrowserbaseSessionId(cotacaoId, fornecedorId);
     }
 
     // Se ainda não houver sessionId cadastrado, verificar no cache de sessões ativas

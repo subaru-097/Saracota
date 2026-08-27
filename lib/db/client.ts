@@ -253,43 +253,64 @@ export const db = {
       };
     },
 
-    async salvarBrowserbaseSessionId(cotacaoId: string, sessionId: string): Promise<boolean> {
+    async salvarBrowserbaseSessionId(cotacaoId: string, fornecedorId: string, sessionId: string): Promise<boolean> {
       if (!(globalThis as any).__saracota_sessions_store) {
         (globalThis as any).__saracota_sessions_store = {};
       }
-      (globalThis as any).__saracota_sessions_store[cotacaoId] = sessionId;
+      const cacheKey = fornecedorId ? `${cotacaoId}_${fornecedorId}` : cotacaoId;
+      (globalThis as any).__saracota_sessions_store[cacheKey] = sessionId;
+      (globalThis as any).__saracota_sessions_store[cotacaoId] = sessionId; // Fallback compatibilidade
+
+      console.log(`💾 [DB SESSION SAVE] Salvando session ${sessionId} para cotacao: ${cotacaoId} | fornecedor: ${fornecedorId}`);
 
       if (supabase) {
         try {
-          await supabase.from('cotacoes').update({
+          const { error } = await supabase.from('cotacoes').update({
             browserbase_session_id: sessionId,
             status: 'carrinho_pronto',
           }).eq('id', cotacaoId);
+
+          if (error) {
+            console.error(`❌ [SUPABASE ERRO UPDATE browserbase_session_id] cotacaoId: ${cotacaoId} | fornecedorId: ${fornecedorId}:`, error.message || error);
+          } else {
+            console.log(`✅ [SUPABASE SUCCESS UPDATE] browserbase_session_id (${sessionId}) salvo com sucesso no Supabase!`);
+          }
         } catch (e: any) {
-          console.warn('⚠️ [SUPABASE WARN] Erro ao atualizar browserbase_session_id:', e.message);
+          console.error(`❌ [SUPABASE EXCEÇÃO UPDATE browserbase_session_id] cotacaoId: ${cotacaoId}:`, e.message || e);
         }
       }
       return true;
     },
 
-    async obterBrowserbaseSessionId(cotacaoId: string): Promise<string | null> {
+    async obterBrowserbaseSessionId(cotacaoId: string, fornecedorId?: string): Promise<string | null> {
+      if (fornecedorId) {
+        const cacheKey = `${cotacaoId}_${fornecedorId}`;
+        if ((globalThis as any).__saracota_sessions_store && (globalThis as any).__saracota_sessions_store[cacheKey]) {
+          return (globalThis as any).__saracota_sessions_store[cacheKey];
+        }
+      }
+
       if ((globalThis as any).__saracota_sessions_store && (globalThis as any).__saracota_sessions_store[cotacaoId]) {
         return (globalThis as any).__saracota_sessions_store[cotacaoId];
       }
 
       if (supabase) {
         try {
-          const { data } = await supabase
+          const { data, error } = await supabase
             .from('cotacoes')
             .select('browserbase_session_id')
             .eq('id', cotacaoId)
             .maybeSingle();
 
+          if (error) {
+            console.error(`❌ [SUPABASE ERRO SELECT browserbase_session_id] cotacaoId: ${cotacaoId}:`, error.message || error);
+          }
+
           if (data && (data as any).browserbase_session_id) {
             return (data as any).browserbase_session_id;
           }
         } catch (e: any) {
-          console.warn('⚠️ [SUPABASE WARN] Erro ao consultar browserbase_session_id:', e.message);
+          console.error(`❌ [SUPABASE EXCEÇÃO SELECT browserbase_session_id] cotacaoId: ${cotacaoId}:`, e.message || e);
         }
       }
 

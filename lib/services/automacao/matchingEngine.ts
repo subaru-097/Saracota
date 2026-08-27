@@ -183,8 +183,8 @@ export async function processarCotacaoFornecedor(
 
     const activeSessionId = (sessao as any)?.sessionId;
     if (activeSessionId) {
-      console.log("[COTACAO] carrinho montado, url atual:", page.url(), "| sessão:", activeSessionId);
-      await db.cotacoes.salvarBrowserbaseSessionId(cotacaoId, activeSessionId);
+      console.log("[COTACAO] carrinho montado, url atual:", page.url(), "| sessão:", activeSessionId, "| fornecedor:", fornecedorId);
+      await db.cotacoes.salvarBrowserbaseSessionId(cotacaoId, fornecedorId, activeSessionId);
     }
   } catch (err: any) {
     console.error(`[RPA Processar] Erro no processamento do fornecedor ${fornecedorId}:`, err);

@@ -1,6 +1,6 @@
 {
   "/login/page": "app/login/page.js",
-  "/cotacoes/page": "app/cotacoes/page.js",
   "/painel/page": "app/painel/page.js",
+  "/cotacoes/page": "app/cotacoes/page.js",
   "/fornecedores/page": "app/fornecedores/page.js"
 }
