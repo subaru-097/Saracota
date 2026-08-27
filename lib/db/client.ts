@@ -265,18 +265,38 @@ export const db = {
 
       if (supabase) {
         try {
-          const { error } = await supabase.from('cotacoes').update({
-            browserbase_session_id: sessionId,
-            status: 'carrinho_pronto',
-          }).eq('id', cotacaoId);
+          // 1. Tentar salvar na tabela de sessões isoladas por fornecedor (cotacao_fornecedor_sessoes)
+          const { error: upsertErr } = await supabase.from('cotacao_fornecedor_sessoes').upsert(
+            {
+              cotacao_id: cotacaoId,
+              fornecedor_id: fornecedorId,
+              browserbase_session_id: sessionId,
+              status: 'carrinho_pronto',
+              updated_at: new Date().toISOString(),
+            },
+            { onConflict: 'cotacao_id,fornecedor_id' }
+          );
 
-          if (error) {
-            console.error(`❌ [SUPABASE SAVE SESSION ERROR] cotacaoId: "${cotacaoId}" | fornecedorId: "${fornecedorId}" | errorMsg:`, error.message, error);
+          if (upsertErr) {
+            console.warn(`⚠️ [SUPABASE UPSERT WARN cotacao_fornecedor_sessoes] ${upsertErr.message}. Tentando update em cotacoes...`);
           } else {
-            console.log(`✅ [SUPABASE SAVE SESSION SUCCESS] cotacaoId: "${cotacaoId}" | fornecedorId: "${fornecedorId}" | sessionId: "${sessionId}" salvo com sucesso no Supabase!`);
+            console.log(`✅ [SUPABASE SUCCESS UPSERT] Sessão ${sessionId} salva em cotacao_fornecedor_sessoes para ${cotacaoId} / ${fornecedorId}!`);
+          }
+
+          // 2. Atualizar também na tabela cotacoes para compatibilidade
+          const { error: updateErr } = await supabase
+            .from('cotacoes')
+            .update({
+              browserbase_session_id: sessionId,
+              status: 'carrinho_pronto',
+            })
+            .eq('id', cotacaoId);
+
+          if (updateErr) {
+            console.warn(`⚠️ [SUPABASE UPDATE WARN cotacoes]: ${updateErr.message}`);
           }
         } catch (e: any) {
-          console.error(`❌ [SUPABASE SAVE SESSION EXCEPTION] cotacaoId: "${cotacaoId}" | errorMsg:`, e.message || e, e);
+          console.error(`❌ [SUPABASE SAVE SESSION EXCEPTION] cotacaoId: "${cotacaoId}" | errorMsg:`, e.message || e);
         }
       }
       return true;
@@ -296,6 +316,22 @@ export const db = {
 
       if (supabase) {
         try {
+          // 1. Tentar buscar em cotacao_fornecedor_sessoes com filtro duplo (cotacao_id AND fornecedor_id)
+          if (fornecedorId) {
+            const { data: sessData } = await supabase
+              .from('cotacao_fornecedor_sessoes')
+              .select('browserbase_session_id')
+              .eq('cotacao_id', cotacaoId)
+              .eq('fornecedor_id', fornecedorId)
+              .maybeSingle();
+
+            if (sessData && (sessData as any).browserbase_session_id) {
+              console.log(`✅ [SUPABASE SELECT SUCCESS] Sessão ${(sessData as any).browserbase_session_id} encontrada em cotacao_fornecedor_sessoes!`);
+              return (sessData as any).browserbase_session_id;
+            }
+          }
+
+          // 2. Fallback: buscar na tabela cotacoes principal
           const { data, error } = await supabase
             .from('cotacoes')
             .select('browserbase_session_id')
