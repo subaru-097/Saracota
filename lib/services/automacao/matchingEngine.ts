@@ -104,9 +104,10 @@ export async function processarCotacaoFornecedor(
     { material: 'Tubo PVC Esgoto Amanco 100mm 6m', quantidade: 10 },
   ];
 
-  // 2. Abrir a sessão de login Playwright reaproveitada (Prompt 7.1)
+  // 2. Resolver dados do fornecedor e abrir sessão de login
+  const fornDbRecord = await db.fornecedores.getById(fornecedorId);
   const sessao = await obterSessaoLogada(fornecedorId);
-  const fornecedorNome = sessao.fornecedor?.nome || fornecedorId;
+  const fornecedorNome = fornDbRecord?.nome || sessao.fornecedor?.nome || fornecedorId;
 
   if (!sessao.sucesso || !sessao.page || !sessao.browser) {
     if (onProgressMsg) {
