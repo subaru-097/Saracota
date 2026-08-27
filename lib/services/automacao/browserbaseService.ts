@@ -104,19 +104,7 @@ export class BrowserbaseService {
         throw new Error(`Não foi possível acessar o site do fornecedor (${urlPortal}): ${navErr.message}`);
       }
 
-      // Adicionar itens se houver
-      if (itens.length > 0) {
-        console.log(`🛒 [BROWSERBASE BUSCA] Adicionando ${itens.length} item(ns) ao carrinho...`);
-        for (let idx = 0; idx < itens.length; idx++) {
-          const item = itens[idx];
-          console.log(`  👉 [ITEM ${idx + 1}/${itens.length}] "${item.texto}" (Qtd: ${item.quantidade})`);
-          await buscarProduto(page, item.texto, fornecedor?.seletores, fornecedorId, item.quantidade).catch((e) => {
-            console.warn(`  ⚠️ [ITEM WARN] Falha ao adicionar "${item.texto}":`, e.message);
-          });
-        }
-      }
-
-      // 4. SOMENTE APÓS NAVEGAÇÃO E AUTOMAÇÃO, obter debug URL assinado (debuggerFullscreenUrl)
+      // 4. GERAR LIVE VIEW URL ASSINADA IMEDIATAMENTE APÓS A NAVEGAÇÃO
       let liveViewUrl = '';
       try {
         const debugLinks = await bb.sessions.debug(session.id);
@@ -130,6 +118,27 @@ export class BrowserbaseService {
 
       if (!liveViewUrl) {
         throw new Error(`Não foi possível gerar a URL de visualização ao vivo assinada para a sessão ${session.id}.`);
+      }
+
+      // 5. Adicionar itens em background / transmissão ao vivo
+      if (itens.length > 0) {
+        console.log(`🛒 [BROWSERBASE BUSCA] Adicionando ${itens.length} item(ns) ao carrinho...`);
+        const itemPromise = (async () => {
+          for (let idx = 0; idx < itens.length; idx++) {
+            const item = itens[idx];
+            console.log(`  👉 [ITEM ${idx + 1}/${itens.length}] "${item.texto}" (Qtd: ${item.quantidade})`);
+            await buscarProduto(page, item.texto, fornecedor?.seletores, fornecedorId, item.quantidade).catch((e) => {
+              console.warn(`  ⚠️ [ITEM WARN] Falha ao adicionar "${item.texto}":`, e.message);
+            });
+          }
+        })();
+
+        // Executar busca sem travar a devolução imediata da URL assinada se já houver mais de 1 item
+        if (itens.length > 1) {
+          itemPromise.catch((e) => console.warn('Aviso no processamento de itens em transmissão:', e.message));
+        } else {
+          await itemPromise;
+        }
       }
 
       return {
