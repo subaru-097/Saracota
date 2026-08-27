@@ -171,7 +171,7 @@ export const BrowserbaseLiveViewModal: React.FC<BrowserbaseLiveViewModalProps> =
             </div>
           ) : liveViewUrl ? (
             <iframe
-              key={iframeKey}
+              key={liveViewUrl}
               src={liveViewUrl}
               title={`Live View - ${fornecedorNome}`}
               className={`w-full ${isFullscreen ? 'h-[75vh]' : 'h-[520px]'} border-0`}

@@ -268,7 +268,7 @@ export class BrowserbaseService {
       }
 
       if (!liveViewUrl) {
-        liveViewUrl = `https://www.browserbase.com/v1/sessions/${session.id}/embed`;
+        throw new Error(`Não foi possível gerar a Live View URL para a sessão ${session.id}`);
       }
 
       const connectUrl = session.connectUrl || `wss://connect.browserbase.com?apiKey=${apiKey}&sessionId=${session.id}`;
@@ -279,13 +279,8 @@ export class BrowserbaseService {
         liveViewUrl,
       };
     } catch (err: any) {
-      console.warn('⚠️ Falha ao criar sessão oficial no Browserbase SDK, ativando fallback:', err.message);
-      const fallbackId = `bb-fallback-${Date.now()}`;
-      return {
-        sessionId: fallbackId,
-        connectUrl: `wss://connect.browserbase.com?apiKey=${apiKey}&sessionId=${fallbackId}`,
-        liveViewUrl: `https://www.browserbase.com/v1/sessions/${fallbackId}/embed`,
-      };
+      console.error('❌ Falha ao obter Live View URL no Browserbase:', err.message);
+      throw err;
     }
   }
 

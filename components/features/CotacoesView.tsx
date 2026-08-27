@@ -216,13 +216,9 @@ export const CotacoesView: React.FC = () => {
         headers: { 'Content-Type': 'application/json' },
         signal: controller.signal,
         body: JSON.stringify({
+          cotacaoId: (currentCotacao as any)?.id || '',
           fornecedorId: targetForn.id,
           fornecedorNome: targetForn.nome,
-          fornecedorUrl: (targetForn as any)?.url_site || (targetForn as any)?.urlPortalB2B || '',
-          itens: ((currentCotacao as any)?.itens || []).map((it: any) => ({
-            texto: it.nomeSolicitado || it.material?.nome || 'Material',
-            quantidade: it.quantidade || 1,
-          })),
         }),
       });
 

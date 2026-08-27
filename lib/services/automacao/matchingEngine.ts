@@ -180,11 +180,19 @@ export async function processarCotacaoFornecedor(
 
     // 4. Salvar resultados de matching no banco de dados real
     await db.cotacoes.salvarResultadosMatching(cotacaoId, fornecedorId, itensProcessados);
+
+    const activeSessionId = (sessao as any)?.sessionId;
+    if (activeSessionId) {
+      console.log("[COTACAO] carrinho montado, url atual:", page.url(), "| sessão:", activeSessionId);
+      await db.cotacoes.salvarBrowserbaseSessionId(cotacaoId, activeSessionId);
+    }
   } catch (err: any) {
     console.error(`[RPA Processar] Erro no processamento do fornecedor ${fornecedorId}:`, err);
   } finally {
     // 5. A sessão do Browserbase deve permanecer viva (keepAlive: true) para transmissão ao vivo no Iframe
-    // await browser.close().catch(() => {});
+    if (browser) {
+      await browser.disconnect().catch(() => {});
+    }
   }
 
   return {

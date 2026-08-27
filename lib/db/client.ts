@@ -253,6 +253,49 @@ export const db = {
       };
     },
 
+    async salvarBrowserbaseSessionId(cotacaoId: string, sessionId: string): Promise<boolean> {
+      if (!(globalThis as any).__saracota_sessions_store) {
+        (globalThis as any).__saracota_sessions_store = {};
+      }
+      (globalThis as any).__saracota_sessions_store[cotacaoId] = sessionId;
+
+      if (supabase) {
+        try {
+          await supabase.from('cotacoes').update({
+            browserbase_session_id: sessionId,
+            status: 'carrinho_pronto',
+          }).eq('id', cotacaoId);
+        } catch (e: any) {
+          console.warn('⚠️ [SUPABASE WARN] Erro ao atualizar browserbase_session_id:', e.message);
+        }
+      }
+      return true;
+    },
+
+    async obterBrowserbaseSessionId(cotacaoId: string): Promise<string | null> {
+      if ((globalThis as any).__saracota_sessions_store && (globalThis as any).__saracota_sessions_store[cotacaoId]) {
+        return (globalThis as any).__saracota_sessions_store[cotacaoId];
+      }
+
+      if (supabase) {
+        try {
+          const { data } = await supabase
+            .from('cotacoes')
+            .select('browserbase_session_id')
+            .eq('id', cotacaoId)
+            .maybeSingle();
+
+          if (data && (data as any).browserbase_session_id) {
+            return (data as any).browserbase_session_id;
+          }
+        } catch (e: any) {
+          console.warn('⚠️ [SUPABASE WARN] Erro ao consultar browserbase_session_id:', e.message);
+        }
+      }
+
+      return null;
+    },
+
     async salvarProgresso(
       cotacaoId: string,
       progresso: {

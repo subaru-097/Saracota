@@ -162,20 +162,22 @@ export async function obterSessaoLogada(fornecedorId: string): Promise<{
     // Instanciar browser remoto no Browserbase (para ambiente Vercel serverless) ou fallback local
     const bbApiKey = process.env.BROWSERBASE_API_KEY;
     const bbProjectId = process.env.BROWSERBASE_PROJECT_ID;
+    let bbSession: any = null;
 
     if (bbApiKey && bbApiKey !== 'demo-browserbase-api-key') {
       try {
         console.log(`🔌 [RPA LOGIN REMOTO] Conectando ao Browserbase remoto via CDP...`);
         const { Browserbase } = require('@browserbasehq/sdk');
         const bb = new Browserbase({ apiKey: bbApiKey });
-        const session = await bb.sessions.create({
+        bbSession = await bb.sessions.create({
           projectId: bbProjectId,
           keepAlive: true,
-          timeout: 180,
+          timeout: 1800,
         } as any);
-        const connectUrl = session.connectUrl || `wss://connect.browserbase.com?apiKey=${bbApiKey}&sessionId=${session.id}`;
+        console.log("[COTACAO] sessão criada:", bbSession.id);
+        const connectUrl = bbSession.connectUrl || `wss://connect.browserbase.com?apiKey=${bbApiKey}&sessionId=${bbSession.id}`;
         browser = await chromium.connectOverCDP(connectUrl);
-        console.log(`✅ [RPA LOGIN REMOTO] Conectado à sessão remota do Browserbase (${session.id})!`);
+        console.log(`✅ [RPA LOGIN REMOTO] Conectado à sessão remota do Browserbase (${bbSession.id})!`);
       } catch (bbErr: any) {
         console.warn('⚠️ [RPA LOGIN REMOTO WARN] Falha ao conectar ao Browserbase, tentando launch local:', bbErr.message);
         browser = await chromium.launch({
@@ -538,10 +540,11 @@ export async function obterSessaoLogada(fornecedorId: string): Promise<{
       context,
       page,
       fornecedor,
-    };
+      sessionId: bbSession?.id || null,
+    } as any;
   } catch (error: any) {
     if (browser) {
-      await browser.close().catch(() => {});
+      await (browser as any).disconnect().catch(() => {});
     }
     return {
       sucesso: false,
@@ -570,7 +573,7 @@ export async function loginFornecedor(fornecedorId: string): Promise<ResultadoLo
 
   const currentUrl = sessao.page ? sessao.page.url() : '';
   if (sessao.browser) {
-    await sessao.browser.close().catch(() => {});
+    await (sessao.browser as any).disconnect().catch(() => {});
   }
 
   return {
