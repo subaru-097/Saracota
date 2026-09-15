@@ -1,0 +1,25 @@
+{
+  "testName": "Teste 12 - Correção de Configs e Resolução Dinâmica de Seletores",
+  "timestamp": "2026-09-15T20:38:41.490Z",
+  "cenarioSolo": {
+    "nomeCenario": "Construjá Solo",
+    "suppliersRendered": [
+      "Resumo por Fornecedor Cotado\nClique em um card abaixo para abrir o detalhamento completo dos itens\nConstrujá\nELÉTRICA\nCotação concluída\n2 itens\nTotal: R$ 0,00",
+      "Construjá\nELÉTRICA\nCotação concluída\n2 itens\nTotal: R$ 0,00",
+      "MATCH EXATO\n★ 4.9\nConstrujá\n\nPrazo de Entrega: 2 dias\n\nProdutos:\nR$ 0,00\nTotal do Pedido:\nR$ 0,00\nCadastre o WhatsApp em Ajustes para envio.\nWhatsApp Não Cadastrado\nSelecionar Fornecedor",
+      "C\nConstrujá\n\n2 itens cotados\n\nCONCLUÍDA\nTOTAL DO PEDIDO\nR$ 0,00\nVer detalhes"
+    ]
+  },
+  "cenarioMulti": {
+    "nomeCenario": "Cicalfer + Construjá Multi",
+    "suppliersRendered": [
+      "Resumo por Fornecedor Cotado\nClique em um card abaixo para abrir o detalhamento completo dos itens\nCicalfer\nELÉTRICA\nCotação concluída\n2 itens\nTotal: R$ 0,00\nConstrujá\nELÉTRICA\nCotação concluída\n2 itens\nTotal: R$ 0,00",
+      "Cicalfer\nELÉTRICA\nCotação concluída\n2 itens\nTotal: R$ 0,00",
+      "Construjá\nELÉTRICA\nCotação concluída\n2 itens\nTotal: R$ 0,00",
+      "MATCH EXATO\n★ 4.9\nCicalfer\n\nPrazo de Entrega: 2 dias\n\nProdutos:\nR$ 0,00\nTotal do Pedido:\nR$ 0,00\nCadastre o WhatsApp em Ajustes para envio.\nWhatsApp Não Cadastrado\nSelecionar Fornecedor",
+      "MATCH EXATO\n★ 4.9\nConstrujá\n\nPrazo de Entrega: 2 dias\n\nProdutos:\nR$ 0,00\nTotal do Pedido:\nR$ 0,00\nCadastre o WhatsApp em Ajustes para envio.\nWhatsApp Não Cadastrado\nSelecionar Fornecedor",
+      "C\nCicalfer\n\n2 itens cotados\n\nCONCLUÍDA\nTOTAL DO PEDIDO\nR$ 0,00\nVer detalhes",
+      "C\nConstrujá\n\n2 itens cotados\n\nCONCLUÍDA\nTOTAL DO PEDIDO\nR$ 0,00\nVer detalhes"
+    ]
+  }
+}

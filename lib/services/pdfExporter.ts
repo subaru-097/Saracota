@@ -110,8 +110,7 @@ export async function exportCotacaoToPdf(
                       <th style="padding: 10px;">Fornecedor</th>
                       <th style="padding: 10px;">Score</th>
                       <th style="padding: 10px;">Produtos</th>
-                      <th style="padding: 10px;">ICMS-ST</th>
-                      <th style="padding: 10px; text-align: right;">Total com ST</th>
+                      <th style="padding: 10px; text-align: right;">Total do Pedido</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -124,7 +123,6 @@ export async function exportCotacaoToPdf(
                         </td>
                         <td style="padding: 10px; color: #F59E0B;">★ ${f.score || 5.0}</td>
                         <td style="padding: 10px;">R$ ${(f.valorProdutos || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
-                        <td style="padding: 10px; color: #06B6D4;">R$ ${(f.valorST || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
                         <td style="padding: 10px; text-align: right; font-weight: 700; color: #F59E0B;">
                           R$ ${(f.valorTotalGeral || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                         </td>
@@ -167,11 +165,11 @@ export async function exportCotacaoToPdf(
           <!-- Resumo Financeiro -->
           <div style="background: #181E27; border: 1px solid #374151; padding: 16px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center;">
             <div>
-              <span style="font-size: 11px; color: #9CA3AF; display: block;">ICMS-ST Total Retido na Fonte:</span>
-              <strong style="font-size: 14px; color: #06B6D4;">R$ ${totalST.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong>
+              <span style="font-size: 11px; color: #9CA3AF; display: block;">Itens Cotados:</span>
+              <strong style="font-size: 14px; color: #06B6D4;">${itensList.length || (fornecedoresList[0]?.itensCotados?.length || 5)} itens</strong>
             </div>
             <div style="text-align: right;">
-              <span style="font-size: 11px; color: #9CA3AF; display: block;">Valor Total Geral Aprovado:</span>
+              <span style="font-size: 11px; color: #9CA3AF; display: block;">Valor Total do Pedido:</span>
               <strong style="font-size: 18px; color: #F59E0B;">R$ ${totalGeral.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong>
             </div>
           </div>

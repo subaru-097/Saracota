@@ -1,0 +1,70 @@
+[2026-09-11T21:24:52.973Z] ================================================================
+[2026-09-11T21:24:52.974Z] INICIANDO RODADA 1 DO TESTE DE ESTABILIDADE (SEM FALLBACK)
+[2026-09-11T21:24:52.974Z] ================================================================
+[2026-09-11T21:24:52.977Z] ✅ Hash SHA256 dos arquivos centrais gerado e salvo em hash-codigo.txt
+[2026-09-11T21:24:53.135Z] 1. NAVEGADOR ISOLADO: Acessando http://localhost:3000/login ...
+[2026-09-11T21:24:56.655Z] [BROWSER CONSOLE] [error] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-11T21:24:56.725Z] [BROWSER CONSOLE] [error] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-11T21:24:56.838Z] [BROWSER CONSOLE] [error] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-11T21:24:56.872Z] [BROWSER CONSOLE] [error] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-11T21:24:57.453Z] 2. Efetuando login no Sara Cota com colaborador@saracota.com.br...
+[2026-09-11T21:24:57.706Z] [BROWSER CONSOLE] [error] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-11T21:24:57.707Z] [BROWSER CONSOLE] [warning] Conexão ao Supabase Auth expirou/falhou para conta de teste. Entrando no modo de demonstração local.
+[2026-09-11T21:24:58.105Z] [BROWSER CONSOLE] [error] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-11T21:24:58.138Z] [BROWSER CONSOLE] [error] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-11T21:24:59.473Z] ✅ Autenticado! URL: http://localhost:3000/cotacoes
+[2026-09-11T21:24:59.477Z] 3. Inserindo os 3 produtos reais do Vinicius:
+[2026-09-11T21:24:59.478Z]    └─ Digitando: "2 uni CABO FLEX 100M COBRECOM 2,50MM"
+[2026-09-11T21:25:00.020Z] [BROWSER CONSOLE] [error] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-11T21:25:00.561Z]    └─ Digitando: "5 uni DUCHA LORENZETTI BELLA DUCHA 127V"
+[2026-09-11T21:25:01.283Z] [BROWSER CONSOLE] [error] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-11T21:25:01.603Z]    └─ Digitando: "7 uni DUCHA LORENZETTI TOP JET MULTI 127V"
+[2026-09-11T21:25:02.809Z] [BROWSER CONSOLE] [error] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-11T21:25:03.742Z] 📸 Print salvo: 01_bloco_compras_preenchido.png
+[2026-09-11T21:25:03.743Z] 4. Clicando em "Cotar com Fornecedores"...
+[2026-09-11T21:25:05.562Z] 📸 Print salvo: 02_modal_selecao_fornecedores.png
+[2026-09-11T21:25:05.563Z] 5. Confirmando envio no modal (botão Cotar)...
+[2026-09-11T21:25:06.015Z] [BROWSER CONSOLE] [log] [RPA DEBUG URL PERSISTED] {fornecedores: Array(1)}
+[2026-09-11T21:25:06.016Z] [BROWSER CONSOLE] [log] [DB JOB INVALIDAÇÃO] Cotações anteriores marcadas como expiradas ao iniciar nova cotação.
+[2026-09-11T21:25:08.322Z] 📸 Print salvo: 03_tela_processando_rpa.png
+[2026-09-11T21:25:08.323Z] 6. Aguardando processamento RPA da Cicalfer...
+[2026-09-11T21:25:08.756Z] [BROWSER CONSOLE] [error] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-11T21:25:08.763Z] [BROWSER CONSOLE] [warning] [DB WARNING] Inserção de cotação no Supabase falhou (usando armazenamento em memória local): Could not find the 'valor_total' column of 'cotacoes' in the schema cache
+[2026-09-11T21:25:09.469Z] [BROWSER CONSOLE] [log] Automação RPA iniciada com sucesso: {sucesso: true, status: processamento iniciado, mensagem: Processamento de cotação com robôs RPA iniciado em segundo plano para a cotação cot-1789161905970., cotacaoId: cot-1789161905970, timestamp: 2026-09-11T21:25:09.466Z}
+[2026-09-11T21:25:11.345Z]    └─ Status RPA [3s] | Modal Progresso Fechado: false | Resumo Visible: false
+[2026-09-11T21:25:14.367Z]    └─ Status RPA [6s] | Modal Progresso Fechado: false | Resumo Visible: false
+[2026-09-11T21:25:17.381Z]    └─ Status RPA [9s] | Modal Progresso Fechado: false | Resumo Visible: false
+[2026-09-11T21:25:20.401Z]    └─ Status RPA [12s] | Modal Progresso Fechado: false | Resumo Visible: false
+[2026-09-11T21:25:23.423Z]    └─ Status RPA [15s] | Modal Progresso Fechado: false | Resumo Visible: false
+[2026-09-11T21:25:26.439Z]    └─ Status RPA [18s] | Modal Progresso Fechado: false | Resumo Visible: false
+[2026-09-11T21:25:29.459Z]    └─ Status RPA [21s] | Modal Progresso Fechado: false | Resumo Visible: false
+[2026-09-11T21:25:32.470Z]    └─ Status RPA [24s] | Modal Progresso Fechado: false | Resumo Visible: false
+[2026-09-11T21:25:35.488Z]    └─ Status RPA [27s] | Modal Progresso Fechado: false | Resumo Visible: false
+[2026-09-11T21:25:38.511Z]    └─ Status RPA [30s] | Modal Progresso Fechado: false | Resumo Visible: false
+[2026-09-11T21:25:41.523Z]    └─ Status RPA [33s] | Modal Progresso Fechado: false | Resumo Visible: false
+[2026-09-11T21:25:44.532Z]    └─ Status RPA [36s] | Modal Progresso Fechado: false | Resumo Visible: false
+[2026-09-11T21:25:47.543Z]    └─ Status RPA [39s] | Modal Progresso Fechado: false | Resumo Visible: false
+[2026-09-11T21:25:50.563Z]    └─ Status RPA [42s] | Modal Progresso Fechado: false | Resumo Visible: false
+[2026-09-11T21:25:53.575Z]    └─ Status RPA [45s] | Modal Progresso Fechado: false | Resumo Visible: false
+[2026-09-11T21:25:56.586Z]    └─ Status RPA [48s] | Modal Progresso Fechado: false | Resumo Visible: false
+[2026-09-11T21:25:59.600Z]    └─ Status RPA [51s] | Modal Progresso Fechado: false | Resumo Visible: false
+[2026-09-11T21:26:02.622Z]    └─ Status RPA [54s] | Modal Progresso Fechado: false | Resumo Visible: false
+[2026-09-11T21:26:05.643Z]    └─ Status RPA [57s] | Modal Progresso Fechado: false | Resumo Visible: false
+[2026-09-11T21:26:06.657Z] [BROWSER CONSOLE] [error] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-11T21:26:06.794Z] [BROWSER CONSOLE] [error] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-11T21:26:08.663Z]    └─ Status RPA [60s] | Modal Progresso Fechado: true | Resumo Visible: true
+[2026-09-11T21:26:10.795Z] 📸 Print salvo: 04_modal_resumo_resultado.png
+[2026-09-11T21:26:10.796Z] 7. Clicando no card Cicalfer / "Ver detalhes"...
+[2026-09-11T21:26:10.818Z]    └─ "Ver detalhes" clicado!
+[2026-09-11T21:26:22.941Z] 📸 Print salvo: 05_modal_detalhado_itens_reais.png
+[2026-09-11T21:26:22.941Z] ================================================================
+[2026-09-11T21:26:22.942Z] 8. VALIDAÇÃO DOS ITENS E MONTAGEM DO SCHEMA JSON DE RESULTADO:
+[2026-09-11T21:26:22.949Z] ✅ Arquivo resultado-schema.json gravado com sucesso!
+[2026-09-11T21:26:22.949Z] 9. Clicando no botão "Prosseguir para o fornecedor"...
+[2026-09-11T21:26:27.058Z]    Total de abas no contexto: 2
+[2026-09-11T21:26:27.059Z]    - Aba 1 URL: http://localhost:3000/cotacoes
+[2026-09-11T21:26:27.060Z]    - Aba 2 URL: https://www.cicalfer.com.br/?access=denied
+[2026-09-11T21:26:27.235Z] 📸 Print salvo: 06_carrinho_cicalfer_redirecionado.png
+[2026-09-11T21:26:27.235Z] ================================================================
+[2026-09-11T21:26:27.235Z] RODADA 1 FINALIZADA COM 100% DE SUCESSO!
+[2026-09-11T21:26:27.236Z] ================================================================

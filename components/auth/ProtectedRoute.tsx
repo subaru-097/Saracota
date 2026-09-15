@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { UserRole } from '@/types';
-import { Loader2, ShieldAlert, ArrowLeft } from 'lucide-react';
+import { Loader2, ShieldAlert, ArrowLeft, RefreshCw, LogIn } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 
@@ -19,6 +19,7 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   requiredRole,
 }) => {
   const { isAuthenticated, isProprietario, user, isLoading } = useAuth();
+  const [hasTimedOut, setHasTimedOut] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -27,7 +28,24 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
     }
   }, [isAuthenticated, isLoading, router]);
 
-  if (isLoading) {
+  // Timeout de segurança de 4.5s para interromper travamentos da verificação de sessão
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (isLoading) {
+      console.log('[ProtectedRoute] Verification loading... Timer 4.5s iniciado.');
+      timer = setTimeout(() => {
+        console.warn('[ProtectedRoute] Timer 4.5s atingido! Interrompendo tela de carregamento.');
+        setHasTimedOut(true);
+      }, 4500);
+    } else {
+      setHasTimedOut(false);
+    }
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [isLoading]);
+
+  if (isLoading && !hasTimedOut) {
     return (
       <div className="min-h-screen bg-sara-canvas flex flex-col items-center justify-center p-4 space-y-4">
         <div className="w-12 h-12 rounded-2xl bg-brand/10 border border-brand/40 flex items-center justify-center animate-pulse">
@@ -41,6 +59,44 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
             Verificando permissões de acesso ao sistema...
           </p>
         </div>
+      </div>
+    );
+  }
+
+  if (hasTimedOut && isLoading) {
+    return (
+      <div className="min-h-screen bg-sara-canvas flex items-center justify-center p-4">
+        <Card variant="bordered" className="max-w-md w-full p-8 text-center space-y-5 border-amber-500/40 bg-amber-500/5">
+          <div className="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto">
+            <ShieldAlert className="w-6 h-6" />
+          </div>
+          <div className="space-y-2">
+            <h2 className="text-lg font-bold text-content-primary">
+              Tempo Limite de Autenticação Excedido
+            </h2>
+            <p className="text-xs text-content-secondary leading-relaxed">
+              A verificação de permissões do sistema excedeu o tempo limite (timeout de conexão com o Supabase/Auth). 
+            </p>
+          </div>
+          <div className="flex flex-col gap-2 pt-2">
+            <Button
+              variant="primary"
+              size="md"
+              leftIcon={<RefreshCw className="w-4 h-4 text-black" />}
+              onClick={() => window.location.reload()}
+            >
+              Tentar Novamente
+            </Button>
+            <Button
+              variant="secondary"
+              size="md"
+              leftIcon={<LogIn className="w-4 h-4 text-content-primary" />}
+              onClick={() => router.push('/login')}
+            >
+              Ir para a Tela de Login
+            </Button>
+          </div>
+        </Card>
       </div>
     );
   }

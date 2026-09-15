@@ -21,6 +21,11 @@
       "static/chunks/main-app.js",
       "static/chunks/app/error.js"
     ],
+    "/painel/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/painel/page.js"
+    ],
     "/cotacoes/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -31,10 +36,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/login/page.js"
     ],
-    "/painel/page": [
+    "/historico/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/painel/page.js"
+      "static/chunks/app/historico/page.js"
     ],
     "/fornecedores/page": [
       "static/chunks/webpack.js",

@@ -9,6 +9,13 @@ export async function POST(
   req: NextRequest,
   { params }: { params: { fornecedorId: string } }
 ) {
+  if (process.env.NODE_ENV === 'production') {
+    return NextResponse.json(
+      { sucesso: false, mensagem: 'Endpoint de teste desabilitado em ambiente de produção.' },
+      { status: 403 }
+    );
+  }
+
   try {
     const fornecedorId = params.fornecedorId;
     if (!fornecedorId) {

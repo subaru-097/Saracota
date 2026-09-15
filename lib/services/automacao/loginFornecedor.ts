@@ -5,12 +5,12 @@ import fs from 'fs';
 import { db } from '@/lib/db/client';
 import { decryptAES256 } from '@/lib/security/vault';
 import { validarDominioESSL } from './securityValidator';
-import { dismissCookieBanner } from './cookieBanner';
+import { dismissCookieBanner, tentarAceitarCookies } from './cookieBanner';
 import { registrarLogAutomacao } from './logAutomacao';
 
 import { sanitizeSupplierSlug } from '@/lib/utils';
 
-export { dismissCookieBanner };
+export { dismissCookieBanner, tentarAceitarCookies };
 
 export type StatusLoginAutomacao = 
   | 'SUCESSO' 
@@ -130,7 +130,7 @@ export async function obterSessaoLogada(fornecedorId: string): Promise<{
     }
 
     const urlPortal = fornecedor.urlPortalB2B || `https://portal.${sanitizeSupplierSlug(fornecedor.nome)}.com.br/login`;
-    const usuarioLogin = (fornecedor.emailLogin || fornecedor.cnpj || fornecedor.email || fornecedor.login || 'compras@saracota.com.br').trim();
+    const usuarioLogin = (fornecedor.emailLogin || fornecedor.cnpj || fornecedor.email || fornecedor.login || '').trim();
 
     // 🔒 Descriptografia e Sanitização da Senha (.trim())
     const rawEncryptedSenha = (
@@ -147,8 +147,14 @@ export async function obterSessaoLogada(fornecedorId: string): Promise<{
       senhaPlana = rawEncryptedSenha.trim();
     }
 
-    if (!senhaPlana || senhaPlana === '[DESCRIPTOGRAFIA_FALHOU]') {
-      senhaPlana = 'SenhaDemo123!';
+    if (!usuarioLogin || !senhaPlana || senhaPlana === '[DESCRIPTOGRAFIA_FALHOU]') {
+      const errMsg = `[ERRO CREDENCIAIS] Fornecedor ${fornecedor.nome || fornecedorId} (${fornecedorId}) não possui e-mail/senha cadastrados no banco. Cotação abortada para este fornecedor.`;
+      console.error(`[${new Date().toISOString()}] ${errMsg}`);
+      return {
+        sucesso: false,
+        status: 'LOGIN_FALHOU',
+        mensagem: errMsg,
+      };
     }
 
     // Hash SHA-256 da senha descriptografada para verificação sem expor texto puro em logs
@@ -159,45 +165,18 @@ export async function obterSessaoLogada(fornecedorId: string): Promise<{
     console.log(`   - Length da senha descriptografada (.trim()): ${senhaPlana.length}`);
     console.log(`   - Hash SHA-256 da senha descriptografada: ${senhaHashSHA256}`);
 
-    // Instanciar browser remoto no Browserbase (para ambiente Vercel serverless) ou fallback local
-    const bbApiKey = process.env.BROWSERBASE_API_KEY;
-    const bbProjectId = process.env.BROWSERBASE_PROJECT_ID;
-    let bbSession: any = null;
-
-    if (bbApiKey && bbApiKey !== 'demo-browserbase-api-key') {
-      try {
-        console.log(`🔌 [RPA LOGIN REMOTO] Conectando ao Browserbase remoto via CDP...`);
-        const { Browserbase } = require('@browserbasehq/sdk');
-        const bb = new Browserbase({ apiKey: bbApiKey });
-        bbSession = await bb.sessions.create({
-          projectId: bbProjectId,
-          keepAlive: true,
-          timeout: 1800,
-        } as any);
-        console.log("[COTACAO] sessão criada:", bbSession.id);
-        const connectUrl = bbSession.connectUrl || `wss://connect.browserbase.com?apiKey=${bbApiKey}&sessionId=${bbSession.id}`;
-        browser = await chromium.connectOverCDP(connectUrl);
-        console.log(`✅ [RPA LOGIN REMOTO] Conectado à sessão remota do Browserbase (${bbSession.id})!`);
-      } catch (bbErr: any) {
-        console.warn('⚠️ [RPA LOGIN REMOTO WARN] Falha ao conectar ao Browserbase, tentando launch local:', bbErr.message);
-        browser = await chromium.launch({
-          headless: true,
-          args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        }).catch(() => null);
-      }
-    } else {
-      browser = await chromium.launch({
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      }).catch(() => null);
-    }
+    // Instanciar Chromium local via Playwright
+    browser = await chromium.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    }).catch(() => null);
 
     if (!browser) {
-      console.warn('⚠️ [RPA LOGIN REMOTO] Impossível abrir o navegador Chromium no ambiente atual.');
+      console.warn('⚠️ [RPA LOGIN] Impossível abrir o navegador Chromium no ambiente atual.');
       return {
         sucesso: false,
         status: 'TIMEOUT',
-        mensagem: 'Ambiente serverless sem suporte a Chromium local. Configure BROWSERBASE_API_KEY no painel da Vercel.',
+        mensagem: 'Falha ao iniciar navegador Chromium para automação.',
       };
     }
 
@@ -540,11 +519,11 @@ export async function obterSessaoLogada(fornecedorId: string): Promise<{
       context,
       page,
       fornecedor,
-      sessionId: bbSession?.id || null,
+      sessionId: null,
     } as any;
   } catch (error: any) {
     if (browser) {
-      await (browser as any).disconnect().catch(() => {});
+      await browser.close().catch(() => {});
     }
     return {
       sucesso: false,

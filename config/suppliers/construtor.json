@@ -1,0 +1,26 @@
+{
+  "id": "construtor",
+  "nome": "Construtor",
+  "url_site": "https://www.brasilconstrutor.com/",
+  "selectors": {
+    "cookie_accept": "button:has-text(\"Aceitar\"), button.cookie-accept",
+    "login_trigger": "a:has-text(\"Entrar\"), button:has-text(\"Login\")",
+    "email_input": "input[type=\"email\"], input[name=\"email\"]",
+    "password_input": "input[type=\"password\"], input[name=\"senha\"]",
+    "login_submit": "button[type=\"submit\"]",
+    "filial_cards": "div.filial-card",
+    "filial_confirm": "button:has-text(\"Confirmar Filial\")",
+    "search_input": "input[name=\"q\"], input[name=\"busca\"]",
+    "search_button": "button.search-btn",
+    "quantity_input": "input.qty-input, input[type=\"number\"]",
+    "modal_confirm_alteration": "div.modal-confirm",
+    "modal_confirm_button": "button:has-text(\"Confirmar\")",
+    "cart_url": "https://www.brasilconstrutor.com/carrinho",
+    "view_cart_button": "a.view-cart"
+  },
+  "lote_rules": {
+    "default_lot_text": "LOTE DE",
+    "fallback_lot_size": 1
+  },
+  "default_filial_keyword": "ENTREGA"
+}

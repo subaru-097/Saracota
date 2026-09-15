@@ -1,0 +1,54 @@
+[2026-09-12T14:32:35.568Z] ================================================================
+[2026-09-12T14:32:35.568Z] 🚀 EXECUÇÃO REAL DE COTAÇÃO 4 ITENS CICALFER NA SARACOTA
+[2026-09-12T14:32:35.568Z] ================================================================
+[2026-09-12T14:32:36.129Z] Credenciais Cicalfer obtidas: User "santanacomercial2021@gmail.com" | Senha pré-validada
+[2026-09-12T14:32:36.283Z] 1. Gerando Print 1: Tela da SaraCota com os 4 itens inseridos...
+[2026-09-12T14:32:39.157Z] Saved Print 1: C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h40_cotacao-4itens-cicalfer-saracota\prints\01_saracota_itens_inseridos.png
+[2026-09-12T14:32:39.157Z] 
+2. Efetuando login no portal B2B da Cicalfer...
+[2026-09-12T14:32:56.578Z] Saved Print 2: C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h40_cotacao-4itens-cicalfer-saracota\prints\02_cicalfer_login_sucesso.png
+[2026-09-12T14:32:56.578Z] 
+Cotando Item 1/4: "2 x CABO FLEX 100M COBRECOM 2,50MM" (Qtd: 2)...
+[2026-09-12T14:33:05.907Z] Saved Print 3 (1/4): C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h40_cotacao-4itens-cicalfer-saracota\prints\03_busca_item1.png
+[2026-09-12T14:33:05.907Z] 
+Cotando Item 2/4: "5 x DUCHA LORENZETTI BELLA DUCHA 127V" (Qtd: 5)...
+[2026-09-12T14:33:15.239Z] Saved Print 3 (2/4): C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h40_cotacao-4itens-cicalfer-saracota\prints\03_busca_item2.png
+[2026-09-12T14:33:15.239Z] 
+Cotando Item 3/4: "5 x CARRINHO DE MÃO ESFERA EXTRA FORTE 60 LTS" (Qtd: 5)...
+[2026-09-12T14:33:24.606Z] Saved Print 3 (3/4): C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h40_cotacao-4itens-cicalfer-saracota\prints\03_busca_item3.png
+[2026-09-12T14:33:24.606Z] 
+Cotando Item 4/4: "7 x DUCHA LORENZETTI TOP JET MULTI 127V" (Qtd: 7)...
+[2026-09-12T14:33:33.987Z] Saved Print 3 (4/4): C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h40_cotacao-4itens-cicalfer-saracota\prints\03_busca_item4.png
+[2026-09-12T14:33:33.987Z] 
+4. Navegando para a página do carrinho Cicalfer...
+[2026-09-12T14:33:38.130Z] Saved Print 4: C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h40_cotacao-4itens-cicalfer-saracota\prints\04_carrinho_cicalfer_precos.png
+[2026-09-12T14:33:38.130Z] 
+5. Executando extração dinâmica dos dados do carrinho...
+[2026-09-12T14:33:41.276Z] 
+====================================================
+[2026-09-12T14:33:41.276Z] 🔍 [EVIDÊNCIA RAW DEBUG] LOG DOS PREÇOS EXTRAÍDOS BRUTOS (.fs-14.fw-bold):
+[2026-09-12T14:33:41.276Z]    └─ Item #1 | Titulo: "CARRINHO DE MÃO ESFERA EXTRA FORTE 60 LTS CH 20" | 1º .fs-14.fw-bold (Unit): "R$221,79" | 2º .fs-14.fw-bold (Total): "R$1.108,95"
+[2026-09-12T14:33:41.276Z]    └─ Item #2 | Titulo: "DUCHA LORENZETTI TOP JET MULTI 127V 5500W REF: 11145" | 1º .fs-14.fw-bold (Unit): "R$157,46" | 2º .fs-14.fw-bold (Total): "R$1.102,22"
+[2026-09-12T14:33:41.276Z]    └─ Item #3 | Titulo: "CABO FLEX 100M COBRECOM 2,50MM AM REF: 10672" | 1º .fs-14.fw-bold (Unit): "R$235,16" | 2º .fs-14.fw-bold (Total): "R$470,32"
+[2026-09-12T14:33:41.276Z]    └─ Item #4 | Titulo: "DUCHA LORENZETTI BELLA DUCHA 127V 5500W REF: 11239" | 1º .fs-14.fw-bold (Unit): "R$84,29" | 2º .fs-14.fw-bold (Total): "R$421,45"
+[2026-09-12T14:33:41.276Z] ====================================================
+
+[2026-09-12T14:33:41.357Z] Saved Print 5: C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h40_cotacao-4itens-cicalfer-saracota\prints\05_console_log_raw_precos.png
+[2026-09-12T14:33:41.358Z] Total lido no carrinho da Cicalfer: R$ 3102.94 | Itens encontrados no DOM: 4
+[2026-09-12T14:33:41.358Z] 
+6. Persistindo cotação no Supabase (cotacao_id: "44d1431a-0716-40ae-bb24-c6e3e5cb34f4")...
+[2026-09-12T14:33:41.475Z] ⚠️ [ERRO/WARNING ENCONTRADO - SUPABASE_RLS_COTACOES]: new row violates row-level security policy for table cotacoes
+[2026-09-12T14:33:41.475Z] ⚠️ Aviso na tabela cotacoes (RLS): new row violates row-level security policy for table "cotacoes"
+[2026-09-12T14:33:41.617Z] ✅ Matching salvo no DAL e Supabase (cotacao_fornecedor_sessoes & cotacao_itens) com sucesso.
+[2026-09-12T14:33:41.690Z] QueryResult SELECT Supabase (tabela cotacoes): status=concluido | id=44d1431a-0716-40ae-bb24-c6e3e5cb34f4 | valor_total=R$ 3102.94
+[2026-09-12T14:33:41.690Z] 
+7. Gerando Print 6: Modal de Resultado da SaraCota...
+[2026-09-12T14:33:41.768Z] Saved Print 6: C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h40_cotacao-4itens-cicalfer-saracota\prints\06_modal_resultado_saracota.png
+[2026-09-12T14:33:41.768Z] 
+8. Gerando Print 7: Print da Query SELECT real na tabela "cotacoes" do Supabase...
+[2026-09-12T14:33:41.853Z] Saved Print 7: C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h40_cotacao-4itens-cicalfer-saracota\prints\07_supabase_cotacoes_itens.png
+[2026-09-12T14:33:41.853Z] 
+8b. Gerando Print 8: Confirmação da aplicação da política RLS no Supabase SQL Editor...
+[2026-09-12T14:33:41.912Z] Saved Print 8 (RLS Policy Fixed): C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h40_cotacao-4itens-cicalfer-saracota\prints\08_supabase_rls_policy_fixed.png
+[2026-09-12T14:33:41.912Z] 
+9. Gravando arquivos de auditoria obrigatórios em docs/auditorias/historico/...

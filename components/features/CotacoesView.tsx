@@ -19,7 +19,8 @@ import { db } from '@/lib/db/client';
 import { ItemRascunho } from '@/types';
 import { isMultiLinePaste, parseMultiItemPaste, ParsedPastedItem } from '@/lib/utils/parseMultiItemPaste';
 import { MultiItemPasteModal } from '@/components/features/MultiItemPasteModal';
-import { BrowserbaseLiveViewModal } from '@/components/features/BrowserbaseLiveViewModal';
+import { CardFornecedor } from '@/components/features/CardFornecedor';
+import { ModalDetalheFornecedor } from '@/components/features/ModalDetalheFornecedor';
 import {
   FileText,
   Mic,
@@ -53,6 +54,7 @@ import {
   AlertTriangle,
   ShoppingCart,
   Minus,
+  Download,
 } from 'lucide-react';
 import { Fornecedor } from '@/types';
 
@@ -74,6 +76,8 @@ export const CotacoesView: React.FC = () => {
 
   const [subAba, setSubAba] = useState<'nova' | 'resultado'>('nova');
   const [isRelatorioModalOpen, setIsRelatorioModalOpen] = useState(false);
+  const [isSummaryModalOpen, setIsSummaryModalOpen] = useState(false);
+  const [cotacaoAtual, setCotacaoAtual] = useState<any>(null);
   const [obraNomeInput, setObraNomeInput] = useState('Reserva das Palmeiras');
 
   // ESTADO DO BLOCO DE NOTAS / RASCUNHO (PROMPT 6)
@@ -150,126 +154,7 @@ export const CotacoesView: React.FC = () => {
     });
   };
 
-  // ESTADO DO MODAL DE LIVE VIEW DO BROWSERBASE (CDP REMOTE SESSION) E CACHE DE SESSÕES
-  const [supplierSessionsCache, setSupplierSessionsCache] = useState<
-    Record<string, { sessionId: string; liveViewUrl: string; criacaoEm: number }>
-  >({});
-  const [isBrowserbaseModalOpen, setIsBrowserbaseModalOpen] = useState(false);
-  const [browserbaseLiveUrl, setBrowserbaseLiveUrl] = useState('');
-  const [browserbaseFornNome, setBrowserbaseFornNome] = useState('');
-  const [browserbaseSessionId, setBrowserbaseSessionId] = useState('');
-  const [browserbaseFornId, setBrowserbaseFornId] = useState('');
-  const [isLoadingBrowserbase, setIsLoadingBrowserbase] = useState(false);
-  const [browserbaseErrorMsg, setBrowserbaseErrorMsg] = useState<string | null>(null);
-
-  const handleCloseBrowserbaseModal = () => {
-    setIsBrowserbaseModalOpen(false);
-
-    // ENCERRAMENTO EXPLÍCITO DA SESSÃO REMOTA NO BROWSERBASE AO FECHAR O MODAL PARA ECONOMIZAR MINUTOS
-    if (browserbaseSessionId) {
-      console.log(`⏹️ [FECHAR MODAL] Encessando sessão remota ${browserbaseSessionId} no Browserbase...`);
-      fetch('/api/browserbase/session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'close', sessionId: browserbaseSessionId }),
-      }).catch((err) => console.warn('Aviso ao solicitar encerramento de sessão:', err.message));
-
-      if (browserbaseFornId) {
-        setSupplierSessionsCache((prev) => {
-          const updated = { ...prev };
-          delete updated[browserbaseFornId];
-          return updated;
-        });
-      }
-    }
-  };
-
-  const handleAbrirCarrinhoBrowserbase = async (forn: FornecedorCotado) => {
-    const targetForn = forn || { id: 'forn-cicalfer', nome: 'Cicalfer Material Elétrico' };
-    setBrowserbaseFornNome(targetForn.nome);
-    setBrowserbaseFornId(targetForn.id);
-    setIsBrowserbaseModalOpen(true);
-    setBrowserbaseErrorMsg(null);
-
-    // 1. VERIFICAR CACHE DE SESSÃO ATIVA (MENOS DE 8 MINUTOS DE USO)
-    const existingSess = supplierSessionsCache[targetForn.id];
-    const LIMIT_TEMPO_CACHE_MS = 8 * 60 * 1000;
-
-    if (existingSess && Date.now() - existingSess.criacaoEm < LIMIT_TEMPO_CACHE_MS && existingSess.liveViewUrl) {
-      console.log(`⚡ [BROWSERBASE CACHE HIT] Reutilizando sessão remota ativa para ${targetForn.nome}:`, existingSess.sessionId);
-      setBrowserbaseLiveUrl(existingSess.liveViewUrl);
-      setBrowserbaseSessionId(existingSess.sessionId);
-      setIsLoadingBrowserbase(false);
-      return;
-    }
-
-    setIsLoadingBrowserbase(true);
-    setBrowserbaseLiveUrl('');
-
-    // AbortController com timeout de 25s para impedir o loading infinito no frontend
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 25000);
-
-    try {
-      const res = await fetch('/api/browserbase/session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        signal: controller.signal,
-        body: JSON.stringify({
-          cotacaoId: (currentCotacao as any)?.id || '',
-          fornecedorId: targetForn.id,
-          fornecedorNome: targetForn.nome,
-        }),
-      });
-
-      clearTimeout(timeoutId);
-      const data = await res.json();
-
-      if (data.sucesso && data.liveViewUrl) {
-        setBrowserbaseLiveUrl(data.liveViewUrl);
-        setBrowserbaseSessionId(data.sessionId || '');
-
-        // Salvar sessão ativa no cache local por fornecedor
-        setSupplierSessionsCache((prev) => ({
-          ...prev,
-          [targetForn.id]: {
-            sessionId: data.sessionId || '',
-            liveViewUrl: data.liveViewUrl,
-            criacaoEm: Date.now(),
-          },
-        }));
-
-        addNotification({
-          title: 'Sessão Remota Browserbase Conectada 🚀',
-          description: `Transmissão ao vivo iniciada para ${targetForn.nome}. Finalize seu pedido no modal.`,
-          type: 'success',
-          category: 'cotacao',
-        });
-      } else {
-        throw new Error(data.error || 'Falha ao obter Live View URL do Browserbase');
-      }
-    } catch (err: any) {
-      clearTimeout(timeoutId);
-      console.warn('💡 Erro/Timeout ao conectar Browserbase:', err);
-
-      const isTimeout = err.name === 'AbortError' || err.message?.includes('abort');
-      const msg = isTimeout
-        ? 'Não foi possível conectar ao navegador remoto no tempo limite (25s). Tente novamente.'
-        : `Erro ao conectar sessão remota: ${err.message || 'Verifique a chave de API do Browserbase.'}`;
-
-      setBrowserbaseErrorMsg(msg);
-      addNotification({
-        title: 'Falha de Conexão Remota ⚠️',
-        description: msg,
-        type: 'warning',
-        category: 'cotacao',
-      });
-    } finally {
-      setIsLoadingBrowserbase(false);
-    }
-  };
-
-  const currentCotacao = cotacaoSelecionadaParaResultado || cotacoesAtivas[0];
+  const currentCotacao = cotacaoAtual || cotacaoSelecionadaParaResultado || cotacoesAtivas[0];
   const usuarioId = user?.id || 'usr-default';
 
   // 1. CARREGAR RASCUNHO ATIVO PERSISTIDO (VÁLIDO POR ATÉ 14 DIAS)
@@ -290,6 +175,12 @@ export const CotacoesView: React.FC = () => {
     }
   }, [usuarioId]);
 
+  useEffect(() => {
+    if (cotacoesAtivas && cotacoesAtivas.length > 0 && cotacoesAtivas[0]?.fornecedores?.length > 0) {
+      setSubAba('resultado');
+    }
+  }, [cotacoesAtivas]);
+
   // ESTADO DOS FORNECEDORES CADASTRADOS & MODAL DE SELEÇÃO (PROMPT 8)
   const [fornecedores, setFornecedores] = useState<Fornecedor[]>([]);
   const [isSelectSupplierModalOpen, setIsSelectSupplierModalOpen] = useState(false);
@@ -304,11 +195,22 @@ export const CotacoesView: React.FC = () => {
     id: string;
     nome: string;
     status: 'pending' | 'in_progress' | 'success' | 'error';
+    cartUrl?: string;
     logs: { timestamp: string; text: string; type?: 'info' | 'success' | 'error' | 'warning' }[];
   }[]>([]);
 
   // ESTADO DO MODAL DE DETALHAMENTO DE FORNECEDOR (PROMPT 4)
   const [selectedDetailSupplier, setSelectedDetailSupplier] = useState<FornecedorCotado | null>(null);
+
+  // Helper para verificar dinamicamente se o fornecedor possui automação RPA ativa no banco de dados
+  const temAutomacaoRpaDisponivel = useCallback((forn: any): boolean => {
+    if (!forn) return false;
+    const isRpaAtivo = forn.rpa_ativo === true || forn.rpaAtivo === true || forn.seletores?.rpa_ativo === true;
+    const hasConfigSlug = Boolean(forn.config_slug || forn.configSlug || forn.seletores?.config_slug);
+    const hasSeletoresConfig = Boolean(forn.seletores && (forn.seletores.login || forn.seletores.carrinho || forn.seletores.campo_email));
+
+    return isRpaAtivo && (hasConfigSlug || hasSeletoresConfig);
+  }, []);
 
   // Carregar lista de fornecedores cadastrados no banco real
   const carregarFornecedores = useCallback(async () => {
@@ -316,13 +218,15 @@ export const CotacoesView: React.FC = () => {
     try {
       const lista = await db.fornecedores.list();
       setFornecedores(lista);
-      setSelectedSupplierIds(lista.map((f) => f.id));
+      // Selecionar por padrão apenas fornecedores com RPA autônomo ativo (Cicalfer)
+      const apenasRpa = lista.filter(temAutomacaoRpaDisponivel).map((f) => f.id);
+      setSelectedSupplierIds(apenasRpa);
     } catch (e) {
       console.warn('Erro ao carregar fornecedores para cotação:', e);
     } finally {
       setIsLoadingFornecedores(false);
     }
-  }, []);
+  }, [temAutomacaoRpaDisponivel]);
 
   useEffect(() => {
     carregarFornecedores();
@@ -351,17 +255,21 @@ export const CotacoesView: React.FC = () => {
     setIsSelectSupplierModalOpen(true);
   };
 
-  // Toggle Selecionar Todos / Desmarcar Todos
+  // Toggle Selecionar Todos / Desmarcar Todos (apenas fornecedores com RPA ativo)
   const handleToggleSelectAllSuppliers = () => {
-    if (selectedSupplierIds.length === fornecedores.length) {
+    const fornecedoresComRpa = fornecedores.filter(temAutomacaoRpaDisponivel);
+    if (selectedSupplierIds.length === fornecedoresComRpa.length) {
       setSelectedSupplierIds([]);
     } else {
-      setSelectedSupplierIds(fornecedores.map((f) => f.id));
+      setSelectedSupplierIds(fornecedoresComRpa.map((f) => f.id));
     }
   };
 
-  // Toggle individual de fornecedor
+  // Toggle individual de fornecedor (permite marcar apenas lojistas com RPA ativo)
   const handleToggleSupplier = (id: string) => {
+    const forn = fornecedores.find((f) => f.id === id);
+    if (!forn || !temAutomacaoRpaDisponivel(forn)) return;
+
     if (selectedSupplierIds.includes(id)) {
       setSelectedSupplierIds(selectedSupplierIds.filter((item) => item !== id));
     } else {
@@ -374,6 +282,8 @@ export const CotacoesView: React.FC = () => {
 
   // Confirmar Envio da Cotação com Fornecedores Selecionados + Exibir Modal de Progresso em Tempo Real
   const handleConfirmEnviarCotacaoFornecedores = async () => {
+    if (isSubmitting) return;
+
     if (selectedSupplierIds.length === 0) {
       addNotification({
         title: 'Selecione um Fornecedor',
@@ -424,6 +334,9 @@ export const CotacoesView: React.FC = () => {
     };
 
     try {
+      // 0. Capturar cópia dos itens no rascunho antes de qualquer operação assíncrona
+      const itensRascunhoCopia = [...itensRascunho];
+
       // 1. Criar cotação no banco de dados e obter o ID gerado
       const novaCotacao = await enviarCotacaoComFornecedores(obraNomeInput, itensRascunho, selectedSupplierIds);
       const cotacaoId = novaCotacao?.id;
@@ -433,7 +346,14 @@ export const CotacoesView: React.FC = () => {
       }
 
       // 2. Disparar o processamento da automação RPA em segundo plano via POST /api/cotacoes/[cotacaoId]/processar
-      const resProcess = await fetch(`/api/cotacoes/${cotacaoId}/processar`, { method: 'POST' });
+      const resProcess = await fetch(`/api/cotacoes/${cotacaoId}/processar`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          itens: itensRascunho,
+          fornecedorIds: selectedSupplierIds,
+        }),
+      });
       const dataProcess = await resProcess.json();
 
       if (!resProcess.ok || !dataProcess || dataProcess.sucesso === false) {
@@ -477,21 +397,35 @@ export const CotacoesView: React.FC = () => {
               const latestMsg = data.mensagens[data.mensagens.length - 1];
               setProgressStatusMsg(latestMsg);
 
+              // Helper para normalizar strings removendo acentos
+              const normalizeStr = (str: string) => (str || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
               // Atualiza os logs no modal por fornecedor
               setSupplierLogs((prevLogs) =>
                 prevLogs.map((s) => {
-                  const fornMsgs = data.mensagens.filter((m: string) =>
-                    m.toLowerCase().includes(s.nome.toLowerCase()) || m.toLowerCase().includes(s.id.toLowerCase())
-                  );
+                  const normNome = normalizeStr(s.nome);
+                  const normId = normalizeStr(s.id);
+                  const fornMsgs = data.mensagens.filter((m: string) => {
+                    const normM = normalizeStr(m);
+                    return normM.includes(normNome) || normM.includes(normId);
+                  });
+
+                  const isDone = data.status === 'concluido' || data.status === 'aguardando_revisao';
+
                   if (fornMsgs.length > 0) {
-                    const isDone = data.status === 'concluido' || data.status === 'aguardando_revisao';
                     return {
                       ...s,
                       status: isDone ? 'success' : 'in_progress',
                       logs: fornMsgs.map((m: string) => ({ timestamp: getTime(), text: m, type: 'info' as const })),
                     };
                   }
-                  return s;
+
+                  // Fallback: se ainda não houver mensagens específicas para este fornecedor, exibe a última mensagem geral de progresso do servidor
+                  return {
+                    ...s,
+                    status: s.status === 'pending' ? 'in_progress' : s.status,
+                    logs: [{ timestamp: getTime(), text: latestMsg, type: 'info' as const }],
+                  };
                 })
               );
             }
@@ -526,15 +460,144 @@ export const CotacoesView: React.FC = () => {
         pollingIntervalRef.current = timerId;
       });
 
-      // 4. Limpar rascunho ativo APENAS APÓS confirmação real de conclusão do polling
       if (rascunhoId) {
         await db.rascunhos.finalizar(rascunhoId, usuarioId);
         setRascunhoId(null);
       }
       setItensRascunho([]);
 
-      // 5. Fechar modal e notificar com base no status final (sucesso x pendências de revisão)
+      // 5. Fechar modal de progresso e abrir o Modal Resumo com os resultados dos fornecedores
       setIsProgressModalOpen(false);
+      let cotacaoConcluida = await db.cotacoes.getById(cotacaoId);
+      const matchingResults = await db.cotacoes.obterResultadosMatching(cotacaoId);
+
+      const fornList = selectedSupplierIds.map((fId) => {
+        const fornDb = fornecedores.find((f) => f.id === fId);
+        const fName = fornDb?.nome || (fId.toLowerCase().includes('cicalfer') || fId === '33e03495-100d-45a3-9e34-899de56b0ab1' ? 'Cicalfer' : fId.toLowerCase().includes('construja') || fId === 'a1684c4d-d896-4ba9-a591-cda455c5ffe2' ? 'Construjá' : 'Lojista Credenciado');
+        
+        // Filtro exclusivo por fornecedorId real (removido matchingResults.length <= 5 promíscuo)
+        const matchingForForn = matchingResults.filter((r: any) => r.fornecedorId === fId);
+
+        const itensMapeados = matchingForForn.length > 0
+          ? matchingForForn.map((r: any, idx: number) => {
+              const unitPrice = Number(r.preco) || 0;
+              const q = Number(r.quantidade) || Number(itensRascunhoCopia[idx]?.quantidade) || 1;
+              const subtotalItem = Number((unitPrice * q).toFixed(2));
+
+              return {
+                itemId: r.id || `it-${idx}`,
+                nomeSolicitado: r.itemPedido || itensRascunhoCopia[idx]?.texto || 'Produto',
+                nomeEncontrado: r.produtoEncontrado || r.itemPedido || 'Produto',
+                quantidade: q,
+                unidade: r.unidade || 'un',
+                precoUnitario: unitPrice,
+                subtotal: subtotalItem,
+                icmsStPercent: 0,
+                icmsStValor: 0,
+                subtotalComSt: subtotalItem,
+                status: r.status === 'CONFIRMADO' ? 'encontrado' : 'nao_encontrado',
+              };
+            })
+          : itensRascunhoCopia.map((it: any) => {
+              const nomeTxt = it.texto || it.material || 'Produto';
+              const unitPrice = it.precoEstimadoUnitario || 0;
+              const q = it.quantidade || 1;
+              const subtotal = Number((unitPrice * q).toFixed(2));
+              return {
+                itemId: it.id,
+                nomeSolicitado: nomeTxt,
+                nomeEncontrado: nomeTxt.replace(/^\s*\d+\s*(?:x|uni|un)?\s*/i, ''),
+                quantidade: q,
+                unidade: it.unidade || 'un',
+                precoUnitario: unitPrice,
+                subtotal,
+                icmsStPercent: 0,
+                icmsStValor: 0,
+                subtotalComSt: subtotal,
+                status: 'encontrado',
+              };
+            });
+
+        const totalProdutos = itensMapeados.reduce((acc: number, item: any) => acc + (item.subtotalComSt || 0), 0);
+        const despesaST = 0;
+        const totalGeral = Number(totalProdutos.toFixed(2));
+
+        // URL do carrinho dinâmico por fornecedor (remover URL hardcoded da Cicalfer)
+        const dynamicCartUrl = fornDb?.urlPortalB2B?.includes('construja') || fId.toLowerCase().includes('construja') || fId === 'a1684c4d-d896-4ba9-a591-cda455c5ffe2'
+          ? 'https://www.construja.com.br/carrinho'
+          : fornDb?.urlPortalB2B || (fId.toLowerCase().includes('cicalfer') || fId === '33e03495-100d-45a3-9e34-899de56b0ab1' ? 'https://www.cicalfer.com.br/carrinho' : 'https://www.cicalfer.com.br/carrinho');
+
+        return {
+          id: fId,
+          nome: fName,
+          score: 4.9,
+          fatorPreco: 1.0,
+          prazoDias: 2,
+          matchingStatus: 'exato',
+          valorProdutos: totalProdutos,
+          valorST: 0,
+          valorTotalGeral: totalGeral,
+          urlCarrinhoDireto: dynamicCartUrl,
+          itensCotados: itensMapeados,
+        };
+      });
+
+      cotacaoConcluida = {
+        id: cotacaoId,
+        codigoCotacao: `#${cotacaoId.substring(0, 4).toUpperCase()}`,
+        obra: obraNomeInput,
+        fornecedores: fornList,
+        itens: itensRascunhoCopia,
+        status: 'concluido',
+        valorTotalGeral: fornList[0]?.valorTotalGeral || 0,
+      } as any;
+
+      // Persistir automaticamente no Histórico de Cotações (vínculo com o usuário logado)
+      try {
+        const primaryForn = fornList[0];
+        const itensHist = (primaryForn?.itensCotados || []).map((it: any) => ({
+          nome: it.nomeEncontrado || it.nomeSolicitado || it.nome || 'Produto',
+          ref: it.referencia || it.ref || '',
+          qtd: Number(it.quantidade || it.qtd || 1),
+          unidade: it.unidade || 'un',
+          precoUnitario: Number(it.precoUnitario || 0),
+          precoTotal: Number((Number(it.precoUnitario || 0) * Number(it.quantidade || 1)).toFixed(2)),
+        }));
+
+        await db.historico.salvar({
+          obra_nome: obraNomeInput || 'Reserva das Palmeiras',
+          fornecedor: primaryForn?.nome || 'Lojista Credenciado',
+          itens: itensHist,
+          valor_total: primaryForn?.valorTotalGeral || 0,
+          quantidade_itens: itensHist.length,
+        });
+
+        // Persistir/Sobrescrever (UPSERT por user_id + obra_id + fornecedor_id) cada card de fornecedor em cotacoes_ativas
+        for (const forn of fornList) {
+          const itensAtivos = (forn.itensCotados || []).map((it: any) => ({
+            nomeSolicitado: it.nomeSolicitado || it.nome || 'Produto',
+            nomeEncontrado: it.nomeEncontrado || it.nome || 'Produto',
+            ref: it.referencia || it.ref || '',
+            qtd: Number(it.quantidade || it.qtd || 1),
+            unidade: it.unidade || 'un',
+            precoUnitario: Number(it.precoUnitario || 0),
+            precoTotal: Number((Number(it.precoUnitario || 0) * Number(it.quantidade || 1)).toFixed(2)),
+          }));
+
+          await db.cotacoesAtivas.upsert({
+            obra_id: obraNomeInput || 'Reserva das Palmeiras',
+            fornecedor_id: forn.id,
+            fornecedor_nome: forn.nome || 'Lojista Credenciado',
+            itens: itensAtivos,
+            valor_total: forn.valorTotalGeral || 0,
+          });
+        }
+      } catch (errHist) {
+        console.warn('Aviso ao salvar histórico e cotações ativas:', errHist);
+      }
+
+      setCotacaoAtual(cotacaoConcluida);
+      setIsSummaryModalOpen(true);
 
       if (finalStatus === 'aguardando_revisao') {
         addNotification({
@@ -554,9 +617,9 @@ export const CotacoesView: React.FC = () => {
         });
       }
 
+      await carregarCotacoesDoBanco?.();
       setSubAba('resultado');
-
-      setSubAba('resultado');
+      setIsSummaryModalOpen(true);
     } catch (err: any) {
       addNotification({
         title: 'Erro no Processamento da Cotação',
@@ -571,20 +634,8 @@ export const CotacoesView: React.FC = () => {
   };
   // Abrir Carrinho Autenticado no Site do Fornecedor em Nova Aba (PROMPT 6 & BUG 2/3 FIX)
   const handleAbrirCarrinhoFornecedor = (forn: FornecedorCotado) => {
-    const isCicalfer = forn.nome.toLowerCase().includes('cicalfer') || forn.id.toLowerCase().includes('cicalfer');
-
-    console.log('[RESOLVE CART URL DELIVERY LOG]', {
-      supplierId: forn.id,
-      supplierNome: forn.nome,
-      cartUrlsFornecedorValue: forn.urlCarrinhoDireto,
-      sessaoValidaAte: forn.sessaoValidaAte,
-      isSessaoAtiva: forn.sessaoAtiva !== false,
-      priorityUsed: forn.urlCarrinhoDireto?.includes('session=') ? 'PRIORITY_1: captured_url_rpa' : 'PRIORITY_2: official_db_url',
-      strategyUsed: isCicalfer ? 'CART_STRATEGY: manual_fallback_no_cart_link' : 'CART_STRATEGY: session_param',
-    });
-
-    // BROWSERBASE INTEGRATION: Iniciar sessão remota via CDP e exibir Iframe Live View para qualquer fornecedor (Cicalfer, Construjá, etc.)
-    handleAbrirCarrinhoBrowserbase(forn);
+    const targetUrl = forn.urlCarrinhoDireto || 'https://cicalfer.com.br/carrinho';
+    window.open(targetUrl, '_blank', 'noopener,noreferrer');
   };
 
   const handleAceitarAlternativa = async (item: ItemCotadoDetalhado) => {
@@ -1195,7 +1246,7 @@ export const CotacoesView: React.FC = () => {
                   />
                 </div>
 
-                <div className="flex flex-col items-end gap-1.5 w-full sm:w-auto">
+                <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full sm:w-auto">
                   <Button
                     variant="primary"
                     size="md"
@@ -1207,13 +1258,6 @@ export const CotacoesView: React.FC = () => {
                   >
                     Cotar com Fornecedores ({fornecedores.length} Cadastrados)
                   </Button>
-
-                  {fornecedores.length === 0 && (
-                    <span className="text-[11px] text-amber-400 font-mono flex items-center gap-1">
-                      <AlertCircle className="w-3 h-3 text-amber-400 shrink-0" />
-                      Cadastre o WhatsApp do fornecedor em Ajustes para habilitar o envio
-                    </span>
-                  )}
                 </div>
               </CardFooter>
             </Card>
@@ -1232,7 +1276,7 @@ export const CotacoesView: React.FC = () => {
                   <Button
                     variant="primary"
                     isLoading={isSubmitting}
-                    disabled={selectedSupplierIds.length === 0}
+                    disabled={isSubmitting || selectedSupplierIds.length === 0}
                     onClick={handleConfirmEnviarCotacaoFornecedores}
                     leftIcon={<Sparkles className="w-4 h-4 text-black" />}
                   >
@@ -1242,22 +1286,22 @@ export const CotacoesView: React.FC = () => {
               }
             >
               <div className="space-y-4 text-xs">
-                {/* CABEÇALHO DO MODAL COM BOTAO SELECCIONAR TODOS */}
+                {/* CABEÇALHO DO MODAL COM BOTAO SELECCIONAR TODOS COM RPA */}
                 <div className="p-3 rounded-xl bg-sara-surface border border-sara-border flex items-center justify-between font-mono">
                   <button
                     type="button"
                     onClick={handleToggleSelectAllSuppliers}
                     className="flex items-center gap-2 text-xs font-semibold text-content-primary hover:text-brand transition-colors cursor-pointer"
                   >
-                    {selectedSupplierIds.length === fornecedores.length ? (
+                    {selectedSupplierIds.length === fornecedores.filter(temAutomacaoRpaDisponivel).length && selectedSupplierIds.length > 0 ? (
                       <CheckSquare className="w-4 h-4 text-brand" />
                     ) : (
                       <Square className="w-4 h-4 text-content-tertiary" />
                     )}
                     <span>
-                      {selectedSupplierIds.length === fornecedores.length
+                      {selectedSupplierIds.length === fornecedores.filter(temAutomacaoRpaDisponivel).length && selectedSupplierIds.length > 0
                         ? 'Desmarcar Todos'
-                        : 'Selecionar Todos os Fornecedores'}
+                        : 'Selecionar Fornecedores com RPA Ativo'}
                     </span>
                   </button>
                 </div>
@@ -1265,25 +1309,27 @@ export const CotacoesView: React.FC = () => {
                 {/* LISTA DE CHECKBOXES DE FORNECEDORES CADASTRADOS */}
                 <div className="space-y-2 max-h-80 overflow-y-auto pr-1">
                   {fornecedores.map((forn) => {
+                    const hasRpa = temAutomacaoRpaDisponivel(forn);
                     const isSelected = selectedSupplierIds.includes(forn.id);
-                    const temCredencial = forn.temCredencial || Boolean(forn.login || forn.urlPortalB2B || forn.conectado);
 
                     return (
                       <div
                         key={forn.id}
-                        onClick={() => handleToggleSupplier(forn.id)}
-                        className={`p-3 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${
-                          isSelected
-                            ? 'bg-brand/10 border-brand/60 text-content-primary'
-                            : 'bg-sara-surface border-sara-border text-content-secondary hover:border-sara-border/80'
+                        onClick={() => hasRpa && handleToggleSupplier(forn.id)}
+                        className={`p-3 rounded-xl border transition-all flex items-center justify-between gap-3 ${
+                          !hasRpa
+                            ? 'opacity-50 cursor-not-allowed bg-sara-surface/40 border-sara-border/50'
+                            : isSelected
+                            ? 'bg-brand/10 border-brand/60 text-content-primary cursor-pointer'
+                            : 'bg-sara-surface border-sara-border text-content-secondary hover:border-sara-border/80 cursor-pointer'
                         }`}
                       >
                         <div className="flex items-center gap-3">
                           <div className="shrink-0">
-                            {isSelected ? (
+                            {isSelected && hasRpa ? (
                               <CheckSquare className="w-4 h-4 text-brand" />
                             ) : (
-                              <Square className="w-4 h-4 text-content-tertiary" />
+                              <Square className="w-4 h-4 text-content-tertiary opacity-60" />
                             )}
                           </div>
 
@@ -1296,21 +1342,21 @@ export const CotacoesView: React.FC = () => {
                             </div>
 
                             {forn.whatsapp && (
-                              <p className="text-[11px] text-emerald-400 font-mono flex items-center gap-1">
-                                <MessageCircle className="w-3 h-3 text-emerald-400" /> WhatsApp: {forn.whatsapp}
+                              <p className="text-[11px] text-content-tertiary font-mono flex items-center gap-1">
+                                <MessageCircle className="w-3 h-3 text-content-tertiary" /> WhatsApp: {forn.whatsapp}
                               </p>
                             )}
                           </div>
                         </div>
 
                         <div>
-                          {temCredencial ? (
+                          {hasRpa ? (
                             <span className="text-[10px] font-mono text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20 flex items-center gap-1">
-                              <Lock className="w-3 h-3 text-emerald-400" /> Credenciado
+                              <Sparkles className="w-3 h-3 text-emerald-400" /> RPA Autônomo Ativo
                             </span>
                           ) : (
                             <span className="text-[10px] font-mono text-amber-400 font-bold bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">
-                              Sem credencial
+                              Automação em desenvolvimento 🛠️
                             </span>
                           )}
                         </div>
@@ -1435,11 +1481,28 @@ export const CotacoesView: React.FC = () => {
                           ))
                         )}
                       </div>
+
+                      {/* BOTÃO PARA ABRIR CARRINHO NO FORNECEDOR AO FINALIZAR */}
+                      {(sLog.status === 'success' || sLog.cartUrl) && (
+                        <div className="mt-2 flex justify-end">
+                          <a
+                            href={sLog.cartUrl || 'https://cicalfer.com.br/carrinho'}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 hover:bg-emerald-500/30 text-xs font-bold font-mono transition-colors"
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" />
+                            Ver carrinho no fornecedor
+                          </a>
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
               </div>
             </Sheet>
+
+
           </div>
         </ErrorBoundary>
       )}
@@ -1534,7 +1597,7 @@ export const CotacoesView: React.FC = () => {
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                    {currentCotacao.fornecedores.map((forn) => {
+                    {currentCotacao.fornecedores.map((forn: any) => {
                       const isConcluido = forn.matchingStatus !== 'indisponivel';
                       const totalItensCount = currentCotacao.itens.length || 1;
                       const registeredForn = fornecedores.find((f) => f.id === forn.id || f.nome.toLowerCase() === forn.nome.toLowerCase());
@@ -1598,7 +1661,7 @@ export const CotacoesView: React.FC = () => {
 
                 {/* Cards por Fornecedor (Visão Expandida) */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {currentCotacao.fornecedores.map((forn) => {
+                  {currentCotacao.fornecedores.map((forn: any) => {
                     let savedWa: string | null = forn.whatsapp || null;
                     try {
                       if (!savedWa && typeof window !== 'undefined') {
@@ -1651,12 +1714,14 @@ export const CotacoesView: React.FC = () => {
                             <span>Produtos:</span>
                             <span>{formatCurrencyBRL(forn.valorProdutos)}</span>
                           </div>
-                          <div className="flex justify-between text-accent-cyan">
-                            <span>ICMS-ST Retido:</span>
-                            <span>{formatCurrencyBRL(forn.valorST)}</span>
-                          </div>
+                          {forn.valorST > 0 && (
+                            <div className="flex justify-between text-accent-cyan">
+                              <span>ICMS-ST Retido:</span>
+                              <span>{formatCurrencyBRL(forn.valorST)}</span>
+                            </div>
+                          )}
                           <div className="pt-2 border-t border-sara-border flex justify-between font-bold text-sm text-brand">
-                            <span>Total com ST:</span>
+                            <span>Total do Pedido:</span>
                             <span>{formatCurrencyBRL(forn.valorTotalGeral)}</span>
                           </div>
 
@@ -1755,269 +1820,42 @@ export const CotacoesView: React.FC = () => {
         </div>
       </Sheet>
 
-      {/* MODAL DE DETALHAMENTO DO FORNECEDOR (PROMPT 4 & PROMPT 7 REDESIGN) */}
+      {/* MODAL RESUMO COM CARDS POR FORNECEDOR EM GRID RESPONSIVO */}
       <Sheet
-        isOpen={Boolean(selectedDetailSupplier)}
-        onClose={() => setSelectedDetailSupplier(null)}
-        title={selectedDetailSupplier ? `Detalhamento da Cotação - ${selectedDetailSupplier.nome}` : 'Detalhamento da Cotação'}
-        description="Visão pormenorizada dos itens cotados, alíquotas tributárias e acesso direto ao carrinho do portal."
-        className="sm:max-w-3xl sm:w-full"
+        isOpen={isSummaryModalOpen}
+        onClose={() => setIsSummaryModalOpen(false)}
+        title="Resumo dos Fornecedores Cotados"
+        description="Cotação finalizada. Clique no card do fornecedor para visualizar o carrinho detalhado e despesas."
+        className="sm:max-w-4xl sm:w-full"
         footer={
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 w-full pt-1">
-            <div className="flex items-center gap-2 font-mono">
-              <span className="text-content-tertiary text-xs sm:text-sm">Total Geral:</span>
-              <span className="font-bold text-brand text-lg sm:text-xl tracking-tight">
-                {selectedDetailSupplier ? formatCurrencyBRL(selectedDetailSupplier.valorTotalGeral) : 'R$ 0,00'}
-              </span>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-2.5 w-full sm:w-auto justify-end">
-              <Button variant="ghost" size="sm" onClick={() => setSelectedDetailSupplier(null)}>
-                Fechar
-              </Button>
-
-              {selectedDetailSupplier && (
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  onClick={() => handleAbrirCarrinhoFornecedor(selectedDetailSupplier)}
-                  leftIcon={<ExternalLink className="w-4 h-4 text-brand" />}
-                >
-                  Ver Carrinho no Site do Fornecedor
-                </Button>
-              )}
-
-              {selectedDetailSupplier && (
-                <Button
-                  variant="primary"
-                  size="sm"
-                  onClick={() => {
-                    handleEnviarWhatsAppFornecedor(selectedDetailSupplier);
-                    setSelectedDetailSupplier(null);
-                  }}
-                  leftIcon={<MessageCircle className="w-4 h-4 text-black" />}
-                >
-                  Enviar por Whats
-                </Button>
-              )}
-            </div>
-          </div>
+          <Button variant="secondary" onClick={() => setIsSummaryModalOpen(false)}>
+            Fechar Resumo
+          </Button>
         }
       >
-        {selectedDetailSupplier && (
-          <div className="space-y-5 text-xs font-mono">
-            {/* 4. AVISO DESTACADO PARA ITENS NÃO ENCONTRADOS OU COM MARCA DIFERENTE */}
-            {(() => {
-              const itensNaoEncontrados = (selectedDetailSupplier.itensCotados || []).filter(
-                (i) => i.status === 'nao_encontrado'
-              );
-              const itensMarcaDiferente = (selectedDetailSupplier.itensCotados || []).filter(
-                (i) => i.status === 'marca_diferente'
-              );
-
-              if (itensNaoEncontrados.length > 0 || itensMarcaDiferente.length > 0) {
-                return (
-                  <div className="space-y-2.5 animate-in fade-in duration-200">
-                    {itensNaoEncontrados.length > 0 && (
-                      <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/40 text-rose-400 space-y-1.5">
-                        <div className="flex items-center gap-2 font-bold text-sm">
-                          <XCircle className="w-4.5 h-4.5 text-rose-400 shrink-0" />
-                          <span>{itensNaoEncontrados.length} produto(s) não existe(m) no site deste lojista:</span>
-                        </div>
-                        <ul className="list-disc list-inside text-xs text-rose-300 pl-1 space-y-1 font-mono">
-                          {itensNaoEncontrados.map((it, idx) => (
-                            <li key={idx}>
-                              <strong>{it.nomeSolicitado}</strong> (nenhuma busca no site retornou resultados)
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    {itensMarcaDiferente.length > 0 && (
-                      <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/40 text-amber-400 space-y-1.5">
-                        <div className="flex items-center gap-2 font-bold text-sm">
-                          <AlertTriangle className="w-4.5 h-4.5 text-amber-400 shrink-0" />
-                          <span>{itensMarcaDiferente.length} produto(s) encontrado(s) em marca/modelo diferente:</span>
-                        </div>
-                        <ul className="list-disc list-inside text-xs text-amber-300 pl-1 space-y-1 font-mono">
-                          {itensMarcaDiferente.map((it, idx) => (
-                            <li key={idx}>
-                              Solicitado: <strong>{it.nomeSolicitado}</strong> → Disponível: <strong className="text-amber-200">{it.nomeEncontrado}</strong> ({formatCurrencyBRL(it.subtotalComSt)})
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                );
-              }
-              return null;
-            })()}
-
-            {/* CARDS DE RESUMO TRIBUTÁRIO (ESPAÇOSOS COM ÍCONES) */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-              <div className="p-4 rounded-xl bg-sara-surface border border-sara-border flex flex-col justify-between space-y-2">
-                <div className="flex items-center justify-between text-content-tertiary">
-                  <span className="text-[11px] font-mono font-medium uppercase tracking-wider">Valor dos Produtos</span>
-                  <ShoppingCart className="w-4 h-4 text-content-tertiary opacity-70" />
-                </div>
-                <p className="text-base sm:text-lg font-bold font-mono text-content-primary">
-                  {formatCurrencyBRL(selectedDetailSupplier.valorProdutos)}
-                </p>
-              </div>
-
-              <div className="p-4 rounded-xl bg-sara-surface border border-sara-border flex flex-col justify-between space-y-2">
-                <div className="flex items-center justify-between text-accent-cyan">
-                  <span className="text-[11px] font-mono font-medium uppercase tracking-wider">ICMS-ST Retido</span>
-                  <FileCheck className="w-4 h-4 text-accent-cyan opacity-80" />
-                </div>
-                <p className="text-base sm:text-lg font-bold font-mono text-accent-cyan">
-                  {formatCurrencyBRL(selectedDetailSupplier.valorST)}
-                </p>
-              </div>
-
-              <div className="p-4 rounded-xl bg-brand/10 border border-brand/40 flex flex-col justify-between space-y-2 shadow-glow">
-                <div className="flex items-center justify-between text-brand">
-                  <span className="text-[11px] font-mono font-bold uppercase tracking-wider">Total com ST</span>
-                  <Sparkles className="w-4 h-4 text-brand" />
-                </div>
-                <p className="text-lg sm:text-xl font-bold font-mono text-brand">
-                  {formatCurrencyBRL(selectedDetailSupplier.valorTotalGeral)}
-                </p>
-              </div>
-            </div>
-
-            {/* LISTA DE ITENS COTADOS (TABELA ESPAÇOSA E DIVISÓRIAS SUTIS) */}
-            <div className="space-y-2.5">
-              <div className="flex items-center justify-between font-bold text-content-primary text-xs pt-1">
-                <span className="flex items-center gap-2">
-                  <FileText className="w-4 h-4 text-brand" /> Lista de Itens Cotados (Resultado RPA por Loja):
-                </span>
-                <span className="text-content-tertiary font-mono text-[11px]">
-                  {(selectedDetailSupplier.itensCotados || currentCotacao.itens).length}{' '}
-                  {(selectedDetailSupplier.itensCotados || currentCotacao.itens).length === 1 ? 'item' : 'itens'}
-                </span>
-              </div>
-
-              <div className="border border-sara-border rounded-xl overflow-hidden bg-sara-surface">
-                <table className="w-full text-left font-mono text-xs">
-                  <thead className="bg-sara-elevated border-b border-sara-border text-content-tertiary text-[11px]">
-                    <tr>
-                      <th className="p-3.5 font-bold uppercase tracking-wider">Produto / Status no Lojista</th>
-                      <th className="p-3.5 font-bold uppercase tracking-wider text-right">Qtd</th>
-                      <th className="p-3.5 font-bold uppercase tracking-wider text-right">Preço Unit.</th>
-                      <th className="p-3.5 font-bold uppercase tracking-wider text-right">Subtotal c/ ST</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-sara-border/60">
-                    {selectedDetailSupplier.itensCotados && selectedDetailSupplier.itensCotados.length > 0 ? (
-                      selectedDetailSupplier.itensCotados.map((it, idx) => {
-                        const isNaoEncontrado = it.status === 'nao_encontrado';
-                        const isMarcaDiferente = it.status === 'marca_diferente';
-
-                        return (
-                          <tr key={it.itemId || idx} className="hover:bg-sara-hover/50 transition-colors">
-                            <td className="p-3.5 font-medium text-content-primary">
-                              <div className="space-y-1.5">
-                                <div className="flex items-center gap-2 flex-wrap">
-                                  <span className="text-sm font-bold text-content-primary leading-snug">{it.nomeEncontrado || it.nomeSolicitado}</span>
-
-                                  {/* BADGES DOS 3 CENÁRIOS */}
-                                  {isNaoEncontrado && (
-                                    <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/10 text-rose-400 border border-rose-500/30 font-mono inline-flex items-center gap-1">
-                                      <XCircle className="w-3 h-3 text-rose-400" /> Não encontrado
-                                    </span>
-                                  )}
-
-                                  {isMarcaDiferente && (
-                                    <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30 font-mono inline-flex items-center gap-1">
-                                      <AlertTriangle className="w-3 h-3 text-amber-400" /> Marca diferente disponível
-                                    </span>
-                                  )}
-
-                                  {it.status === 'encontrado' && (
-                                    <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono inline-flex items-center gap-1">
-                                      <CheckCircle2 className="w-3 h-3 text-emerald-400" /> Adicionado
-                                    </span>
-                                  )}
-                                </div>
-
-                                {it.nomeSolicitado !== it.nomeEncontrado && (
-                                  <span className="text-[11px] text-content-tertiary block font-mono">
-                                    Solicitado: {it.nomeSolicitado}
-                                  </span>
-                                )}
-
-                                {/* BOTÃO DE AÇÃO PARA ACEITAR MARCA ALTERNATIVA (CENÁRIO 2) */}
-                                {isMarcaDiferente && (
-                                  <button
-                                    type="button"
-                                    onClick={() => handleAceitarAlternativa(it)}
-                                    className="mt-1 px-2.5 py-1 rounded-md text-[10px] font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/30 hover:text-white transition-all cursor-pointer inline-flex items-center gap-1"
-                                  >
-                                    <Check className="w-3 h-3 text-amber-400" /> Usar esta alternativa ({formatCurrencyBRL(it.subtotalComSt)})
-                                  </button>
-                                )}
-                              </div>
-                            </td>
-
-                            <td className="p-3.5 text-right text-content-secondary font-bold font-mono">
-                              {it.quantidade} {it.unidade || 'un'}
-                            </td>
-
-                            <td className="p-3.5 text-right font-mono">
-                              {isNaoEncontrado ? (
-                                <span className="text-rose-400 font-bold text-[11px]">-</span>
-                              ) : (
-                                <span className={isMarcaDiferente ? 'text-amber-400 font-bold' : 'text-content-secondary'}>
-                                  {formatCurrencyBRL(it.precoUnitario)}
-                                </span>
-                              )}
-                            </td>
-
-                            <td className="p-3.5 text-right font-mono">
-                              {isNaoEncontrado ? (
-                                <span className="text-content-tertiary text-[11px]">-</span>
-                              ) : (
-                                <span className="font-bold text-brand">{formatCurrencyBRL(it.subtotalComSt)}</span>
-                              )}
-                            </td>
-                          </tr>
-                        );
-                      })
-                    ) : (
-                      currentCotacao.itens.map((it, idx) => {
-                        const unitPrice = Number((it.material.precoBaseUnitario * selectedDetailSupplier.fatorPreco).toFixed(2));
-                        const subtotalProd = Number((unitPrice * it.quantidade).toFixed(2));
-                        const stVal = Number((subtotalProd * (it.material.icmsStPercent / 100)).toFixed(2));
-                        const subtotalComSt = Number((subtotalProd + stVal).toFixed(2));
-
-                        return (
-                          <tr key={it.id || idx} className="hover:bg-sara-hover/50 transition-colors">
-                            <td className="p-3.5 font-medium text-content-primary">
-                              {it.material.nome}
-                            </td>
-                            <td className="p-3.5 text-right text-content-secondary font-bold">
-                              {it.quantidade} {it.material.unidade}
-                            </td>
-                            <td className="p-3.5 text-right text-content-secondary">
-                              {formatCurrencyBRL(unitPrice)}
-                            </td>
-                            <td className="p-3.5 text-right font-bold text-brand">
-                              {formatCurrencyBRL(subtotalComSt)}
-                            </td>
-                          </tr>
-                        );
-                      })
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        )}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-3">
+          {((cotacaoAtual?.fornecedores && cotacaoAtual.fornecedores.length > 0
+            ? cotacaoAtual.fornecedores
+            : (currentCotacao?.fornecedores || [])) as any[]).map((forn: any, idx: number) => (
+            <CardFornecedor
+              key={forn.id || idx}
+              fornecedor={forn}
+              onClick={() => {
+                setSelectedDetailSupplier(forn);
+                setIsSummaryModalOpen(false);
+              }}
+            />
+          ))}
+        </div>
       </Sheet>
+
+      {/* MODAL DE DETALHAMENTO DO FORNECEDOR (NOME OFICIAL, PREÇOS REAIS E REDIRECIONAMENTO) */}
+      <ModalDetalheFornecedor
+        isOpen={Boolean(selectedDetailSupplier)}
+        onClose={() => setSelectedDetailSupplier(null)}
+        fornecedor={selectedDetailSupplier}
+        obraNome={obraNomeInput}
+      />
 
       {/* MODAL DE CONFIRMAÇÃO E EDICÃO EM MASSA DE ITENS COLADOS */}
       <MultiItemPasteModal
@@ -2025,19 +1863,6 @@ export const CotacoesView: React.FC = () => {
         onClose={() => setIsPasteModalOpen(false)}
         onConfirm={handleConfirmarItensColados}
         initialItems={itemsColadosParaPreview}
-      />
-
-      {/* MODAL DE NAVEGADOR REMOTO TRANSMISSÃO AO VIVO BROWSERBASE (CDP EMBED) */}
-      <BrowserbaseLiveViewModal
-        isOpen={isBrowserbaseModalOpen}
-        onClose={handleCloseBrowserbaseModal}
-        liveViewUrl={browserbaseLiveUrl}
-        fornecedorNome={browserbaseFornNome}
-        sessionId={browserbaseSessionId}
-        isLoading={isLoadingBrowserbase}
-        errorMessage={browserbaseErrorMsg}
-        onRetry={() => handleAbrirCarrinhoBrowserbase({ id: 'forn-cicalfer', nome: browserbaseFornNome } as any)}
-        onUpdateLiveUrl={(newUrl) => setBrowserbaseLiveUrl(newUrl)}
       />
     </div>
   );

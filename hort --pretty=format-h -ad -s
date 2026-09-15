@@ -1,0 +1,29 @@
+[33m6dba164[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m feat: implement cotacao_fornecedor_sessoes table structure with composite key (cotacao_id, fornecedor_id) upsert and query
+[33m2babf4c[m logging: add immediate logs for session creation and explicit Supabase save status
+[33m3e71b81[m fix: scope browserbase_session_id by (cotacaoId, fornecedorId) and add explicit Supabase update error logging
+[33m9e658b6[m fix: implement all 7 PASSO 2 rules (single session creation, disconnect only, Supabase session persistence, route reuse, structured logs, key=liveViewUrl iframe, no fallback URLs)
+[33m0e5ffe9[m fix: remove premature return in session reuse to ensure CDP connection and page.goto navigation runs for every session
+[33m21dc202[m fix: make HTTP 429 and 402 error status code mapping case-insensitive
+[33m91b804d[m fix: map 429 and 402 error messages to explicit HTTP 429 and 402 status codes in API route
+[33m776fe3a[m fix: implement RUNNING session reuse, REQUEST_RELEASE session cleanup, and explicit 429/402 error handling
+[33m9d55dc7[m feat: add 30-second session status polling logger after navigation
+[33mf18b797[m fix: normalize supplier URL protocol and add explicit before/after page.goto navigation logs
+[33m2f7984b[m perf: reduce session timeout to 180s and implement explicit session closure on modal exit
+[33m4bf2202[m fix: implement session cache per supplier, auto-cleanup of old sessions < 3 limit, JWT token refresh, and DOM iframe preservation
+[33m7bc5f7a[m fix: enforce keepAlive and timeout on Browserbase sessions and prevent premature browser closure
+[33m1d20661[m fix: resolve exact supplier name from database for real-time progress message matching
+[33me246ac9[m feat: emit item-by-item granular progress messages with supplier name for real-time modal streaming
+[33m6e9ec48[m fix: ensure status fallback returns 100% when quotation results exist
+[33md11f4f2[m fix: persist quotation progress in database and use Browserbase remote CDP in serverless environment
+[33m6c4bdaa[m perf: generate signed debuggerFullscreenUrl immediately after page.goto to eliminate delay before iframe rendering
+[33mb689e47[m fix: strictly require signed debuggerFullscreenUrl to prevent fallback to dashboard sign-in URLs
+[33m15888ab[m fix: reorder Browserbase session creation to execute page.goto before generating debug URL and returning response
+[33m5b92621[m fix: validate dataProcess.sucesso and handle aguardando_revisao notification in handleConfirmEnviarCotacaoFornecedores
+[33m5f6d060[m fix: store polling timerId in pollingIntervalRef and clear interval on component unmount
+[33m913d66b[m feat: replace simulated sleep loop with real polling via GET /api/cotacoes/[cotacaoId]/status
+[33m5328e66[m feat: trigger /api/cotacoes/[cotacaoId]/processar POST after creating quote in handleConfirmEnviarCotacaoFornecedores
+[33m0a0532c[m fix: add HTTP API fallback in db.fornecedores.list for browser rendering resilience
+[33m316dcd7[m fix: enable Browserbase live view modal for all suppliers and enhance step logs
+[33m403ac3f[m feat: add debug-env route and browserbase integration
+[33mdd4b749[m Atualizações do projeto Saracota
+[33m42b9a7d[m Commit inicial do aplicativo Saracota

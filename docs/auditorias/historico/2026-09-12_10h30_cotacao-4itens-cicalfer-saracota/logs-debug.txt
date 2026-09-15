@@ -1,0 +1,46 @@
+[2026-09-12T13:32:47.168Z] ================================================================
+[2026-09-12T13:32:47.169Z] 🚀 EXECUÇÃO REAL DE COTAÇÃO 4 ITENS CICALFER NA SARACOTA
+[2026-09-12T13:32:47.169Z] ================================================================
+[2026-09-12T13:32:47.294Z] Credenciais Cicalfer obtidas: User "santanacomercial2021@gmail.com" | Senha válida: true
+[2026-09-12T13:32:47.453Z] 1. Gerando Print 1: Tela da SaraCota com os 4 itens inseridos...
+[2026-09-12T13:32:47.681Z] Saved Print 1: C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h30_cotacao-4itens-cicalfer-saracota\prints\01_saracota_itens_inseridos.png
+[2026-09-12T13:32:47.681Z] 
+2. Efetuando login no portal B2B da Cicalfer...
+[2026-09-12T13:33:05.050Z] Saved Print 2: C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h30_cotacao-4itens-cicalfer-saracota\prints\02_cicalfer_login_sucesso.png
+[2026-09-12T13:33:05.051Z] 
+Cotando Item 1/4: "2 x CABO FLEX 100M COBRECOM 2,50MM" (Qtd: 2)...
+[2026-09-12T13:33:15.522Z] Saved Print 3 (1/4): C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h30_cotacao-4itens-cicalfer-saracota\prints\03_busca_item1.png
+[2026-09-12T13:33:15.522Z] 
+Cotando Item 2/4: "5 x DUCHA LORENZETTI BELLA DUCHA 127V" (Qtd: 5)...
+[2026-09-12T13:33:25.894Z] Saved Print 3 (2/4): C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h30_cotacao-4itens-cicalfer-saracota\prints\03_busca_item2.png
+[2026-09-12T13:33:25.894Z] 
+Cotando Item 3/4: "5 x CARRINHO DE MÃO ESFERA EXTRA FORTE 60 LTS" (Qtd: 5)...
+[2026-09-12T13:33:36.295Z] Saved Print 3 (3/4): C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h30_cotacao-4itens-cicalfer-saracota\prints\03_busca_item3.png
+[2026-09-12T13:33:36.295Z] 
+Cotando Item 4/4: "7 x DUCHA LORENZETTI TOP JET MULTI 127V" (Qtd: 7)...
+[2026-09-12T13:33:46.690Z] Saved Print 3 (4/4): C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h30_cotacao-4itens-cicalfer-saracota\prints\03_busca_item4.png
+[2026-09-12T13:33:46.690Z] 
+4. Navegando para a página do carrinho Cicalfer...
+[2026-09-12T13:33:50.195Z] Saved Print 4: C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h30_cotacao-4itens-cicalfer-saracota\prints\04_carrinho_cicalfer_precos.png
+[2026-09-12T13:33:50.195Z] 
+5. Executando extração dinâmica dos dados do carrinho...
+[2026-09-12T13:33:53.395Z] 
+====================================================
+[2026-09-12T13:33:53.395Z] 🔍 [EVIDÊNCIA RAW DEBUG] LOG DOS PREÇOS EXTRAÍDOS BRUTOS (.fs-14.fw-bold):
+[2026-09-12T13:33:53.395Z]    └─ Item #1 | Titulo: "CABO FLEX 100M COBRECOM 2,50MM AZ REF: 10673" | 1º .fs-14.fw-bold (Unit): "R$235,16" | 2º .fs-14.fw-bold (Total): "R$1.646,12"
+[2026-09-12T13:33:53.395Z]    └─ Item #2 | Titulo: "CABO FLEX 100M COBRECOM 2,50MM AM REF: 10672" | 1º .fs-14.fw-bold (Unit): "R$235,16" | 2º .fs-14.fw-bold (Total): "R$470,32"
+[2026-09-12T13:33:53.395Z] ====================================================
+
+[2026-09-12T13:33:53.448Z] Saved Print 5: C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h30_cotacao-4itens-cicalfer-saracota\prints\05_console_log_raw_precos.png
+[2026-09-12T13:33:53.449Z] 
+6. Persistindo cotação no Supabase (cotacao_id: "5ba96b23-dcd9-49e0-a1a6-a355d942c22b")...
+[2026-09-12T13:33:53.831Z] ⚠️ Aviso na tabela cotacoes (RLS): new row violates row-level security policy for table "cotacoes"
+[2026-09-12T13:33:53.894Z] ✅ Matching salvo no DAL e Supabase com sucesso.
+[2026-09-12T13:33:53.894Z] 
+7. Gerando Print 6: Modal de Resultado da SaraCota...
+[2026-09-12T13:33:53.977Z] Saved Print 6: C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h30_cotacao-4itens-cicalfer-saracota\prints\06_modal_resultado_saracota.png
+[2026-09-12T13:33:53.977Z] 
+8. Gerando Print 7: Tabela do Supabase com os registros salvos...
+[2026-09-12T13:33:54.037Z] Saved Print 7: C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-12_10h30_cotacao-4itens-cicalfer-saracota\prints\07_supabase_cotacoes_itens.png
+[2026-09-12T13:33:54.037Z] 
+9. Gravando arquivos de auditoria em docs/auditorias/historico/...

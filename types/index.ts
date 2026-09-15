@@ -81,7 +81,11 @@ export interface Fornecedor {
   rawSenhaCriptografada?: string;
   observacoes?: string;
   temCredencial?: boolean;
-  seletores?: Record<string, string> | null;
+  rpa_ativo?: boolean;
+  rpaAtivo?: boolean;
+  config_slug?: string;
+  configSlug?: string;
+  seletores?: Record<string, any> | null;
   historicoExecucoesRPA?: RegistroExecucaoRPA[];
 }
 
@@ -203,4 +207,44 @@ export interface CotacaoRascunho {
   criadoEm: string;
   ultimaEdicaoEm: string;
   expiraEm: string;
+}
+
+export interface DBRecordHistoricoCotacao {
+  id: string;
+  user_id: string;
+  obra_nome: string;
+  fornecedor: string;
+  itens: Array<{
+    nome: string;
+    ref?: string;
+    qtd: number;
+    precoUnitario: number;
+    precoTotal: number;
+    unidade?: string;
+    [key: string]: any;
+  }>;
+  valor_total: number;
+  quantidade_itens: number;
+  criado_em: string;
+  expira_em: string;
+}
+
+export interface DBRecordCotacaoAtiva {
+  id: string;
+  user_id: string;
+  obra_id: string;
+  fornecedor_id: string;
+  fornecedor_nome: string;
+  itens: Array<{
+    nome: string;
+    ref?: string;
+    qtd: number;
+    precoUnitario: number;
+    precoTotal: number;
+    unidade?: string;
+    [key: string]: any;
+  }>;
+  valor_total: number;
+  status: string;
+  atualizado_em: string;
 }

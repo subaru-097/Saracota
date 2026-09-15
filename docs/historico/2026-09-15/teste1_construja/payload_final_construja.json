@@ -1,0 +1,107 @@
+{
+  "fornecedor": "Construjá",
+  "slug": "construja",
+  "fornecedor_id": "a1684c4d-d896-4ba9-a591-cda455c5ffe2",
+  "data_execucao": "2026-09-15T15:43:48.609Z",
+  "cartUrl": "https://www.construja.com.br/?access=denied",
+  "resumoGeral": {
+    "resumoTabelaEncontrada": false,
+    "totalItens": 0,
+    "despesaAcessoria": 0,
+    "totalPedido": 0
+  },
+  "itensCotadosCount": 0,
+  "itensExtracao": [],
+  "itensResultadosBusca": [
+    {
+      "termo": "CAIXA DA AGUA FECHADA FORTLEV 310L",
+      "tituloProduto": "FORTLEV - CX DAGUA C/TAMPA 310L",
+      "qPedida": 3,
+      "loteSize": 1,
+      "qAjustada": 3,
+      "logRegra": "Cliente pediu 3, lote unitário (1 em 1) → quantidade mantida em 3.",
+      "unitPriceStr": "R$ 0,00",
+      "status": "ENCONTRADO"
+    },
+    {
+      "termo": "DUCHA LORENZETTI BELLA DUCHA 127V",
+      "tituloProduto": "LORENZETTI - DUCHA BELLA DUCHA ULTRA 5500X127",
+      "qPedida": 6,
+      "loteSize": 1,
+      "qAjustada": 6,
+      "logRegra": "Cliente pediu 6, lote unitário (1 em 1) → quantidade mantida em 6.",
+      "unitPriceStr": "R$ 0,00",
+      "status": "ENCONTRADO"
+    },
+    {
+      "termo": "BIANCO 900G",
+      "qPedida": 4,
+      "loteSize": 1,
+      "qAjustada": 0,
+      "status": "FALHA",
+      "erro": "Sem correlação semântica entre busca \"BIANCO 900G\" e resultado \"\"",
+      "unitPriceStr": "R$ 0,00"
+    },
+    {
+      "termo": "DUCHA LORENZETTI MAXI DUCHA 127V",
+      "tituloProduto": "LORENZETTI - DUCHA MAXI DUCHA ULTRA 5500X127",
+      "qPedida": 7,
+      "loteSize": 1,
+      "qAjustada": 7,
+      "logRegra": "Cliente pediu 7, lote unitário (1 em 1) → quantidade mantida em 7.",
+      "unitPriceStr": "R$ 0,00",
+      "status": "ENCONTRADO"
+    },
+    {
+      "termo": "ALICATE BOMBA D AGUA MTX 10",
+      "tituloProduto": "EDA - ALICATE PRESSAO CURVO 10 5RO",
+      "qPedida": 12,
+      "loteSize": 1,
+      "qAjustada": 12,
+      "logRegra": "Cliente pediu 12, lote unitário (1 em 1) → quantidade mantida em 12.",
+      "unitPriceStr": "R$ 0,00",
+      "status": "ENCONTRADO"
+    },
+    {
+      "termo": "CONDUITE CORR AM FORTLEV 25MM 50M",
+      "tituloProduto": "KRONA - CORRUGADO PVC 32MM AM METRO/25",
+      "qPedida": 5,
+      "loteSize": 25,
+      "qAjustada": 25,
+      "logRegra": "Cliente pediu 5, lote de 25 em 25, mais próximo é 25 (distâncias: baixo=20, alto=20) → quantidade ajustada para 25.",
+      "unitPriceStr": "R$ 0,00",
+      "status": "ENCONTRADO"
+    },
+    {
+      "termo": "ALICATE PRESSAO CURVO MTX 10",
+      "tituloProduto": "EDA - ALICATE PRESSAO CURVO 10 5RO",
+      "qPedida": 2,
+      "loteSize": 1,
+      "qAjustada": 2,
+      "logRegra": "Cliente pediu 2, lote unitário (1 em 1) → quantidade mantida em 2.",
+      "unitPriceStr": "R$ 0,00",
+      "status": "ENCONTRADO"
+    },
+    {
+      "termo": "APLICADOR SILICONE REFOR SPARTA",
+      "tituloProduto": "EDA - APLICADOR SILICONE PROF",
+      "qPedida": 5,
+      "loteSize": 1,
+      "qAjustada": 5,
+      "logRegra": "Cliente pediu 5, lote unitário (1 em 1) → quantidade mantida em 5.",
+      "unitPriceStr": "R$ 0,00",
+      "status": "ENCONTRADO"
+    },
+    {
+      "termo": "BROCA CHATA MADEIRA IRWIN 1/2",
+      "tituloProduto": "IRWIN - BROCA CHATA E 1/2 PRO",
+      "qPedida": 7,
+      "loteSize": 1,
+      "qAjustada": 7,
+      "logRegra": "Cliente pediu 7, lote unitário (1 em 1) → quantidade mantida em 7.",
+      "unitPriceStr": "R$ 0,00",
+      "status": "ENCONTRADO"
+    }
+  ],
+  "errosExtracao": []
+}

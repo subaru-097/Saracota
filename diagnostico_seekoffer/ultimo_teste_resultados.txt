@@ -1,0 +1,63 @@
+=====================================================
+RESUMO DOS TESTES DE LOGIN (CRITÉRIO ESTRITO DE AUTENTICAÇÃO)
+=====================================================
+Data/Hora da Execução: 2026-09-09_15-44-36 (2026-09-09T18:46:18.005Z)
+Fornecedor Testado: SeekOffer
+Pasta da Execução: C:\Users\User\Desktop\Saracota\diagnostico_seekoffer\2026-09-09_15-44-36
+Total de Tentativas: 10
+Taxa Real de Sucesso: 0 / 10 (0%)
+Total de Falhas: 10 / 10
+-----------------------------------------------------
+
+Detalhamento por Tentativa:
+-----------------------------------------------------
+Tentativa #1: [FALHA]
+  - Duração: 13.82s
+  - URL Final: https://domainmanage.com/
+  - Motivo/Resultado: Redirecionamento suspeito para domínio de parking / não reconhecido (domainmanage.com)
+-----------------------------------------------------
+Tentativa #2: [FALHA]
+  - Duração: 9.65s
+  - URL Final: https://domainmanage.com/
+  - Motivo/Resultado: Redirecionamento suspeito para domínio de parking / não reconhecido (domainmanage.com)
+-----------------------------------------------------
+Tentativa #3: [FALHA]
+  - Duração: 9.76s
+  - URL Final: https://domainmanage.com/
+  - Motivo/Resultado: Redirecionamento suspeito para domínio de parking / não reconhecido (domainmanage.com)
+-----------------------------------------------------
+Tentativa #4: [FALHA]
+  - Duração: 9.26s
+  - URL Final: https://domainmanage.com/
+  - Motivo/Resultado: Redirecionamento suspeito para domínio de parking / não reconhecido (domainmanage.com)
+-----------------------------------------------------
+Tentativa #5: [FALHA]
+  - Duração: 9.05s
+  - URL Final: https://domainmanage.com/
+  - Motivo/Resultado: Redirecionamento suspeito para domínio de parking / não reconhecido (domainmanage.com)
+-----------------------------------------------------
+Tentativa #6: [FALHA]
+  - Duração: 9.15s
+  - URL Final: https://domainmanage.com/
+  - Motivo/Resultado: Redirecionamento suspeito para domínio de parking / não reconhecido (domainmanage.com)
+-----------------------------------------------------
+Tentativa #7: [FALHA]
+  - Duração: 11.42s
+  - URL Final: https://domainmanage.com/
+  - Motivo/Resultado: Redirecionamento suspeito para domínio de parking / não reconhecido (domainmanage.com)
+-----------------------------------------------------
+Tentativa #8: [FALHA]
+  - Duração: 9.36s
+  - URL Final: https://domainmanage.com/
+  - Motivo/Resultado: Redirecionamento suspeito para domínio de parking / não reconhecido (domainmanage.com)
+-----------------------------------------------------
+Tentativa #9: [FALHA]
+  - Duração: 10.76s
+  - URL Final: https://domainmanage.com/
+  - Motivo/Resultado: Redirecionamento suspeito para domínio de parking / não reconhecido (domainmanage.com)
+-----------------------------------------------------
+Tentativa #10: [FALHA]
+  - Duração: 9.03s
+  - URL Final: https://domainmanage.com/
+  - Motivo/Resultado: Redirecionamento suspeito para domínio de parking / não reconhecido (domainmanage.com)
+-----------------------------------------------------

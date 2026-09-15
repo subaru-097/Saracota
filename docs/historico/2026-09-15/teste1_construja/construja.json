@@ -1,0 +1,36 @@
+{
+  "fornecedor_id": "a1684c4d-d896-4ba9-a591-cda455c5ffe2",
+  "slug": "construja",
+  "nome": "Construjá",
+  "base_url": "https://www.construja.com.br",
+  "url_site": "https://www.construja.com.br/produtos",
+  "selectors": {
+    "cookie_accept": "button:has-text(\"Aceitar todos\"), button:has-text(\"Aceitar\")",
+    "login_trigger": "button#botao-login, button[label=\"Entrar\"], strong:has-text(\"Entre ou cadastre-se\"), strong:has-text(\"Entre\")",
+    "email_input": "input[name=\"email\"].form-control, input[name=\"email\"]",
+    "password_input": "input#senha[name=\"senha\"].form-control, input#senha, input[type=\"password\"]",
+    "login_submit": "button#btn-entrar, .modal button[type=\"submit\"], button:has-text(\"Entrar\"), div:has-text(\"Entrar\")",
+    "filial_cards": "button.ModalClienteFilial_optionCard__vj1Sf, #select-filial",
+    "filial_confirm": "button:has-text(\"Confirmar seleção\"), span:has-text(\"Confirmar seleção\")",
+    "search_input": "input[name=\"search\"]",
+    "search_button": "button#botao-busca-produtos",
+    "search_url_pattern": "/produtos?pagina=1&busca={query}",
+    "product_card_title": ".ProdutoCompactCarrinho_productTitle__n7FXX, a[href^=\"/produto/\"]",
+    "product_lote_pattern": "VENDE DE {X} EM {X}",
+    "quantity_input": "input.QuantidadeMaisMenos_input__grKxO, input[type=\"number\"]",
+    "add_to_cart_button": "button:has-text(\"Comprar\"), button:has-text(\"Adicionar\"), button.btn-adicionar, button[type=\"submit\"]",
+    "modal_confirm_alteration": "div.modal:has-text(\"Confirmar alteração\"), div.modal:has-text(\"orçamento\")",
+    "modal_confirm_button": "button:has-text(\"Confirmar alteração\"), button:has-text(\"Confirmar\")",
+    "cart_url": "/carrinho",
+    "cart_item_container": "div[class*=\"ProdutoCompactCarrinho_itemContainer\"], div[class*=\"itemContainer\"]",
+    "cart_item_title": ".ProdutoCompactCarrinho_productTitle__n7FXX, span[class*=\"productTitle\"]",
+    "cart_item_price": ".fs-14.fw-bold",
+    "cart_summary_table": "table.table-bordered, table",
+    "view_cart_button": "button#botao-abrir-carrinho, button.componentes-ver_carrinho-color, button:has-text(\"Ver carrinho\")"
+  },
+  "lote_rules": {
+    "default_lot_text": "VENDE DE",
+    "fallback_lot_size": 1
+  },
+  "default_filial_keyword": "ENTREGA"
+}

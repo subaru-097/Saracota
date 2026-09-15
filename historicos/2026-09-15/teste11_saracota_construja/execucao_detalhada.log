@@ -1,0 +1,66 @@
+[2026-09-15T19:41:54.224Z] =================================================================
+[2026-09-15T19:41:54.225Z] === INÍCIO DO DIAGNÓSTICO TESTE 11: CONSTRUJÁ SOLO NA SARACOTA ===
+[2026-09-15T19:41:54.226Z] =================================================================
+[2026-09-15T19:41:54.624Z] Passo 1: Navegando para http://localhost:3000/cotacoes...
+[2026-09-15T19:41:55.125Z] [BROWSER CONSOLE INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-09-15T19:41:55.340Z] [BROWSER CONSOLE LOG] [ProtectedRoute] Verification loading... Timer 4.5s iniciado.
+[2026-09-15T19:41:55.343Z] [BROWSER CONSOLE LOG] [ProtectedRoute] Verification loading... Timer 4.5s iniciado.
+[2026-09-15T19:41:55.424Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 (Not Found)
+[2026-09-15T19:41:55.947Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T19:41:55.949Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T19:41:55.949Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T19:41:55.950Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T19:41:56.165Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T19:41:56.166Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T19:41:56.292Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T19:41:56.315Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T19:41:58.357Z] Clicando na sub-aba "Bloco de Notas"...
+[2026-09-15T19:41:59.412Z] Passo 2.1: Inserindo Item 1 ("3x Caixa d'Água Fortlev 310L")...
+[2026-09-15T19:41:59.483Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T19:42:00.244Z] Passo 2.2: Inserindo Item 2 ("6x Ducha Lorenzetti Bella Ducha 127V")...
+[2026-09-15T19:42:00.285Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T19:42:01.067Z] Passo 3: Clicando em "Cotar com Fornecedores"...
+[2026-09-15T19:42:02.134Z] Passo 4: Selecionando APENAS o fornecedor Construjá no modal...
+[2026-09-15T19:42:02.137Z] Desmarcando fornecedores pré-selecionados...
+[2026-09-15T19:42:02.475Z] Marcando o card da Construjá...
+[2026-09-15T19:42:03.082Z] Screenshot do modal salvo em 00_modal_apenas_construja.png
+[2026-09-15T19:42:03.083Z] Passo 5: Clicando no botão "Cotar (1)" para disparar cotação da Construjá...
+[2026-09-15T19:42:03.130Z] [TIMELINE] Timestamp do clique no botão Cotar: 2026-09-15T19:42:03.130Z
+[2026-09-15T19:42:03.167Z] [BROWSER CONSOLE LOG] [RESOLVE CART URL BEFORE CALL] {supplierId: a1684c4d-d896-4ba9-a591-cda455c5ffe2, supplierName: Construjá, rawCapturedUrl: undefined, rawOfficialPortalUrl: https://www.construja.com.br/produtos}
+[2026-09-15T19:42:03.168Z] [BROWSER CONSOLE LOG] [CART_STRATEGY LOG] {supplier: Construjá, priority: PRIORITY_2: official_db_url, strategy: session_param, resolvedUrl: https://www.construja.com.br/carrinho}
+[2026-09-15T19:42:03.169Z] [BROWSER CONSOLE LOG] [RPA DEBUG URL PERSISTED] {fornecedores: Array(1)}
+[2026-09-15T19:42:03.170Z] [BROWSER CONSOLE LOG] [DB JOB INVALIDAÇÃO] Cotações anteriores marcadas como expiradas ao iniciar nova cotação.
+[2026-09-15T19:42:03.368Z] [HTTP REQ] POST http://localhost:3000/api/cotacoes/080364b3-836b-4885-b9db-fabc58cccdde/processar
+[2026-09-15T19:42:03.369Z] [HTTP REQ BODY] {"itens":[{"id":"item-1789501320255-tf1n","texto":"6x Ducha Lorenzetti Bella Ducha 127V","quantidade":6,"origem":"texto","criadoEm":"16:42"},{"id":"item-1789501319428-3bb5","texto":"3x Caixa d'Água Fortlev 310L","quantidade":3,"origem":"texto","criadoEm":"16:41"}],"fornecedorIds":["a1684c4d-d896-4ba9-a591-cda455c5ffe2"]}
+[2026-09-15T19:42:03.579Z] Screenshot 01 salvo em 01_apos_clicar_cotar.png
+[2026-09-15T19:42:03.592Z] [BROWSER CONSOLE LOG] Automação RPA iniciada com sucesso: {sucesso: true, status: processamento iniciado, mensagem: Processamento de cotação com robôs RPA iniciado em…a a cotação 080364b3-836b-4885-b9db-fabc58cccdde., cotacaoId: 080364b3-836b-4885-b9db-fabc58cccdde, timestamp: 2026-09-15T19:42:03.590Z}
+[2026-09-15T19:42:03.594Z] [HTTP RES 200] http://localhost:3000/api/cotacoes/080364b3-836b-4885-b9db-fabc58cccdde/processar -> {"sucesso":true,"status":"processamento iniciado","mensagem":"Processamento de cotação com robôs RPA iniciado em segundo plano para a cotação 080364b3-836b-4885-b9db-fabc58cccdde.","cotacaoId":"080364b3-836b-4885-b9db-fabc58cccdde","timestamp":"2026-09-15T19:42:03.590Z"}
+[2026-09-15T19:42:05.630Z] Screenshot 02 salvo em 02_redirecionamento_ou_progresso.png
+[2026-09-15T19:42:05.630Z] Passo 6: Monitorando status do servidor por 25s...
+[2026-09-15T19:42:06.595Z] [HTTP REQ] GET http://localhost:3000/api/cotacoes/080364b3-836b-4885-b9db-fabc58cccdde/status
+[2026-09-15T19:42:06.619Z] [HTTP RES 200] http://localhost:3000/api/cotacoes/080364b3-836b-4885-b9db-fabc58cccdde/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":2,"percentualConcluido":25,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Construjá] 🚀 Iniciando Motor Central de Cotação RPA...","[Construjá] 🔑 Autenticando e selecionando Filial B2B..."],"cotacaoId":"080364b3-836b-4885-b9db-fabc58cccdde","timestamp":"2026-09-15T19:42:03.857Z"}
+[2026-09-15T19:42:08.639Z] Check 1/8 (3s): URL = http://localhost:3000/cotacoes
+[2026-09-15T19:42:09.592Z] [HTTP REQ] GET http://localhost:3000/api/cotacoes/080364b3-836b-4885-b9db-fabc58cccdde/status
+[2026-09-15T19:42:09.613Z] [HTTP RES 200] http://localhost:3000/api/cotacoes/080364b3-836b-4885-b9db-fabc58cccdde/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":2,"percentualConcluido":25,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Construjá] 🚀 Iniciando Motor Central de Cotação RPA...","[Construjá] 🔑 Autenticando e selecionando Filial B2B..."],"cotacaoId":"080364b3-836b-4885-b9db-fabc58cccdde","timestamp":"2026-09-15T19:42:03.857Z"}
+[2026-09-15T19:42:11.641Z] Check 2/8 (6s): URL = http://localhost:3000/cotacoes
+[2026-09-15T19:42:11.685Z] Screenshot 03 salvo em 03_progresso_intermediario.png
+[2026-09-15T19:42:12.593Z] [HTTP REQ] GET http://localhost:3000/api/cotacoes/080364b3-836b-4885-b9db-fabc58cccdde/status
+[2026-09-15T19:42:12.615Z] [HTTP RES 200] http://localhost:3000/api/cotacoes/080364b3-836b-4885-b9db-fabc58cccdde/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":2,"percentualConcluido":25,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Construjá] 🚀 Iniciando Motor Central de Cotação RPA...","[Construjá] 🔑 Autenticando e selecionando Filial B2B..."],"cotacaoId":"080364b3-836b-4885-b9db-fabc58cccdde","timestamp":"2026-09-15T19:42:03.857Z"}
+[2026-09-15T19:42:14.689Z] Check 3/8 (9s): URL = http://localhost:3000/cotacoes
+[2026-09-15T19:42:15.594Z] [HTTP REQ] GET http://localhost:3000/api/cotacoes/080364b3-836b-4885-b9db-fabc58cccdde/status
+[2026-09-15T19:42:15.616Z] [HTTP RES 200] http://localhost:3000/api/cotacoes/080364b3-836b-4885-b9db-fabc58cccdde/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":2,"percentualConcluido":25,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Construjá] 🚀 Iniciando Motor Central de Cotação RPA...","[Construjá] 🔑 Autenticando e selecionando Filial B2B..."],"cotacaoId":"080364b3-836b-4885-b9db-fabc58cccdde","timestamp":"2026-09-15T19:42:03.857Z"}
+[2026-09-15T19:42:17.693Z] Check 4/8 (12s): URL = http://localhost:3000/cotacoes
+[2026-09-15T19:42:18.595Z] [HTTP REQ] GET http://localhost:3000/api/cotacoes/080364b3-836b-4885-b9db-fabc58cccdde/status
+[2026-09-15T19:42:18.617Z] [HTTP RES 200] http://localhost:3000/api/cotacoes/080364b3-836b-4885-b9db-fabc58cccdde/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":2,"percentualConcluido":25,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Construjá] 🚀 Iniciando Motor Central de Cotação RPA...","[Construjá] 🔑 Autenticando e selecionando Filial B2B...","[Construjá] 🔍 Cotando e ajustando quantidade em lote: 6x Ducha Lorenzetti Bella Ducha 127V..."],"cotacaoId":"080364b3-836b-4885-b9db-fabc58cccdde","timestamp":"2026-09-15T19:42:17.361Z"}
+[2026-09-15T19:42:20.700Z] Check 5/8 (15s): URL = http://localhost:3000/cotacoes
+[2026-09-15T19:42:21.595Z] [HTTP REQ] GET http://localhost:3000/api/cotacoes/080364b3-836b-4885-b9db-fabc58cccdde/status
+[2026-09-15T19:42:21.618Z] [HTTP RES 200] http://localhost:3000/api/cotacoes/080364b3-836b-4885-b9db-fabc58cccdde/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":2,"percentualConcluido":25,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Construjá] 🚀 Iniciando Motor Central de Cotação RPA...","[Construjá] 🔑 Autenticando e selecionando Filial B2B...","[Construjá] 🔍 Cotando e ajustando quantidade em lote: 6x Ducha Lorenzetti Bella Ducha 127V..."],"cotacaoId":"080364b3-836b-4885-b9db-fabc58cccdde","timestamp":"2026-09-15T19:42:17.361Z"}
+[2026-09-15T19:42:23.703Z] Check 6/8 (18s): URL = http://localhost:3000/cotacoes
+[2026-09-15T19:42:24.596Z] [HTTP REQ] GET http://localhost:3000/api/cotacoes/080364b3-836b-4885-b9db-fabc58cccdde/status
+[2026-09-15T19:42:24.621Z] [HTTP RES 200] http://localhost:3000/api/cotacoes/080364b3-836b-4885-b9db-fabc58cccdde/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":2,"percentualConcluido":25,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Construjá] 🚀 Iniciando Motor Central de Cotação RPA...","[Construjá] 🔑 Autenticando e selecionando Filial B2B...","[Construjá] 🔍 Cotando e ajustando quantidade em lote: 6x Ducha Lorenzetti Bella Ducha 127V...","[Construjá] 🔍 Cotando e ajustando quantidade em lote: 3x Caixa d'Água Fortlev 310L..."],"cotacaoId
+[2026-09-15T19:42:26.716Z] Check 7/8 (21s): URL = http://localhost:3000/cotacoes
+[2026-09-15T19:42:27.597Z] [HTTP REQ] GET http://localhost:3000/api/cotacoes/080364b3-836b-4885-b9db-fabc58cccdde/status
+[2026-09-15T19:42:27.620Z] [HTTP RES 200] http://localhost:3000/api/cotacoes/080364b3-836b-4885-b9db-fabc58cccdde/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":2,"percentualConcluido":25,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Construjá] 🚀 Iniciando Motor Central de Cotação RPA...","[Construjá] 🔑 Autenticando e selecionando Filial B2B...","[Construjá] 🔍 Cotando e ajustando quantidade em lote: 6x Ducha Lorenzetti Bella Ducha 127V...","[Construjá] 🔍 Cotando e ajustando quantidade em lote: 3x Caixa d'Água Fortlev 310L..."],"cotacaoId
+[2026-09-15T19:42:29.730Z] Check 8/8 (24s): URL = http://localhost:3000/cotacoes
+[2026-09-15T19:42:29.771Z] Screenshot 04 salvo em 04_resultado_final.png
+[2026-09-15T19:42:29.826Z] === TESTE 11 CONSTRUJÁ SOLO CONCLUÍDO ===

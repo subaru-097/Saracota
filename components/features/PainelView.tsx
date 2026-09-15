@@ -30,6 +30,16 @@ export const PainelView: React.FC<PainelViewProps> = ({
 }) => {
   const { cotacoesAtivas } = useCotacoesSession();
 
+  // Filtrar apenas cotações com status 'pendente' ou 'em_analise' e ignorar registros fantasma (valor_total = 0 sem itens)
+  const cotacoesExibicao = cotacoesAtivas.filter((cot) => {
+    const isAtiva = cot.status === 'em_analise' || (cot as any).status === 'pendente';
+    const isInativa = cot.status === 'aprovada' || cot.status === 'recusada' || (cot as any).status === 'finalizada';
+    const temItens = cot.itens && cot.itens.length > 0;
+    const temItensForn = cot.fornecedores?.some((f) => f.itensCotados && f.itensCotados.length > 0);
+    const isGhost = cot.valorTotalGeral === 0 && !temItens && !temItensForn;
+    return isAtiva && !isInativa && !isGhost;
+  });
+
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
       {/* Top Banner Header */}
@@ -99,64 +109,7 @@ export const PainelView: React.FC<PainelViewProps> = ({
         </Link>
       </div>
 
-      {/* Cards de Cotações Recentes Dinâmicos da Sessão */}
-      <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h3 className="text-xs font-mono uppercase tracking-wider text-content-tertiary flex items-center gap-2">
-            <Clock className="w-4 h-4 text-brand" /> Cotações Ativas na Sessão ({cotacoesAtivas.length})
-          </h3>
-          <Link href="/cotacoes" className="cursor-pointer">
-            <Button variant="ghost" size="sm">
-              Ver Todas
-            </Button>
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {cotacoesAtivas.map((cot) => (
-            <Link key={cot.id} href="/cotacoes" className="block cursor-pointer">
-              <Card variant="default" className="flex flex-col justify-between hover:border-brand/40 transition-colors h-full">
-                <CardHeader className="pb-3 border-b border-sara-border">
-                  <div className="flex items-center justify-between mb-2">
-                    <Badge variant="brand" size="sm">
-                      {cot.codigo}
-                    </Badge>
-                    <Badge variant={cot.status === 'em_analise' ? 'brand' : 'emerald'} size="sm">
-                      {cot.status === 'em_analise' ? 'Em Cotação' : 'Aprovada'}
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-base">{cot.obra}</CardTitle>
-                  <CardDescription className="text-xs">
-                    {cot.itens.length} itens • {cot.dataCriacao}
-                  </CardDescription>
-                </CardHeader>
-
-                <CardContent className="pt-3 space-y-2 text-xs font-mono">
-                  <div className="flex justify-between items-center text-content-secondary">
-                    <span>Lojista Principal:</span>
-                    <strong className="text-content-primary font-sans">{cot.fornecedorVencedorNome}</strong>
-                  </div>
-                  <div className="flex justify-between items-center pt-2 border-t border-sara-border/50">
-                    <span className="text-content-tertiary">Valor Total:</span>
-                    <span className="text-base font-bold text-brand">{formatCurrencyBRL(cot.valorTotalGeral)}</span>
-                  </div>
-                </CardContent>
-
-                <CardFooter className="pt-3 border-t border-sara-border">
-                  <Button
-                    variant="secondary"
-                    size="sm"
-                    className="w-full justify-between"
-                    rightIcon={<ArrowRight className="w-3.5 h-3.5" />}
-                  >
-                    Abrir Cotação
-                  </Button>
-                </CardFooter>
-              </Card>
-            </Link>
-          ))}
-        </div>
-      </div>
     </div>
   );
 };
+

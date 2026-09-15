@@ -1,0 +1,107 @@
+{
+  "sucesso": true,
+  "fornecedor": "Construjá",
+  "fornecedor_id": "a1684c4d-d896-4ba9-a591-cda455c5ffe2",
+  "dataExecucao": "2026-09-15T16:08:32.760Z",
+  "totalGeralPedido": 51.96,
+  "itensCotados": [
+    {
+      "solicitado": "CAIXA DA AGUA FECHADA FORTLEV 310L",
+      "quantidadePedida": 3,
+      "status": "NÃO LOCALIZADO",
+      "produtoEncontrado": "N/A",
+      "precoUnitario": 0,
+      "subtotal": 0,
+      "printBusca": "06_busca_item_1.png",
+      "printAdicao": "N/A"
+    },
+    {
+      "solicitado": "DUCHA LORENZETTI BELLA DUCHA 127V",
+      "quantidadePedida": 6,
+      "status": "ADICIONADO",
+      "produtoEncontrado": "NORMAL#127207EMB: 1Emb. Venda:22 Master:22PÇ",
+      "precoUnitario": 17.32,
+      "subtotal": 103.92,
+      "printBusca": "08_busca_item_2.png",
+      "printAdicao": "09_item_2_adicionado.png"
+    },
+    {
+      "solicitado": "BIANCO 900G",
+      "quantidadePedida": 4,
+      "status": "NÃO LOCALIZADO",
+      "produtoEncontrado": "N/A",
+      "precoUnitario": 0,
+      "subtotal": 0,
+      "printBusca": "10_busca_item_3.png",
+      "printAdicao": "N/A"
+    },
+    {
+      "solicitado": "DUCHA LORENZETTI MAXI DUCHA 127V",
+      "quantidadePedida": 7,
+      "status": "ADICIONADO",
+      "produtoEncontrado": "NORMAL#127130EMB: 1Emb. Venda:21 Master:21 CX",
+      "precoUnitario": 17.32,
+      "subtotal": 121.24000000000001,
+      "printBusca": "12_busca_item_4.png",
+      "printAdicao": "13_item_4_adicionado.png"
+    },
+    {
+      "solicitado": "ALICATE BOMBA D AGUA MTX 10",
+      "quantidadePedida": 12,
+      "status": "NÃO LOCALIZADO",
+      "produtoEncontrado": "N/A",
+      "precoUnitario": 0,
+      "subtotal": 0,
+      "printBusca": "14_busca_item_5.png",
+      "printAdicao": "N/A"
+    },
+    {
+      "solicitado": "CONDUITE CORR AM FORTLEV 25MM 50M",
+      "quantidadePedida": 5,
+      "status": "NÃO LOCALIZADO",
+      "produtoEncontrado": "N/A",
+      "precoUnitario": 0,
+      "subtotal": 0,
+      "printBusca": "16_busca_item_6.png",
+      "printAdicao": "N/A"
+    },
+    {
+      "solicitado": "ALICATE PRESSAO CURVO MTX 10",
+      "quantidadePedida": 2,
+      "status": "ADICIONADO",
+      "produtoEncontrado": "NORMAL#180197EMB: 1Emb. Venda:48 Master:48 UN",
+      "precoUnitario": 17.32,
+      "subtotal": 34.64,
+      "printBusca": "18_busca_item_7.png",
+      "printAdicao": "19_item_7_adicionado.png"
+    },
+    {
+      "solicitado": "APLICADOR SILICONE REFOR SPARTA",
+      "quantidadePedida": 5,
+      "status": "NÃO LOCALIZADO",
+      "produtoEncontrado": "N/A",
+      "precoUnitario": 0,
+      "subtotal": 0,
+      "printBusca": "20_busca_item_8.png",
+      "printAdicao": "N/A"
+    },
+    {
+      "solicitado": "BROCA CHATA MADEIRA IRWIN 1/2",
+      "quantidadePedida": 7,
+      "status": "ADICIONADO",
+      "produtoEncontrado": "NORMAL#17094EMB: 1Emb. Venda:6 Master:1 UN",
+      "precoUnitario": 17.32,
+      "subtotal": 121.24000000000001,
+      "printBusca": "22_busca_item_9.png",
+      "printAdicao": "23_item_9_adicionado.png"
+    }
+  ],
+  "itensExtraidosCarrinho": [
+    {
+      "titulo": "TEK BOND - SPRAY METALICO PRETO 350ML",
+      "precoUnitario": 17.32,
+      "quantidade": 3,
+      "subtotal": 51.96
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+=====================================================
+RELATÓRIO DE EXECUÇÃO DE COTAÇÃO COMPLETA
+=====================================================
+Data/Hora: 2026-09-09T19:10:19.691Z
+Fornecedor: Cicalfer (URL: https://cicalfer.com.br/)
+Usuário Usado (DB): san***@gmail.com
+Produto Cotado: CABO FLEX 100M COBRECOM 2,50MM
+Quantidade: 5 unidades
+Subpasta da Execução: C:\Users\User\Desktop\Saracota\diagnostico_cicalfer\2026-09-09_16-10-13
+-----------------------------------------------------
+
+DETALHAMENTO DAS ETAPAS (1 a 6):
+-----------------------------------------------------
+ETAPA 1 - LOGIN: [FALHA]
+  - Observação: Erro: locator.click: Unexpected token "=" while parsing css selector "button#botao-login, text=Entrar | Cadastrar". Did you mean to CSS.escape it?
+Call log:
+[2m  - waiting for button#botao-login, text=Entrar | Cadastrar >> nth=0[22m
+
+  - Screenshot: C:\Users\User\Desktop\Saracota\diagnostico_cicalfer\2026-09-09_16-10-13\ERRO_etapa_falha.png
+-----------------------------------------------------
+
+RESULTADO FINAL DECLARADO:
+COTAÇÃO INTERROMPIDA NA ETAPA 1

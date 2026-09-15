@@ -1,0 +1,64 @@
+{
+  "cotacao": {
+    "id": "2acc0212-bcb2-41bd-9249-1a05da71c8cd",
+    "user_id": "61ab64e4-c2cb-46df-bb14-6cc326293085",
+    "fornecedores_selecionados": [
+      "33e03495-100d-45a3-9e34-899de56b0ab1"
+    ],
+    "itens": [
+      {
+        "unidade": "un",
+        "material": "CAIXA D AGUA FECHADA FORTLEV 310L REF: 10263",
+        "categoria": "eletrica",
+        "quantidade": 5,
+        "preco_unitario": 438.03
+      },
+      {
+        "unidade": "un",
+        "material": "DUCHA LORENZETTI MAXI DUCHA 127V 5500W REF: 11137",
+        "categoria": "eletrica",
+        "quantidade": 5,
+        "preco_unitario": 83.44
+      },
+      {
+        "unidade": "un",
+        "material": "BIANCO OTTO 900G REF: OTTO010",
+        "categoria": "eletrica",
+        "quantidade": 10,
+        "preco_unitario": 31.35
+      },
+      {
+        "unidade": "un",
+        "material": "ALICATE BOMBA D AGUA MTX 10 REF: 13330",
+        "categoria": "eletrica",
+        "quantidade": 5,
+        "preco_unitario": 33.8
+      },
+      {
+        "unidade": "un",
+        "material": "DUCHA LORENZETTI BELLA DUCHA 127V 5500W REF: 11239",
+        "categoria": "eletrica",
+        "quantidade": 2,
+        "preco_unitario": 77.8
+      }
+    ],
+    "status": "carrinho_pronto",
+    "resultado": null,
+    "criado_em": "2026-09-14T19:24:22.158709+00:00",
+    "atualizado_em": "2026-09-14T19:24:22.158709+00:00",
+    "valor_total": 3245.45,
+    "browserbase_session_id": "https://cicalfer.com.br/carrinho"
+  },
+  "itens": [],
+  "sessoes": [
+    {
+      "id": "8edbde77-9490-4ab4-9d6e-35199674a8e6",
+      "cotacao_id": "2acc0212-bcb2-41bd-9249-1a05da71c8cd",
+      "fornecedor_id": "33e03495-100d-45a3-9e34-899de56b0ab1",
+      "browserbase_session_id": "{\"origem\":\"RPA_MATCHING_ENGINE\",\"totalGeral\":3245.4499999999994,\"itens\":[{\"itemPedido\":\"CAIXA DE ÁGUA FECHADA FORTLEV 310 LITROS\",\"status\":\"CONFIRMADO\",\"confianca\":95,\"produtoEncontrado\":\"CAIXA D AGUA FECHADA FORTLEV 310L REF: 10263\",\"preco\":438.03,\"quantidade\":5,\"totalItem\":2190.15,\"link\":\"https://cicalfer.com.br/carrinho\",\"fornecedorId\":\"33e03495-100d-45a3-9e34-899de56b0ab1\"},{\"itemPedido\":\"DUCHA LORENZETTI MAXI DUCHA 127V\",\"status\":\"CONFIRMADO\",\"confianca\":95,\"produtoEncontrado\":\"DUCHA LORENZETTI MAXI DUCHA 127V 5500W REF: 11137\",\"preco\":83.44,\"quantidade\":5,\"totalItem\":417.2,\"link\":\"https://cicalfer.com.br/carrinho\",\"fornecedorId\":\"33e03495-100d-45a3-9e34-899de56b0ab1\"},{\"itemPedido\":\"BIANCO 900G\",\"status\":\"CONFIRMADO\",\"confianca\":95,\"produtoEncontrado\":\"BIANCO OTTO 900G REF: OTTO010\",\"preco\":31.35,\"quantidade\":10,\"totalItem\":313.5,\"link\":\"https://cicalfer.com.br/carrinho\",\"fornecedorId\":\"33e03495-100d-45a3-9e34-899de56b0ab1\"},{\"itemPedido\":\"ALICATE BOMBA D'ÁGUA MTX 10\",\"status\":\"CONFIRMADO\",\"confianca\":95,\"produtoEncontrado\":\"ALICATE BOMBA D AGUA MTX 10 REF: 13330\",\"preco\":33.8,\"quantidade\":5,\"totalItem\":169,\"link\":\"https://cicalfer.com.br/carrinho\",\"fornecedorId\":\"33e03495-100d-45a3-9e34-899de56b0ab1\"},{\"itemPedido\":\"DUCHA LORENZETTI BELLA DUCHA 127V\",\"status\":\"CONFIRMADO\",\"confianca\":95,\"produtoEncontrado\":\"DUCHA LORENZETTI BELLA DUCHA 127V 5500W REF: 11239\",\"preco\":77.8,\"quantidade\":2,\"totalItem\":155.6,\"link\":\"https://cicalfer.com.br/carrinho\",\"fornecedorId\":\"33e03495-100d-45a3-9e34-899de56b0ab1\"}],\"dataCriacao\":\"2026-09-14T19:24:22.933Z\"}",
+      "status": "carrinho_pronto",
+      "created_at": "2026-09-14T19:24:22.259216+00:00",
+      "updated_at": "2026-09-14T19:24:22.933+00:00"
+    }
+  ]
+}

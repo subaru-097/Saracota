@@ -1,0 +1,24 @@
+=====================================================
+RELATÓRIO DE DIAGNÓSTICO DA EXECUÇÃO 2026-09-09_15-44-36
+Fornecedor: SeekOffer
+=====================================================
+
+Subpasta da Execução: C:\Users\User\Desktop\Saracota\diagnostico_seekoffer\2026-09-09_15-44-36
+Data/Hora: 2026-09-09T18:46:18.007Z
+
+1. ANÁLISE DE ROTA E DOMÍNIO:
+ - A URL inicial https://www.seekoffer.com redireciona para domainmanage.com (domínio de parking/venda).
+ - O botão "Login" navega para a página de login do DomainManage.
+
+2. AVALIAÇÃO DE SELETORES:
+ - campo_email: input[name="email"] -> Localizado e preenchido
+ - campo_senha: input[name="password"] -> Localizado e preenchido
+ - botao_entrar: button[type="submit"] -> Clicado
+
+3. RESULTADO DA AUTENTICAÇÃO (CRITÉRIO ESTRITO):
+ - Status Final: FALHA (Redirecionamento para domínio de parking)
+ - Motivo: O domínio final (https://domainmanage.com/) pertence a parking de domínios (domainmanage.com) e não a um portal B2B funcional do fornecedor.
+
+4. HISTÓRICO E RETENÇÃO:
+ - Execução arquivada com sucesso na subpasta: 2026-09-09_15-44-36
+ - Retenção automática aplicada (máximo 20 execuções mantidas em C:\Users\User\Desktop\Saracota\diagnostico_seekoffer).

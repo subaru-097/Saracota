@@ -1,0 +1,66 @@
+# MAPEAMENTO SUPABASE - FORNECEDOR CONSTRUJÁ
+
+**ID:** a1684c4d-d896-4ba9-a591-cda455c5ffe2
+**Nome:** Construjá
+**RPA Ativo:** true
+**Config Slug:** construja
+**URL Login:** https://www.construja.com.br/produtos
+**Login Salvo:** comercialsantana@gmail.com
+**Tem Credencial:** true
+
+## Seletores no Banco de Dados (JSON / Objeto):
+```json
+{
+  "login": {
+    "email_input": "input[name=\"email\"].form-control",
+    "login_submit": "button#btn-entrar",
+    "login_trigger": "#botao-login",
+    "password_input": "input#senha[name=\"senha\"]"
+  },
+  "carrinho": {
+    "unit_price": ".d-flex.flex-column > span.fs-14.fw-bold",
+    "estoque_badge": ".badgeEstoque",
+    "product_title": ".ProdutoCompactCarrinho_productTitle__n7FXX",
+    "item_container": ".ProdutoCompactCarrinho_itemContainer__Eaq76",
+    "total_price_item": ".d-flex.flex-column:has(strong:text-is(\"Total\")) span.fs-14.fw-bold",
+    "item_codigo_badge": ".badge.estilo-badge.fs-11",
+    "remove_item_button": "button[aria-label=\"Remover item\"]",
+    "resumo_total_itens": "tr:has-text(\"Total itens\") td.text-end",
+    "decrease_qty_button": "button[aria-label=\"Diminuir quantidade\"]",
+    "increase_qty_button": "button[aria-label=\"Aumentar quantidade\"]",
+    "quantity_input_cart": "input.QuantidadeMaisMenos_input__grKxO",
+    "resumo_total_pedido": "tr:has-text(\"Total pedido\") td.text-end",
+    "ver_carrinho_button": "button:has-text(\"Ver carrinho\")",
+    "abrir_carrinho_button": "#botao-abrir-carrinho",
+    "limpar_carrinho_button": "button[title=\"Limpar carrinho\"]",
+    "selecionar_todos_checkbox": "#selecionarTodos",
+    "prosseguir_pagamento_button": "button:has-text(\"Prosseguir para pagamento\")",
+    "remover_selecionados_button": "button[title=\"Remover selecionados\"]"
+  },
+  "rpa_ativo": true,
+  "config_slug": "construja",
+  "compra_rapida": {
+    "container": "#compra-rapida-pesquisa",
+    "add_button": null,
+    "descricao_input": "#descricao",
+    "acao_confirmacao": "PRESSIONAR_ENTER_NO_CAMPO_CODIGO_OU_QUANTIDADE",
+    "quantidade_input": "#quantidade",
+    "resultados_dropdown": "div[for=\"compra-rapida-carrinho\"]",
+    "codigo_produto_input": "#codigoProduto",
+    "total_unitario_display": "input[name=\"total\"]",
+    "resultados_fechar_button": "div[for=\"compra-rapida-carrinho\"] .btn-danger"
+  },
+  "regras_negocio": {
+    "parse_preco": "trocar_virgula_por_ponto_parseFloat_padrao",
+    "fluxo_adicao": [
+      "1. Preencher #codigoProduto com o código do produto",
+      "2. Preencher #quantidade com a quantidade desejada",
+      "3. Pressionar Enter no campo",
+      "4. Aguardar item aparecer em .ProdutoCompactCarrinho_itemContainer__Eaq76",
+      "5. Validar unit_price e total_price_item"
+    ],
+    "formato_preco": "R$0,00 (vírgula decimal, ex: R$17,320 = R$17,32)",
+    "metodo_adicao_produto": "ENTER_KEY"
+  }
+}
+```

@@ -31,7 +31,7 @@ export interface ItemCotadoDetalhado {
   icmsStPercent: number;
   icmsStValor: number;
   subtotalComSt: number;
-  status: 'encontrado' | 'nao_encontrado' | 'marca_diferente' | 'similar';
+  status: 'encontrado' | 'nao_encontrado' | 'marca_diferente' | 'similar' | 'processando';
   produtoAlternativoSugestao?: string;
   precoAlternativoUnitario?: number;
 }
@@ -153,11 +153,9 @@ export const CATALOGO_BASE_MATERIAIS: ItemMaterialCatalog[] = [
 const CotacoesContext = createContext<CotacoesContextType>({} as CotacoesContextType);
 
 export const CotacoesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [usuarioId] = useState<string>('61ab64e4-c2cb-46df-bb14-6cc326293085');
   const [catálogoMateriais, setCatálogoMateriais] = useState<ItemMaterialCatalog[]>(CATALOGO_BASE_MATERIAIS);
-  const [itensDraft, setItensDraft] = useState<ItemCotacaoSelecionado[]>([
-    { id: 'd-1', material: CATALOGO_BASE_MATERIAIS[0], quantidade: 500 },
-    { id: 'd-2', material: CATALOGO_BASE_MATERIAIS[1], quantidade: 40 },
-  ]);
+  const [itensDraft, setItensDraft] = useState<ItemCotacaoSelecionado[]>([]);
 
   const [cotacoesAtivas, setCotacoesAtivas] = useState<CotacaoSession[]>([]);
   const [isLoadingCotacoes, setIsLoadingCotacoes] = useState(true);
@@ -200,56 +198,169 @@ export const CotacoesProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     setErrorCotacoes(null);
     try {
       const listaDb = await db.cotacoes.list();
-      const cotacoesFormatadas: CotacaoSession[] = listaDb.map((c) => ({
-        id: c.id,
-        codigo: c.codigoCotacao,
-        obra: c.projeto?.nomeObra || 'Reserva das Palmeiras',
-        categoriaPrincipal: c.categoriaPrincipal || 'eletrica',
-        dataCriacao: c.dataCriacao || 'Hoje',
-        status: c.status === 'aprovada' ? 'aprovada' : c.status === 'recusada' ? 'recusada' : 'em_analise',
-        itens: (c.itens || []).map((it) => ({
-          id: it.id,
-          material: {
-            id: it.produtoId || 'mat-1',
-            nome: it.nomeOriginal,
-            ncm: it.ncm || '8544.49.00',
-            categoria: 'eletrica',
-            precoBaseUnitario: it.precosFornecedores?.[0]?.precoUnitario || 10,
+      const cotacoesFormatadas: CotacaoSession[] = listaDb.map((c: any) => {
+        const itensFornReal = c.itens_cotacao_fornecedor || [];
+        const sessaoReal = c.cotacao_fornecedor_sessoes?.[0];
+        const cartUrl = sessaoReal?.browserbase_session_id?.startsWith('http') ? sessaoReal.browserbase_session_id : 'https://www.cicalfer.com.br/carrinho';
+
+        // Itens cotados detalhados para o fornecedor Cicalfer
+        const itensDetalhados: ItemCotadoDetalhado[] = (itensFornReal.length > 0 ? itensFornReal : c.itens || []).map((it: any, idx: number) => {
+          let obs: any = {};
+          if (it.observacoes && typeof it.observacoes === 'string' && it.observacoes.startsWith('{')) {
+            try { obs = JSON.parse(it.observacoes); } catch (e) {}
+          }
+          const nomeProd = it.produto_encontrado || it.nome || obs.produtoEncontrado || it.material || it.nomeOriginal || `Produto ${idx + 1}`;
+          const precoUnit = Number(it.preco_unitario || it.preco || obs.preco_unitario || it.precosFornecedores?.[0]?.precoUnitario || 0);
+          const qtd = Number(it.quantidade || obs.quantidade || 1);
+          const sub = Number((precoUnit * qtd).toFixed(2));
+          const matchStatStr = it.status_matching || it.status || obs.status || 'CONFIRMADO';
+          const isEncontrado = matchStatStr === 'CONFIRMADO' || matchStatStr === 'exato' || matchStatStr === 'encontrado' || precoUnit > 0;
+
+          return {
+            itemId: it.id || `it-det-${idx}`,
+            nomeSolicitado: obs.itemPedido || it.material || it.nomeOriginal || nomeProd,
+            nomeEncontrado: nomeProd,
+            quantidade: qtd,
             unidade: it.unidade || 'unidades',
-            icmsStPercent: 12,
-          },
-          quantidade: it.quantidade,
-        })),
-        fornecedores: [
-          {
-            id: 'forn-1',
-            nome: c.melhorFornecedorNome || 'Lojista Credenciado',
-            score: 4.9,
-            fatorPreco: 0.92,
+            precoUnitario: precoUnit,
+            subtotal: sub,
+            icmsStPercent: 0,
+            icmsStValor: 0,
+            subtotalComSt: sub,
+            status: isEncontrado ? 'encontrado' : 'nao_encontrado',
+          };
+        });
+
+        const totalCalculado = itensDetalhados.reduce((acc, item) => acc + item.subtotal, 0);
+        const valorGeralFinal = totalCalculado > 0 ? totalCalculado : Number(c.valorTotalGeral || c.valor_total || 0);
+
+        const fornecedorReal: FornecedorCotado = {
+          id: '33e03495-100d-45a3-9e34-899de56b0ab1',
+          nome: 'Cicalfer Material Elétrico',
+          score: 5.0,
+          fatorPreco: 1.0,
+          prazoDias: 1,
+          matchingStatus: 'exato',
+          valorProdutos: Number(valorGeralFinal.toFixed(2)),
+          valorST: 0,
+          valorTotalGeral: Number(valorGeralFinal.toFixed(2)),
+          isVencedor: true,
+          urlCarrinhoDireto: cartUrl,
+          itensCotados: itensDetalhados,
+        };
+
+        return {
+          id: c.id,
+          codigo: c.codigoCotacao || `#${(c.id || '').substring(0, 4).toUpperCase()}`,
+          obra: c.projeto?.nomeObra || c.obraNome || 'Reserva das Palmeiras',
+          categoriaPrincipal: c.categoriaPrincipal || 'eletrica',
+          dataCriacao: c.dataCriacao || 'Hoje',
+          status: c.status === 'aprovada' ? 'aprovada' : c.status === 'recusada' ? 'recusada' : 'em_analise',
+          itens: (c.itens || []).map((it: any, idx: number) => {
+            const itemMatch = itensDetalhados[idx] || itensDetalhados[0];
+            return {
+              id: it.id || `it-${idx}`,
+              material: {
+                id: it.produtoId || `mat-${idx}`,
+                nome: itemMatch ? itemMatch.nomeEncontrado : (it.nomeOriginal || 'Material'),
+                ncm: it.ncm || '8544.49.00',
+                categoria: 'eletrica' as const,
+                precoBaseUnitario: itemMatch ? itemMatch.precoUnitario : (it.precosFornecedores?.[0]?.precoUnitario || 10),
+                unidade: it.unidade || 'unidades',
+                icmsStPercent: 0,
+              },
+              quantidade: Number(it.quantidade || 1),
+            };
+          }),
+          fornecedores: [fornecedorReal],
+          fornecedorVencedorNome: 'Cicalfer Material Elétrico',
+          valorTotalGeral: Number(valorGeralFinal.toFixed(2)),
+          valorTotalSTTotal: 0,
+          economiaEstimadaBRL: Number((valorGeralFinal * 0.12).toFixed(2)),
+        };
+      });
+
+      // Consultar primeiro a tabela/módulo cotacoes_ativas (persistência viva de cards por fornecedor)
+      const ativasDb = await db.cotacoesAtivas.listar(usuarioId, 'Reserva das Palmeiras');
+
+      if (ativasDb && ativasDb.length > 0) {
+        const fornListAtivos: FornecedorCotado[] = ativasDb.map((rec) => {
+          const itensDet: ItemCotadoDetalhado[] = (rec.itens || []).map((it: any, idx: number) => {
+            const unitPrice = Number(it.precoUnitario || it.preco_unitario || 0);
+            const qtd = Number(it.quantidade || it.qtd || 1);
+            const sub = Number(it.precoTotal || (unitPrice * qtd).toFixed(2));
+            return {
+              itemId: it.itemId || `it-act-${idx}`,
+              nomeSolicitado: it.nomeSolicitado || it.nome || 'Produto',
+              nomeEncontrado: it.nomeEncontrado || it.nome || 'Produto',
+              quantidade: qtd,
+              unidade: it.unidade || 'un',
+              precoUnitario: unitPrice,
+              subtotal: sub,
+              icmsStPercent: 0,
+              icmsStValor: 0,
+              subtotalComSt: sub,
+              status: 'encontrado',
+            };
+          });
+
+          return {
+            id: rec.fornecedor_id,
+            nome: rec.fornecedor_nome,
+            score: 5.0,
+            fatorPreco: 1.0,
             prazoDias: 1,
             matchingStatus: 'exato',
-            valorProdutos: c.valorTotalProdutos,
-            valorST: c.valorTotalST,
-            valorTotalGeral: c.valorTotalGeral,
+            valorProdutos: rec.valor_total,
+            valorST: 0,
+            valorTotalGeral: rec.valor_total,
             isVencedor: true,
-          },
-        ],
-        fornecedorVencedorNome: c.melhorFornecedorNome || 'Lojista Credenciado',
-        valorTotalGeral: c.valorTotalGeral,
-        valorTotalSTTotal: c.valorTotalST,
-        economiaEstimadaBRL: c.economiaEstimadaBRL,
-      }));
+            urlCarrinhoDireto: 'https://www.cicalfer.com.br/carrinho',
+            itensCotados: itensDet,
+          };
+        });
 
-      setCotacoesAtivas(cotacoesFormatadas);
-      if (cotacoesFormatadas.length > 0) {
-        setCotacaoSelecionadaParaResultado(cotacoesFormatadas[0]);
+        const cotacaoConsolidada: CotacaoSession = {
+          id: ativasDb[0].id || 'cot-act-main',
+          codigo: `#${(ativasDb[0].id || 'ACT').substring(0, 4).toUpperCase()}`,
+          obra: ativasDb[0].obra_id || 'Reserva das Palmeiras',
+          categoriaPrincipal: 'eletrica',
+          dataCriacao: 'Ativa no Banco',
+          status: 'em_analise',
+          itens: [],
+          fornecedores: fornListAtivos,
+          fornecedorVencedorNome: fornListAtivos[0]?.nome || 'Cicalfer Material Elétrico',
+          valorTotalGeral: fornListAtivos[0]?.valorTotalGeral || 0,
+          valorTotalSTTotal: 0,
+          economiaEstimadaBRL: Number(((fornListAtivos[0]?.valorTotalGeral || 0) * 0.12).toFixed(2)),
+        };
+
+        setCotacoesAtivas([cotacaoConsolidada]);
+        setCotacaoSelecionadaParaResultado(cotacaoConsolidada);
+      } else {
+        // Fallback se ainda não houver cotacoes_ativas gravadas
+        const cotacoesSomenteAtivas = cotacoesFormatadas.filter((c) => {
+          const isStatusAtivo = c.status === 'em_analise' || (c as any).status === 'pendente';
+          const isStatusInativo = c.status === 'aprovada' || c.status === 'recusada' || (c as any).status === 'finalizada';
+
+          const temItens = c.itens && c.itens.length > 0;
+          const temItensForn = c.fornecedores?.some((f) => f.itensCotados && f.itensCotados.length > 0);
+          const isGhost = c.valorTotalGeral === 0 && !temItens && !temItensForn;
+
+          return isStatusAtivo && !isStatusInativo && !isGhost;
+        });
+
+        setCotacoesAtivas(cotacoesSomenteAtivas);
+        if (cotacoesSomenteAtivas.length > 0) {
+          setCotacaoSelecionadaParaResultado(cotacoesSomenteAtivas[0]);
+        }
       }
     } catch (err: any) {
       setErrorCotacoes(err.message || 'Erro ao carregar cotações do banco de dados.');
     } finally {
       setIsLoadingCotacoes(false);
     }
-  }, []);
+  }, [usuarioId]);
 
   /**
    * Buscar Histórico de Cotações no Banco Real
@@ -258,21 +369,61 @@ export const CotacoesProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     setIsLoadingHistorico(true);
     setErrorHistorico(null);
     try {
-      const listaHist = await db.cotacoes.listHistorico({ fornecedorNome: fornecedorFiltro });
-      const cotacoesFormatadas: CotacaoSession[] = listaHist.map((c) => ({
-        id: c.id,
-        codigo: c.codigoCotacao,
-        obra: c.projeto?.nomeObra || 'Reserva das Palmeiras',
-        categoriaPrincipal: c.categoriaPrincipal || 'eletrica',
-        dataCriacao: c.dataCriacao || 'Hoje',
-        status: c.status === 'aprovada' ? 'aprovada' : 'recusada',
-        itens: [],
-        fornecedores: [],
-        fornecedorVencedorNome: c.melhorFornecedorNome || 'Lojista Credenciado',
-        valorTotalGeral: c.valorTotalGeral,
-        valorTotalSTTotal: c.valorTotalST,
-        economiaEstimadaBRL: c.economiaEstimadaBRL,
-      }));
+      const listaHist = await db.historico.listar(usuarioId);
+      const cotacoesFormatadas: CotacaoSession[] = listaHist
+        .filter((h) => {
+          if (!fornecedorFiltro || fornecedorFiltro === 'todos') return true;
+          return h.fornecedor.toLowerCase().includes(fornecedorFiltro.toLowerCase());
+        })
+        .map((c) => ({
+          id: c.id,
+          codigo: `#${c.id.substring(0, 4).toUpperCase()}`,
+          obra: c.obra_nome,
+          categoriaPrincipal: 'eletrica',
+          dataCriacao: new Date(c.criado_em).toLocaleDateString('pt-BR') + ' ' + new Date(c.criado_em).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
+          status: 'aprovada',
+          itens: (c.itens || []).map((it: any, idx: number) => ({
+            id: `h-item-${idx}`,
+            material: {
+              id: `m-h-${idx}`,
+              nome: it.nome || it.nomeSolicitado || 'Material',
+              ncm: '8544.49.00',
+              unidade: it.unidade || 'un',
+              categoria: 'eletrica',
+              precoBaseUnitario: Number(it.precoUnitario || 0),
+              icmsStPercent: 0,
+            },
+            quantidade: Number(it.qtd || it.quantidade || 1),
+          })),
+          fornecedores: [
+            {
+              id: `f-${c.id}`,
+              nome: c.fornecedor,
+              score: 5.0,
+              fatorPreco: 1.0,
+              prazoDias: 2,
+              matchingStatus: 'exato',
+              valorProdutos: c.valor_total,
+              valorST: 0,
+              valorTotalGeral: c.valor_total,
+              urlCarrinhoDireto: 'https://www.cicalfer.com.br/carrinho',
+              itensCotados: (c.itens || []).map((it: any, idx: number) => ({
+                itemId: `hist-item-${idx}`,
+                nomeSolicitado: it.nome || it.nomeSolicitado || 'Item',
+                nomeEncontrado: it.nome || it.nomeEncontrado || 'Item',
+                quantidade: Number(it.qtd || it.quantidade || 1),
+                unidade: it.unidade || 'un',
+                precoUnitario: Number(it.precoUnitario || 0),
+                subtotalComSt: Number(it.precoTotal || (Number(it.precoUnitario || 0) * Number(it.qtd || 1))),
+                status: 'encontrado',
+              })),
+            },
+          ],
+          fornecedorVencedorNome: c.fornecedor,
+          valorTotalGeral: c.valor_total,
+          valorTotalSTTotal: 0,
+          economiaEstimadaBRL: Number((c.valor_total * 0.12).toFixed(2)),
+        }));
 
       setCotacoesHistorico(cotacoesFormatadas);
     } catch (err: any) {
@@ -280,7 +431,7 @@ export const CotacoesProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     } finally {
       setIsLoadingHistorico(false);
     }
-  }, []);
+  }, [usuarioId]);
 
   useEffect(() => {
     carregarCotacoesDoBanco();
@@ -368,189 +519,109 @@ export const CotacoesProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       };
 
       setCotacoesAtivas((prev) => [novaCotacao, ...prev]);
+
+      try {
+        await db.historico.salvar({
+          user_id: usuarioId,
+          obra_nome: obraNome || 'Reserva das Palmeiras',
+          fornecedor: 'Elétrica São Paulo',
+          itens: itens.map((i) => ({
+            nome: i.material.nome,
+            ref: '',
+            qtd: i.quantidade,
+            unidade: i.material.unidade,
+            precoUnitario: i.material.precoBaseUnitario,
+            precoTotal: Number((i.material.precoBaseUnitario * i.quantidade).toFixed(2)),
+          })),
+          valor_total: valorTotalGeralCalculado,
+          quantidade_itens: itens.length,
+        });
+
+        await db.cotacoesAtivas.upsert({
+          user_id: usuarioId,
+          obra_id: obraNome || 'Reserva das Palmeiras',
+          fornecedor_id: 'forn-sim-1',
+          fornecedor_nome: 'Elétrica São Paulo',
+          itens: itens.map((i) => ({
+            nomeSolicitado: i.material.nome,
+            nomeEncontrado: i.material.nome,
+            ref: '',
+            qtd: i.quantidade,
+            unidade: i.material.unidade,
+            precoUnitario: i.material.precoBaseUnitario,
+            precoTotal: Number((i.material.precoBaseUnitario * i.quantidade).toFixed(2)),
+          })),
+          valor_total: valorTotalGeralCalculado,
+        });
+      } catch (eHist) {
+        console.warn('Aviso ao salvar histórico e cotação ativa em gerarCotacaoSession:', eHist);
+      }
+
       setCotacaoSelecionadaParaResultado(novaCotacao);
 
       return novaCotacao;
     },
-    [itensDraft, catálogoMateriais]
+    [itensDraft, catálogoMateriais, usuarioId]
   );
 
   const enviarCotacaoComFornecedores = useCallback(
     async (obraNome: string, itens: any[], fornecedorIds: string[]): Promise<CotacaoSession> => {
       const fornecedoresDB = await db.fornecedores.list();
 
-      // Mapeamento de estimativa de preço base realista por material
-      const estimarPrecoBase = (texto: string): { precoBase: number; unidade: string; stPercent: number } => {
-        const lower = texto.toLowerCase();
-        if (lower.includes('cabo') || lower.includes('fio') || lower.includes('fiação')) {
-          return { precoBase: 4.80, unidade: 'm', stPercent: 12 };
-        }
-        if (lower.includes('spray') || lower.includes('tinta') || lower.includes('esmalte')) {
-          return { precoBase: 28.50, unidade: 'un', stPercent: 12 };
-        }
-        if (lower.includes('torneira') || lower.includes('misturador')) {
-          return { precoBase: 145.00, unidade: 'un', stPercent: 8 };
-        }
-        if (lower.includes('sifão') || lower.includes('tubo') || lower.includes('conexão')) {
-          return { precoBase: 18.50, unidade: 'un', stPercent: 8 };
-        }
-        if (lower.includes('cimento') || lower.includes('argamassa')) {
-          return { precoBase: 38.00, unidade: 'saco', stPercent: 5 };
-        }
-        if (lower.includes('ferro') || lower.includes('vergalhão') || lower.includes('aço')) {
-          return { precoBase: 65.00, unidade: 'barra', stPercent: 10 };
-        }
-        return { precoBase: 35.00, unidade: 'un', stPercent: 12 };
-      };
-
-      // Fatores de desconto/variação de preço por fornecedor
-      const fatoresFornecedor: Record<string, { fator: number; nome: string; categoria: string; wa?: string }> = {
-        'forn-cicalfer': { fator: 0.94, nome: 'Cicalfer Material Elétrico', categoria: 'ELÉTRICA', wa: '(11) 98765-4321' },
-        'forn-construja': { fator: 0.98, nome: 'Construjá Distribuidora', categoria: 'CONSTRUÇÃO', wa: '(11) 97654-3210' },
-        'forn-1': { fator: 0.91, nome: 'Elétrica São Paulo', categoria: 'ELÉTRICA', wa: '(11) 91234-5678' },
-        'forn-2': { fator: 0.96, nome: 'Hidráulica Brasil', categoria: 'HIDRÁULICA', wa: '(11) 92345-6789' },
-        'forn-3': { fator: 0.89, nome: 'Cimento & Cia SP', categoria: 'ESTRUTURA', wa: '(11) 93456-7890' },
-      };
-
-      // URLs de carrinho direto específicas por fornecedor (capturadas via robô RPA após login & adição de itens)
+      // URLs de carrinho direto conhecidas por fornecedor (atualizadas pelo robô RPA)
       const cartUrlsFornecedor: Record<string, string> = {
+        '33e03495-100d-45a3-9e34-899de56b0ab1': 'https://www.cicalfer.com.br/carrinho',
         'forn-cicalfer': 'https://www.cicalfer.com.br/carrinho',
-        'forn-construja': 'https://www.construja.com.br/carrinho?session=rpa_b2b_active_session',
-        'forn-1': 'https://eletricasp.com.br/carrinho-b2b',
-        'forn-2': 'https://hidraulicabrasil.com.br/checkout/carrinho',
-        'forn-3': 'https://cimentoecia.com.br/carrinho',
       };
 
       const listaFornecedoresCalculados: FornecedorCotado[] = fornecedorIds.map((fId) => {
         const fornDb = fornecedoresDB.find((f) => f.id === fId);
-        const config = fatoresFornecedor[fId] || {
-          fator: Number((0.92 + (fId.length % 5) * 0.02).toFixed(2)),
-          nome: fornDb?.nome || `Lojista Credenciado (${fId.substring(0, 6)})`,
-          categoria: fornDb?.categoria || 'GERAL',
-          wa: fornDb?.whatsapp || '(11) 98888-7777',
-        };
-
-        const fator = config.fator;
-        const fornNomeLower = config.nome.toLowerCase();
-
-        let totalProdutosAcumulado = 0;
-        let totalSTAcumulado = 0;
-        let itensNaoEncontradosCount = 0;
+        const fornNome = fornDb?.nome || `Lojista Credenciado (${fId.substring(0, 6)})`;
+        const fornWa = fornDb?.whatsapp || '(11) 98765-4321';
+        const fornCategoria = fornDb?.categoria || 'GERAL';
 
         const itensCotados: ItemCotadoDetalhado[] = itens.map((itemInput, idx) => {
           const rawText = itemInput.texto || itemInput.material?.nome || 'Material';
           const quantidade = itemInput.quantidade && itemInput.quantidade > 0 ? itemInput.quantidade : 1;
           const nomeLimpo = rawText.replace(/^\d+x\s*/i, '').trim();
-          const lowerLimpo = nomeLimpo.toLowerCase();
-          const { precoBase, unidade, stPercent } = estimarPrecoBase(nomeLimpo);
-
-          // CENÁRIO 1: PRODUTO NÃO EXISTE NO SITE (Busca exata e secundária falharam totalmente)
-          const isTotalmenteInexistente = fornNomeLower.includes('cicalfer') && lowerLimpo.includes('sifão');
-
-          if (isTotalmenteInexistente) {
-            itensNaoEncontradosCount++;
-            return {
-              itemId: itemInput.id || `it-${idx}`,
-              nomeSolicitado: rawText,
-              nomeEncontrado: 'Produto não existe no site deste lojista',
-              quantidade,
-              unidade,
-              precoUnitario: 0,
-              subtotal: 0,
-              icmsStPercent: 0,
-              icmsStValor: 0,
-              subtotalComSt: 0,
-              status: 'nao_encontrado',
-            };
-          }
-
-          // CENÁRIO 2: MARCA DIFERENTE DISPONÍVEL (Busca exata da marca falhou, mas busca secundária genérica encontrou produto equivalente)
-          const temMarcaEspecifica = lowerLimpo.includes('unipega') || (fornNomeLower.includes('construjá') && idx === 2);
-
-          if (temMarcaEspecifica) {
-            const nomeGenericoSemMarca = nomeLimpo.replace(/unipega/gi, '').trim() || 'Espuma Poliuretano 500ml';
-            const marcaAlternativa = fornNomeLower.includes('construjá') ? 'Fischer / Quartzolit' : 'Tekbond / Quartzolit';
-            const nomeAlternativo = `${nomeGenericoSemMarca} [Marca Alternativa: ${marcaAlternativa}]`;
-            
-            const precoUnitarioAlt = Number((precoBase * fator * 1.08).toFixed(2));
-            const subtotalProdAlt = Number((precoUnitarioAlt * quantidade).toFixed(2));
-            const icmsStValorAlt = Number((subtotalProdAlt * (stPercent / 100)).toFixed(2));
-            const subtotalComStAlt = Number((subtotalProdAlt + icmsStValorAlt).toFixed(2));
-
-            totalProdutosAcumulado += subtotalProdAlt;
-            totalSTAcumulado += icmsStValorAlt;
-
-            return {
-              itemId: itemInput.id || `it-${idx}`,
-              nomeSolicitado: rawText,
-              nomeEncontrado: nomeAlternativo,
-              quantidade,
-              unidade,
-              precoUnitario: precoUnitarioAlt,
-              subtotal: subtotalProdAlt,
-              icmsStPercent: stPercent,
-              icmsStValor: icmsStValorAlt,
-              subtotalComSt: subtotalComStAlt,
-              status: 'marca_diferente',
-              produtoAlternativoSugestao: `${nomeGenericoSemMarca} (${marcaAlternativa})`,
-              precoAlternativoUnitario: precoUnitarioAlt,
-            };
-          }
-
-          // CENÁRIO 3: PRODUTO EXISTE E FOI ADICIONADO (Sucesso total)
-          const precoUnitario = Number((precoBase * fator).toFixed(2));
-          const subtotalProd = Number((precoUnitario * quantidade).toFixed(2));
-          const icmsStValor = Number((subtotalProd * (stPercent / 100)).toFixed(2));
-          const subtotalComSt = Number((subtotalProd + icmsStValor).toFixed(2));
-
-          totalProdutosAcumulado += subtotalProd;
-          totalSTAcumulado += icmsStValor;
 
           return {
             itemId: itemInput.id || `it-${idx}`,
             nomeSolicitado: rawText,
-            nomeEncontrado: `${nomeLimpo} (${config.nome})`,
+            nomeEncontrado: `${nomeLimpo} (Aguardando resultado RPA)`,
             quantidade,
-            unidade,
-            precoUnitario,
-            subtotal: subtotalProd,
-            icmsStPercent: stPercent,
-            icmsStValor,
-            subtotalComSt,
-            status: 'encontrado',
+            unidade: 'un',
+            precoUnitario: 0,
+            subtotal: 0,
+            icmsStPercent: 0,
+            icmsStValor: 0,
+            subtotalComSt: 0,
+            status: 'processando',
           };
         });
 
-        const valorTotalGeral = Number((totalProdutosAcumulado + totalSTAcumulado).toFixed(2));
-        const capturedUrl = cartUrlsFornecedor[fId] || cartUrlsFornecedor[fId.replace(/^forn-/, '')] || cartUrlsFornecedor[`forn-${fId}`];
+        const capturedUrl = cartUrlsFornecedor[fId] || cartUrlsFornecedor[fId.replace(/^forn-/, '')];
         const cartUrlResult = resolveSupplierCartUrl({
           capturedUrl,
           officialPortalUrl: (fornDb as any)?.urlPortalB2B || (fornDb as any)?.url_site,
-          supplierName: config.nome,
+          supplierName: fornNome,
           supplierId: fId,
         });
         const cartUrl = cartUrlResult.url;
         const sessaoValidaAte = new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString();
 
-        console.log('[RPA DEBUG URL CAPTURE]', {
-          fornecedorId: fId,
-          fornecedorNome: config.nome,
-          capturedCartUrl: cartUrl,
-          sessaoValidaAte,
-        });
-
         return {
           id: fId,
-          nome: config.nome,
+          nome: fornNome,
           score: 4.8,
-          fatorPreco: fator,
+          fatorPreco: 1.0,
           prazoDias: 2,
-          matchingStatus: itensNaoEncontradosCount > 0 ? 'indisponivel' : 'exato',
-          valorProdutos: Number(totalProdutosAcumulado.toFixed(2)),
-          valorST: Number(totalSTAcumulado.toFixed(2)),
-          valorTotalGeral,
-          whatsapp: config.wa,
-          categoria: config.categoria,
+          matchingStatus: 'exato',
+          valorProdutos: 0,
+          valorST: 0,
+          valorTotalGeral: 0,
+          whatsapp: fornWa,
+          categoria: fornCategoria,
           itensCotados,
           urlCarrinhoDireto: cartUrl,
           sessaoValidaAte,
@@ -584,6 +655,7 @@ export const CotacoesProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       const newDbRecord = await db.cotacoes.create({
         obraNome: obraNome || 'Reserva das Palmeiras',
         status: 'pendente',
+        fornecedor_id: fornecedorIds[0],
         fornecedorIds,
         itens: itens.map((i) => ({
           cotacao_id: '',
@@ -622,7 +694,7 @@ export const CotacoesProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         economiaEstimadaBRL: Number((vencedor.valorProdutos * 0.12).toFixed(2)),
       };
 
-      setCotacoesAtivas((prev) => [novaCotacao, ...prev]);
+      setCotacoesAtivas((prev) => [novaCotacao, ...prev.filter((c) => c.id !== novaCotacao.id)]);
       setCotacoesHistorico((prev) => [novaCotacao, ...prev]);
       setCotacaoSelecionadaParaResultado(novaCotacao);
 

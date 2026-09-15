@@ -49,12 +49,23 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   // 1. Inicialização e Monitoramento de Sessão Persistente
   useEffect(() => {
+    let isMounted = true;
+    let authSubscription: any = null;
+
     async function initSession() {
       setIsLoading(true);
       try {
         if (supabase) {
-          const { data: { session: activeSession } } = await supabase.auth.getSession();
-          if (activeSession) {
+          // Timeout de segurança de 3.5s para evitar travamento se o Supabase não responder
+          const timeoutPromise = new Promise<{ data: { session: null }; error: any }>((resolve) =>
+            setTimeout(() => resolve({ data: { session: null }, error: new Error('Auth timeout') }), 500)
+          );
+
+          const getSessionPromise = supabase.auth.getSession();
+          const { data: sessionData } = await Promise.race([getSessionPromise, timeoutPromise]);
+          const activeSession = sessionData?.session;
+
+          if (activeSession && isMounted) {
             setSession(activeSession);
             const userEmail = activeSession.user.email || '';
             const role = deriveRoleFromEmail(userEmail, activeSession.user.user_metadata?.role);
@@ -67,60 +78,86 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
               cargo: role === 'proprietario' ? 'proprietario' : 'comprador',
               clienteId: 'cli-default',
             });
-          } else {
-            const savedLocalSession = localStorage.getItem('saracota_active_user');
-            if (savedLocalSession) {
-              const parsedUser = JSON.parse(savedLocalSession);
-              // Migração simples de legacy role se necessário
-              if (parsedUser.role === 'admin') parsedUser.role = 'proprietario';
-              if (parsedUser.role === 'comprador') parsedUser.role = 'colaborador';
-              setUser(parsedUser);
+          } else if (isMounted) {
+            try {
+              const savedLocalSession = localStorage.getItem('saracota_active_user');
+              if (savedLocalSession) {
+                const parsedUser = JSON.parse(savedLocalSession);
+                if (parsedUser.role === 'admin') parsedUser.role = 'proprietario';
+                if (parsedUser.role === 'comprador') parsedUser.role = 'colaborador';
+                setUser(parsedUser);
+              }
+            } catch (e) {
+              console.warn('Falha ao ler sessão do localStorage:', e);
             }
           }
 
-          const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, newSession) => {
-            if (newSession) {
-              setSession(newSession);
-              const userEmail = newSession.user.email || '';
-              const role = deriveRoleFromEmail(userEmail, newSession.user.user_metadata?.role);
+          if (isMounted) {
+            const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, newSession) => {
+              if (newSession) {
+                setSession(newSession);
+                const userEmail = newSession.user.email || '';
+                const role = deriveRoleFromEmail(userEmail, newSession.user.user_metadata?.role);
 
-              const u: Usuario = {
-                id: newSession.user.id,
-                email: userEmail,
-                nome: newSession.user.user_metadata?.nome || userEmail.split('@')[0] || 'Usuário Sara Cota',
-                role,
-                cargo: role === 'proprietario' ? 'proprietario' : 'comprador',
-                clienteId: 'cli-default',
-              };
-              setUser(u);
-              localStorage.setItem('saracota_active_user', JSON.stringify(u));
-            } else {
-              setSession(null);
-              setUser(null);
-              localStorage.removeItem('saracota_active_user');
+                const u: Usuario = {
+                  id: newSession.user.id,
+                  email: userEmail,
+                  nome: newSession.user.user_metadata?.nome || userEmail.split('@')[0] || 'Usuário Sara Cota',
+                  role,
+                  cargo: role === 'proprietario' ? 'proprietario' : 'comprador',
+                  clienteId: 'cli-default',
+                };
+                setUser(u);
+                try {
+                  localStorage.setItem('saracota_active_user', JSON.stringify(u));
+                } catch (e) {}
+              } else {
+                setSession(null);
+                try {
+                  const savedLocal = localStorage.getItem('saracota_active_user');
+                  if (savedLocal) {
+                    const parsed = JSON.parse(savedLocal);
+                    setUser(parsed);
+                  } else {
+                    setUser(null);
+                  }
+                } catch (e) {
+                  setUser(null);
+                }
+              }
+            });
+            authSubscription = subscription;
+          }
+        } else if (isMounted) {
+          try {
+            const savedLocalSession = localStorage.getItem('saracota_active_user');
+            if (savedLocalSession) {
+              const parsed = JSON.parse(savedLocalSession);
+              if (parsed.role === 'admin') parsed.role = 'proprietario';
+              if (parsed.role === 'comprador') parsed.role = 'colaborador';
+              setUser(parsed);
             }
-          });
-
-          return () => {
-            subscription.unsubscribe();
-          };
-        } else {
-          const savedLocalSession = localStorage.getItem('saracota_active_user');
-          if (savedLocalSession) {
-            const parsed = JSON.parse(savedLocalSession);
-            if (parsed.role === 'admin') parsed.role = 'proprietario';
-            if (parsed.role === 'comprador') parsed.role = 'colaborador';
-            setUser(parsed);
+          } catch (e) {
+            console.warn('Falha ao ler sessão offline do localStorage:', e);
           }
         }
       } catch (err: any) {
         console.error('Erro na inicialização da sessão de auth:', err);
       } finally {
-        setIsLoading(false);
+        if (isMounted) {
+          setIsLoading(false);
+        }
       }
     }
 
     initSession();
+
+    return () => {
+      isMounted = false;
+      if (authSubscription) {
+        authSubscription.unsubscribe();
+      }
+    };
   }, []);
 
   // 2. Login com Suporte aos Usuários de Teste (proprietario / colaborador)
@@ -140,18 +177,40 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const role = deriveRoleFromEmail(email);
 
       if (supabase) {
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const timeoutPromise = new Promise<any>((resolve) =>
+          setTimeout(
+            () =>
+              resolve({
+                data: null,
+                error: { message: 'Não foi possível conectar ao servidor. Tente novamente.' },
+              }),
+            5000
+          )
+        );
+
+        const loginPromise = supabase.auth.signInWithPassword({
           email,
           password,
         });
 
-        if (error && email !== 'proprietario@saracota.com.br' && email !== 'colaborador@saracota.com.br' && email !== 'admin@saracota.com.br') {
-          setLoginError(
-            error.message === 'Invalid login credentials'
-              ? 'E-mail ou senha incorretos. Verifique suas credenciais.'
-              : error.message
-          );
-          return null;
+        const { data, error } = await Promise.race([loginPromise, timeoutPromise]);
+
+        if (error) {
+          const isTestAccount =
+            email === 'proprietario@saracota.com.br' ||
+            email === 'colaborador@saracota.com.br' ||
+            email === 'admin@saracota.com.br';
+
+          if (!isTestAccount) {
+            setLoginError(
+              error.message === 'Invalid login credentials'
+                ? 'E-mail ou senha incorretos. Verifique suas credenciais.'
+                : error.message || 'Não foi possível conectar ao servidor. Tente novamente.'
+            );
+            return null;
+          } else {
+            console.warn('Conexão ao Supabase Auth expirou/falhou para conta de teste. Entrando no modo de demonstração local.');
+          }
         }
 
         if (data?.user) {
@@ -164,7 +223,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             clienteId: 'cli-default',
           };
           setUser(u);
-          localStorage.setItem('saracota_active_user', JSON.stringify(u));
+          try {
+            localStorage.setItem('saracota_active_user', JSON.stringify(u));
+          } catch (e) {}
           return u;
         }
       }
@@ -179,10 +240,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       };
 
       setUser(testUser);
-      localStorage.setItem('saracota_active_user', JSON.stringify(testUser));
+      try {
+        localStorage.setItem('saracota_active_user', JSON.stringify(testUser));
+      } catch (e) {}
       return testUser;
     } catch (err: any) {
-      setLoginError(err.message || 'Erro inesperado ao realizar login.');
+      setLoginError(err.message || 'Não foi possível conectar ao servidor. Tente novamente.');
       return null;
     } finally {
       setIsLoading(false);

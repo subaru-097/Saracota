@@ -1,0 +1,16 @@
+{
+  "fornecedor": "Construjá",
+  "slug": "construja",
+  "fornecedor_id": "a1684c4d-d896-4ba9-a591-cda455c5ffe2",
+  "data_execucao": "2026-09-15T12:59:00.000Z",
+  "statusAutenticacao": "HTTP_400_CREDENCIAIS_INVALIDAS",
+  "endpointLogin": "https://api.construja.com.br/v1/login/b2b",
+  "cartUrl": "https://www.construja.com.br/?access=denied",
+  "mensagemErroApi": "Credenciais inválidas. Restam 4 tentativas antes de sua conta ser temporariamente bloqueada.",
+  "resumoGeral": {
+    "resumoTabelaEncontrada": false,
+    "totalItens": 0,
+    "despesaAcessoria": 0,
+    "totalPedido": 0
+  }
+}

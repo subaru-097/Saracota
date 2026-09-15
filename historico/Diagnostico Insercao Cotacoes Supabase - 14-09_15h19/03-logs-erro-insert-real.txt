@@ -1,0 +1,75 @@
+====================================================================
+LOG DE ERROS REAIS RETORNADOS PELO SUPABASE DURANTE INSERÇÃO EM "cotacoes"
+====================================================================
+
+TESTE 1: Inserção do Payload Usado Hoje pela Aplicação:
+Payload Enviado:
+{
+  "status": "pendente",
+  "valor_total": 123.45
+}
+
+Objeto de Erro Retornado pelo Supabase (PostgreSQL):
+{
+  "code": "23502",
+  "details": null,
+  "hint": null,
+  "message": "null value in column \"user_id\" of relation \"cotacoes\" violates not-null constraint"
+}
+
+--------------------------------------------------------------------
+
+TESTE 2: Inserção Adicionando "user_id" Fictício ("00000000-0000-0000-0000-000000000000"):
+Payload Enviado:
+{
+  "user_id": "00000000-0000-0000-0000-000000000000",
+  "status": "pendente",
+  "valor_total": 100.00
+}
+
+Objeto de Erro Retornado pelo Supabase (PostgreSQL):
+{
+  "code": "23502",
+  "details": null,
+  "hint": null,
+  "message": "null value in column \"fornecedores_selecionados\" of relation \"cotacoes\" violates not-null constraint"
+}
+
+--------------------------------------------------------------------
+
+TESTE 3: Inserção Adicionando "fornecedores_selecionados":
+Payload Enviado:
+{
+  "user_id": "00000000-0000-0000-0000-000000000000",
+  "fornecedores_selecionados": ["33e03495-100d-45a3-9e34-899de56b0ab1"],
+  "status": "pendente",
+  "valor_total": 100.00
+}
+
+Objeto de Erro Retornado pelo Supabase (PostgreSQL):
+{
+  "code": "23502",
+  "details": null,
+  "hint": null,
+  "message": "null value in column \"itens\" of relation \"cotacoes\" violates not-null constraint"
+}
+
+--------------------------------------------------------------------
+
+TESTE 4: Inserção Adicionando "itens":
+Payload Enviado:
+{
+  "user_id": "00000000-0000-0000-0000-000000000000",
+  "fornecedores_selecionados": ["33e03495-100d-45a3-9e34-899de56b0ab1"],
+  "itens": [{"material": "Tubo PVC 100mm", "quantidade": 2}],
+  "status": "pendente",
+  "valor_total": 100.00
+}
+
+Objeto de Erro Retornado pelo Supabase (PostgreSQL):
+{
+  "code": "23503",
+  "details": "Key is not present in table \"users\".",
+  "hint": null,
+  "message": "insert or update on table \"cotacoes\" violates foreign key constraint \"cotacoes_user_id_fkey\""
+}

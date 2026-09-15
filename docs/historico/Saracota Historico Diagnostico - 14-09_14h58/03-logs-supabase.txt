@@ -1,0 +1,18 @@
+RETORNO DA CHAMADA salvarResultadosMatching: true
+
+--- ESTADO BANCO ANTES ---
+{
+  "cotacoesCount": 0,
+  "cotacaoItensCount": 0,
+  "itensFornCount": 0,
+  "sessoesCount": 84
+}
+
+--- LOGS DA EXECUÇÃO SUPABASE ---
+[LOG] Criando registro de cotação mestre...
+[LOG] [DB JOB INVALIDAÇÃO] Cotações anteriores marcadas como expiradas ao iniciar nova cotação.
+[WARN] [DB WARNING] Inserção de cotação no Supabase falhou (usando armazenamento em memória local): new row violates row-level security policy for table "cotacoes"
+[LOG] 💾 [DB SESSION SAVE ATTEMPT] cotacaoId: "cot-diag-1789408943557" | fornecedorId: "33e03495-100d-45a3-9e34-899de56b0ab1" | cacheKey: "cot-diag-1789408943557_33e03495-100d-45a3-9e34-899de56b0ab1" | sessionId: "https://cicalfer.com.br/carrinho"
+[LOG] ✅ [SUPABASE SUCCESS UPSERT] Sessão https://cicalfer.com.br/carrinho salva em cotacao_fornecedor_sessoes para cot-diag-1789408943557 / 33e03495-100d-45a3-9e34-899de56b0ab1!
+[WARN] ⚠️ [SUPABASE UPDATE WARN cotacoes]: Could not find the 'browserbase_session_id' column of 'cotacoes' in the schema cache
+[LOG] Executando db.cotacoes.salvarResultadosMatching...

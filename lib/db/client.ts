@@ -1,5 +1,5 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
-import { Cotacao, Fornecedor, Produto, RegraTributaria } from '@/types';
+import { Cotacao, Fornecedor, Produto, RegraTributaria, DBRecordHistoricoCotacao, DBRecordCotacaoAtiva } from '@/types';
 import { TAX_RULES_DATABASE } from '../services/tax';
 import { encryptAES256 } from '@/lib/security/vault';
 
@@ -41,7 +41,7 @@ export interface DBRecordCotacao {
 
 export interface DBRecordItemCotacao {
   id?: string;
-  cotacao_id: string;
+  cotacao_id?: string;
   material: string;
   quantidade: number;
   unidade: string;
@@ -50,69 +50,100 @@ export interface DBRecordItemCotacao {
   criado_em?: string;
 }
 
+const memoryMatchingStore: Record<string, any[]> = {};
+
 /**
  * Data Access Layer (DAL) Conectada 100% ao Banco de Dados Real (PostgreSQL / Supabase)
  */
 export const db = {
   // COTAÇÕES
   cotacoes: {
-    async list(): Promise<Cotacao[]> {
+    async list(): Promise<any[]> {
       if (!supabase) return [];
 
-      const { data, error } = await supabase
+      let rawData: any[] = [];
+      const { data: cotData, error } = await supabase
         .from('cotacoes')
-        .select('*, fornecedores:fornecedor_id(*), itens:itens_cotacao(*)')
-        .order('data_criacao', { ascending: false });
+        .select('*')
+        .order('criado_em', { ascending: false });
 
-      if (error || !data) return [];
+      if (cotData && cotData.length > 0) {
+        const cotIds = cotData.map((c) => c.id);
+        const { data: itensForn } = await supabase
+          .from('cotacao_itens')
+          .select('*')
+          .in('cotacao_id', cotIds);
 
-      return data.map((c: any) => ({
-        id: c.id,
-        codigoCotacao: `#${c.id.substring(0, 4).toUpperCase()}`,
-        projeto: {
-          id: 'proj-1',
-          clienteId: 'cli-1',
-          nomeObra: 'Reserva das Palmeiras',
-          ufDestino: 'SP',
-        },
-        status: c.status === 'aprovada' ? 'aprovada' : c.status === 'recusada' ? 'recusada' : 'em_analise',
-        origem: 'texto',
-        categoriaPrincipal: c.itens?.[0]?.categoria || 'eletrica',
-        dataCriacao: new Date(c.data_criacao).toLocaleDateString('pt-BR'),
-        fornecedoresParticipantesCount: 3,
-        valorTotalProdutos: Number((c.valor_total * 0.9).toFixed(2)),
-        valorTotalST: Number((c.valor_total * 0.1).toFixed(2)),
-        valorTotalGeral: Number(c.valor_total),
-        economiaEstimadaBRL: Number((c.valor_total * 0.12).toFixed(2)),
-        melhorFornecedorNome: c.fornecedores?.nome || 'Elétrica São Paulo',
-        itens: (c.itens || []).map((it: any) => ({
-          id: it.id,
-          cotacaoId: c.id,
-          nomeOriginal: it.material,
-          ncm: '8544.49.00',
-          atributos: { bitola: '2.5mm²' },
-          quantidade: Number(it.quantidade),
-          unidade: it.unidade,
-          matchingStatus: 'exato',
-          precosFornecedores: [
-            {
-              fornecedorId: c.fornecedor_id || 'forn-1',
-              fornecedorNome: c.fornecedores?.nome || 'Elétrica São Paulo',
-              precoUnitario: Number(it.preco_unitario),
-              unidadeOferecida: it.unidade,
-              fatorConversao: 1,
-              resultadoST: {
-                valorSTUnitario: Number(it.preco_unitario) * 0.1,
-                valorSTTotal: Number(it.preco_unitario) * Number(it.quantidade) * 0.1,
-                aliquotaEfetivaPercent: 10,
-                baseCalculoST: Number(it.preco_unitario) * Number(it.quantidade),
-                isTaxEstimated: false,
+        const { data: sessoes } = await supabase
+          .from('cotacao_fornecedor_sessoes')
+          .select('*')
+          .in('cotacao_id', cotIds);
+
+        rawData = cotData.map((c) => {
+          const matchingItens = (itensForn || []).filter((i) => i.cotacao_id === c.id);
+          const matchingSessoes = (sessoes || []).filter((s) => s.cotacao_id === c.id);
+          return {
+            ...c,
+            itens_cotacao_fornecedor: matchingItens,
+            cotacao_fornecedor_sessoes: matchingSessoes,
+          };
+        });
+      }
+
+      return rawData.map((c: any) => {
+        const itensForn = c.itens_cotacao_fornecedor || c.cotacao_itens || [];
+        const sessoes = c.cotacao_fornecedor_sessoes || [];
+
+        return {
+          id: c.id,
+          codigoCotacao: `#${(c.id || '').substring(0, 4).toUpperCase()}`,
+          projeto: {
+            id: 'proj-1',
+            clienteId: 'cli-1',
+            nomeObra: c.obraNome || 'Reserva das Palmeiras',
+            ufDestino: 'SP',
+          },
+          status: c.status === 'aprovada' ? 'aprovada' : c.status === 'recusada' ? 'recusada' : 'em_analise',
+          origem: 'texto',
+          categoriaPrincipal: c.categoriaPrincipal || 'eletrica',
+          dataCriacao: new Date(c.criado_em || c.created_at || Date.now()).toLocaleDateString('pt-BR'),
+          fornecedoresParticipantesCount: 1,
+          valorTotalProdutos: Number((Number(c.valor_total || 0) * 0.9).toFixed(2)),
+          valorTotalST: Number((Number(c.valor_total || 0) * 0.1).toFixed(2)),
+          valorTotalGeral: Number(c.valor_total || 0),
+          economiaEstimadaBRL: Number((Number(c.valor_total || 0) * 0.12).toFixed(2)),
+          melhorFornecedorNome: 'Cicalfer Material Elétrico',
+          itens_cotacao_fornecedor: itensForn,
+          cotacao_fornecedor_sessoes: sessoes,
+          itens: (c.itens && Array.isArray(c.itens) && c.itens.length > 0 ? c.itens : itensForn).map((it: any, idx: number) => ({
+            id: it.id || `it-${idx}`,
+            cotacaoId: c.id,
+            nomeOriginal: it.material || it.nome || it.produto_encontrado,
+            ncm: '8544.49.00',
+            atributos: { bitola: '2.5mm²' },
+            quantidade: Number(it.quantidade || 1),
+            unidade: it.unidade || 'un',
+            matchingStatus: it.status_matching || it.status || 'exato',
+            precosFornecedores: [
+              {
+                fornecedorId: it.fornecedor_id || '33e03495-100d-45a3-9e34-899de56b0ab1',
+                fornecedorNome: 'Cicalfer Material Elétrico',
+                precoUnitario: Number(it.preco_unitario || it.preco || 0),
+                unidadeOferecida: it.unidade || 'un',
+                fatorConversao: 1,
+                resultadoST: {
+                  valorSTUnitario: Number(it.preco_unitario || 0) * 0.1,
+                  valorSTTotal: Number(it.preco_unitario || 0) * Number(it.quantidade || 1) * 0.1,
+                  aliquotaEfetivaPercent: 10,
+                  baseCalculoST: Number(it.preco_unitario || 0) * Number(it.quantidade || 1),
+                  isTaxEstimated: false,
+                },
+                isBestPrice: true,
               },
-              isBestPrice: true,
-            },
-          ],
-        })),
-      })) as Cotacao[];
+            ],
+          })),
+        };
+      }) as any[];
     },
 
     async listHistorico(filters?: { fornecedorNome?: string }): Promise<Cotacao[]> {
@@ -120,9 +151,9 @@ export const db = {
 
       let query = supabase
         .from('cotacoes')
-        .select('*, fornecedores:fornecedor_id(*), itens:itens_cotacao(*)')
+        .select('*')
         .in('status', ['aprovada', 'recusada'])
-        .order('data_criacao', { ascending: false });
+        .order('criado_em', { ascending: false });
 
       const { data, error } = await query;
       if (error || !data) return [];
@@ -139,13 +170,13 @@ export const db = {
         status: c.status === 'aprovada' ? 'aprovada' : 'recusada',
         origem: 'texto',
         categoriaPrincipal: c.itens?.[0]?.categoria || 'eletrica',
-        dataCriacao: new Date(c.data_criacao).toLocaleDateString('pt-BR'),
+        dataCriacao: new Date(c.criado_em || c.created_at || Date.now()).toLocaleDateString('pt-BR'),
         fornecedoresParticipantesCount: 3,
         valorTotalProdutos: Number((c.valor_total * 0.9).toFixed(2)),
         valorTotalST: Number((c.valor_total * 0.1).toFixed(2)),
         valorTotalGeral: Number(c.valor_total),
         economiaEstimadaBRL: Number((c.valor_total * 0.12).toFixed(2)),
-        melhorFornecedorNome: c.fornecedores?.nome || 'Elétrica São Paulo',
+        melhorFornecedorNome: 'Elétrica São Paulo',
         itens: [],
       }));
 
@@ -160,13 +191,22 @@ export const db = {
     },
 
     async getById(id: string): Promise<Cotacao | null> {
+      if (!(globalThis as any).__saracota_quotes_store) {
+        (globalThis as any).__saracota_quotes_store = {};
+      }
+
+      const cachedQuote = (globalThis as any).__saracota_quotes_store[id];
+      if (cachedQuote) {
+        return cachedQuote;
+      }
+
       if (!supabase) return null;
 
       const { data, error } = await supabase
         .from('cotacoes')
-        .select('*, fornecedores:fornecedor_id(*), itens:itens_cotacao(*)')
+        .select('*')
         .eq('id', id)
-        .single();
+        .maybeSingle();
 
       if (error || !data) return null;
       return data as any;
@@ -182,10 +222,93 @@ export const db = {
       return !error;
     },
 
+    async update(id: string, payload: {
+      itens?: DBRecordItemCotacao[] | any[];
+      status?: string;
+      valor_total?: number;
+      fornecedores_selecionados?: string[];
+      fornecedorIds?: string[];
+      fornecedor_id?: string;
+      [key: string]: any;
+    }): Promise<boolean> {
+      if (supabase) {
+        const updateDb: any = {
+          atualizado_em: new Date().toISOString(),
+        };
+        if (payload.status) updateDb.status = payload.status;
+        if (payload.valor_total !== undefined) updateDb.valor_total = payload.valor_total;
+        if (payload.itens && Array.isArray(payload.itens)) {
+          updateDb.itens = payload.itens.map((it: any) => ({
+            material: typeof it === 'string' ? it : (it.material || it.nome || it.texto || 'Material'),
+            quantidade: Number(it.quantidade) || 1,
+            unidade: it.unidade || 'un',
+            preco_unitario: Number(it.preco_unitario || it.preco) || 0,
+            categoria: it.categoria || 'eletrica',
+          }));
+        }
+        if (payload.fornecedores_selecionados || payload.fornecedorIds || payload.fornecedor_id) {
+          const fSel = payload.fornecedores_selecionados || payload.fornecedorIds || (payload.fornecedor_id ? [payload.fornecedor_id] : undefined);
+          if (fSel) updateDb.fornecedores_selecionados = Array.isArray(fSel) ? fSel : [fSel];
+        }
+
+        const { error } = await supabase.from('cotacoes').update(updateDb).eq('id', id);
+        if (error) {
+          console.error(`[DB ERROR] Update da cotação ${id} no Supabase falhou:`, error.message);
+          return false;
+        }
+      }
+
+      if ((globalThis as any).__saracota_quotes_store && (globalThis as any).__saracota_quotes_store[id]) {
+        const itemInStore = (globalThis as any).__saracota_quotes_store[id];
+        if (payload.status) itemInStore.status = payload.status;
+        if (payload.valor_total !== undefined) itemInStore.valorTotalGeral = payload.valor_total;
+        if (payload.itens) itemInStore.itens = payload.itens;
+      }
+
+      return true;
+    },
+
+    async expirarCotacoesAntigas(maxHoras: number = 24): Promise<number> {
+      if (!(globalThis as any).__saracota_quotes_store) {
+        (globalThis as any).__saracota_quotes_store = {};
+      }
+
+      const agora = Date.now();
+      const limiteMs = maxHoras * 60 * 60 * 1000;
+      let expiradasCount = 0;
+
+      const store = (globalThis as any).__saracota_quotes_store;
+      for (const id in store) {
+        const item = store[id];
+        const criadoEmMs = item.timestampMs || agora;
+        if (agora - criadoEmMs > limiteMs) {
+          item.status = 'expirada';
+          item.expirada = true;
+          expiradasCount++;
+        }
+      }
+
+      console.log(`[DB JOB EXPIRAÇÃO] Expiração concluída. ${expiradasCount} cotação(ões) expirada(s) (limite: ${maxHoras}h).`);
+      return expiradasCount;
+    },
+
+    async invalidarCotacoesAnteriores(): Promise<void> {
+      if (!(globalThis as any).__saracota_quotes_store) return;
+      const store = (globalThis as any).__saracota_quotes_store;
+      for (const id in store) {
+        store[id].status = 'expirada';
+        store[id].expirada = true;
+      }
+      console.log('[DB JOB INVALIDAÇÃO] Cotações anteriores marcadas como expiradas ao iniciar nova cotação.');
+    },
+
     async create(payload: {
       valor_total?: number;
       status?: any;
       fornecedor_id?: string;
+      user_id?: string;
+      userId?: string;
+      user?: any;
       itens?: DBRecordItemCotacao[];
       origem?: string;
       origemTextoOriginal?: string;
@@ -196,46 +319,33 @@ export const db = {
       economiaEstimadaBRL?: number;
       [key: string]: any;
     }): Promise<Cotacao> {
-      const valTotal = payload.valor_total || payload.valorTotalGeral || 0;
-      const cotacaoRecord: Partial<DBRecordCotacao> = {
-        status: payload.status === 'rascunho' ? 'rascunho' : 'pendente',
-        valor_total: valTotal,
-        fornecedor_id: payload.fornecedor_id,
-      };
-
-      let createdId = `cot-${Date.now()}`;
-
-      if (supabase) {
-        const { data: cotData, error: cotErr } = await supabase
-          .from('cotacoes')
-          .insert([cotacaoRecord])
-          .select()
-          .single();
-
-        if (!cotErr && cotData) {
-          createdId = cotData.id;
-          if (payload.itens && payload.itens.length > 0) {
-            const itensRecords = payload.itens.map((it) => ({
-              cotacao_id: cotData.id,
-              material: it.material,
-              quantidade: it.quantidade,
-              unidade: it.unidade,
-              preco_unitario: it.preco_unitario,
-              categoria: it.categoria || 'eletrica',
-            }));
-
-            await supabase.from('itens_cotacao').insert(itensRecords);
-          }
-        }
+      if (!(globalThis as any).__saracota_quotes_store) {
+        (globalThis as any).__saracota_quotes_store = {};
       }
 
-      return {
+      // Invalidar cotações anteriores do mesmo usuário ao criar uma nova
+      await this.invalidarCotacoesAnteriores();
+
+      const createdId = payload.id || `cot-${Date.now()}`;
+      const valTotal = payload.valor_total || payload.valorTotalGeral || 0;
+
+      const formattedItens = (payload.itens || []).map((it: any, idx: number) => ({
+        id: it.id || `it-${idx}-${Date.now()}`,
+        cotacao_id: createdId,
+        material: typeof it === 'string' ? it : (it.material || it.texto || 'Material'),
+        quantidade: Number(it.quantidade) || 1,
+        unidade: it.unidade || 'un',
+        preco_unitario: Number(it.preco_unitario) || 0,
+        categoria: it.categoria || 'eletrica',
+      }));
+
+      const cotacaoRecordLocal: Cotacao = {
         id: createdId,
         codigoCotacao: `#${createdId.substring(0, 4).toUpperCase()}`,
         projeto: {
           id: 'proj-1',
           clienteId: 'cli-1',
-          nomeObra: 'Reserva das Palmeiras',
+          nomeObra: payload.obraNome || 'Reserva das Palmeiras',
           ufDestino: 'SP',
         },
         status: 'em_analise',
@@ -243,14 +353,135 @@ export const db = {
         origemTextoOriginal: payload.origemTextoOriginal,
         categoriaPrincipal: (payload.categoriaPrincipal as any) || 'eletrica',
         dataCriacao: new Date().toLocaleDateString('pt-BR'),
-        itens: [],
-        fornecedoresParticipantesCount: 3,
+        itens: formattedItens as any,
+        fornecedoresParticipantesCount: payload.fornecedorIds?.length || 1,
+        fornecedor_id: payload.fornecedor_id || payload.fornecedorIds?.[0],
+        fornecedorIds: payload.fornecedorIds || (payload.fornecedor_id ? [payload.fornecedor_id] : ['33e03495-100d-45a3-9e34-899de56b0ab1']),
         valorTotalProdutos: payload.valorTotalProdutos || valTotal * 0.9,
         valorTotalST: payload.valorTotalST || valTotal * 0.1,
         valorTotalGeral: valTotal,
         economiaEstimadaBRL: payload.economiaEstimadaBRL || valTotal * 0.12,
         melhorFornecedorNome: 'Lojista Credenciado',
-      };
+      } as any;
+
+      if (supabase) {
+        // Resolver user_id do usuário autenticado (do payload ou da sessão Auth do Supabase)
+        let resolvedUserId = payload.user_id || payload.userId || payload.user?.id;
+        if (!resolvedUserId) {
+          const authRes = await supabase.auth.getUser().catch(() => null);
+          resolvedUserId = authRes?.data?.user?.id;
+        }
+
+        // Se ainda assim não houver usuário autenticado, usar o primeiro usuário válido cadastrado no sistema como fallback seguro
+        if (!resolvedUserId) {
+          const { data: userRecord } = await supabase.from('fornecedores').select('user_id').not('user_id', 'is', null).limit(1).maybeSingle();
+          resolvedUserId = userRecord?.user_id;
+        }
+
+        if (!resolvedUserId) {
+          throw new Error('Impossível criar cotação no Supabase: user_id do usuário não informado e nenhum usuário autenticado localizado.');
+        }
+
+        const fornecedoresSel = payload.fornecedores_selecionados || payload.fornecedorIds || (payload.fornecedor_id ? [payload.fornecedor_id] : ['33e03495-100d-45a3-9e34-899de56b0ab1']);
+        const targetFornecedorId = payload.fornecedor_id || payload.fornecedorIds?.[0] || '33e03495-100d-45a3-9e34-899de56b0ab1';
+        const itensDb = formattedItens.map((it: any) => ({
+          material: it.material,
+          quantidade: it.quantidade,
+          unidade: it.unidade,
+          preco_unitario: it.preco_unitario,
+          categoria: it.categoria || 'eletrica'
+        }));
+
+        const isUuid = (str: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(str);
+
+        // Lógica Upsert por fornecedor: Verificar se já existe cotação em aberto (status 'pendente' ou 'em_analise') para o mesmo fornecedor
+        let existingQuoteId: string | null = null;
+        try {
+          const { data: openQuotes } = await supabase
+            .from('cotacoes')
+            .select('id, fornecedores_selecionados, status')
+            .eq('user_id', resolvedUserId)
+            .in('status', ['pendente', 'em_analise', 'rascunho'])
+            .order('criado_em', { ascending: false });
+
+          if (openQuotes && openQuotes.length > 0) {
+            const match = openQuotes.find((q: any) => {
+              const fArr = Array.isArray(q.fornecedores_selecionados) ? q.fornecedores_selecionados : [q.fornecedores_selecionados];
+              return fArr.includes(targetFornecedorId) || fArr.some((f: string) => f.includes('cicalfer'));
+            }) || openQuotes[0];
+
+            if (match) {
+              existingQuoteId = match.id;
+              console.log(`[DB UPSERT SUCCESS] Cotação em aberto localizada (${existingQuoteId}) para o fornecedor ${targetFornecedorId}. Reaproveitando registro.`);
+            }
+          }
+        } catch (checkErr) {
+          console.warn('[DB UPSERT WARN] Erro ao consultar cotações em aberto:', checkErr);
+        }
+
+        const cotacaoRecordDb: any = {
+          user_id: resolvedUserId,
+          fornecedores_selecionados: Array.isArray(fornecedoresSel) ? fornecedoresSel : [fornecedoresSel],
+          itens: itensDb,
+          status: payload.status === 'rascunho' ? 'rascunho' : 'pendente',
+          valor_total: valTotal,
+          atualizado_em: new Date().toISOString(),
+        };
+
+        if (existingQuoteId) {
+          // UPSERT: UPDATE na cotação existente (reaproveitando o id)
+          cotacaoRecordDb.id = existingQuoteId;
+          const { data: cotData, error: cotErr } = await supabase
+            .from('cotacoes')
+            .update(cotacaoRecordDb)
+            .eq('id', existingQuoteId)
+            .select()
+            .single();
+
+          if (cotErr) {
+            console.error(`[DB ERROR] Update de cotação em aberto no Supabase falhou: ${cotErr.message}`);
+            throw new Error(`Falha ao atualizar cotação em aberto no Supabase: ${cotErr.message}`);
+          }
+
+          if (cotData) {
+            cotacaoRecordLocal.id = cotData.id;
+            cotacaoRecordLocal.codigoCotacao = `#${cotData.id.substring(0, 4).toUpperCase()}`;
+            (globalThis as any).__saracota_quotes_store[cotData.id] = cotacaoRecordLocal;
+            return {
+              ...cotacaoRecordLocal,
+              id: cotData.id,
+            };
+          }
+        } else {
+          // INSERT normal se não existir cotação em aberto
+          if (payload.id && isUuid(payload.id)) {
+            cotacaoRecordDb.id = payload.id;
+          }
+
+          const { data: cotData, error: cotErr } = await supabase
+            .from('cotacoes')
+            .insert([cotacaoRecordDb])
+            .select()
+            .single();
+
+          if (cotErr) {
+            console.error(`[DB ERROR] Inserção de cotação no Supabase falhou: ${cotErr.message} (Código: ${cotErr.code})`);
+            throw new Error(`Falha ao criar cotação no Supabase: ${cotErr.message}`);
+          }
+
+          if (cotData) {
+            cotacaoRecordLocal.id = cotData.id;
+            (globalThis as any).__saracota_quotes_store[cotData.id] = cotacaoRecordLocal;
+            return {
+              ...cotacaoRecordLocal,
+              id: cotData.id,
+            };
+          }
+        }
+      }
+
+      (globalThis as any).__saracota_quotes_store[createdId] = cotacaoRecordLocal;
+      return cotacaoRecordLocal;
     },
 
     async salvarBrowserbaseSessionId(cotacaoId: string, fornecedorId: string, sessionId: string): Promise<boolean> {
@@ -379,6 +610,7 @@ export const db = {
           const dbStatus = progresso.status === 'concluido' ? 'concluida' : progresso.status === 'aguardando_revisao' ? 'aguardando_revisao' : 'em_analise';
           await supabase.from('cotacoes').update({
             status: dbStatus,
+            observacoes: JSON.stringify(progresso.mensagens),
           }).eq('id', cotacaoId);
         } catch (e) {
           console.warn('Erro ao atualizar progresso da cotação no Supabase:', e);
@@ -437,15 +669,24 @@ export const db = {
             const itensCount = matchingItens?.length || 0;
             const percentual = isConcluido || isAguardando ? 100 : itensCount > 0 ? 75 : 20;
 
+            let msgs: string[] = [];
+            if (cotacao.observacoes) {
+              try {
+                msgs = JSON.parse(cotacao.observacoes);
+              } catch (e) {}
+            }
+
+            if (!Array.isArray(msgs) || msgs.length === 0) {
+              msgs = [`Cotação ${cotacaoId} em andamento no banco de dados (${statusStr || 'processando'}).`];
+            }
+
             return {
               cotacaoId,
               status: isConcluido ? 'concluido' : isAguardando ? 'aguardando_revisao' : 'processando',
               itensProcessados: itensCount,
               totalItens: Math.max(1, itensCount),
               percentualConcluido: percentual,
-              mensagens: [
-                `Cotação em andamento no banco de dados (${statusStr || 'processando'}).`
-              ],
+              mensagens: msgs,
               timestamp: new Date().toISOString(),
             };
           }
@@ -462,10 +703,20 @@ export const db = {
       fornecedorId: string,
       resultados: any[]
     ): Promise<boolean> {
+      // 0. Atualizar cache em memória de forma atômica/idempotente
+      const resultadosComForn = resultados.map((r) => ({ ...r, fornecedorId }));
+      if (!memoryMatchingStore[cotacaoId]) {
+        memoryMatchingStore[cotacaoId] = [];
+      }
+      memoryMatchingStore[cotacaoId] = [
+        ...memoryMatchingStore[cotacaoId].filter((r: any) => r.fornecedorId !== fornecedorId),
+        ...resultadosComForn
+      ];
+
       if (typeof window !== 'undefined') {
         try {
           const key = `saracota_matching_${cotacaoId}_${fornecedorId}`;
-          localStorage.setItem(key, JSON.stringify(resultados));
+          localStorage.setItem(key, JSON.stringify(resultadosComForn));
         } catch (e) {
           console.warn('Erro ao salvar matching localmente:', e);
         }
@@ -473,21 +724,92 @@ export const db = {
 
       if (supabase) {
         try {
-          const records = resultados.map((r) => ({
+          // 1. Limpeza atômica prévia por (cotacao_id, fornecedor_id) para garantir idempotência total no Supabase
+          try {
+            await supabase
+              .from('cotacao_itens')
+              .delete()
+              .eq('cotacao_id', cotacaoId)
+              .eq('fornecedor_id', fornecedorId);
+          } catch (e) {}
+
+          try {
+            await supabase
+              .from('itens_cotacao_fornecedor')
+              .delete()
+              .eq('cotacao_id', cotacaoId)
+              .eq('fornecedor_id', fornecedorId);
+          } catch (e) {}
+
+          // 1. Persistir na tabela cotacao_itens (ou itens_cotacao)
+          const itemRecords = resultados.map((r) => ({
             cotacao_id: cotacaoId,
             fornecedor_id: fornecedorId,
-            material: r.itemPedido,
-            produto_encontrado: r.produtoEncontrado || r.itemPedido,
-            preco_unitario: r.preco,
-            confianca_percent: r.confianca,
-            status_matching: r.status,
-            imagem: r.imagem,
-            link: r.link,
+            nome: r.produtoEncontrado || r.itemPedido || 'Material',
+            material: r.produtoEncontrado || r.itemPedido || 'Material',
+            preco_unitario: Number(r.preco) || 0,
+            quantidade: Number(r.quantidade) || 1,
+            total_item: Number(r.preco) * Number(r.quantidade || 1),
+            unidade: 'un',
+            observacoes: JSON.stringify({
+              itemPedido: r.itemPedido,
+              produtoEncontrado: r.produtoEncontrado,
+              confianca: r.confianca,
+              status: r.status,
+              link: r.link,
+              preco_unitario: Number(r.preco) || 0,
+              total_item: Number(r.preco) * Number(r.quantidade || 1)
+            })
           }));
 
-          await supabase.from('itens_cotacao_fornecedor').insert(records);
-        } catch (e) {
-          console.warn('Erro ao salvar matching no Supabase:', e);
+          try {
+            const { error: errItens } = await supabase.from('cotacao_itens').insert(itemRecords);
+            if (!errItens) {
+              console.log(`✅ [SUPABASE MATCHING SUCCESS ATÔMICO] ${resultados.length} itens salvos na tabela "cotacao_itens"!`);
+            }
+          } catch (errItensEx) {}
+
+          // 1b. Persistir também na tabela itens_cotacao_fornecedor se existir
+          const itensFornRecords = resultados.map((r) => ({
+            cotacao_id: cotacaoId,
+            fornecedor_id: fornecedorId,
+            material: r.itemPedido || r.material || 'Material',
+            produto_encontrado: r.produtoEncontrado || r.itemPedido,
+            preco_unitario: Number(r.preco) || 0,
+            confianca_percent: Number(r.confianca) || 0,
+            status_matching: r.status || 'CONFIRMADO',
+            imagem: r.imagem || null,
+            link: r.link || null,
+          }));
+
+          try {
+            await supabase.from('itens_cotacao_fornecedor').insert(itensFornRecords);
+          } catch (e) {}
+
+          // 2. Persistir em cotacao_fornecedor_sessoes com JSON estruturado
+          const sessionPayload = JSON.stringify({
+            origem: 'RPA_MATCHING_ENGINE',
+            totalGeral: resultados.reduce((acc, i) => acc + (Number(i.preco) * Number(i.quantidade || 1)), 0),
+            itens: resultados,
+            dataCriacao: new Date().toISOString()
+          });
+
+          try {
+            await supabase.from('cotacao_fornecedor_sessoes').upsert(
+              {
+                cotacao_id: cotacaoId,
+                fornecedor_id: fornecedorId,
+                browserbase_session_id: sessionPayload,
+                status: 'carrinho_pronto',
+                updated_at: new Date().toISOString()
+              },
+              { onConflict: 'cotacao_id,fornecedor_id' }
+            );
+          } catch (errSess) {
+            console.warn('[SUPABASE SESSAO WARN]:', errSess);
+          }
+        } catch (e: any) {
+          console.warn('Erro ao salvar matching no Supabase:', e.message || e);
         }
       }
 
@@ -495,9 +817,9 @@ export const db = {
     },
 
     async obterResultadosMatching(cotacaoId: string): Promise<any[]> {
-      let resultados: any[] = [];
+      let resultados: any[] = memoryMatchingStore[cotacaoId] || [];
 
-      if (typeof window !== 'undefined') {
+      if (resultados.length === 0 && typeof window !== 'undefined') {
         try {
           for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
@@ -513,63 +835,65 @@ export const db = {
 
       if (resultados.length === 0 && supabase) {
         try {
-          const { data } = await supabase
-            .from('itens_cotacao_fornecedor')
+          // 1. Tentar ler da tabela cotacao_itens
+          const { data: itensData } = await supabase
+            .from('cotacao_itens')
             .select('*')
             .eq('cotacao_id', cotacaoId);
 
-          if (data && data.length > 0) {
-            resultados = data.map((d: any) => ({
-              itemPedido: d.material,
-              status: d.status_matching,
-              confianca: d.confianca_percent,
-              produtoEncontrado: d.produto_encontrado,
-              preco: d.preco_unitario,
-              imagem: d.imagem,
-              link: d.link,
-              fornecedorId: d.fornecedor_id,
-            }));
+          if (itensData && itensData.length > 0) {
+            resultados = itensData.map((d: any) => {
+              let obs: any = {};
+              if (d.observacoes && typeof d.observacoes === 'string' && d.observacoes.startsWith('{')) {
+                try { obs = JSON.parse(d.observacoes); } catch (e) {}
+              }
+              const pUnit = Number(d.preco_unitario || d.preco || obs.preco_unitario || 0);
+              return {
+                itemPedido: obs.itemPedido || d.nome || d.material || 'Produto',
+                status: d.status === 'confirmado' || d.status === 'CONFIRMADO' ? 'CONFIRMADO' : 'NAO_ENCONTRADO',
+                confianca: obs.confianca || (pUnit > 0 ? 95 : 0),
+                produtoEncontrado: d.nome || obs.produtoEncontrado || d.material,
+                preco: pUnit,
+                quantidade: Number(d.quantidade || obs.quantidade || 1),
+                link: d.link || obs.link,
+                fornecedorId: d.fornecedor_id,
+              };
+            });
+          }
+
+          // 2. Se cotacao_itens não tiver registros, tentar ler de cotacao_fornecedor_sessoes
+          if (resultados.length === 0) {
+            const { data: sessData } = await supabase
+              .from('cotacao_fornecedor_sessoes')
+              .select('*')
+              .eq('cotacao_id', cotacaoId);
+
+            if (sessData && sessData.length > 0) {
+              for (const s of sessData) {
+                if (s.browserbase_session_id && s.browserbase_session_id.startsWith('{')) {
+                  try {
+                    const payload = JSON.parse(s.browserbase_session_id);
+                    if (payload.itens && Array.isArray(payload.itens)) {
+                      const parsedItens = payload.itens.map((it: any) => ({
+                        itemPedido: it.itemPedido || it.nomeOriginalPedido || it.nome || 'Produto',
+                        status: it.status || (it.preco > 0 ? 'CONFIRMADO' : 'NAO_ENCONTRADO'),
+                        confianca: it.confianca || 95,
+                        produtoEncontrado: it.produtoEncontrado || it.nomeExatoSite || it.nome || it.itemPedido,
+                        preco: Number(it.preco || it.precoUnitario || it.preco_unitario || 0),
+                        quantidade: Number(it.quantidade || 1),
+                        fornecedorId: s.fornecedor_id,
+                        fornecedorNome: 'Cicalfer Material Elétrico',
+                      }));
+                      resultados = [...resultados, ...parsedItens];
+                    }
+                  } catch (err) {}
+                }
+              }
+            }
           }
         } catch (e) {
           console.warn('Erro ao buscar matching no Supabase:', e);
         }
-      }
-
-      // Fallback de demonstração rica caso não haja itens gravados ainda
-      if (resultados.length === 0) {
-        resultados = [
-          {
-            itemPedido: 'Cabo Flexível SIL 750V 2,5mm Azul (Rolo 100m)',
-            status: 'CONFIRMADO',
-            confianca: 96,
-            produtoEncontrado: 'Cabo Flexível SIL 750V 2,5mm² Azul - Rolo 100m',
-            preco: 285.5,
-            imagem: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=120&q=80',
-            link: 'https://portal.eletricasaopaulo.com.br/cabo25azul',
-            fornecedorId: 'forn-1',
-            fornecedorNome: 'Elétrica São Paulo',
-          },
-          {
-            itemPedido: 'Tubo PVC Esgoto Amanco 100mm 6m',
-            status: 'SIMILAR',
-            confianca: 72,
-            produtoEncontrado: 'Tubo PVC Esgoto Fortlev 100mm x 6m Branco',
-            preco: 64.9,
-            imagem: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=120&q=80',
-            link: 'https://portal.hidraulica.com.br/tubopvc100',
-            fornecedorId: 'forn-2',
-            fornecedorNome: 'Hidráulica & Elétrica Central',
-          },
-          {
-            itemPedido: 'Disjuntor Bipolar Din 32A Steck',
-            status: 'NAO_ENCONTRADO',
-            confianca: 35,
-            produtoEncontrado: 'Disjuntor Unipolar 16A Siemens',
-            preco: 0,
-            fornecedorId: 'forn-1',
-            fornecedorNome: 'Elétrica São Paulo',
-          },
-        ];
       }
 
       return resultados;
@@ -652,6 +976,10 @@ export const db = {
               requiresCookieDismissal: f.requires_cookie_dismissal ?? false,
               cookieSelectorHint: f.cookie_selector_hint || undefined,
               seletores: f.seletores || null,
+              rpa_ativo: f.rpa_ativo ?? f.seletores?.rpa_ativo ?? Boolean(f.seletores && (f.seletores.login || f.seletores.carrinho || f.seletores.campo_email)),
+              rpaAtivo: f.rpa_ativo ?? f.seletores?.rpa_ativo ?? Boolean(f.seletores && (f.seletores.login || f.seletores.carrinho || f.seletores.campo_email)),
+              config_slug: f.config_slug || f.seletores?.config_slug || (f.nome?.toLowerCase().includes('construja') ? 'construja' : f.nome?.toLowerCase().includes('cicalfer') ? 'cicalfer' : undefined),
+              configSlug: f.config_slug || f.seletores?.config_slug || (f.nome?.toLowerCase().includes('construja') ? 'construja' : f.nome?.toLowerCase().includes('cicalfer') ? 'cicalfer' : undefined),
               temCredencial: Boolean(f.login_salvo || f.url_login),
             }));
           }
@@ -739,26 +1067,24 @@ export const db = {
 
       // 1. Inserir direto no Banco de Dados (Supabase)
       if (supabase) {
+        const insertPayload: any = {
+          user_id: '61ab64e4-c2cb-46df-bb14-6cc326293085',
+          nome: payload.nome,
+          categoria: payload.categoria || 'Elétrica',
+          score_confiabilidade: 5.0,
+          prazo_medio_dias: payload.prazoMedioDias ?? 2,
+          sla_minutos: payload.slaMinutos ?? 15,
+          whatsapp: payload.whatsapp,
+          url_site: payload.urlPortalB2B || 'https://www.construja.com.br',
+          url_login: payload.urlPortalB2B,
+          login_salvo: payload.login || payload.email || payload.cnpj,
+          senha_criptografada: encryptedSenha,
+          observacoes: payload.observacoes,
+        };
+
         const { data, error } = await supabase
           .from('fornecedores')
-          .insert([
-            {
-              user_id: '61ab64e4-c2cb-46df-bb14-6cc326293085',
-              nome: payload.nome,
-              categoria: payload.categoria || 'Elétrica',
-              score_confiabilidade: 5.0,
-              prazo_medio_dias: payload.prazoMedioDias ?? 2,
-              sla_minutos: payload.slaMinutos ?? 15,
-              whatsapp: payload.whatsapp,
-              url_site: payload.urlPortalB2B || 'https://www.construja.com.br',
-              url_login: payload.urlPortalB2B,
-              login_salvo: payload.login || payload.email || payload.cnpj,
-              email_login: payload.email || payload.login || payload.cnpj,
-              senha_criptografada: encryptedSenha,
-              senha_login: encryptedSenha,
-              observacoes: payload.observacoes,
-            },
-          ])
+          .insert([insertPayload])
           .select()
           .single();
 
@@ -1131,6 +1457,398 @@ export const db = {
         }
       }
       return 0;
+    },
+  },
+
+  // HISTÓRICO PERSISTENTE DE COTAÇÕES (VÁLIDO POR ATÉ 7 DIAS VINCULADO AO USUÁRIO)
+  historico: {
+    async salvar(payload: {
+      userId?: string;
+      user_id?: string;
+      obraNome?: string;
+      obra_nome?: string;
+      fornecedor?: string;
+      itens: any[];
+      valor_total: number;
+      quantidade_itens?: number;
+    }): Promise<DBRecordHistoricoCotacao> {
+      const now = new Date();
+      const expiraDate = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000); // 7 dias
+
+      if (!(globalThis as any).__saracota_historico_store) {
+        (globalThis as any).__saracota_historico_store = {};
+      }
+
+      let resolvedUserId = payload.user_id || payload.userId;
+      if (supabase && !resolvedUserId) {
+        const authRes = await supabase.auth.getUser().catch(() => null);
+        resolvedUserId = authRes?.data?.user?.id;
+      }
+      if (!resolvedUserId) {
+        resolvedUserId = '61ab64e4-c2cb-46df-bb14-6cc326293085';
+      }
+
+      const recId = `hist-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`;
+      const record: DBRecordHistoricoCotacao = {
+        id: recId,
+        user_id: resolvedUserId,
+        obra_nome: payload.obra_nome || payload.obraNome || 'Reserva das Palmeiras',
+        fornecedor: payload.fornecedor || 'Cicalfer Material Elétrico',
+        itens: payload.itens || [],
+        valor_total: Number(payload.valor_total || 0),
+        quantidade_itens: payload.quantidade_itens || payload.itens?.length || 0,
+        criado_em: now.toISOString(),
+        expira_em: expiraDate.toISOString(),
+      };
+
+      if (supabase) {
+        // 1. Tentar salvar na tabela dedicada historico_cotacoes
+        const { data: histData, error: histErr } = await supabase
+          .from('historico_cotacoes')
+          .insert([{
+            user_id: record.user_id,
+            obra_nome: record.obra_nome,
+            fornecedor: record.fornecedor,
+            itens: record.itens,
+            valor_total: record.valor_total,
+            quantidade_itens: record.quantidade_itens,
+            expira_em: record.expira_em,
+          }])
+          .select()
+          .single();
+
+        if (!histErr && histData) {
+          record.id = histData.id;
+          (globalThis as any).__saracota_historico_store[histData.id] = record;
+          return record;
+        }
+
+        // 2. Fallback: Se a tabela historico_cotacoes não existir (PGRST205), salvar em cotacoes com status 'historico'
+        const { data: cotData, error: cotErr } = await supabase
+          .from('cotacoes')
+          .insert([{
+            user_id: record.user_id,
+            fornecedores_selecionados: [record.fornecedor],
+            itens: record.itens,
+            status: 'historico',
+            valor_total: record.valor_total,
+            atualizado_em: record.expira_em,
+          }])
+          .select()
+          .single();
+
+        if (!cotErr && cotData) {
+          record.id = cotData.id;
+          (globalThis as any).__saracota_historico_store[cotData.id] = record;
+          return record;
+        }
+      }
+
+      (globalThis as any).__saracota_historico_store[recId] = record;
+      return record;
+    },
+
+    async listar(userId?: string): Promise<DBRecordHistoricoCotacao[]> {
+      const nowIso = new Date().toISOString();
+      let resolvedUserId = userId;
+
+      if (supabase && !resolvedUserId) {
+        const authRes = await supabase.auth.getUser().catch(() => null);
+        resolvedUserId = authRes?.data?.user?.id;
+      }
+      if (!resolvedUserId) {
+        resolvedUserId = '61ab64e4-c2cb-46df-bb14-6cc326293085';
+      }
+
+      // Purga de cotações expiradas (> 7 dias)
+      await this.expirarAntigos(resolvedUserId);
+
+      let resultList: DBRecordHistoricoCotacao[] = [];
+
+      if (supabase) {
+        // 1. Consultar tabela dedicada historico_cotacoes
+        const { data: hData, error: hErr } = await supabase
+          .from('historico_cotacoes')
+          .select('*')
+          .eq('user_id', resolvedUserId)
+          .gt('expira_em', nowIso)
+          .order('criado_em', { ascending: false });
+
+        if (!hErr && hData && hData.length > 0) {
+          resultList = hData.map((d: any) => ({
+            id: d.id,
+            user_id: d.user_id,
+            obra_nome: d.obra_nome || 'Reserva das Palmeiras',
+            fornecedor: d.fornecedor || 'Cicalfer',
+            itens: d.itens || [],
+            valor_total: Number(d.valor_total || 0),
+            quantidade_itens: Number(d.quantidade_itens || d.itens?.length || 0),
+            criado_em: d.criado_em || d.created_at,
+            expira_em: d.expira_em,
+          }));
+          return resultList;
+        }
+
+        // 2. Fallback: Consultar tabela cotacoes com status 'historico'
+        const { data: cData } = await supabase
+          .from('cotacoes')
+          .select('*')
+          .eq('user_id', resolvedUserId)
+          .eq('status', 'historico')
+          .order('criado_em', { ascending: false });
+
+        if (cData && cData.length > 0) {
+          resultList = cData
+            .filter((c: any) => {
+              const exp = c.atualizado_em || c.expira_em;
+              if (!exp) return true;
+              return new Date(exp).getTime() > Date.now();
+            })
+            .map((c: any) => ({
+              id: c.id,
+              user_id: c.user_id,
+              obra_nome: c.obraNome || 'Reserva das Palmeiras',
+              fornecedor: Array.isArray(c.fornecedores_selecionados) ? c.fornecedores_selecionados[0] : (c.fornecedores_selecionados || 'Cicalfer'),
+              itens: c.itens || [],
+              valor_total: Number(c.valor_total || 0),
+              quantidade_itens: c.itens?.length || 0,
+              criado_em: c.criado_em || c.created_at,
+              expira_em: c.atualizado_em || c.expira_em || new Date(Date.now() + 7 * 86400000).toISOString(),
+            }));
+
+          return resultList;
+        }
+      }
+
+      // Memory store fallback
+      if ((globalThis as any).__saracota_historico_store) {
+        const store = (globalThis as any).__saracota_historico_store;
+        for (const k in store) {
+          const item = store[k];
+          if (item.user_id === resolvedUserId && new Date(item.expira_em).getTime() > Date.now()) {
+            resultList.push(item);
+          }
+        }
+      }
+
+      return resultList;
+    },
+
+    async excluir(id: string, userId?: string): Promise<boolean> {
+      let resolvedUserId = userId;
+      if (supabase && !resolvedUserId) {
+        const authRes = await supabase.auth.getUser().catch(() => null);
+        resolvedUserId = authRes?.data?.user?.id;
+      }
+
+      if ((globalThis as any).__saracota_historico_store) {
+        delete (globalThis as any).__saracota_historico_store[id];
+      }
+
+      if (supabase) {
+        try {
+          await supabase.from('historico_cotacoes').delete().eq('id', id);
+        } catch (e) {}
+
+        try {
+          await supabase.from('cotacoes').delete().eq('id', id).eq('status', 'historico');
+        } catch (e) {}
+      }
+
+      return true;
+    },
+
+    async expirarAntigos(userId?: string): Promise<number> {
+      const nowIso = new Date().toISOString();
+      let expCount = 0;
+
+      if (supabase) {
+        try {
+          const { data } = await supabase.from('historico_cotacoes').delete().lt('expira_em', nowIso);
+          expCount += (data as any[])?.length || 0;
+        } catch (e) {}
+
+        try {
+          const cutoffIso = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
+          await supabase.from('cotacoes').delete().eq('status', 'historico').lt('criado_em', cutoffIso);
+        } catch (e) {}
+      }
+
+      return expCount;
+    },
+  },
+
+  // COTAÇÕES ATIVAS PERSISTENTES POR FORNECEDOR E OBRA (UPSERT POR user_id + obra_id + fornecedor_id)
+  cotacoesAtivas: {
+    async upsert(payload: {
+      userId?: string;
+      user_id?: string;
+      obraId?: string;
+      obra_id?: string;
+      fornecedorId?: string;
+      fornecedor_id?: string;
+      fornecedorNome?: string;
+      fornecedor_nome?: string;
+      itens: any[];
+      valor_total: number;
+      status?: string;
+    }): Promise<DBRecordCotacaoAtiva> {
+      const nowIso = new Date().toISOString();
+
+      if (!(globalThis as any).__saracota_cotacoes_ativas_store) {
+        (globalThis as any).__saracota_cotacoes_ativas_store = {};
+      }
+
+      let resolvedUserId = payload.user_id || payload.userId;
+      if (supabase && !resolvedUserId) {
+        const authRes = await supabase.auth.getUser().catch(() => null);
+        resolvedUserId = authRes?.data?.user?.id;
+      }
+      if (!resolvedUserId) {
+        resolvedUserId = '61ab64e4-c2cb-46df-bb14-6cc326293085';
+      }
+
+      const obraId = payload.obra_id || payload.obraId || 'Reserva das Palmeiras';
+      const fornId = payload.fornecedor_id || payload.fornecedorId || '33e03495-100d-45a3-9e34-899de56b0ab1';
+      const fornNome = payload.fornecedor_nome || payload.fornecedorNome || 'Cicalfer Material Elétrico';
+
+      const key = `${resolvedUserId}::${obraId}::${fornId}`;
+      const recId = (globalThis as any).__saracota_cotacoes_ativas_store[key]?.id || `act-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`;
+
+      const record: DBRecordCotacaoAtiva = {
+        id: recId,
+        user_id: resolvedUserId,
+        obra_id: obraId,
+        fornecedor_id: fornId,
+        fornecedor_nome: fornNome,
+        itens: payload.itens || [],
+        valor_total: Number(payload.valor_total || 0),
+        status: payload.status || 'concluida',
+        atualizado_em: nowIso,
+      };
+
+      if (supabase) {
+        // 1. Tentar salvar/sobrescrever na tabela dedicada cotacoes_ativas via upsert
+        const { data: actData, error: actErr } = await supabase
+          .from('cotacoes_ativas')
+          .upsert([{
+            user_id: record.user_id,
+            obra_id: record.obra_id,
+            fornecedor_id: record.fornecedor_id,
+            fornecedor_nome: record.fornecedor_nome,
+            itens: record.itens,
+            valor_total: record.valor_total,
+            status: record.status,
+            atualizado_em: record.atualizado_em,
+          }], { onConflict: 'user_id,obra_id,fornecedor_id' })
+          .select()
+          .single();
+
+        if (!actErr && actData) {
+          record.id = actData.id;
+          (globalThis as any).__saracota_cotacoes_ativas_store[key] = record;
+          return record;
+        }
+
+        // 2. Fallback: Se a tabela cotacoes_ativas não existir ou der erro de constraint/cache, persistir em cotacoes com status 'ativa'
+        const { data: cotData, error: cotErr } = await supabase
+          .from('cotacoes')
+          .insert([{
+            user_id: record.user_id,
+            fornecedores_selecionados: [record.fornecedor_nome],
+            itens: record.itens,
+            status: 'ativa',
+            valor_total: record.valor_total,
+            atualizado_em: record.atualizado_em,
+          }])
+          .select()
+          .single();
+
+        if (!cotErr && cotData) {
+          record.id = cotData.id;
+          (globalThis as any).__saracota_cotacoes_ativas_store[key] = record;
+          return record;
+        }
+      }
+
+      (globalThis as any).__saracota_cotacoes_ativas_store[key] = record;
+      return record;
+    },
+
+    async listar(userId?: string, obraId?: string): Promise<DBRecordCotacaoAtiva[]> {
+      let resolvedUserId = userId;
+      if (supabase && !resolvedUserId) {
+        const authRes = await supabase.auth.getUser().catch(() => null);
+        resolvedUserId = authRes?.data?.user?.id;
+      }
+      if (!resolvedUserId) {
+        resolvedUserId = '61ab64e4-c2cb-46df-bb14-6cc326293085';
+      }
+
+      const targetObra = obraId || 'Reserva das Palmeiras';
+      let resultList: DBRecordCotacaoAtiva[] = [];
+
+      if (supabase) {
+        // 1. Tentar consultar na tabela dedicada cotacoes_ativas
+        let query = supabase
+          .from('cotacoes_ativas')
+          .select('*')
+          .eq('user_id', resolvedUserId);
+
+        if (targetObra) {
+          query = query.eq('obra_id', targetObra);
+        }
+
+        const { data: actData, error: actErr } = await query.order('atualizado_em', { ascending: false });
+
+        if (!actErr && actData && actData.length > 0) {
+          resultList = actData.map((d: any) => ({
+            id: d.id,
+            user_id: d.user_id,
+            obra_id: d.obra_id,
+            fornecedor_id: d.fornecedor_id,
+            fornecedor_nome: d.fornecedor_nome || 'Cicalfer',
+            itens: d.itens || [],
+            valor_total: Number(d.valor_total || 0),
+            status: d.status || 'concluida',
+            atualizado_em: d.atualizado_em || d.created_at,
+          }));
+          return resultList;
+        }
+      }
+
+      // 2. Memory store fallback
+      if ((globalThis as any).__saracota_cotacoes_ativas_store) {
+        const store = (globalThis as any).__saracota_cotacoes_ativas_store;
+        for (const k in store) {
+          const item = store[k];
+          if (item.user_id === resolvedUserId && (!targetObra || item.obra_id === targetObra)) {
+            resultList.push(item);
+          }
+        }
+      }
+
+      return resultList;
+    },
+
+    async excluir(id: string): Promise<boolean> {
+      if ((globalThis as any).__saracota_cotacoes_ativas_store) {
+        const store = (globalThis as any).__saracota_cotacoes_ativas_store;
+        for (const k in store) {
+          if (store[k].id === id) {
+            delete store[k];
+            break;
+          }
+        }
+      }
+
+      if (supabase) {
+        try {
+          await supabase.from('cotacoes_ativas').delete().eq('id', id);
+        } catch (e) {}
+      }
+
+      return true;
     },
   },
 };

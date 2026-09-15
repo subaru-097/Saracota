@@ -1,6 +1,9 @@
 {
+  "/page": "app/page.js",
   "/cotacoes/page": "app/cotacoes/page.js",
+  "/login/page": "app/login/page.js",
+  "/api/cotacoes/[cotacaoId]/processar/route": "app/api/cotacoes/[cotacaoId]/processar/route.js",
   "/fornecedores/page": "app/fornecedores/page.js",
-  "/painel/page": "app/painel/page.js",
-  "/login/page": "app/login/page.js"
+  "/api/cotacoes/[cotacaoId]/status/route": "app/api/cotacoes/[cotacaoId]/status/route.js",
+  "/painel/page": "app/painel/page.js"
 }

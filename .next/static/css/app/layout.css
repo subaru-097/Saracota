@@ -598,9 +598,6 @@ video {
 .z-10{
   z-index: 10;
 }
-.z-20{
-  z-index: 20;
-}
 .z-40{
   z-index: 40;
 }
@@ -751,20 +748,11 @@ video {
 .h-\[18px\]{
   height: 18px;
 }
-.h-\[520px\]{
-  height: 520px;
-}
 .h-\[60px\]{
   height: 60px;
 }
 .h-\[64px\]{
   height: 64px;
-}
-.h-\[75vh\]{
-  height: 75vh;
-}
-.h-\[95vh\]{
-  height: 95vh;
 }
 .h-full{
   height: 100%;
@@ -798,9 +786,6 @@ video {
 }
 .min-h-\[44px\]{
   min-height: 44px;
-}
-.min-h-\[500px\]{
-  min-height: 500px;
 }
 .min-h-\[50px\]{
   min-height: 50px;
@@ -985,12 +970,6 @@ video {
 .resize-none{
   resize: none;
 }
-.list-inside{
-  list-style-position: inside;
-}
-.list-disc{
-  list-style-type: disc;
-}
 .appearance-none{
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -1046,9 +1025,6 @@ video {
 }
 .gap-3{
   gap: 0.75rem;
-}
-.gap-3\.5{
-  gap: 0.875rem;
 }
 .gap-4{
   gap: 1rem;
@@ -1131,9 +1107,6 @@ video {
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
   border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
 }
-.self-end{
-  align-self: flex-end;
-}
 .self-center{
   align-self: center;
 }
@@ -1191,12 +1164,6 @@ video {
 }
 .border{
   border-width: 1px;
-}
-.border-0{
-  border-width: 0px;
-}
-.border-2{
-  border-width: 2px;
 }
 .border-b{
   border-bottom-width: 1px;
@@ -1279,9 +1246,6 @@ video {
 .border-sky-500\/40{
   border-color: rgb(14 165 233 / 0.4);
 }
-.border-t-transparent{
-  border-top-color: transparent;
-}
 .bg-\[\#0A0C0E\]{
   --tw-bg-opacity: 1;
   background-color: rgb(10 12 14 / var(--tw-bg-opacity, 1));
@@ -1306,9 +1270,6 @@ video {
 }
 .bg-black\/80{
   background-color: rgb(0 0 0 / 0.8);
-}
-.bg-black\/90{
-  background-color: rgb(0 0 0 / 0.9);
 }
 .bg-brand{
   background-color: var(--brand-primary);
@@ -1348,10 +1309,6 @@ video {
 }
 .bg-red-500\/10{
   background-color: rgb(239 68 68 / 0.1);
-}
-.bg-rose-400{
-  --tw-bg-opacity: 1;
-  background-color: rgb(251 113 133 / var(--tw-bg-opacity, 1));
 }
 .bg-rose-500\/10{
   background-color: rgb(244 63 94 / 0.1);
@@ -1602,6 +1559,10 @@ video {
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
 }
+.py-3{
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
 .py-3\.5{
   padding-top: 0.875rem;
   padding-bottom: 0.875rem;
@@ -1634,9 +1595,6 @@ video {
 }
 .pb-4{
   padding-bottom: 1rem;
-}
-.pl-1{
-  padding-left: 0.25rem;
 }
 .pl-10{
   padding-left: 2.5rem;
@@ -1762,10 +1720,6 @@ video {
 .text-accent-cyan{
   color: var(--accent-cyan);
 }
-.text-amber-200{
-  --tw-text-opacity: 1;
-  color: rgb(253 230 138 / var(--tw-text-opacity, 1));
-}
 .text-amber-300{
   --tw-text-opacity: 1;
   color: rgb(252 211 77 / var(--tw-text-opacity, 1));
@@ -1850,11 +1804,6 @@ video {
 }
 .opacity-90{
   opacity: 0.9;
-}
-.shadow-2xl{
-  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .shadow-card{
   --tw-shadow: var(--shadow-card);
@@ -2179,16 +2128,16 @@ body {
   border-color: var(--sara-border-highlight);
 }
 
-.hover\:bg-amber-500\/30:hover{
-  background-color: rgb(245 158 11 / 0.3);
-}
-
 .hover\:bg-brand-hover:hover{
   background-color: var(--brand-primary-hover);
 }
 
 .hover\:bg-emerald-500\/20:hover{
   background-color: rgb(16 185 129 / 0.2);
+}
+
+.hover\:bg-emerald-500\/30:hover{
+  background-color: rgb(16 185 129 / 0.3);
 }
 
 .hover\:bg-red-500\/20:hover{
@@ -2232,11 +2181,6 @@ body {
 .hover\:text-rose-400:hover{
   --tw-text-opacity: 1;
   color: rgb(251 113 133 / var(--tw-text-opacity, 1));
-}
-
-.hover\:text-white:hover{
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .hover\:underline:hover{
@@ -2420,10 +2364,6 @@ body {
     width: 24rem;
   }
 
-  .sm\:w-\[95vw\]{
-    width: 95vw;
-  }
-
   .sm\:w-auto{
     width: auto;
   }
@@ -2444,12 +2384,12 @@ body {
     max-width: 56rem;
   }
 
-  .sm\:max-w-\[95vw\]{
-    max-width: 95vw;
-  }
-
   .sm\:max-w-lg{
     max-width: 32rem;
+  }
+
+  .sm\:flex-initial{
+    flex: 0 1 auto;
   }
 
   .sm\:flex-none{
@@ -2484,10 +2424,6 @@ body {
     --tw-space-x-reverse: 0;
     margin-right: calc(0.75rem * var(--tw-space-x-reverse));
     margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
-  }
-
-  .sm\:self-auto{
-    align-self: auto;
   }
 
   .sm\:rounded-2xl{

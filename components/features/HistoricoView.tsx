@@ -13,6 +13,7 @@ import { useCotacoesSession } from '@/context/CotacoesContext';
 import { useNotifications } from '@/context/NotificationContext';
 import { exportCotacaoToPdf } from '@/lib/services/pdfExporter';
 import { db } from '@/lib/db/client';
+import { ModalDetalheFornecedor } from '@/components/features/ModalDetalheFornecedor';
 import {
   Clock,
   TrendingDown,
@@ -60,6 +61,10 @@ export const HistoricoView: React.FC = () => {
   const [fornecedorFiltro, setFornecedorFiltro] = useState('todos');
   const [exportingId, setExportingId] = useState<string | null>(null);
 
+  // Modal Detalhado de Resultado
+  const [modalFornecedor, setModalFornecedor] = useState<any | null>(null);
+  const [modalObraNome, setModalObraNome] = useState<string>('Reserva das Palmeiras');
+
   // Estados para Acordeão de Matching e Modal de Revisão
   const [expandedCotacaoId, setExpandedCotacaoId] = useState<string | null>(null);
   const [matchingItensMap, setMatchingItensMap] = useState<Record<string, any[]>>({});
@@ -70,6 +75,58 @@ export const HistoricoView: React.FC = () => {
   useEffect(() => {
     carregarHistoricoDoBanco(fornecedorFiltro);
   }, [fornecedorFiltro, carregarHistoricoDoBanco]);
+
+  const handleOpenDetailModal = (cot: any, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    const primaryForn = cot.fornecedores?.[0] || {
+      id: `f-${cot.id}`,
+      nome: cot.fornecedorVencedorNome || 'Cicalfer Material Elétrico',
+      score: 5.0,
+      fatorPreco: 1.0,
+      prazoDias: 2,
+      matchingStatus: 'exato',
+      valorProdutos: cot.valorTotalGeral,
+      valorST: 0,
+      valorTotalGeral: cot.valorTotalGeral,
+      urlCarrinhoDireto: 'https://www.cicalfer.com.br/carrinho',
+      itensCotados: (cot.itens || []).map((it: any, idx: number) => ({
+        itemId: `hist-item-${idx}`,
+        nomeSolicitado: it.material?.nome || it.nome || 'Item',
+        nomeEncontrado: it.material?.nome || it.nome || 'Item',
+        quantidade: it.quantidade || it.qtd || 1,
+        unidade: it.material?.unidade || it.unidade || 'un',
+        precoUnitario: it.material?.precoBaseUnitario || it.precoUnitario || 0,
+        subtotalComSt: (it.material?.precoBaseUnitario || it.precoUnitario || 0) * (it.quantidade || it.qtd || 1),
+        status: 'encontrado',
+      })),
+    };
+    setModalFornecedor(primaryForn);
+    setModalObraNome(cot.obra || 'Reserva das Palmeiras');
+  };
+
+  const handleExcluirCotacao = async (cotId: string, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    const confirmacao = window.confirm('Deseja excluir esta cotação do histórico?');
+    if (!confirmacao) return;
+
+    try {
+      await db.historico.excluir(cotId);
+      addNotification({
+        title: 'Cotação Excluída',
+        description: 'A cotação foi removida do histórico.',
+        type: 'info',
+        category: 'cotacao',
+      });
+      await carregarHistoricoDoBanco(fornecedorFiltro);
+    } catch (err: any) {
+      addNotification({
+        title: 'Erro ao Excluir',
+        description: err.message || 'Falha ao remover cotação.',
+        type: 'error',
+        category: 'cotacao',
+      });
+    }
+  };
 
   // Carregar itens de matching quando expandir uma cotação
   const toggleExpandCotacao = async (cotacaoId: string) => {
@@ -384,10 +441,18 @@ export const HistoricoView: React.FC = () => {
                         <Button
                           variant="secondary"
                           size="sm"
+                          onClick={(e) => handleOpenDetailModal(cot, e)}
+                        >
+                          Ver Modal de Resultado
+                        </Button>
+
+                        <Button
+                          variant="secondary"
+                          size="sm"
                           onClick={() => toggleExpandCotacao(cot.id)}
                           rightIcon={isExpanded ? <ChevronUp className="w-4 h-4 text-brand" /> : <ChevronDown className="w-4 h-4 text-brand" />}
                         >
-                          {isExpanded ? 'Ocultar Itens' : 'Ver Itens & Matching'}
+                          {isExpanded ? 'Ocultar' : 'Matching'}
                         </Button>
 
                         <Button
@@ -398,6 +463,16 @@ export const HistoricoView: React.FC = () => {
                           title="Baixar Comprovante PDF"
                         >
                           <Download className="w-4 h-4 text-brand" />
+                        </Button>
+
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={(e) => handleExcluirCotacao(cot.id, e)}
+                          className="text-rose-400 hover:text-rose-300 hover:bg-rose-500/10"
+                          title="Excluir Cotação"
+                        >
+                          <Trash2 className="w-4 h-4" />
                         </Button>
                       </div>
                     </div>
@@ -590,6 +665,14 @@ export const HistoricoView: React.FC = () => {
           </div>
         )}
       </Sheet>
+
+      {/* MODAL REEXIBINDO OS ITENS COMPLETOS DA COTAÇÃO (REAPROVEITANDO O MESMO COMPONENTE DO MODAL RESULTADO) */}
+      <ModalDetalheFornecedor
+        isOpen={Boolean(modalFornecedor)}
+        onClose={() => setModalFornecedor(null)}
+        fornecedor={modalFornecedor}
+        obraNome={modalObraNome}
+      />
     </div>
   );
 };

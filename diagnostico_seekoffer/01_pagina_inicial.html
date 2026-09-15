@@ -1,0 +1,676 @@
+<!DOCTYPE html><html class="no-js" lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="description" content="Domain Manage">
+    <meta name="keywords" content="">
+    <meta name="author" content="Domain Manage">
+    <title>Domain Manage</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async="" src="https://kit.fontawesome.com/09e2cdc20c.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&amp;display=swap" media="all" onload="this.media='all'">
+    <link rel="stylesheet" href="/assets/css/mainnew.css">
+    <link rel="stylesheet" href="/assets/css/domain-listing-pages.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+	    <!-- WhatsApp Floating Button CSS -->
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            background-color: #25D366;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            line-height: 56px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+            z-index: 99999;
+        }
+        .whatsapp-float:hover {
+            background-color: #1ebe5d;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* ---------- Video hero (shown only when the domain has a Vimeo link) ---------- */
+        .vhero{ position:relative; height:100dvh; min-height:560px; overflow:hidden; cursor:pointer;
+          background:radial-gradient(120% 90% at 75% 15%, #2a2340 0%, transparent 55%),
+                     radial-gradient(100% 80% at 20% 85%, #14283d 0%, transparent 60%), #0a0a0f; }
+        .vhero__video{ position:absolute; top:50%; left:50%; width:100vw; height:56.25vw;
+          min-width:177.78vh; min-height:100vh; transform:translate(-50%,-50%); border:0;
+          pointer-events:none; opacity:0; transition:opacity .9s; }
+        .vhero.is-ready .vhero__video{ opacity:1; }
+        .vhero__overlay{ position:absolute; inset:0; z-index:1; pointer-events:none;
+          background:linear-gradient(to top, rgba(6,8,14,.86) 0%, rgba(6,8,14,.18) 48%, rgba(6,8,14,.62) 100%); }
+        .play-wrap{ position:absolute; z-index:4; left:50%; top:50%; transform:translate(-50%,-50%);
+          display:grid; place-items:center; pointer-events:none; transition:opacity .35s, transform .35s; }
+        .play-wrap.is-hidden{ opacity:0; transform:translate(-50%,-50%) scale(.92); }
+        .play-orb{ position:relative; width:clamp(76px,11vw,104px); aspect-ratio:1/1; border-radius:50%;
+          display:grid; place-items:center; padding:0; cursor:pointer; pointer-events:auto; color:#fff;
+          border:1px solid rgba(255,255,255,.42); background:rgba(10,10,20,.42); backdrop-filter:blur(14px);
+          transition:background .2s, border-color .2s, transform .2s; }
+        .play-wrap.is-hidden .play-orb{ pointer-events:none; }
+        .play-orb:hover{ background:rgba(30,30,52,.62); border-color:rgba(255,255,255,.8); transform:scale(1.06); }
+        .play-orb svg{ width:34%; height:34%; margin-left:8%; display:block; }
+        .play-orb::after{ content:""; position:absolute; inset:-1px; border-radius:50%;
+          border:1px solid rgba(255,255,255,.5); animation:vring 2.6s ease-out infinite; }
+        @keyframes  vring{ 0%{ transform:scale(1); opacity:.7; } 100%{ transform:scale(1.6); opacity:0; } }
+        .play-caption{ position:absolute; bottom:calc(100% + 16px); left:50%; transform:translateX(-50%);
+          white-space:nowrap; font-size:13px; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+          color:rgba(255,255,255,.82); text-shadow:0 2px 12px rgba(0,0,0,.6); }
+        .restart-btn{ position:absolute; top:calc(100% + 48px); left:50%; transform:translateX(-50%);
+          display:none; align-items:center; gap:7px; white-space:nowrap; pointer-events:auto; cursor:pointer;
+          font-family:inherit; font-size:12px; font-weight:600; letter-spacing:.04em; color:rgba(255,255,255,.75);
+          background:rgba(10,10,20,.45); border:1px solid rgba(255,255,255,.22); border-radius:20px;
+          padding:7px 15px; backdrop-filter:blur(10px); transition:color .18s, border-color .18s, background .18s; }
+        .restart-btn.is-shown{ display:inline-flex; }
+        .restart-btn:hover{ color:#fff; border-color:rgba(255,255,255,.55); background:rgba(20,20,36,.62); }
+        .restart-btn svg{ width:13px; height:13px; display:block; }
+        .play-wrap.is-hidden .restart-btn{ pointer-events:none; }
+        .vhero__content{ position:absolute; inset:0; z-index:2; display:flex; align-items:flex-end;
+          padding-bottom:clamp(40px,7vh,84px); pointer-events:none; }
+        .vhero__content a{ pointer-events:auto; }
+        .vhero__grid{ max-width:1180px; margin:0 auto; padding:0 24px; width:100%; display:flex;
+          align-items:flex-end; justify-content:space-between; gap:40px; flex-wrap:nowrap; }
+        .vhero__grid > div:first-child{ flex:1 1 auto; min-width:0; }
+        .vhero__domain{ margin:0; color:#fff; font-weight:800; line-height:.95; letter-spacing:-.045em;
+          font-size:clamp(34px,6vw,84px); text-shadow:0 4px 30px rgba(0,0,0,.55); overflow-wrap:anywhere; }
+        .vtagline{ margin:14px 0 0; color:rgba(255,255,255,.72); font-size:clamp(13px,1.6vw,17px);
+          font-weight:400; max-width:34ch; }
+        .vhero__actions{ display:flex; flex-direction:column; gap:12px; flex:0 0 auto; width:280px; }
+        @media (max-width:860px){
+          .vhero__content{ align-items:stretch; }
+          .vhero__grid{ flex-direction:column; align-items:stretch; justify-content:flex-end;
+            flex-wrap:nowrap; gap:16px; }
+          .vhero__grid > div:first-child{ flex:0 0 auto; }
+          .vhero__actions{ width:100%; }
+          .vtagline{ display:none; }
+          .vbuy{ text-align:left !important; }
+          /* Play button moves into the upper area so it clears the domain name. */
+          .play-wrap{ top:34%; }
+        }
+        .vbuy{ display:block; text-align:right; text-decoration:none; color:#fff; padding:16px 22px;
+          border-radius:14px; border:1px solid rgba(255,255,255,.22); background:rgba(10,10,20,.42);
+          backdrop-filter:blur(14px); transition:transform .18s, border-color .18s, background .18s; }
+        .vbuy:hover{ transform:translateY(-2px); border-color:rgba(255,255,255,.55); background:rgba(20,20,36,.6); color:#fff; }
+        .vbuy__label{ display:block; font-size:12px; letter-spacing:.2em; text-transform:uppercase; font-weight:500; opacity:.75; }
+        .vbuy__value{ display:block; font-size:clamp(32px,4.5vw,60px); font-weight:800; letter-spacing:-.03em; margin-top:6px; line-height:1; }
+        .vbuy__cta{ display:block; font-size:13px; font-weight:500; opacity:.65; margin-top:6px; }
+        /* More breathing room between the purchase box and the FAQ on small screens. */
+        @media (max-width:991px){ .buynow-faq{ margin-top:40px; } }
+
+        /* Sticky mobile checkout bar (mobile only) */
+        .mobile-checkout-bar{ display:none; }
+        @media (max-width:860px){
+          .mobile-checkout-bar{ display:block; position:fixed; left:0; right:0; bottom:0; z-index:9998;
+            width:100%; max-width:100%; background:#0d111f; box-shadow:0 -6px 24px rgba(0,0,0,.28);
+            padding:10px 16px calc(10px + env(safe-area-inset-bottom)); }
+          .mcb-row{ display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+          .mcb-domain{ color:#fff; font-size:15px; font-weight:700; overflow:hidden;
+            text-overflow:ellipsis; white-space:nowrap; }
+          .mcb-price{ color:#f5a623; font-size:18px; font-weight:800; flex:0 0 auto; margin-left:12px; }
+          .mcb-cta{ display:block; width:100%; max-width:100%; background:#f5a623; color:#0d111f;
+            border:0; border-radius:8px; padding:14px; font-size:15px; font-weight:700; cursor:pointer; }
+          .mcb-cta:hover{ background:#e59616; }
+          /* keep the floating WhatsApp clear of the bar */
+          .whatsapp-float{ bottom:96px !important; }
+          /* stop the bar covering the page's last content */
+          body{ padding-bottom:118px; }
+          /* When there's a video, hide the bar over the hero and slide it up once scrolled past. */
+          body.has-video-hero .mobile-checkout-bar{ transform:translateY(120%); transition:transform .35s ease; }
+          body.has-video-hero .mobile-checkout-bar.mcb-shown{ transform:translateY(0); }
+        }
+        .vwa{ display:flex; align-items:center; justify-content:center; gap:10px; text-decoration:none;
+          color:#08240f; font-size:14px; font-weight:700; padding:14px 22px; border-radius:14px;
+          border:1px solid #25D366; background:#25D366; box-shadow:0 6px 20px rgba(37,211,102,.3);
+          transition:background .18s, border-color .18s, transform .18s; }
+        .vwa i{ font-size:19px; color:#08240f; }
+        .vwa:hover{ background:#1ebe5d; border-color:#1ebe5d; color:#08240f; transform:translateY(-2px); }
+
+        /* Header fixed over the page — same background as the no-video header. */
+        body.has-video-hero .header{ position:fixed; top:0; left:0; right:0; z-index:60;
+          background:linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4444152661) 100%);
+          box-shadow:none; }
+        body.has-video-hero main.padding-header{ padding-top:0; }
+        body.has-video-hero .header .menu a{ color:#fff; }
+        body.has-video-hero .header .menu a.button--outline{ border-color:rgba(255,255,255,.6); color:#fff; }
+        /* Floating WhatsApp is hidden while on the video hero; it fades in once
+           the hero is scrolled past. */
+        body.has-video-hero .whatsapp-float{ opacity:0; visibility:hidden; pointer-events:none;
+          transition:opacity .3s ease, visibility .3s ease; }
+        body.has-video-hero .whatsapp-float.wa-shown{ opacity:1; visibility:visible; pointer-events:auto; }
+    </style>
+<script src="/cdn-cgi/challenge-platform/scripts/precursor/main.js"></script></head>
+
+<body class="">
+
+    <!--[if IE]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+    <a href="#maincontent" class="skip-link">Skip to main content</a>
+    <header class="header">
+        <div class="wrapper">
+            <div class="header__flex">
+                <a href="/">
+                    <h2 class="search-header__logo">
+                        <span class="hidden">Domain Manage</span>
+                    </h2>
+                </a>
+                <nav role="navigation" aria-label="Main Menu">
+                    <button class="open-button" aria-expanded="false" aria-haspopup="menu" aria-controls="main-menu" aria-label="Open Main Navigation">
+                        <div class="hidden">Open Menu</div>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                     <ul class="menu" id="main-menu">
+                        <li><a href="https://domainmanage.com/buy-a-domain" rel="noopener">Buy Domains</a></li>
+                        <li><a href="https://domainmanage.com/contact" rel="noopener">Contact</a> </li>
+                        <li><a class="button button--outline" href="https://domainmanage.com/login" rel="noopener">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main id="maincontent" class="padding-header">
+                <div class="wrapper">
+            <div class="hero">
+				<div class="container-fluid" style="padding-left:0px;padding-right:0px;">
+										<p>The domain name</p>
+					                                 <h1 style="margin-bottom: 0px;">seekoffer.com</h1>
+                            					<p>is for sale!</p>
+										
+					
+					<div class="hero-listing-a">
+						<div class="hero__content-listing">
+							<h3 style="line-height:1.3em;"><i class="bi bi-shield-fill-check" style="float:left;margin:0 10px 15px 0;"></i>Buyer Protection Guarantee</h3>
+							
+							<div class="col-12 col-lg-10 listing-accordion-wrapper">
+								<button class="listing-accordion">
+									<div class="dot"><i class="bi bi-circle-fill"></i></div>
+									<p>30 Day Money Back Guarantee</p>
+									<span><i class="bi bi-chevron-down"></i></span>
+								</button>
+								<div class="listing-panel">
+								  <p>Buy with complete confidence. Your purchase is protected for a full 30 days. If we’re ever unable to complete the transfer of your domain, or something isn’t right with your order, we’ll refund every penny, quickly and without fuss.</p>
+								</div>
+
+								<button class="listing-accordion">
+									<div class="dot"><i class="bi bi-circle-fill"></i></div>
+									<p>Optional Extended Buy Back Warranty</p>
+									<span><i class="bi bi-chevron-down"></i></span>
+								</button>
+								<div class="listing-panel">
+								  <p>Add extra peace of mind at checkout. Our optional Buy Back Warranty gives you the option to sell the domain back to us within an agreed period if your plans change.</p>
+								</div>
+
+								<button class="listing-accordion">
+									<div class="dot"><i class="bi bi-circle-fill"></i></div>
+									<p>Secure Checkout Process</p>
+									<span><i class="bi bi-chevron-down"></i></span>
+								</button>
+								<div class="listing-panel">
+								  <p>Every payment is processed over an encrypted, industry-standard secure connection. Pay by card, bank wire, PayPal, Escrow.com or cryptocurrency.</p>
+								</div>
+
+								<button class="listing-accordion">
+									<div class="dot"><i class="bi bi-circle-fill"></i></div>
+									<p>Expert Transfer Support</p>
+									<span><i class="bi bi-chevron-down"></i></span>
+								</button>
+								<div class="listing-panel">
+								  <p>You’re never on your own. Our dedicated transfer specialists guide you through each step and handle the technical detail, so your new domain lands safely in your account, usually within 24 hours.</p>
+								</div>
+
+								<button class="listing-accordion">
+									<div class="dot"><i class="bi bi-circle-fill"></i></div>
+									<p>Free Ownership Transfer</p>
+									<span><i class="bi bi-chevron-down"></i></span>
+								</button>
+								<div class="listing-panel">
+								  <p>Transferring ownership is completely free for buyers. There are no handling charges and no hidden transfer fees. The price you see is the price you pay.</p>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+                    <div class="hero-listing-b">
+                        <div class="lisiting-get-domain-box pt-10p">
+                        <h3 style="height:50px;">Get this Domain</h3>
+<form id="payment-form" action="https://domainmanage.com/dm-checkout-cart-step1" method="post">
+    <input type="hidden" name="_token" value="JuYGI48JC4FAl9OPFcv2iKUISRlqs60Vk4iktuor" style="">
+
+    <!-- Payment Options -->
+    <div class="radio-wrapper" style="position:relative;">
+        <label class="radio-button">Buy Now<span class="radio-button-span">$3,999</span>
+            <input type="radio" name="payment-option" value="buy-now" onclick="toggleContent('content1', this)" checked="" style="">
+            <span class="checkmark"></span>
+        </label>
+    </div>
+
+    <!-----
+    <div class="radio-wrapper" style="position:relative;">
+        <label class="radio-button"><p>Lease to Own</p><span class="radio-button-span" id="lease-to-own-amount"><span class="fs-12">/month</span></span>
+            <input type="radio" name="payment-option" value="lease-to-own" onclick="toggleContent('content2', this)">
+            <span class="checkmark"></span>
+        </label>
+        <div id="content2" class="content" style="text-align:center;">
+            <div class="txt-container">
+                <span class="txt-months">months</span>
+                <div class="txt-button" id="txt-minus">-</div>
+                <input type="text" class="txt-textbox" id="txt-textbox" name="months" value="10" readonly>
+                <div class="txt-button" id="txt-plus">+</div>
+            </div>
+            <p class="txt-downpayment">Downpayment $1000</p>
+            <input type="hidden" name="downpayment" value="1000">
+        </div>          
+    </div>
+    <div class="radio-wrapper">
+        <label class="radio-button">Make an Offer
+            <input type="radio" name="payment-option" value="make-offer" onclick="toggleContent('content3', this)">
+            <span class="checkmark"></span>
+        </label>
+        <div id="content3" class="content">
+    <input
+    type="text"
+    id="offer-input"
+    name="offeramount"
+    placeholder="My offer in USD"
+    inputmode="numeric"
+    oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+        </div>
+    </div>
+
+    ---->
+
+    <!-- Hidden Fields -->
+    <input type="hidden" id="hidden-price" name="price" value="3999" style="">
+    <input type="hidden" id="hidden-downpayment" name="downpayment" style="">
+    <input type="hidden" id="hidden-months" name="months" style="">
+    <input type="hidden" id="hidden-monthly-payment" name="monthlypayment" style="">
+    <input type="hidden" name="domain" id="domainname" value="seekoffer.com" style="">
+    <input type="hidden" name="domainid" id="domainid" value="7240" style="">
+
+    <button type="submit" id="proceed-button" class="button domain-box-a">Proceed to Payment&nbsp;&nbsp;&nbsp;<i class="bi bi-arrow-right"></i></button>
+    <img src="/assets/img/creditcards-trust.svg">
+</form>
+                            
+                            <div class="row" style="padding-top:30px;">
+                                <div class="col-6">
+                                    <p class="domain-box-features-p">
+                                        <img src="/assets/img/ico-award-grey.png">
+                                        30 Day Money Back Guarantee
+                                    </p>
+                                    <a href="https://domainmanage.com/money-back-guarantee" class="domain-box-features-p">Learn More</a>
+                                </div>
+                                <div class="col-6">
+                                    <p class="domain-box-features-p">
+                                        <img src="/assets/img/ico-refresh-grey.png">
+                                        Optional Extended Buy Back Warranty
+                                    </p>
+                                    <a href="https://domainmanage.com/buy-back-warranty" class="domain-box-features-p">Learn More</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+					
+				</div>
+				
+            </div>
+        </div>
+		
+		
+		
+			<div class="listing-page-wrapper buynow-faq">
+				<div class="search-page-container search-page-fcolor">
+
+					<div class="row" style="padding-left:15px;padding-right:15px;">
+						<div class="search-page-title-line title-underline">
+							Frequently Asked Questions
+						</div>
+						
+						<div class="listing-row">
+							<button class="listing-accordion listing-page">
+								How does your domain ownership transfer process work?<span><i class="bi bi-chevron-down pink"></i></span>
+							</button>
+							<div class="listing-panel" style="padding-left:0;"><p class="page-p">We make the transfer simple, supported and secure:</p><p class="page-p"><b>1. You buy the domain.</b> Complete your purchase using any of our accepted payment methods. Your payment is held securely until the transfer is finished.</p><p class="page-p"><b>2. We send tailored transfer instructions.</b> As soon as your payment clears, one of our transfer specialists emails you step-by-step instructions specific to the domain’s registrar and is on hand to help with anything technical.</p><p class="page-p"><b>3. The domain moves to you.</b> We coordinate the transfer of the domain into your chosen registrar or account. On average, this is completed within 24 hours.</p><p class="page-p"><b>4. The seller is paid.</b> Only once the domain is safely in your possession do we release payment to the seller — so you’re protected throughout.</p></div>
+						</div>
+						
+						<div class="listing-row">
+							<button class="listing-accordion listing-page">
+								Which payment options do you accept?<span><i class="bi bi-chevron-down pink"></i></span>
+							</button>
+							<div class="listing-panel" style="padding-left:0;">
+							  <p class="page-p">We accept a wide range of secure payment methods so you can pay however suits you best: bank wire transfer; Visa and Mastercard; Apple Pay and Google Pay; PayPal; and Escrow.com for larger transactions. We also accept major cryptocurrencies, including Bitcoin (BTC), Ethereum (ETH), USDT, USDC, BNB, Solana (SOL), XRP, Cardano (ADA) and Avalanche (AVAX). Every payment is processed securely, and your funds are protected until your domain transfer is complete.</p>
+							</div>
+						</div>
+						
+						<div class="listing-row">
+							<button class="listing-accordion listing-page">
+								Do I have to pay for your services?<span><i class="bi bi-chevron-down pink"></i></span>
+							</button>
+							<div class="listing-panel" style="padding-left:0;">
+							  <p class="page-p">No. Buying a domain through Domain Manage costs you nothing beyond the domain’s listed price. Ownership transfer and our expert transfer support are completely free for buyers. Our commission is paid by the seller, so there are no hidden fees or surprise charges at checkout.</p>
+							</div>
+						</div>
+						
+						<div class="listing-row">
+							<button class="listing-accordion listing-page">
+								What is the domain transfer process?<span><i class="bi bi-chevron-down pink"></i></span>
+							</button>
+							<div class="listing-panel" style="padding-left:0;">
+							  <p class="page-p">Once you’ve purchased, the domain is moved to you in one of two ways, depending on where it’s registered:</p><p class="page-p"><b>Registrar transfer.</b> We unlock the domain and provide an authorisation (EPP/auth) code so you can pull it into your own registrar account.</p><p class="page-p"><b>Account push.</b> If the domain will stay at the same registrar, we simply “push” it directly into your account there, which is often instant.</p><p class="page-p">Our transfer specialists will tell you exactly which method applies to your domain and walk you through it. Most transfers complete within 24 hours, and we stay with you until the domain is confirmed in your name.</p>
+							</div>
+						</div>
+						
+						<div class="listing-row">
+							<button class="listing-accordion listing-page">
+								How does Make offer work?<span><i class="bi bi-chevron-down pink"></i></span>
+							</button>
+							<div class="listing-panel" style="padding-left:0;">
+							  <p class="page-p">If a domain shows a “Make Offer” option, you can propose a price rather than paying the listed amount. Enter your offer and contact details and we’ll put it to the seller on your behalf. The seller can accept, decline, or come back with a counteroffer, and we’ll relay each response to you. Once you and the seller agree a price, we send you a secure checkout link to complete the purchase.</p>
+							</div>
+						</div>
+						
+						<div class="listing-row">
+							<button class="listing-accordion listing-page">
+								What is the difference between a Registrar and Registry?<span><i class="bi bi-chevron-down pink"></i></span>
+							</button>
+							<div class="listing-panel" style="padding-left:0;">
+							  <p class="page-p">A registry is the organisation that operates a particular domain extension and maintains the master database of every domain under it. For example, Verisign operates the registry for .com. A registrar is an accredited company (such as GoDaddy, Namecheap or Cloudflare) that sells and manages domain registrations on the registry’s behalf, and is where you hold and control your domain day to day. In short: the registry runs the extension; the registrar is who you register and manage your domain with. When you buy a domain from us, it is transferred into your account at a registrar of your choice.</p>
+							</div>
+						</div>
+						
+						<div class="listing-row">
+							<button class="listing-accordion listing-page">
+								Is buying a domain here safe?<span><i class="bi bi-chevron-down pink"></i></span>
+							</button>
+							<div class="listing-panel" style="padding-left:0;">
+							  <p class="page-p">Yes. Your payment is held securely and is only released to the seller once the domain is confirmed in your account. Every purchase is backed by our 30 Day Money Back Guarantee and handled by our transfer specialists from start to finish.</p>
+							</div>
+						</div>
+
+						<div class="listing-row">
+							<button class="listing-accordion listing-page">
+								What happens if the transfer can’t be completed?<span><i class="bi bi-chevron-down pink"></i></span>
+							</button>
+							<div class="listing-panel" style="padding-left:0;">
+							  <p class="page-p">In the rare event we’re unable to deliver a domain to you, you’ll receive a full and prompt refund under our 30 Day Money Back Guarantee.</p>
+							</div>
+						</div>
+
+						<div class="listing-row">
+							<button class="listing-accordion listing-page">
+								Can I spread the cost of a domain?<span><i class="bi bi-chevron-down pink"></i></span>
+							</button>
+							<div class="listing-panel" style="padding-left:0;">
+							  <p class="page-p">For eligible domains we offer a Lease to Own arrangement, letting you pay in agreed monthly instalments while you use the domain, with ownership transferring to you once payments are complete. Look for the Lease to Own option on the listing, or contact our team.</p>
+							</div>
+						</div>
+						
+					</div>
+					
+					
+					
+				</div>
+			</div>
+			
+		
+    </main>
+
+    <footer class="footer listing-footer">
+        <div class="wrapper">
+			
+			<div class="listing-footer-buy">
+				<div class="col-10 col-lg-9" style="margin:auto;padding-left:0;padding-right:0;">
+					<h3 style="margin-bottom:30px;">Buyer Protection Guarantee</h3>
+					<div class="row">
+						<div class="col-12 col-lg-6">
+							<p>
+								<img class="listing-buy-ico" src="/assets/img/ico-award.png">
+								<b>30 Day Money Back Guarantee</b><br><a href="https://domainmanage.com/money-back-guarantee" class="listing-link-yellow">Learn More</a>
+							</p>
+						</div>
+						<div class="col-12 col-lg-6">
+							<p>
+								<img class="listing-buy-ico" src="/assets/img/ico-refresh.png">
+								<b>Optional Extended Buy Back Warranty</b><br><a href="https://domainmanage.com/buy-back-warranty" class="listing-link-yellow">Learn More</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+            <div class="footer__flex">
+                <div class="footer__col">
+                    <img class="footer__logo" src="/assets/img/dm-logo.png" alt="">
+                    <p><b>Copyright © Domain Manage. All rights reserved.</b></p>
+
+                    <p>Domain Manage Dot Com LTD<br>
+                    Registered Office: 1 Mayfair Place, London, W1J 8AJ.<br>
+                    Part of EW3N LTD</p>
+                </div>
+                <div class="footer__col">
+                    <h3 class="title-line">Contact</h3>
+                    <p>Domain Manage<br>
+                        1 Mayfair Place<br>
+                        London<br>
+                        W1J 8AJ<br></p>
+                     <p><a href="tel:+442071831437">+44 207 183 1437</a></p>
+                </div>
+
+                <div class="footer__col">
+                    <h3 class="title-line">Sitemap</h3>
+                     <ul>
+                        <li><a href="https://domainmanage.com/buy-a-domain" rel="noopener">Buy Domains</a></li>
+                        <li><a href="https://domainmanage.com/sell-a-domain" rel="noopener">Sell Domains</a></li>
+                        <li><a href="https://domainmanage.com/domain-loans" rel="noopener">Domain Loans</a></li>
+                        
+                        <li><a href="https://domainmanage.com/liquidity-hour" rel="noopener">Liquidity Hour</a></li>
+                        <li><a href="https://domainmanage.com/domain-parking" rel="noopener">Domain Parking</a></li>
+                        <li><a href="https://domainmanage.com/daily-diamonds" rel="noopener">Daily Diamonds</a></li>
+                         <li><a href="https://domainmanage.com/pattern-search" rel="noopener">Pattern Search</a></li>
+                         
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h3 class="title-line">Legal</h3>
+                    <ul>
+                         <li><a href="https://domainmanage.com/about" rel="noopener">About</a></li>
+                         <li><a href="https://domainmanage.com/investors" rel="noopener">Investors</a></li>
+                        <li><a href="" rel="noopener">Privacy Policy </a></li>
+                        <li><a href="https://domainmanage.com/terms" rel="noopener">Terms &amp; Conditions</a></li>
+                        <li><a href="https://domainmanage.com/contact" rel="noopener">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+<!-- Sticky mobile checkout bar -->
+<div class="mobile-checkout-bar" id="mobileCheckout">
+    <div class="mcb-row">
+        <span class="mcb-domain">seekoffer.com</span>
+        <span class="mcb-price">$3,999</span>
+    </div>
+    <button type="button" class="mcb-cta" id="mcbProceed">Proceed to payment&nbsp;&nbsp;<i class="bi bi-arrow-right"></i></button>
+</div>
+<script>
+(function(){
+    var btn = document.getElementById('mcbProceed');
+    if (!btn) { return; }
+    btn.addEventListener('click', function(){
+        var buyNow = document.querySelector('input[name="payment-option"][value="buy-now"]');
+        if (buyNow) { buyNow.checked = true; }
+        var form = document.getElementById('payment-form');
+        if (form) { form.submit(); }
+    });
+})();
+</script>
+    
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="/assets/js/main-min.js"></script>
+	
+	<script>
+		var acc = document.getElementsByClassName("listing-accordion");
+		var i;
+
+		for (i = 0; i < acc.length; i++) {
+		  acc[i].addEventListener("click", function() {
+			this.classList.toggle("listing-active");
+			var panel = this.nextElementSibling;
+			if (panel.style.maxHeight) {
+			  panel.style.maxHeight = null;
+			} else {
+			  panel.style.maxHeight = panel.scrollHeight + "px";
+			} 
+		  });
+		}
+	</script>
+	<script>
+
+		function toggleContent(contentId, element) {
+			var contents = document.getElementsByClassName("content");
+			var wrappers = document.getElementsByClassName("radio-wrapper");
+
+			// Hide all contents and reset background color of all wrappers
+			for (var i = 0; i < contents.length; i++) {
+				contents[i].style.display = "none";
+				wrappers[i].classList.remove("active-wrapper");
+			}
+
+			// Show the selected content and change background color of the selected wrapper
+			document.getElementById(contentId).style.display = "block";
+			element.closest('.radio-wrapper').classList.add("active-wrapper");
+			updateHiddenFields();
+			updateRequiredField();
+		}
+
+		 function updateRequiredField() {
+        var paymentOption = document.querySelector('input[name="payment-option"]:checked').value;
+        var offerInput = document.getElementById('offer-input');
+
+        if (paymentOption === 'make-offer') {
+            offerInput.setAttribute('required', 'required');
+        } else {
+            offerInput.removeAttribute('required');
+        }
+          }
+
+	
+    function alertFormData(formData) {
+        let formDataString = '';
+        for (let [key, value] of formData.entries()) {
+            formDataString += `${key}: ${value}\n`;
+        }
+        alert(formDataString);
+    }
+
+        function updateHiddenFields() {
+    const price = parseFloat('3,999'.replace(/,/g, ''));
+    const downPayment = 1000;
+    const monthsInput = document.getElementById('txt-textbox');
+    const leaseToOwnAmount = document.getElementById('lease-to-own-amount');
+    const selectedOption = document.querySelector('input[name="payment-option"]:checked');
+
+    if (selectedOption) {
+        if (selectedOption.value === 'buy-now') {
+            document.getElementById('hidden-price').value = price.toFixed(2);
+            document.getElementById('hidden-downpayment').value = '';
+            document.getElementById('hidden-months').value = '';
+            document.getElementById('hidden-monthly-payment').value = '';
+            document.getElementById('offer-input').value = '';
+        } else if (selectedOption.value === 'lease-to-own') {
+            const months = parseInt(monthsInput.value);
+            const monthlyPayment = (price - downPayment) / months;
+            document.getElementById('hidden-price').value = price.toFixed(2);
+            document.getElementById('hidden-downpayment').value = downPayment.toFixed(2);
+            document.getElementById('hidden-months').value = months;
+            document.getElementById('hidden-monthly-payment').value = monthlyPayment.toFixed(2);
+            document.getElementById('offer-input').value = '';
+        } else if (selectedOption.value === 'make-offer') {
+            document.getElementById('hidden-price').value = '';
+            document.getElementById('hidden-downpayment').value = '';
+            document.getElementById('hidden-months').value = '';
+            document.getElementById('hidden-monthly-payment').value = '';
+        }
+    }
+}
+</script>
+	<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    const minusButton = document.getElementById('txt-minus');
+    const plusButton = document.getElementById('txt-plus');
+    const textbox = document.getElementById('txt-textbox');
+    const leaseToOwnAmount = document.getElementById('lease-to-own-amount');
+    const paymentForm = document.getElementById('payment-form');
+
+    const price = parseFloat('3,999'.replace(/,/g, ''));
+    const downPayment = 1000;
+
+    function updateLeaseToOwnAmount() {
+        const months = parseInt(textbox.value);
+        const monthlyPayment = (price - downPayment) / months;
+        leaseToOwnAmount.innerHTML = `
+        $${monthlyPayment.toLocaleString()}<span class="fs-12">/month</span>
+    `;
+        updateHiddenFields();
+    }
+
+    minusButton.addEventListener('click', function() {
+        let value = parseInt(textbox.value);
+        if (value > 10) {
+            textbox.value = value - 10;
+            updateLeaseToOwnAmount();
+        }
+    });
+
+    plusButton.addEventListener('click', function() {
+        let value = parseInt(textbox.value);
+        if (value < 80) {
+            textbox.value = value + 10;
+            updateLeaseToOwnAmount();
+        }
+    });
+
+    updateLeaseToOwnAmount();
+
+    });
+	</script>
+
+    
+<script>
+(function () {
+    window.CSRF_TOKEN = null;
+
+    function applyToken(t) {
+        window.CSRF_TOKEN = t;
+        document.querySelectorAll('input[name="_token"]').forEach(function (i) { i.value = t; });
+        var meta = document.querySelector('meta[name="csrf-token"]');
+        if (meta) { meta.setAttribute('content', t); }
+        document.dispatchEvent(new CustomEvent('csrf-token-ready', { detail: t }));
+    }
+
+    fetch('/csrf-token', {
+        credentials: 'same-origin',
+        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+    })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { if (d && d.token) { applyToken(d.token); } })
+        .catch(function () { /* form submit will retry/report if token is missing */ });
+})();
+</script>
+<script>window.__CF$cv$params={r:'a3884f9bffb6f02f',t:'MTc4ODk3OTExNw==',u:'01a08776fd897cd09c50c961b5c7b845',ut:'XNCsR4rUkqVy8JBCF54pUD4QTBPNGz9lmMUkeFGPRzM-1788979117-1.2.1.1-HlDSAv6g8tU6fkra8n1qCUqaSuqMkNgeKb1FJbAqs.466q3M0zIwB4RUO0W7uhlHNduMXTGnYNcnDuXvKHUprxMtDzDJ6Ulee2YFdBhmm84',i:60};(function(){if(!document.body)return;var s=document.createElement('script');s.src='/cdn-cgi/challenge-platform/scripts/precursor/main.js';document.head.appendChild(s);})();</script>
+
+</body></html>

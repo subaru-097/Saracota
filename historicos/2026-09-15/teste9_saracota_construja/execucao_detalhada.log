@@ -1,0 +1,352 @@
+[2026-09-15T18:12:34.191Z] ==============================================================================
+[2026-09-15T18:12:34.191Z] 🚀 INICIANDO TESTE 9 E2E REAL — CONSTRUJÁ + SARACOTA (CORREÇÕES CRÍTICAS DE CARRINHO)
+[2026-09-15T18:12:34.191Z] ==============================================================================
+[2026-09-15T18:12:34.191Z] --- PASSO 1: Lendo seletores do fornecedor Construjá no Supabase ---
+[2026-09-15T18:12:34.513Z] ✅ Fornecedor lido do Supabase: "Construjá" (ID: a1684c4d-d896-4ba9-a591-cda455c5ffe2)
+[2026-09-15T18:12:34.679Z] 
+--- Realizando login no portal da Construjá com seletor button#btn-entrar ---
+[2026-09-15T18:12:34.856Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/tema/B2B.css
+[2026-09-15T18:12:34.860Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/images/logo/s/B2B
+[2026-09-15T18:12:36.779Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/vitrines/home?
+[2026-09-15T18:12:37.832Z] Clicando em #botao-aceitar-todos...
+[2026-09-15T18:12:39.069Z] Clicando em #botao-login...
+[2026-09-15T18:12:39.174Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/images/logo-secundaria/s/B2B
+[2026-09-15T18:12:41.166Z] Preenchendo e-mail (comercialsantana@gmail.com) e senha...
+[2026-09-15T18:12:43.836Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/login/b2b?
+[2026-09-15T18:12:43.861Z] 🌐 Login API Status: 200 | Body Snippet: {"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYXBpLmNvbnN0cnVqYS5jb20uYnIvdjEvb
+[2026-09-15T18:12:43.959Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/carga?
+[2026-09-15T18:12:44.134Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/carrinho?clienteId=53597&filialId=2
+[2026-09-15T18:12:44.134Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/clientes/53597/credito-disponivel?clienteId=53597&filialId=2
+[2026-09-15T18:12:44.134Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/avisos/total-nao-lidos/?clienteId=53597&filialId=2
+[2026-09-15T18:12:44.273Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:12:44.362Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/orcamentos/17839533778231/carrinho?clienteId=53597&filialId=2
+[2026-09-15T18:12:44.579Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:12:44.580Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:12:44.621Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:12:44.852Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/vitrines/home?clienteId=53597&filialId=2
+[2026-09-15T18:12:46.862Z] 🎉 [AUTENTICAÇÃO B2B CONFIRMADA] Token JWT ativo no portal Construjá.
+[2026-09-15T18:12:46.984Z] 
+--- PASSO 2: Limpeza profunda do carrinho antes de iniciar o Teste 9 ---
+[2026-09-15T18:12:47.049Z] 🌐 [HTTP 200] https://www.construja.com.br/carrinho
+[2026-09-15T18:12:47.209Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/images/logo/s/B2B
+[2026-09-15T18:12:47.222Z] 🌐 [HTTP 200] https://www.construja.com.br/_next/static/chunks/pages/carrinho-4b7d145d676004f0.js
+[2026-09-15T18:12:47.232Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/tema/B2B.css
+[2026-09-15T18:12:47.465Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/orcamentos/17839533778231/carrinho?clienteId=53597&filialId=2
+[2026-09-15T18:12:47.496Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/clientes/53597/credito-disponivel?clienteId=53597&filialId=2
+[2026-09-15T18:12:47.496Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/avisos/total-nao-lidos/?clienteId=53597&filialId=2
+[2026-09-15T18:12:47.520Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/campos-adicionais/orcamento/selecao_item?orcamento_id=17839533778231&clienteId=53597&filialId=2
+[2026-09-15T18:12:47.522Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:12:47.550Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:12:47.550Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:12:47.578Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:12:47.599Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/orcamentos/17839533778231/carrinho?clienteId=53597&filialId=2
+[2026-09-15T18:12:47.663Z] 🌐 [HTTP 200] https://www.google.com/ccm/collect?rcb=16&frm=0&apvc=1&ae=g&auid=641962518.1789495957&dt=Construj%C3%A1&en=page_view&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&scrsrc=www.googletagmanager.com&rnd=2025186773.1789495968&navt=n&npa=0&ep.ads_data_redaction=0&gtm=45He69b1v831886916za200zd831886916xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938466~115938468~117776796~118131810~118897920~118897930~120385423~120469145~120469153&tft=1789495967596&tfd=611&fmt=8
+[2026-09-15T18:12:47.724Z] 🌐 [HTTP 200] https://www.google.com/ccm/collect?rcb=2&frm=0&apvc=0&auid=641962518.1789495957&dt=Construj%C3%A1&tid=AW-11476569432&en=page_view&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&scrsrc=www.googletagmanager.com&rnd=2025186773.1789495968&navt=n&npa=0&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938468~117776796~118131810~118897920~118897930~120213116~120385422~120469145~120469153~120912438&tft=1789495967654&tfd=668&tids=AW-11476569432&fmt=8
+[2026-09-15T18:12:47.724Z] 🌐 [HTTP 200] https://www.google.com/rmkt/collect/11476569432/?random=1789495967650&cv=11&fst=1789495967650&fmt=8&bg=ffffff&guid=ON&async=1&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938468~117776796~118131810~118897920~118897930~120213116~120385422~120469145~120469153~120912438&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=2&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=CA&ept=68&gcp=5
+[2026-09-15T18:12:47.725Z] 🌐 [HTTP 200] https://www.google.com/ccm/collect?rcb=2&frm=0&apvc=0&ae=g&auid=641962518.1789495957&dt=Construj%C3%A1&tid=AW-11476569432&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&scrsrc=www.googletagmanager.com&rnd=2025186773.1789495968&navt=n&npa=0&_tu=CA&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938468~117776796~118131810~118897920~118897930~120213116~120385422~120469145~120469153~120912438&tft=1789495967654&tfd=668&tids=AW-11476569432&fmt=8
+[2026-09-15T18:12:47.725Z] 🌐 [HTTP 200] https://www.google.com/rmkt/collect/11476569432/?random=1789495967642&cv=11&fst=1789495967642&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938468~117776796~118131810~118897920~118897930~120213116~120385422~120469145~120469153~120912438&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=2&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&ept=68&gcp=5
+[2026-09-15T18:12:47.729Z] 🌐 [HTTP 200] https://googleads.g.doubleclick.net/pagead/viewthroughconversion/11476569432/?random=1789495967650&cv=11&fst=1789495967650&bg=ffffff&guid=ON&async=1&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938468~117776796~118131810~118897920~118897930~120213116~120385422~120469145~120469153~120912438&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=2&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=CA&ept=9&rfmt=3&fmt=4
+[2026-09-15T18:12:47.748Z] 🌐 [HTTP 200] https://googleads.g.doubleclick.net/pagead/viewthroughconversion/11476569432/?random=1789495967642&cv=11&fst=1789495967642&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938468~117776796~118131810~118897920~118897930~120213116~120385422~120469145~120469153~120912438&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=2&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&ept=9&rfmt=3&fmt=4
+[2026-09-15T18:12:47.749Z] 🌐 [HTTP 204] https://analytics.google.com/g/collect?v=2&tid=G-JR5FD3LLZF&gtm=45je69b1v9251513145z8831886916za20gzb831886916zd831886916&_p=1789495967479&gcd=13l3l3l3l1l1&npa=0&dma=0&ecid=592452166&_eu=AAAAAGQC&are=1&cid=1950500375.1789495957&ec_mode=a&frm=0&pscdl=noapi&rcb=9&sr=1280x800&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=pt-br&gaf=2&_s=1&tag_exp=115938466~115938468~118897920~118897930~119791748~120213116~120385422~120469145~120469153&sid=1789495957&sct=1&seg=1&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&dt=Construj%C3%A1&en=page_view&tfd=690
+[2026-09-15T18:12:47.752Z] 🌐 [HTTP 200] https://www.facebook.com/tr/?id=1240015849841044&ev=PageView&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rl=&if=false&ts=1789495967741&iw=false&sw=1280&sh=800&v=2.9.400&r=stable&ec=0&o=4126&aems=0%3B0&fbp=fb.2.1789495957696.798428012675152127&ler=empty&pmd[title]=Construj%C3%A1&pmd[locale]=pt&pmd[description]=Construj%C3%A1&plt=401.9000000357628&iss=1&ss=%7B%22page_title%22%3A%5B%7B%22rid%22%3A%221354433122962147%22%2C%22v%22%3A%5B%22Institucional%22%5D%7D%5D%7D&imft=1&tz=-180&it=1789495967629&coo=false&expv2[0]=pl0&expv2[1]=el2&expv2[2]=bc1&expv2[3]=ra2&expv2[4]=rp2&expv2[5]=im0&expv2[6]=hf0&expv2[7]=sd1&expv2[8]=sp1&expv2[9]=ek1&expv2[10]=pc1&expv2[11]=gs1&expv2[12]=zs1&expv2[13]=cp1&expv2[14]=es1&expv2[15]=ac1&expv2[16]=so1&expv2[17]=wc1&expv2[18]=la1&expv2[19]=sf1&expv2[20]=da1&expv2[21]=io1&expv2[22]=ae1&expv2[23]=sx1&expv2[24]=if1&expv2[25]=fd1&expv2[26]=bg1&expv2[27]=mg1&expv2[28]=kl1&expv2[29]=sg1&expv2[30]=mk1&expv2[31]=sn1&expv2[32]=ec1&expv2[33]=mp1&expv2[34]=ps1&expv2[35]=fx1&expv2[36]=vt1&expv2[37]=dp1&expv2[38]=fw1&expv2[39]=cn1&expv2[40]=tz1&expv2[41]=pe1&expv2[42]=ee1&expv2[43]=bu1&expv2[44]=ta1&expv2[45]=mt1&expv2[46]=ot0&expv2[47]=ep1&rqm=GET
+[2026-09-15T18:12:47.774Z] 🌐 [HTTP 204] https://analytics.google.com/g/collect?v=2&tid=G-THPPL7WBWD&gtm=45je69b1v886011659z8831886916za20gzb831886916zd831886916&_p=1789495967479&gcd=13l3l3l3l1l1&npa=0&dma=0&ecid=1143955804&_eu=AAAAAGQC&are=1&cid=1950500375.1789495957&ec_mode=a&frm=0&pscdl=noapi&rcb=0&sr=1280x800&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=pt-br&gaf=2&_s=1&tag_exp=115616985~115938466~115938468~118897920~118897930~120213116~120385423~120469145~120469153&sid=1789495957&sct=1&seg=1&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&dt=Construj%C3%A1&en=page_view&tfd=726
+[2026-09-15T18:12:47.784Z] 🌐 [HTTP 200] https://www.google-analytics.com/j/collect?v=1&_v=j102&a=1220207982&t=pageview&_s=1&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&ul=pt-br&dt=Construj%C3%A1&sr=1280x800&vp=1280x800&_u=YADAAAABAAAAACAAI~&jid=398325815&gjid=175989275&cid=1950500375.1789495957&tid=%5Bobject%20Object%5D&_gid=784597632.1789495968&_r=1&_slc=1&gtm=45He69b1n81PB72ZCDv831886916za200zd831886916&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938466~115938468~117776796~118131810~118897920~118897930~120385423~120469145~120469153&z=317141967
+[2026-09-15T18:12:47.811Z] 🌐 [HTTP 200] https://www.google.com.br/pagead/1p-user-list/11476569432/?random=1789495967642&cv=11&fst=1789495200000&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938468~117776796~118131810~118897920~118897930~120213116~120385422~120469145~120469153~120912438&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=2&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&ept=9&rfmt=3&fmt=3&is_vtc=1&cid=CAQS-gEAQM4h3JCrBENwTN248LAAN6C8T-YH7Rh5LVRw-RCsXulB6ekcLkAIR-bCKOV_vJeZURPhy2wIsG6fDZNp3gKDaH9qfJYp9pDaTTkp8AuK8AUtQmwqun2sBkZyXAx4AevdZ_RZ1vEaI7ZmnOqcGbjSQ3ODmXYOG0jKTblVyiIc1BbRxVabtGIGE2iyu2fUQgk2WQRpIJGkbUiE80cvFhkfFZNPKyetJmHTZjVQyLtTY168xn0MqTU65UVBTsnMCXVA6d_UFYjRwRH0jb4M9sXolyZ1SK0mQsmeo8WWnikTBjxdbi-ND5kWBcTX07Lf5jAJmtLsZZPK5DaG&random=3274642836&rmt_tld=1&ipr=y
+[2026-09-15T18:12:47.814Z] 🌐 [HTTP 200] https://www.google.com/pagead/1p-user-list/11476569432/?random=1789495967642&cv=11&fst=1789495200000&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938468~117776796~118131810~118897920~118897930~120213116~120385422~120469145~120469153~120912438&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=2&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&ept=9&rfmt=3&fmt=3&is_vtc=1&cid=CAQS-gEAQM4h3JCrBENwTN248LAAN6C8T-YH7Rh5LVRw-RCsXulB6ekcLkAIR-bCKOV_vJeZURPhy2wIsG6fDZNp3gKDaH9qfJYp9pDaTTkp8AuK8AUtQmwqun2sBkZyXAx4AevdZ_RZ1vEaI7ZmnOqcGbjSQ3ODmXYOG0jKTblVyiIc1BbRxVabtGIGE2iyu2fUQgk2WQRpIJGkbUiE80cvFhkfFZNPKyetJmHTZjVQyLtTY168xn0MqTU65UVBTsnMCXVA6d_UFYjRwRH0jb4M9sXolyZ1SK0mQsmeo8WWnikTBjxdbi-ND5kWBcTX07Lf5jAJmtLsZZPK5DaG&random=3274642836&rmt_tld=0&ipr=y
+[2026-09-15T18:12:47.815Z] 🌐 [HTTP 200] https://www.google.com.br/pagead/1p-user-list/11476569432/?random=1789495967650&cv=11&fst=1789495200000&bg=ffffff&guid=ON&async=1&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938468~117776796~118131810~118897920~118897930~120213116~120385422~120469145~120469153~120912438&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=2&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=CA&ept=9&rfmt=3&fmt=3&is_vtc=1&cid=CAQS-gEAQM4h3AQDwQc_E0ej59XeOfLUDbC_W0iyE382sxcRRzly3H0QzlnmY-iwU3faPMAweDE1o6wymqLyArwp846wBh5KnAgnXi3IYqrMZpyErHnMGgiAglpm0HCng9YwY5tG8gsGgV2GtjgsUWQzcCNint44bsX-yiwWsfc4vsjPJvJnHa-z9wUZQOJWh8UMo04jxHhfKIvwqHPX9_sKU8FVUrd3ZB3S7Op1t43JI-Ei4Hg7NYt3SNSu709P-gm7wDrPkmxIYuDNueR-Ny_be_srb9k83go8_UmhsbJBJPfsS1YtXxsM3u1-VrqDIX_F10UIRmpBWsR5tDhu&random=1477303940&rmt_tld=1&ipr=y
+[2026-09-15T18:12:47.818Z] 🌐 [HTTP 200] https://www.google.com/pagead/1p-user-list/11476569432/?random=1789495967650&cv=11&fst=1789495200000&bg=ffffff&guid=ON&async=1&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938468~117776796~118131810~118897920~118897930~120213116~120385422~120469145~120469153~120912438&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=2&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=CA&ept=9&rfmt=3&fmt=3&is_vtc=1&cid=CAQS-gEAQM4h3AQDwQc_E0ej59XeOfLUDbC_W0iyE382sxcRRzly3H0QzlnmY-iwU3faPMAweDE1o6wymqLyArwp846wBh5KnAgnXi3IYqrMZpyErHnMGgiAglpm0HCng9YwY5tG8gsGgV2GtjgsUWQzcCNint44bsX-yiwWsfc4vsjPJvJnHa-z9wUZQOJWh8UMo04jxHhfKIvwqHPX9_sKU8FVUrd3ZB3S7Op1t43JI-Ei4Hg7NYt3SNSu709P-gm7wDrPkmxIYuDNueR-Ny_be_srb9k83go8_UmhsbJBJPfsS1YtXxsM3u1-VrqDIX_F10UIRmpBWsR5tDhu&random=1477303940&rmt_tld=0&ipr=y
+[2026-09-15T18:12:50.413Z] 🛒 Itens encontrados no carrinho pré-existente: 0
+[2026-09-15T18:12:50.471Z] 🌐 [HTTP 200] https://www.construja.com.br/carrinho
+[2026-09-15T18:12:50.497Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/images/logo/s/B2B
+[2026-09-15T18:12:50.502Z] 🌐 [HTTP 200] https://www.construja.com.br/_next/static/chunks/pages/carrinho-4b7d145d676004f0.js
+[2026-09-15T18:12:50.519Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/tema/B2B.css
+[2026-09-15T18:12:50.744Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/orcamentos/17839533778231/carrinho?clienteId=53597&filialId=2
+[2026-09-15T18:12:50.764Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/campos-adicionais/orcamento/selecao_item?orcamento_id=17839533778231&clienteId=53597&filialId=2
+[2026-09-15T18:12:50.772Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/clientes/53597/credito-disponivel?clienteId=53597&filialId=2
+[2026-09-15T18:12:50.786Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/avisos/total-nao-lidos/?clienteId=53597&filialId=2
+[2026-09-15T18:12:50.807Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:12:50.811Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:12:50.825Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:12:50.850Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:12:50.897Z] 🌐 [HTTP 200] https://www.google.com/ccm/collect?rcb=7&frm=0&apvc=1&ae=g&auid=641962518.1789495957&dt=Construj%C3%A1&en=page_view&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&scrsrc=www.googletagmanager.com&rnd=818851715.1789495971&navt=n&npa=0&ep.ads_data_redaction=0&gtm=45He69b1v831886916za200zd831886916xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616985~115938466~115938468~117776796~118131810~118897920~118897930~120385423~120469145~120469153&tft=1789495970822&tfd=408&fmt=8
+[2026-09-15T18:12:50.931Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/orcamentos/17839533778231/carrinho?clienteId=53597&filialId=2
+[2026-09-15T18:12:50.942Z] 🌐 [HTTP 200] https://www.facebook.com/tr/?id=1240015849841044&ev=PageView&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rl=&if=false&ts=1789495970930&iw=false&sw=1280&sh=800&v=2.9.400&r=stable&ec=0&o=4126&aems=0%3B0&fbp=fb.2.1789495957696.798428012675152127&ler=empty&pmd[title]=Construj%C3%A1&pmd[locale]=pt&pmd[description]=Construj%C3%A1&plt=232.0999999642372&iss=1&ss=%7B%22page_title%22%3A%5B%7B%22rid%22%3A%221354433122962147%22%2C%22v%22%3A%5B%22Institucional%22%5D%7D%5D%7D&imft=1&tz=-180&it=1789495970848&coo=false&expv2[0]=pl1&expv2[1]=el3&expv2[2]=bc1&expv2[3]=ra2&expv2[4]=rp2&expv2[5]=ct2&expv2[6]=hf0&expv2[7]=sd1&expv2[8]=sp1&expv2[9]=ek1&expv2[10]=pc1&expv2[11]=gs1&expv2[12]=zs1&expv2[13]=cp1&expv2[14]=es1&expv2[15]=ac1&expv2[16]=so1&expv2[17]=wc1&expv2[18]=la1&expv2[19]=sf1&expv2[20]=da1&expv2[21]=io1&expv2[22]=ae1&expv2[23]=sx1&expv2[24]=if1&expv2[25]=fd1&expv2[26]=bg1&expv2[27]=mg1&expv2[28]=kl1&expv2[29]=sg1&expv2[30]=mk1&expv2[31]=sn1&expv2[32]=ec1&expv2[33]=mp1&expv2[34]=ps1&expv2[35]=fx1&expv2[36]=vt1&expv2[37]=dp1&expv2[38]=fw1&expv2[39]=cn1&expv2[40]=tz1&expv2[41]=pe1&expv2[42]=ee1&expv2[43]=bu1&expv2[44]=ta1&expv2[45]=ot0&rqm=GET
+[2026-09-15T18:12:50.943Z] 🌐 [HTTP 200] https://www.google.com/ccm/collect?rcb=9&frm=0&apvc=0&ae=g&auid=641962518.1789495957&dt=Construj%C3%A1&tid=AW-11476569432&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&scrsrc=www.googletagmanager.com&rnd=818851715.1789495971&navt=n&npa=0&_tu=CA&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938466~115938468~117776796~118131810~118897920~118897930~120213116~120385423~120469145~120469153&tft=1789495970880&tfd=465&tids=AW-11476569432&fmt=8
+[2026-09-15T18:12:50.944Z] 🌐 [HTTP 200] https://www.google.com/ccm/collect?rcb=9&frm=0&apvc=0&auid=641962518.1789495957&dt=Construj%C3%A1&tid=AW-11476569432&en=page_view&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&scrsrc=www.googletagmanager.com&rnd=818851715.1789495971&navt=n&npa=0&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938466~115938468~117776796~118131810~118897920~118897930~120213116~120385423~120469145~120469153&tft=1789495970879&tfd=465&tids=AW-11476569432&fmt=8
+[2026-09-15T18:12:50.944Z] 🌐 [HTTP 200] https://www.google.com/rmkt/collect/11476569432/?random=1789495970859&cv=11&fst=1789495970859&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938466~115938468~117776796~118131810~118897920~118897930~120213116~120385423~120469145~120469153&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=9&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&ept=68&gcp=5
+[2026-09-15T18:12:50.945Z] 🌐 [HTTP 200] https://www.google.com/rmkt/collect/11476569432/?random=1789495970876&cv=11&fst=1789495970876&fmt=8&bg=ffffff&guid=ON&async=1&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938466~115938468~117776796~118131810~118897920~118897930~120213116~120385423~120469145~120469153&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=9&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=CA&ept=68&gcp=5
+[2026-09-15T18:12:50.953Z] 🌐 [HTTP 200] https://googleads.g.doubleclick.net/pagead/viewthroughconversion/11476569432/?random=1789495970859&cv=11&fst=1789495970859&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938466~115938468~117776796~118131810~118897920~118897930~120213116~120385423~120469145~120469153&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=9&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&ept=9&rfmt=3&fmt=4
+[2026-09-15T18:12:50.954Z] 🌐 [HTTP 200] https://googleads.g.doubleclick.net/pagead/viewthroughconversion/11476569432/?random=1789495970876&cv=11&fst=1789495970876&bg=ffffff&guid=ON&async=1&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938466~115938468~117776796~118131810~118897920~118897930~120213116~120385423~120469145~120469153&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=9&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=CA&ept=9&rfmt=3&fmt=4
+[2026-09-15T18:12:50.959Z] 🌐 [HTTP 204] https://analytics.google.com/g/collect?v=2&tid=G-JR5FD3LLZF&gtm=45je69b1v9251513145z8831886916za20gzb831886916zd831886916&_p=1789495970741&gcd=13l3l3l3l1l1&npa=0&dma=0&ecid=592452166&_eu=AAAAAGQC&are=1&cid=1950500375.1789495957&ec_mode=a&frm=0&pscdl=noapi&rcb=16&sr=1280x800&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=pt-br&gaf=2&_s=1&tag_exp=115938466~115938468~118897920~118897930~120213116~120385422~120469145~120469153&sid=1789495957&sct=1&seg=1&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&dt=Construj%C3%A1&en=page_view&tfd=478
+[2026-09-15T18:12:50.978Z] 🌐 [HTTP 204] https://analytics.google.com/g/collect?v=2&tid=G-THPPL7WBWD&gtm=45je69b1v886011659z8831886916za20gzb831886916zd831886916&_p=1789495970741&gcd=13l3l3l3l1l1&npa=0&dma=0&ecid=1143955804&_eu=AAAAAGQC&are=1&cid=1950500375.1789495957&ec_mode=a&frm=0&pscdl=noapi&rcb=15&sr=1280x800&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=pt-br&gaf=2&_s=1&tag_exp=115938466~115938469~118897920~118897930~120213116~120385423~120469145~120469153&sid=1789495957&sct=1&seg=1&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&dt=Construj%C3%A1&en=page_view&tfd=499
+[2026-09-15T18:12:50.979Z] 🌐 [HTTP 200] https://www.google-analytics.com/j/collect?v=1&_v=j102&a=120580585&t=pageview&_s=1&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&ul=pt-br&dt=Construj%C3%A1&sr=1280x800&vp=1280x800&_u=YADAAAABAAAAACAAI~&jid=314163713&gjid=386398133&cid=1950500375.1789495957&tid=%5Bobject%20Object%5D&_gid=1598997899.1789495971&_r=1&_slc=1&gtm=45He69b1n81PB72ZCDv831886916za200zd831886916&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616985~115938466~115938468~117776796~118131810~118897920~118897930~120385423~120469145~120469153&z=1016802429
+[2026-09-15T18:12:51.018Z] 🌐 [HTTP 200] https://www.google.com/pagead/1p-user-list/11476569432/?random=1789495970876&cv=11&fst=1789495200000&bg=ffffff&guid=ON&async=1&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938466~115938468~117776796~118131810~118897920~118897930~120213116~120385423~120469145~120469153&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=9&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=CA&ept=9&rfmt=3&fmt=3&is_vtc=1&cid=CAQS-gEAQM4h3Icil4aFp37yhT2imouQQQSzUOYX05fyf97Ta6ldJA3Qvp9utBpKxqNUnquZc1vTj4q9D9Bj9fbWPNh0rV-ltFo3vG1mMASxxC503-KHTH47CcNhOzORlnY5G7g2SjA2AVk2raVaBMBZRe5_wEmCvISc3lJGMQS-AWcDtu47tNP1Klebolsn89dKQBimLeNIsqdfKx5VaRfW_IRffEqlmrA_ykbOLO6OxBiGax7gd-M5CqLnbW8bcNKpBiJ17PyYCFMFJPlpgCQTd4E3-T-aJOrnysQfeT8d_6KejYyY9q0co6lLB8JDkfrF-bDn_bGUNv34uvI8&random=2801634562&rmt_tld=0&ipr=y
+[2026-09-15T18:12:51.021Z] 🌐 [HTTP 200] https://www.google.com.br/pagead/1p-user-list/11476569432/?random=1789495970859&cv=11&fst=1789495200000&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938466~115938468~117776796~118131810~118897920~118897930~120213116~120385423~120469145~120469153&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=9&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&ept=9&rfmt=3&fmt=3&is_vtc=1&cid=CAQS-gEAQM4h3L3NF6lvaKBVLESV_LtXOB-P_qVZ0ntiZnVlQBgX042QEjN3RD7MzpWAMvfFGmPSo15nN1ZL7DKNCBAL9dkxsz6rdzdbP8S7RFD2OkeMUF-8MbKCmPWh5URybi4zfOxOJCy5WM9n6S0SUnqGFhOHltmakNc-ue8OPyXX7AgCDkfYHbh2r_uZnYiKOM615eExPWp8s-uav3IISqi20lILrLxDOY1BUXwG89LGWsvcPi4YWfD3Skd1fQCHcpqpg3DQeznwtW3tiaUeNhmq0EqtHnUUdtV7jZRY7nADzKADQQmZwS1GBMN7nDJsRkYqwFJZRpqDkpIg&random=1595846293&rmt_tld=1&ipr=y
+[2026-09-15T18:12:51.022Z] 🌐 [HTTP 200] https://www.google.com/pagead/1p-user-list/11476569432/?random=1789495970859&cv=11&fst=1789495200000&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938466~115938468~117776796~118131810~118897920~118897930~120213116~120385423~120469145~120469153&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=9&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&ept=9&rfmt=3&fmt=3&is_vtc=1&cid=CAQS-gEAQM4h3L3NF6lvaKBVLESV_LtXOB-P_qVZ0ntiZnVlQBgX042QEjN3RD7MzpWAMvfFGmPSo15nN1ZL7DKNCBAL9dkxsz6rdzdbP8S7RFD2OkeMUF-8MbKCmPWh5URybi4zfOxOJCy5WM9n6S0SUnqGFhOHltmakNc-ue8OPyXX7AgCDkfYHbh2r_uZnYiKOM615eExPWp8s-uav3IISqi20lILrLxDOY1BUXwG89LGWsvcPi4YWfD3Skd1fQCHcpqpg3DQeznwtW3tiaUeNhmq0EqtHnUUdtV7jZRY7nADzKADQQmZwS1GBMN7nDJsRkYqwFJZRpqDkpIg&random=1595846293&rmt_tld=0&ipr=y
+[2026-09-15T18:12:51.025Z] 🌐 [HTTP 200] https://www.google.com.br/pagead/1p-user-list/11476569432/?random=1789495970876&cv=11&fst=1789495200000&bg=ffffff&guid=ON&async=1&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938466~115938468~117776796~118131810~118897920~118897930~120213116~120385423~120469145~120469153&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=9&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=CA&ept=9&rfmt=3&fmt=3&is_vtc=1&cid=CAQS-gEAQM4h3Icil4aFp37yhT2imouQQQSzUOYX05fyf97Ta6ldJA3Qvp9utBpKxqNUnquZc1vTj4q9D9Bj9fbWPNh0rV-ltFo3vG1mMASxxC503-KHTH47CcNhOzORlnY5G7g2SjA2AVk2raVaBMBZRe5_wEmCvISc3lJGMQS-AWcDtu47tNP1Klebolsn89dKQBimLeNIsqdfKx5VaRfW_IRffEqlmrA_ykbOLO6OxBiGax7gd-M5CqLnbW8bcNKpBiJ17PyYCFMFJPlpgCQTd4E3-T-aJOrnysQfeT8d_6KejYyY9q0co6lLB8JDkfrF-bDn_bGUNv34uvI8&random=2801634562&rmt_tld=1&ipr=y
+[2026-09-15T18:12:53.677Z] ✅ [CONFIRMAÇÃO DE LIMPEZA] Carrinho 100% VAZIO confirmado! (Itens removidos: 0)
+[2026-09-15T18:12:53.731Z] 
+--- PASSO 3: BUSCA, ISOLAMENTO DE SKU E CLIQUE NO BOTÃO "+" COM RE-RENDER ---
+[2026-09-15T18:12:53.731Z] 
+🔍 [Item 1/9] Buscando no catálogo: "CAIXA DA AGUA FECHADA FORTLEV 310L" (Qtd Solicitada: 3)...
+[2026-09-15T18:12:53.817Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/images/logo/s/B2B
+[2026-09-15T18:12:53.840Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/tema/B2B.css
+[2026-09-15T18:12:54.785Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/orcamentos/17839533778231/carrinho?clienteId=53597&filialId=2
+[2026-09-15T18:12:54.787Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/clientes/53597/credito-disponivel?clienteId=53597&filialId=2
+[2026-09-15T18:12:54.788Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/avisos/total-nao-lidos/?clienteId=53597&filialId=2
+[2026-09-15T18:12:54.791Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sugestoes/menus?clienteId=53597&filialId=2
+[2026-09-15T18:12:55.109Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:12:55.174Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:12:55.207Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:12:55.251Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:12:56.264Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/busca?clienteId=53597&filialId=2
+[2026-09-15T18:12:56.497Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/busca?clienteId=53597&filialId=2
+[2026-09-15T18:12:57.012Z] 📸 Print de busca salvo: 02_busca_item_01.png
+[2026-09-15T18:12:57.053Z] ⚠️ Item NÃO LOCALIZADO no catálogo: "CAIXA DA AGUA FECHADA FORTLEV 310L"
+[2026-09-15T18:12:57.053Z] 
+🔍 [Item 2/9] Buscando no catálogo: "DUCHA LORENZETTI BELLA DUCHA 127V" (Qtd Solicitada: 6)...
+[2026-09-15T18:12:57.154Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/images/logo/s/B2B
+[2026-09-15T18:12:57.180Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/tema/B2B.css
+[2026-09-15T18:12:58.148Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/orcamentos/17839533778231/carrinho?clienteId=53597&filialId=2
+[2026-09-15T18:12:58.149Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sugestoes/menus?clienteId=53597&filialId=2
+[2026-09-15T18:12:58.150Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/clientes/53597/credito-disponivel?clienteId=53597&filialId=2
+[2026-09-15T18:12:58.150Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/avisos/total-nao-lidos/?clienteId=53597&filialId=2
+[2026-09-15T18:12:58.431Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/busca?clienteId=53597&filialId=2
+[2026-09-15T18:12:58.431Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:12:58.575Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:12:58.613Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:12:58.616Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:12:58.754Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/busca?clienteId=53597&filialId=2
+[2026-09-15T18:13:00.415Z] 📸 Print de busca salvo: 02_busca_item_02.png
+[2026-09-15T18:13:00.905Z] 🎯 [CARD ISOLADO] Item: "NORMAL#127207EMB: 1Emb. Venda:22 Master:22PÇ" | SKU: #127207 | Preço B2B: R$ 87.84
+[2026-09-15T18:13:00.959Z] 📦 Elemento de Múltiplo no CARD: "Vende de 1 em 1"
+[2026-09-15T18:13:00.959Z] 🔢 Múltiplo M identificado: 1
+[2026-09-15T18:13:01.016Z] 🧮 ESTADO INICIAL DO CARD: Q_solicitada=6, M=1, Q_inicial_DOM=1 → Q_final_Alvo=6
+[2026-09-15T18:13:01.045Z] ➕ Incrementando de Q_atual=1 até Q_alvo=6...
+[2026-09-15T18:13:01.046Z] Clique em "+" (Tentativa 1/3) - Q_atual: 1...
+[2026-09-15T18:13:01.746Z] ⚠️ Re-render não detectado na tentativa 1. Aguardando mais 400ms...
+[2026-09-15T18:13:02.161Z] Clique em "+" (Tentativa 2/3) - Q_atual: 1...
+[2026-09-15T18:13:02.856Z] ✅ [RE-RENDER CONFIRMADO] Input atualizado: 1 -> 2
+[2026-09-15T18:13:02.856Z] Clique em "+" (Tentativa 1/3) - Q_atual: 2...
+[2026-09-15T18:13:03.528Z] ✅ [RE-RENDER CONFIRMADO] Input atualizado: 2 -> 3
+[2026-09-15T18:13:03.528Z] Clique em "+" (Tentativa 1/3) - Q_atual: 3...
+[2026-09-15T18:13:04.212Z] ✅ [RE-RENDER CONFIRMADO] Input atualizado: 3 -> 4
+[2026-09-15T18:13:04.212Z] Clique em "+" (Tentativa 1/3) - Q_atual: 4...
+[2026-09-15T18:13:04.891Z] ✅ [RE-RENDER CONFIRMADO] Input atualizado: 4 -> 5
+[2026-09-15T18:13:04.891Z] Clique em "+" (Tentativa 1/3) - Q_atual: 5...
+[2026-09-15T18:13:05.566Z] ✅ [RE-RENDER CONFIRMADO] Input atualizado: 5 -> 6
+[2026-09-15T18:13:05.592Z] 🔍 Quantidade Final Confirmada no DOM do Card: 6 (Alvo era: 6)
+[2026-09-15T18:13:05.592Z] ⏳ Aguardando 2.5s para conclusão do salvamento HTTP assíncrono do item no backend da Construjá...
+[2026-09-15T18:13:06.980Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:07.072Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:07.073Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/orcamentos/17839533778231/autosave?clienteId=53597&filialId=2
+[2026-09-15T18:13:08.189Z] 
+🔍 [Item 3/9] Buscando no catálogo: "BIANCO 900G" (Qtd Solicitada: 4)...
+[2026-09-15T18:13:08.426Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/images/logo/s/B2B
+[2026-09-15T18:13:08.448Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/tema/B2B.css
+[2026-09-15T18:13:09.387Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/orcamentos/17839533778231/carrinho?clienteId=53597&filialId=2
+[2026-09-15T18:13:09.388Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/avisos/total-nao-lidos/?clienteId=53597&filialId=2
+[2026-09-15T18:13:09.389Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sugestoes/menus?clienteId=53597&filialId=2
+[2026-09-15T18:13:09.690Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/busca?clienteId=53597&filialId=2
+[2026-09-15T18:13:09.690Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/clientes/53597/credito-disponivel?clienteId=53597&filialId=2
+[2026-09-15T18:13:09.696Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:09.756Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:13:09.757Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:13:09.788Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/busca?clienteId=53597&filialId=2
+[2026-09-15T18:13:09.789Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:11.679Z] 📸 Print de busca salvo: 02_busca_item_03.png
+[2026-09-15T18:13:11.716Z] ⚠️ Item NÃO LOCALIZADO no catálogo: "BIANCO 900G"
+[2026-09-15T18:13:11.716Z] 
+🔍 [Item 4/9] Buscando no catálogo: "DUCHA LORENZETTI MAXI DUCHA 127V" (Qtd Solicitada: 7)...
+[2026-09-15T18:13:11.896Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/images/logo/s/B2B
+[2026-09-15T18:13:11.919Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/tema/B2B.css
+[2026-09-15T18:13:12.804Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/orcamentos/17839533778231/carrinho?clienteId=53597&filialId=2
+[2026-09-15T18:13:12.805Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/clientes/53597/credito-disponivel?clienteId=53597&filialId=2
+[2026-09-15T18:13:12.806Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/avisos/total-nao-lidos/?clienteId=53597&filialId=2
+[2026-09-15T18:13:12.806Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sugestoes/menus?clienteId=53597&filialId=2
+[2026-09-15T18:13:13.046Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:13.047Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/busca?clienteId=53597&filialId=2
+[2026-09-15T18:13:13.111Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:13:13.112Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:13:13.123Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:13.276Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/busca?clienteId=53597&filialId=2
+[2026-09-15T18:13:15.105Z] 📸 Print de busca salvo: 02_busca_item_04.png
+[2026-09-15T18:13:15.503Z] 🎯 [CARD ISOLADO] Item: "NORMAL#127130EMB: 1Emb. Venda:21 Master:21 CX" | SKU: #127130 | Preço B2B: R$ 87.85
+[2026-09-15T18:13:15.566Z] 📦 Elemento de Múltiplo no CARD: "Vende de 1 em 1"
+[2026-09-15T18:13:15.566Z] 🔢 Múltiplo M identificado: 1
+[2026-09-15T18:13:15.630Z] 🧮 ESTADO INICIAL DO CARD: Q_solicitada=7, M=1, Q_inicial_DOM=1 → Q_final_Alvo=7
+[2026-09-15T18:13:15.655Z] ➕ Incrementando de Q_atual=1 até Q_alvo=7...
+[2026-09-15T18:13:15.656Z] Clique em "+" (Tentativa 1/3) - Q_atual: 1...
+[2026-09-15T18:13:16.367Z] ⚠️ Re-render não detectado na tentativa 1. Aguardando mais 400ms...
+[2026-09-15T18:13:16.780Z] Clique em "+" (Tentativa 2/3) - Q_atual: 1...
+[2026-09-15T18:13:17.477Z] ✅ [RE-RENDER CONFIRMADO] Input atualizado: 1 -> 2
+[2026-09-15T18:13:17.477Z] Clique em "+" (Tentativa 1/3) - Q_atual: 2...
+[2026-09-15T18:13:18.158Z] ✅ [RE-RENDER CONFIRMADO] Input atualizado: 2 -> 3
+[2026-09-15T18:13:18.158Z] Clique em "+" (Tentativa 1/3) - Q_atual: 3...
+[2026-09-15T18:13:18.845Z] ✅ [RE-RENDER CONFIRMADO] Input atualizado: 3 -> 4
+[2026-09-15T18:13:18.845Z] Clique em "+" (Tentativa 1/3) - Q_atual: 4...
+[2026-09-15T18:13:19.529Z] ✅ [RE-RENDER CONFIRMADO] Input atualizado: 4 -> 5
+[2026-09-15T18:13:19.529Z] Clique em "+" (Tentativa 1/3) - Q_atual: 5...
+[2026-09-15T18:13:20.209Z] ✅ [RE-RENDER CONFIRMADO] Input atualizado: 5 -> 6
+[2026-09-15T18:13:20.209Z] Clique em "+" (Tentativa 1/3) - Q_atual: 6...
+[2026-09-15T18:13:20.895Z] ✅ [RE-RENDER CONFIRMADO] Input atualizado: 6 -> 7
+[2026-09-15T18:13:20.919Z] 🔍 Quantidade Final Confirmada no DOM do Card: 7 (Alvo era: 7)
+[2026-09-15T18:13:20.919Z] ⏳ Aguardando 2.5s para conclusão do salvamento HTTP assíncrono do item no backend da Construjá...
+[2026-09-15T18:13:22.316Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:22.353Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:22.359Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/orcamentos/17839533778231/autosave?clienteId=53597&filialId=2
+[2026-09-15T18:13:23.512Z] 
+🔍 [Item 5/9] Buscando no catálogo: "ALICATE BOMBA D AGUA MTX 10" (Qtd Solicitada: 12)...
+[2026-09-15T18:13:23.700Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/images/logo/s/B2B
+[2026-09-15T18:13:23.724Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/tema/B2B.css
+[2026-09-15T18:13:24.638Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/orcamentos/17839533778231/carrinho?clienteId=53597&filialId=2
+[2026-09-15T18:13:24.639Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sugestoes/menus?clienteId=53597&filialId=2
+[2026-09-15T18:13:24.640Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/avisos/total-nao-lidos/?clienteId=53597&filialId=2
+[2026-09-15T18:13:24.640Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/clientes/53597/credito-disponivel?clienteId=53597&filialId=2
+[2026-09-15T18:13:24.887Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:25.035Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:13:25.035Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:13:25.065Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:25.487Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/busca?clienteId=53597&filialId=2
+[2026-09-15T18:13:25.923Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/busca?clienteId=53597&filialId=2
+[2026-09-15T18:13:26.911Z] 📸 Print de busca salvo: 02_busca_item_05.png
+[2026-09-15T18:13:26.948Z] ⚠️ Item NÃO LOCALIZADO no catálogo: "ALICATE BOMBA D AGUA MTX 10"
+[2026-09-15T18:13:26.948Z] 
+🔍 [Item 6/9] Buscando no catálogo: "CONDUITE CORR AM FORTLEV 25MM 50M" (Qtd Solicitada: 5)...
+[2026-09-15T18:13:27.057Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/images/logo/s/B2B
+[2026-09-15T18:13:27.081Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/tema/B2B.css
+[2026-09-15T18:13:27.951Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/orcamentos/17839533778231/carrinho?clienteId=53597&filialId=2
+[2026-09-15T18:13:28.192Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/clientes/53597/credito-disponivel?clienteId=53597&filialId=2
+[2026-09-15T18:13:28.192Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/avisos/total-nao-lidos/?clienteId=53597&filialId=2
+[2026-09-15T18:13:28.192Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sugestoes/menus?clienteId=53597&filialId=2
+[2026-09-15T18:13:28.338Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:28.398Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/busca?clienteId=53597&filialId=2
+[2026-09-15T18:13:28.507Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:13:28.525Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:13:28.654Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/busca?clienteId=53597&filialId=2
+[2026-09-15T18:13:28.686Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:30.244Z] 📸 Print de busca salvo: 02_busca_item_06.png
+[2026-09-15T18:13:30.282Z] ⚠️ Item NÃO LOCALIZADO no catálogo: "CONDUITE CORR AM FORTLEV 25MM 50M"
+[2026-09-15T18:13:30.282Z] 
+🔍 [Item 7/9] Buscando no catálogo: "ALICATE PRESSAO CURVO MTX 10" (Qtd Solicitada: 2)...
+[2026-09-15T18:13:30.382Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/images/logo/s/B2B
+[2026-09-15T18:13:30.406Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/tema/B2B.css
+[2026-09-15T18:13:31.311Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/orcamentos/17839533778231/carrinho?clienteId=53597&filialId=2
+[2026-09-15T18:13:31.312Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sugestoes/menus?clienteId=53597&filialId=2
+[2026-09-15T18:13:31.313Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/clientes/53597/credito-disponivel?clienteId=53597&filialId=2
+[2026-09-15T18:13:31.314Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/avisos/total-nao-lidos/?clienteId=53597&filialId=2
+[2026-09-15T18:13:31.590Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:31.668Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:13:31.669Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:13:31.678Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:31.812Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/busca?clienteId=53597&filialId=2
+[2026-09-15T18:13:32.278Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/busca?clienteId=53597&filialId=2
+[2026-09-15T18:13:33.583Z] 📸 Print de busca salvo: 02_busca_item_07.png
+[2026-09-15T18:13:33.960Z] 🎯 [CARD ISOLADO] Item: "NORMAL#180197EMB: 1Emb. Venda:48 Master:48 UN" | SKU: #180197 | Preço B2B: R$ 23.65
+[2026-09-15T18:13:34.017Z] 📦 Elemento de Múltiplo no CARD: "Vende de 1 em 1"
+[2026-09-15T18:13:34.017Z] 🔢 Múltiplo M identificado: 1
+[2026-09-15T18:13:34.067Z] 🧮 ESTADO INICIAL DO CARD: Q_solicitada=2, M=1, Q_inicial_DOM=1 → Q_final_Alvo=2
+[2026-09-15T18:13:34.094Z] ➕ Incrementando de Q_atual=1 até Q_alvo=2...
+[2026-09-15T18:13:34.095Z] Clique em "+" (Tentativa 1/3) - Q_atual: 1...
+[2026-09-15T18:13:34.804Z] ⚠️ Re-render não detectado na tentativa 1. Aguardando mais 400ms...
+[2026-09-15T18:13:35.218Z] Clique em "+" (Tentativa 2/3) - Q_atual: 1...
+[2026-09-15T18:13:35.910Z] ✅ [RE-RENDER CONFIRMADO] Input atualizado: 1 -> 2
+[2026-09-15T18:13:35.938Z] 🔍 Quantidade Final Confirmada no DOM do Card: 2 (Alvo era: 2)
+[2026-09-15T18:13:35.939Z] ⏳ Aguardando 2.5s para conclusão do salvamento HTTP assíncrono do item no backend da Construjá...
+[2026-09-15T18:13:37.319Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:37.354Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:37.370Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/orcamentos/17839533778231/autosave?clienteId=53597&filialId=2
+[2026-09-15T18:13:38.503Z] 
+🔍 [Item 8/9] Buscando no catálogo: "APLICADOR SILICONE REFOR SPARTA" (Qtd Solicitada: 5)...
+[2026-09-15T18:13:38.684Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/images/logo/s/B2B
+[2026-09-15T18:13:38.708Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/tema/B2B.css
+[2026-09-15T18:13:39.578Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/orcamentos/17839533778231/carrinho?clienteId=53597&filialId=2
+[2026-09-15T18:13:39.579Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/avisos/total-nao-lidos/?clienteId=53597&filialId=2
+[2026-09-15T18:13:39.579Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sugestoes/menus?clienteId=53597&filialId=2
+[2026-09-15T18:13:39.579Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/clientes/53597/credito-disponivel?clienteId=53597&filialId=2
+[2026-09-15T18:13:39.829Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:39.830Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/busca?clienteId=53597&filialId=2
+[2026-09-15T18:13:39.912Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:13:39.921Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:13:39.955Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:39.996Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/busca?clienteId=53597&filialId=2
+[2026-09-15T18:13:41.893Z] 📸 Print de busca salvo: 02_busca_item_08.png
+[2026-09-15T18:13:41.932Z] ⚠️ Item NÃO LOCALIZADO no catálogo: "APLICADOR SILICONE REFOR SPARTA"
+[2026-09-15T18:13:41.932Z] 
+🔍 [Item 9/9] Buscando no catálogo: "BROCA CHATA MADEIRA IRWIN 1/2" (Qtd Solicitada: 7)...
+[2026-09-15T18:13:42.162Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/images/logo/s/B2B
+[2026-09-15T18:13:42.219Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/tema/B2B.css
+[2026-09-15T18:13:43.121Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/orcamentos/17839533778231/carrinho?clienteId=53597&filialId=2
+[2026-09-15T18:13:43.122Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sugestoes/menus?clienteId=53597&filialId=2
+[2026-09-15T18:13:43.123Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/avisos/total-nao-lidos/?clienteId=53597&filialId=2
+[2026-09-15T18:13:43.123Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/clientes/53597/credito-disponivel?clienteId=53597&filialId=2
+[2026-09-15T18:13:43.379Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:43.456Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:13:43.457Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:13:43.476Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:44.904Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/busca?clienteId=53597&filialId=2
+[2026-09-15T18:13:45.237Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/busca?clienteId=53597&filialId=2
+[2026-09-15T18:13:45.399Z] 📸 Print de busca salvo: 02_busca_item_09.png
+[2026-09-15T18:13:45.782Z] 🎯 [CARD ISOLADO] Item: "NORMAL#17094EMB: 1Emb. Venda:6 Master:1 UN" | SKU: #17094 | Preço B2B: R$ 21.43
+[2026-09-15T18:13:45.832Z] 📦 Elemento de Múltiplo no CARD: "Vende de 1 em 1"
+[2026-09-15T18:13:45.832Z] 🔢 Múltiplo M identificado: 1
+[2026-09-15T18:13:45.888Z] 🧮 ESTADO INICIAL DO CARD: Q_solicitada=7, M=1, Q_inicial_DOM=1 → Q_final_Alvo=7
+[2026-09-15T18:13:45.914Z] ➕ Incrementando de Q_atual=1 até Q_alvo=7...
+[2026-09-15T18:13:45.914Z] Clique em "+" (Tentativa 1/3) - Q_atual: 1...
+[2026-09-15T18:13:46.630Z] ⚠️ Re-render não detectado na tentativa 1. Aguardando mais 400ms...
+[2026-09-15T18:13:47.030Z] Clique em "+" (Tentativa 2/3) - Q_atual: 1...
+[2026-09-15T18:13:47.719Z] ✅ [RE-RENDER CONFIRMADO] Input atualizado: 1 -> 2
+[2026-09-15T18:13:47.719Z] Clique em "+" (Tentativa 1/3) - Q_atual: 2...
+[2026-09-15T18:13:48.389Z] ✅ [RE-RENDER CONFIRMADO] Input atualizado: 2 -> 3
+[2026-09-15T18:13:48.389Z] Clique em "+" (Tentativa 1/3) - Q_atual: 3...
+[2026-09-15T18:13:49.079Z] ✅ [RE-RENDER CONFIRMADO] Input atualizado: 3 -> 4
+[2026-09-15T18:13:49.079Z] Clique em "+" (Tentativa 1/3) - Q_atual: 4...
+[2026-09-15T18:13:49.762Z] ✅ [RE-RENDER CONFIRMADO] Input atualizado: 4 -> 5
+[2026-09-15T18:13:49.762Z] Clique em "+" (Tentativa 1/3) - Q_atual: 5...
+[2026-09-15T18:13:50.430Z] ✅ [RE-RENDER CONFIRMADO] Input atualizado: 5 -> 6
+[2026-09-15T18:13:50.430Z] Clique em "+" (Tentativa 1/3) - Q_atual: 6...
+[2026-09-15T18:13:51.101Z] ✅ [RE-RENDER CONFIRMADO] Input atualizado: 6 -> 7
+[2026-09-15T18:13:51.128Z] 🔍 Quantidade Final Confirmada no DOM do Card: 7 (Alvo era: 7)
+[2026-09-15T18:13:51.128Z] ⏳ Aguardando 2.5s para conclusão do salvamento HTTP assíncrono do item no backend da Construjá...
+[2026-09-15T18:13:52.520Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:52.558Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:52.571Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/orcamentos/17839533778231/autosave?clienteId=53597&filialId=2
+[2026-09-15T18:13:53.705Z] 
+--- PASSO 4: NAVEGANDO PARA /carrinho E VALIDAÇÃO REAL POR ITEM ---
+[2026-09-15T18:13:53.769Z] 🌐 [HTTP 200] https://www.construja.com.br/carrinho
+[2026-09-15T18:13:53.886Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/images/logo/s/B2B
+[2026-09-15T18:13:53.889Z] 🌐 [HTTP 200] https://www.construja.com.br/_next/static/chunks/pages/carrinho-4b7d145d676004f0.js
+[2026-09-15T18:13:53.908Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/tema/B2B.css
+[2026-09-15T18:13:54.136Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/campos-adicionais/orcamento/selecao_item?orcamento_id=17839533778231&clienteId=53597&filialId=2
+[2026-09-15T18:13:54.143Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/clientes/53597/credito-disponivel?clienteId=53597&filialId=2
+[2026-09-15T18:13:54.143Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/avisos/total-nao-lidos/?clienteId=53597&filialId=2
+[2026-09-15T18:13:54.162Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/orcamentos/17839533778231/carrinho?clienteId=53597&filialId=2
+[2026-09-15T18:13:54.188Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:54.188Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:13:54.189Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/broadcasting/auth
+[2026-09-15T18:13:54.234Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/sinaleiras/17839533778231?clienteId=53597&filialId=2
+[2026-09-15T18:13:54.328Z] 🌐 [HTTP 200] https://www.google.com/ccm/collect?rcb=9&frm=0&apvc=1&ae=g&auid=641962518.1789495957&dt=Construj%C3%A1&en=page_view&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&scrsrc=www.googletagmanager.com&rnd=173881485.1789496034&navt=n&npa=0&ep.ads_data_redaction=0&gtm=45He69b1v831886916za200zd831886916xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938466~115938468~117776796~118131810~118897920~118897930~120385422~120469145~120469153&tft=1789496034248&tfd=541&fmt=8
+[2026-09-15T18:13:54.328Z] 🌐 [HTTP 200] https://api.construja.com.br/v1/orcamentos/17839533778231/carrinho?clienteId=53597&filialId=2
+[2026-09-15T18:13:54.380Z] 🌐 [HTTP 200] https://www.google.com/ccm/collect?rcb=0&frm=0&apvc=0&auid=641962518.1789495957&dt=Construj%C3%A1&tid=AW-11476569432&en=page_view&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&scrsrc=www.googletagmanager.com&rnd=173881485.1789496034&navt=n&npa=0&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938469~117776796~118131810~118897920~118897930~120213116~120385423~120469145~120469153&tft=1789496034305&tfd=598&tids=AW-11476569432&fmt=8
+[2026-09-15T18:13:54.380Z] 🌐 [HTTP 200] https://www.google.com/ccm/collect?rcb=0&frm=0&apvc=0&ae=g&auid=641962518.1789495957&dt=Construj%C3%A1&tid=AW-11476569432&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&scrsrc=www.googletagmanager.com&rnd=173881485.1789496034&navt=n&npa=0&_tu=CA&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938469~117776796~118131810~118897920~118897930~120213116~120385423~120469145~120469153&tft=1789496034306&tfd=599&tids=AW-11476569432&fmt=8
+[2026-09-15T18:13:54.380Z] 🌐 [HTTP 200] https://www.google.com/rmkt/collect/11476569432/?random=1789496034292&cv=11&fst=1789496034292&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938469~117776796~118131810~118897920~118897930~120213116~120385423~120469145~120469153&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=0&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&ept=68&gcp=5
+[2026-09-15T18:13:54.380Z] 🌐 [HTTP 200] https://googleads.g.doubleclick.net/pagead/viewthroughconversion/11476569432/?random=1789496034302&cv=11&fst=1789496034302&bg=ffffff&guid=ON&async=1&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938469~117776796~118131810~118897920~118897930~120213116~120385423~120469145~120469153&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=0&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=CA&ept=9&rfmt=3&fmt=4
+[2026-09-15T18:13:54.402Z] 🌐 [HTTP 200] https://www.google.com/rmkt/collect/11476569432/?random=1789496034302&cv=11&fst=1789496034302&fmt=8&bg=ffffff&guid=ON&async=1&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938469~117776796~118131810~118897920~118897930~120213116~120385423~120469145~120469153&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=0&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=CA&ept=68&gcp=5
+[2026-09-15T18:13:54.403Z] 🌐 [HTTP 204] https://analytics.google.com/g/collect?v=2&tid=G-JR5FD3LLZF&gtm=45je69b1v9251513145z8831886916za20gzb831886916zd831886916&_p=1789496034124&gcd=13l3l3l3l1l1&npa=0&dma=0&ecid=592452166&_eu=AAAAAGQC&are=1&cid=1950500375.1789495957&ec_mode=a&frm=0&pscdl=noapi&rcb=3&sr=1280x800&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=pt-br&gaf=2&_s=1&tag_exp=115938466~115938469~118897920~118897930~120213116~120385422~120469145~120469153&sid=1789495957&sct=1&seg=1&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&dt=Construj%C3%A1&en=page_view&tfd=615
+[2026-09-15T18:13:54.403Z] 🌐 [HTTP 200] https://googleads.g.doubleclick.net/pagead/viewthroughconversion/11476569432/?random=1789496034292&cv=11&fst=1789496034292&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938469~117776796~118131810~118897920~118897930~120213116~120385423~120469145~120469153&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=0&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&ept=9&rfmt=3&fmt=4
+[2026-09-15T18:13:54.417Z] 🌐 [HTTP 200] https://www.facebook.com/tr/?id=1240015849841044&ev=PageView&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rl=&if=false&ts=1789496034400&iw=false&sw=1280&sh=800&v=2.9.400&r=stable&ec=0&o=4126&aems=0%3B0&fbp=fb.2.1789495957696.798428012675152127&ler=empty&pmd[title]=Construj%C3%A1&pmd[locale]=pt&pmd[description]=Construj%C3%A1&plt=302&iss=1&ss=%7B%22page_title%22%3A%5B%7B%22rid%22%3A%221354433122962147%22%2C%22v%22%3A%5B%22Institucional%22%5D%7D%5D%7D&imft=1&tz=-180&it=1789496034283&coo=false&expv2[0]=pl0&expv2[1]=el3&expv2[2]=bc1&expv2[3]=ra2&expv2[4]=rp2&expv2[5]=im1&expv2[6]=hf1&expv2[7]=sd1&expv2[8]=sp1&expv2[9]=ek1&expv2[10]=pc1&expv2[11]=gs1&expv2[12]=zs1&expv2[13]=cp1&expv2[14]=es1&expv2[15]=ac1&expv2[16]=so1&expv2[17]=wc1&expv2[18]=la1&expv2[19]=sf1&expv2[20]=da1&expv2[21]=io1&expv2[22]=ae1&expv2[23]=sx1&expv2[24]=if1&expv2[25]=fd1&expv2[26]=bg1&expv2[27]=mg1&expv2[28]=kl1&expv2[29]=sg1&expv2[30]=mk1&expv2[31]=sn1&expv2[32]=ec1&expv2[33]=mp1&expv2[34]=ps1&expv2[35]=fx1&expv2[36]=vt1&expv2[37]=dp1&expv2[38]=fw1&expv2[39]=cn1&expv2[40]=tz1&expv2[41]=pe1&expv2[42]=ee1&expv2[43]=bu1&expv2[44]=ta1&expv2[45]=ot1&rqm=GET
+[2026-09-15T18:13:54.440Z] 🌐 [HTTP 204] https://analytics.google.com/g/collect?v=2&tid=G-THPPL7WBWD&gtm=45je69b1v886011659z8831886916za20gzb831886916zd831886916&_p=1789496034124&gcd=13l3l3l3l1l1&npa=0&dma=0&ecid=1143955804&_eu=AAAAAGQC&are=1&cid=1950500375.1789495957&ec_mode=a&frm=0&pscdl=noapi&rcb=6&sr=1280x800&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=pt-br&gaf=2&_s=1&tag_exp=115616985~115938466~115938469~118897920~118897930~120213116~120385422~120469145~120469153&sid=1789495957&sct=1&seg=1&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&dt=Construj%C3%A1&en=page_view&tfd=670
+[2026-09-15T18:13:54.447Z] 🌐 [HTTP 200] https://www.google-analytics.com/j/collect?v=1&_v=j102&a=481287851&t=pageview&_s=1&dl=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&ul=pt-br&dt=Construj%C3%A1&sr=1280x800&vp=1280x800&_u=YADAAAABAAAAACAAI~&jid=238921644&gjid=1071523035&cid=1950500375.1789495957&tid=%5Bobject%20Object%5D&_gid=1173662230.1789496034&_r=1&_slc=1&gtm=45He69b1n81PB72ZCDv831886916za200zd831886916&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938466~115938468~117776796~118131810~118897920~118897930~120385422~120469145~120469153&z=657464583
+[2026-09-15T18:13:54.469Z] 🌐 [HTTP 200] https://www.google.com/pagead/1p-user-list/11476569432/?random=1789496034302&cv=11&fst=1789495200000&bg=ffffff&guid=ON&async=1&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938469~117776796~118131810~118897920~118897930~120213116~120385423~120469145~120469153&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=0&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=CA&ept=9&rfmt=3&fmt=3&is_vtc=1&cid=CAQS-gEAQM4h3HWrtV0GGVyCaQZwlivB984A8Vd0ey0WO9ye8bNDleq7zzeW7ZGBaQDlFmtD56mJTx47fFlhEJ-B2plsDaYQuLZSkS3awHn-8iw0-U0keQyBPTbfGI4RCjdvt0k2ag8zHMidVpg58E1DWlR3Huh5ZVOvkK__zxP-10E4hlM3z1sSe35U_i5mhAtpYwxavyIcuZY4XeWhJ32JKQc31hiLZ9--tnAbOYsQTNLHF_jaEJWjemmSqiz1D_HO-S1x7HMq-upj-3mHNUSpZiJeGOfZssjRl662M3RQfNjcfGrPGe7fw0G-bHDsxfh_yq_csX3LZVRy8CV8&random=1999925165&rmt_tld=0&ipr=y
+[2026-09-15T18:13:54.469Z] 🌐 [HTTP 200] https://www.google.com.br/pagead/1p-user-list/11476569432/?random=1789496034292&cv=11&fst=1789495200000&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938469~117776796~118131810~118897920~118897930~120213116~120385423~120469145~120469153&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=0&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&ept=9&rfmt=3&fmt=3&is_vtc=1&cid=CAQS-gEAQM4h3OL_J-ds1DUcnmSbRIM-F2BpKYLtPUHmzgvrHOWCLPre2rC3kew2mg0QUVdm9z-y1YCj88xZr7LrqEM9ZRTAgdScXpYRcX8AatpgB4K5qLApdKwauB3jkh0mPG20HFW5XWZ7B6EL8gP5IDSEvymfRxbZgG1D0b4xAB_VOSuQrBNfwkLjAZxM-Znx2FKOlLsEDomO4C898kkOkTQxQ5s4n3PPL-JB_RUZqYCmHzVMF9Dca0cydgASlHnuK6T2eGUFnxmg7zs1j1WldEemYT5CofMAchqvFNnQCG_Onb5WIH9LQrlZ57hNZDX4bPKp4IdqrhSE71_N&random=4160195988&rmt_tld=1&ipr=y
+[2026-09-15T18:13:54.470Z] 🌐 [HTTP 200] https://www.google.com/pagead/1p-user-list/11476569432/?random=1789496034292&cv=11&fst=1789495200000&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938469~117776796~118131810~118897920~118897930~120213116~120385423~120469145~120469153&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=0&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&data=event%3Dgtag.config&ept=9&rfmt=3&fmt=3&is_vtc=1&cid=CAQS-gEAQM4h3OL_J-ds1DUcnmSbRIM-F2BpKYLtPUHmzgvrHOWCLPre2rC3kew2mg0QUVdm9z-y1YCj88xZr7LrqEM9ZRTAgdScXpYRcX8AatpgB4K5qLApdKwauB3jkh0mPG20HFW5XWZ7B6EL8gP5IDSEvymfRxbZgG1D0b4xAB_VOSuQrBNfwkLjAZxM-Znx2FKOlLsEDomO4C898kkOkTQxQ5s4n3PPL-JB_RUZqYCmHzVMF9Dca0cydgASlHnuK6T2eGUFnxmg7zs1j1WldEemYT5CofMAchqvFNnQCG_Onb5WIH9LQrlZ57hNZDX4bPKp4IdqrhSE71_N&random=4160195988&rmt_tld=0&ipr=y
+[2026-09-15T18:13:54.471Z] 🌐 [HTTP 200] https://www.google.com.br/pagead/1p-user-list/11476569432/?random=1789496034302&cv=11&fst=1789495200000&bg=ffffff&guid=ON&async=1&gtm=45be69b1v9177864082z8831886916za20gzb831886916zd831886916xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=115616986~115938466~115938469~117776796~118131810~118897920~118897930~120213116~120385423~120469145~120469153&u_w=1280&u_h=800&url=https%3A%2F%2Fwww.construja.com.br%2Fcarrinho&rcb=0&frm=0&tiba=Construj%C3%A1&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=641962518.1789495957&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&_tu=CA&ept=9&rfmt=3&fmt=3&is_vtc=1&cid=CAQS-gEAQM4h3HWrtV0GGVyCaQZwlivB984A8Vd0ey0WO9ye8bNDleq7zzeW7ZGBaQDlFmtD56mJTx47fFlhEJ-B2plsDaYQuLZSkS3awHn-8iw0-U0keQyBPTbfGI4RCjdvt0k2ag8zHMidVpg58E1DWlR3Huh5ZVOvkK__zxP-10E4hlM3z1sSe35U_i5mhAtpYwxavyIcuZY4XeWhJ32JKQc31hiLZ9--tnAbOYsQTNLHF_jaEJWjemmSqiz1D_HO-S1x7HMq-upj-3mHNUSpZiJeGOfZssjRl662M3RQfNjcfGrPGe7fw0G-bHDsxfh_yq_csX3LZVRy8CV8&random=1999925165&rmt_tld=1&ipr=y
+[2026-09-15T18:13:59.052Z] 📸 Print do carrinho salvo: 04_carrinho_final_construja.png
+[2026-09-15T18:13:59.058Z] 🛒 Total de itens confirmados no carrinho B2B: 4
+[2026-09-15T18:13:59.058Z] 💰 Total Geral do Carrinho: R$ 1249.65
+[2026-09-15T18:13:59.059Z] ⚠️ [INCONSISTÊNCIA DE QUANTIDADE] Item "DUCHA LORENZETTI MAXI DUCHA 127V": esperava Q=7, mas no carrinho consta Q=6
+[2026-09-15T18:13:59.059Z] 
+--- PASSO 5: INTEGRANDO COM PLATAFORMA SARACOTA (http://localhost:3000) ---
+[2026-09-15T18:14:07.062Z] 
+--- PASSO 6: GERANDO RELATÓRIO FINAL E TABELA COMPARATIVA ---
+[2026-09-15T18:14:07.084Z] 📄 Relatório final salvo com sucesso em relatorio_final.md.

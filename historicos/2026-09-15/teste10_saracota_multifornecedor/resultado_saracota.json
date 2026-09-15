@@ -1,0 +1,13 @@
+{
+  "testName": "Teste 10 - Multi-fornecedor (Cicalfer + Construjá)",
+  "timestamp": "2026-09-15T19:15:12.143Z",
+  "urlFinal": "http://localhost:3000/cotacoes",
+  "renderedCardsCount": 5,
+  "renderedCards": [
+    "Resumo por Fornecedor Cotado\nClique em um card abaixo para abrir o detalhamento completo dos itens\nCicalfer\nELÉTRICA\nVENCEDOR\nCotação concluída\n2 itens\nTotal: R$ 0,00\nConstrujá\nELÉTRICA\nCotação concluída\n2 itens\nTotal: R$ 0,00",
+    "Cicalfer\nELÉTRICA\nVENCEDOR\nCotação concluída\n2 itens\nTotal: R$ 0,00",
+    "Construjá\nELÉTRICA\nCotação concluída\n2 itens\nTotal: R$ 0,00",
+    "MATCH EXATO\n★ 4.8\nCicalfer\n\nPrazo de Entrega: 2 dias\n\nProdutos:\nR$ 0,00\nTotal do Pedido:\nR$ 0,00\nWhats: (11) 98765-4321\nEnviar via WhatsApp\nAprovar Esta Cotação",
+    "MATCH EXATO\n★ 4.8\nConstrujá\n\nPrazo de Entrega: 2 dias\n\nProdutos:\nR$ 0,00\nTotal do Pedido:\nR$ 0,00\nWhats: (11) 98765-4321\nEnviar via WhatsApp\nSelecionar Fornecedor"
+  ]
+}

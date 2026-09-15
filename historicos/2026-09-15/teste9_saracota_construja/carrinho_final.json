@@ -1,0 +1,32 @@
+{
+  "fornecedor": "Construjá",
+  "fornecedor_id": "a1684c4d-d896-4ba9-a591-cda455c5ffe2",
+  "dataExtracao": "2026-09-15T18:13:59.058Z",
+  "totalGeral": 1249.655,
+  "itensConfirmadosCarrinho": [
+    {
+      "produto": "LORENZETTI - DUCHA BELLA DUCHA ULTRA 5500X127",
+      "quantidade": 6,
+      "precoUnitario": 80.95,
+      "subtotal": 485.70000000000005
+    },
+    {
+      "produto": "LORENZETTI - DUCHA MAXI DUCHA ULTRA 5500X127",
+      "quantidade": 7,
+      "precoUnitario": 80.95,
+      "subtotal": 566.65
+    },
+    {
+      "produto": "EDA - ALICATE PRESSAO CURVO 10 5RO",
+      "quantidade": 2,
+      "precoUnitario": 23.651,
+      "subtotal": 47.302
+    },
+    {
+      "produto": "IRWIN - BROCA CHATA E 1/2 PRO",
+      "quantidade": 7,
+      "precoUnitario": 21.429,
+      "subtotal": 150.003
+    }
+  ]
+}

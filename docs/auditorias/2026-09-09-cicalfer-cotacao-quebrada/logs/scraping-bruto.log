@@ -1,0 +1,393 @@
+[2026-09-10T14:28:28.697Z] Passo A: Executando login na Cicalfer...
+[2026-09-10T14:28:44.343Z] Login e seleção de filial concluídos.
+[2026-09-10T14:28:44.343Z] 
+>>> Adicionando item: CABO FLEX 100M COBRECOM 2,50MM AM (REF 10672) (Qtd: 5) <<<
+[2026-09-10T14:28:54.089Z] Print salvo: 01-busca-cabo-flex.png
+[2026-09-10T14:28:54.089Z] 
+>>> Adicionando item: BROXA ROMA RETANGULAR 15,5 X 5,5CM (REF 11992) (Qtd: 12) <<<
+[2026-09-10T14:29:03.788Z] Print salvo: 02-busca-broxa-roma.png
+[2026-09-10T14:29:03.788Z] 
+>>> Adicionando item: ALICATE BICO CHATO MTX 6 (REF 13329) (Qtd: 12) <<<
+[2026-09-10T14:29:13.513Z] Print salvo: 03-busca-alicate-mtx.png
+[2026-09-10T14:29:13.513Z] 
+Passo B: Navegando para o carrinho final (https://cicalfer.com.br/carrinho)...
+[2026-09-10T14:29:17.705Z] Print salvo: 04-site-cicalfer-extracao.png
+[2026-09-10T14:29:17.716Z] HTML bruto salvo em html-bruto.txt.
+[2026-09-10T14:29:17.716Z] Passo C: Capturando elementos brutos do DOM do carrinho...
+[2026-09-10T14:29:17.725Z] Total de elementos brutos capturados no DOM: 62
+
+=== ELEMENTOS BRUTOS DO DOM DA PÁGINA DE CARRINHO ===
+[
+  {
+    "tagName": "DIV",
+    "className": "",
+    "id": "__next",
+    "innerText": "OLÁ, SEJA BEM-VINDO!!\n0\nÁrea do cliente\n3\nitens\nR$ 1.479,04\nMe Ligue\nTODOS OS DEPARTAMENTOS\nELETRICA\nHIDRAULICA\nPINTURA\nFERRAMENTAS\nFERRAGENS\nEsqueceu de algum produto ?\nAdicione os produtos que faltam no carrinho e finalize seu pedido.\nCód. do produto\nDescrição\nQtde.(x1)\nTotal (un. R$0,00)\nSem desc"
+  },
+  {
+    "tagName": "DIV",
+    "className": "",
+    "id": "idScrollToTop",
+    "innerText": "OLÁ, SEJA BEM-VINDO!!\n0\nÁrea do cliente\n3\nitens\nR$ 1.479,04\nMe Ligue\nTODOS OS DEPARTAMENTOS\nELETRICA\nHIDRAULICA\nPINTURA\nFERRAMENTAS\nFERRAGENS\nEsqueceu de algum produto ?\nAdicione os produtos que faltam no carrinho e finalize seu pedido.\nCód. do produto\nDescrição\nQtde.(x1)\nTotal (un. R$0,00)\nSem desc"
+  },
+  {
+    "tagName": "DIV",
+    "className": "Header_headerDesktop__0LtgL",
+    "id": "header-desktop",
+    "innerText": "0\nÁrea do cliente\n3\nitens\nR$ 1.479,04\nMe Ligue"
+  },
+  {
+    "tagName": "DIV",
+    "className": "container-xxl d-flex flex-wrap align-items-lg-center justify-content-between gap-4",
+    "id": "",
+    "innerText": "0\nÁrea do cliente\n3\nitens\nR$ 1.479,04\nMe Ligue"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex flex-wrap align-items-center justify-content-center order-0 order-lg-2 mb-md-3 mb-lg-0 gap-4 ",
+    "id": "",
+    "innerText": "0\nÁrea do cliente\n3\nitens\nR$ 1.479,04"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex flex-column h-auto justify-content-between",
+    "id": "",
+    "innerText": "3\nitens\nR$ 1.479,04"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex justify-content-end",
+    "id": "",
+    "innerText": "R$ 1.479,04"
+  },
+  {
+    "tagName": "DIV",
+    "className": "container-xxl marginTop",
+    "id": "",
+    "innerText": "Esqueceu de algum produto ?\nAdicione os produtos que faltam no carrinho e finalize seu pedido.\nCód. do produto\nDescrição\nQtde.(x1)\nTotal (un. R$0,00)\nSem desconto*\nAdicionar\nProdutos no seu Orçamento:\nVocê está no modo compra rápida.\nLimpar carrinho\nRemover selecionados\n#10672\nEMB: 1\nESTOQUE NORMAL\n"
+  },
+  {
+    "tagName": "DIV",
+    "className": "row",
+    "id": "",
+    "innerText": "Esqueceu de algum produto ?\nAdicione os produtos que faltam no carrinho e finalize seu pedido.\nCód. do produto\nDescrição\nQtde.(x1)\nTotal (un. R$0,00)\nSem desconto*\nAdicionar\nProdutos no seu Orçamento:\nVocê está no modo compra rápida.\nLimpar carrinho\nRemover selecionados\n#10672\nEMB: 1\nESTOQUE NORMAL\n"
+  },
+  {
+    "tagName": "DIV",
+    "className": "col-xs-12",
+    "id": "",
+    "innerText": "Esqueceu de algum produto ?\nAdicione os produtos que faltam no carrinho e finalize seu pedido.\nCód. do produto\nDescrição\nQtde.(x1)\nTotal (un. R$0,00)\nSem desconto*\nAdicionar\nProdutos no seu Orçamento:\nVocê está no modo compra rápida.\nLimpar carrinho\nRemover selecionados\n#10672\nEMB: 1\nESTOQUE NORMAL\n"
+  },
+  {
+    "tagName": "DIV",
+    "className": "row",
+    "id": "",
+    "innerText": "Esqueceu de algum produto ?\nAdicione os produtos que faltam no carrinho e finalize seu pedido.\nCód. do produto\nDescrição\nQtde.(x1)\nTotal (un. R$0,00)\nSem desconto*\nAdicionar\nProdutos no seu Orçamento:\nVocê está no modo compra rápida.\nLimpar carrinho\nRemover selecionados\n#10672\nEMB: 1\nESTOQUE NORMAL\n"
+  },
+  {
+    "tagName": "DIV",
+    "className": "col-12 col-lg-8",
+    "id": "",
+    "innerText": "Esqueceu de algum produto ?\nAdicione os produtos que faltam no carrinho e finalize seu pedido.\nCód. do produto\nDescrição\nQtde.(x1)\nTotal (un. R$0,00)\nSem desconto*\nAdicionar\nProdutos no seu Orçamento:\nVocê está no modo compra rápida.\nLimpar carrinho\nRemover selecionados\n#10672\nEMB: 1\nESTOQUE NORMAL\n"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex flex-wrap justify-content-stretch w-100",
+    "id": "",
+    "innerText": "Cód. do produto\nDescrição\nQtde.(x1)\nTotal (un. R$0,00)\nSem desconto*\nAdicionar\nProdutos no seu Orçamento:\nVocê está no modo compra rápida.\nLimpar carrinho\nRemover selecionados\n#10672\nEMB: 1\nESTOQUE NORMAL\nCABO FLEX 100M COBRECOM 2,50MM AM REF: 10672\nR$235,16\nTotal\nR$1.175,80\n-\n+\nVENDE DE 1 EM 1\n#119"
+  },
+  {
+    "tagName": "DIV",
+    "className": "my-3 w-100 d-flex flex-wrap justify-content-between",
+    "id": "compra-rapida-pesquisa",
+    "innerText": "Cód. do produto\nDescrição\nQtde.(x1)\nTotal (un. R$0,00)\nSem desconto*\nAdicionar"
+  },
+  {
+    "tagName": "DIV",
+    "className": "col-6 col-lg-3 pe-2 pe-lg-2",
+    "id": "",
+    "innerText": "Total (un. R$0,00)\nSem desconto*"
+  },
+  {
+    "tagName": "DIV",
+    "className": "w-100 position-relative mt-2",
+    "id": "",
+    "innerText": "Total (un. R$0,00)\nSem desconto*"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex flex-column",
+    "id": "",
+    "innerText": "Total (un. R$0,00)\nSem desconto*"
+  },
+  {
+    "tagName": "DIV",
+    "className": "w-100 position-relative",
+    "id": "",
+    "innerText": "Produtos no seu Orçamento:\nVocê está no modo compra rápida.\nLimpar carrinho\nRemover selecionados\n#10672\nEMB: 1\nESTOQUE NORMAL\nCABO FLEX 100M COBRECOM 2,50MM AM REF: 10672\nR$235,16\nTotal\nR$1.175,80\n-\n+\nVENDE DE 1 EM 1\n#11992\nEMB: 12\nESTOQUE NORMAL\nBROXA ROMA RETANGULAR 15,5 X 5,5CM REF: 11992\nR$4,71\n"
+  },
+  {
+    "tagName": "DIV",
+    "className": "col-12 card",
+    "id": "compra-rapida-carrinho",
+    "innerText": "Produtos no seu Orçamento:\nVocê está no modo compra rápida.\nLimpar carrinho\nRemover selecionados\n#10672\nEMB: 1\nESTOQUE NORMAL\nCABO FLEX 100M COBRECOM 2,50MM AM REF: 10672\nR$235,16\nTotal\nR$1.175,80\n-\n+\nVENDE DE 1 EM 1\n#11992\nEMB: 12\nESTOQUE NORMAL\nBROXA ROMA RETANGULAR 15,5 X 5,5CM REF: 11992\nR$4,71\n"
+  },
+  {
+    "tagName": "DIV",
+    "className": "card-body p-2 p-md-3",
+    "id": "",
+    "innerText": "Limpar carrinho\nRemover selecionados\n#10672\nEMB: 1\nESTOQUE NORMAL\nCABO FLEX 100M COBRECOM 2,50MM AM REF: 10672\nR$235,16\nTotal\nR$1.175,80\n-\n+\nVENDE DE 1 EM 1\n#11992\nEMB: 12\nESTOQUE NORMAL\nBROXA ROMA RETANGULAR 15,5 X 5,5CM REF: 11992\nR$4,71\nTotal\nR$56,52\n-\n+\nVENDE DE 12 EM 12\n#13329\nEMB: 60\nESTOQUE N"
+  },
+  {
+    "tagName": "DIV",
+    "className": "",
+    "id": "",
+    "innerText": "#10672\nEMB: 1\nESTOQUE NORMAL\nCABO FLEX 100M COBRECOM 2,50MM AM REF: 10672\nR$235,16\nTotal\nR$1.175,80\n-\n+\nVENDE DE 1 EM 1\n#11992\nEMB: 12\nESTOQUE NORMAL\nBROXA ROMA RETANGULAR 15,5 X 5,5CM REF: 11992\nR$4,71\nTotal\nR$56,52\n-\n+\nVENDE DE 12 EM 12\n#13329\nEMB: 60\nESTOQUE NORMAL\nALICATE BICO CHATO MTX 6 REF: 1"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex align-items-center",
+    "id": "",
+    "innerText": "#10672\nEMB: 1\nESTOQUE NORMAL\nCABO FLEX 100M COBRECOM 2,50MM AM REF: 10672\nR$235,16\nTotal\nR$1.175,80\n-\n+\nVENDE DE 1 EM 1"
+  },
+  {
+    "tagName": "DIV",
+    "className": "ProdutoCompactCarrinho_itemContainer__Eaq76",
+    "id": "",
+    "innerText": "#10672\nEMB: 1\nESTOQUE NORMAL\nCABO FLEX 100M COBRECOM 2,50MM AM REF: 10672\nR$235,16\nTotal\nR$1.175,80\n-\n+\nVENDE DE 1 EM 1"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex gap-2 px-2 pb-1",
+    "id": "",
+    "innerText": "CABO FLEX 100M COBRECOM 2,50MM AM REF: 10672\nR$235,16\nTotal\nR$1.175,80\n-\n+\nVENDE DE 1 EM 1"
+  },
+  {
+    "tagName": "DIV",
+    "className": "flex-fill",
+    "id": "",
+    "innerText": "CABO FLEX 100M COBRECOM 2,50MM AM REF: 10672\nR$235,16\nTotal\nR$1.175,80\n-\n+\nVENDE DE 1 EM 1"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex align-items-start justify-content-between",
+    "id": "",
+    "innerText": "CABO FLEX 100M COBRECOM 2,50MM AM REF: 10672"
+  },
+  {
+    "tagName": "SPAN",
+    "className": "ProdutoCompactCarrinho_productTitle__n7FXX",
+    "id": "",
+    "innerText": "CABO FLEX 100M COBRECOM 2,50MM AM REF: 10672"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex justify-content-between gap-2 mb-2",
+    "id": "",
+    "innerText": "R$235,16\nTotal\nR$1.175,80"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex gap-1",
+    "id": "",
+    "innerText": "R$235,16"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex flex-column",
+    "id": "",
+    "innerText": "R$235,16"
+  },
+  {
+    "tagName": "SPAN",
+    "className": "fs-14 fw-bold",
+    "id": "",
+    "innerText": "R$235,16"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex flex-column",
+    "id": "",
+    "innerText": "Total\nR$1.175,80"
+  },
+  {
+    "tagName": "SPAN",
+    "className": "fs-14 fw-bold",
+    "id": "",
+    "innerText": "R$1.175,80"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex align-items-center",
+    "id": "",
+    "innerText": "#11992\nEMB: 12\nESTOQUE NORMAL\nBROXA ROMA RETANGULAR 15,5 X 5,5CM REF: 11992\nR$4,71\nTotal\nR$56,52\n-\n+\nVENDE DE 12 EM 12"
+  },
+  {
+    "tagName": "DIV",
+    "className": "ProdutoCompactCarrinho_itemContainer__Eaq76",
+    "id": "",
+    "innerText": "#11992\nEMB: 12\nESTOQUE NORMAL\nBROXA ROMA RETANGULAR 15,5 X 5,5CM REF: 11992\nR$4,71\nTotal\nR$56,52\n-\n+\nVENDE DE 12 EM 12"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex gap-2 px-2 pb-1",
+    "id": "",
+    "innerText": "BROXA ROMA RETANGULAR 15,5 X 5,5CM REF: 11992\nR$4,71\nTotal\nR$56,52\n-\n+\nVENDE DE 12 EM 12"
+  },
+  {
+    "tagName": "DIV",
+    "className": "flex-fill",
+    "id": "",
+    "innerText": "BROXA ROMA RETANGULAR 15,5 X 5,5CM REF: 11992\nR$4,71\nTotal\nR$56,52\n-\n+\nVENDE DE 12 EM 12"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex align-items-start justify-content-between",
+    "id": "",
+    "innerText": "BROXA ROMA RETANGULAR 15,5 X 5,5CM REF: 11992"
+  },
+  {
+    "tagName": "SPAN",
+    "className": "ProdutoCompactCarrinho_productTitle__n7FXX",
+    "id": "",
+    "innerText": "BROXA ROMA RETANGULAR 15,5 X 5,5CM REF: 11992"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex justify-content-between gap-2 mb-2",
+    "id": "",
+    "innerText": "R$4,71\nTotal\nR$56,52"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex gap-1",
+    "id": "",
+    "innerText": "R$4,71"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex flex-column",
+    "id": "",
+    "innerText": "R$4,71"
+  },
+  {
+    "tagName": "SPAN",
+    "className": "fs-14 fw-bold",
+    "id": "",
+    "innerText": "R$4,71"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex flex-column",
+    "id": "",
+    "innerText": "Total\nR$56,52"
+  },
+  {
+    "tagName": "SPAN",
+    "className": "fs-14 fw-bold",
+    "id": "",
+    "innerText": "R$56,52"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex align-items-center",
+    "id": "",
+    "innerText": "#13329\nEMB: 60\nESTOQUE NORMAL\nALICATE BICO CHATO MTX 6 REF: 13329\nR$20,56\nTotal\nR$246,72\n-\n+\nVENDE DE 1 EM 1"
+  },
+  {
+    "tagName": "DIV",
+    "className": "ProdutoCompactCarrinho_itemContainer__Eaq76",
+    "id": "",
+    "innerText": "#13329\nEMB: 60\nESTOQUE NORMAL\nALICATE BICO CHATO MTX 6 REF: 13329\nR$20,56\nTotal\nR$246,72\n-\n+\nVENDE DE 1 EM 1"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex gap-2 px-2 pb-1",
+    "id": "",
+    "innerText": "ALICATE BICO CHATO MTX 6 REF: 13329\nR$20,56\nTotal\nR$246,72\n-\n+\nVENDE DE 1 EM 1"
+  },
+  {
+    "tagName": "DIV",
+    "className": "flex-fill",
+    "id": "",
+    "innerText": "ALICATE BICO CHATO MTX 6 REF: 13329\nR$20,56\nTotal\nR$246,72\n-\n+\nVENDE DE 1 EM 1"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex align-items-start justify-content-between",
+    "id": "",
+    "innerText": "ALICATE BICO CHATO MTX 6 REF: 13329"
+  },
+  {
+    "tagName": "SPAN",
+    "className": "ProdutoCompactCarrinho_productTitle__n7FXX",
+    "id": "",
+    "innerText": "ALICATE BICO CHATO MTX 6 REF: 13329"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex justify-content-between gap-2 mb-2",
+    "id": "",
+    "innerText": "R$20,56\nTotal\nR$246,72"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex gap-1",
+    "id": "",
+    "innerText": "R$20,56"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex flex-column",
+    "id": "",
+    "innerText": "R$20,56"
+  },
+  {
+    "tagName": "SPAN",
+    "className": "fs-14 fw-bold",
+    "id": "",
+    "innerText": "R$20,56"
+  },
+  {
+    "tagName": "DIV",
+    "className": "d-flex flex-column",
+    "id": "",
+    "innerText": "Total\nR$246,72"
+  },
+  {
+    "tagName": "SPAN",
+    "className": "fs-14 fw-bold",
+    "id": "",
+    "innerText": "R$246,72"
+  },
+  {
+    "tagName": "DIV",
+    "className": "col-lg-4 mt-3 mt-lg-0 componentes-body_background-contrast-color",
+    "id": "",
+    "innerText": "Resumo do pedido\nTotal itens:\tR$ 1.479,04\nDespesa acessoria:\tR$ 4,90\nTotal pedido:\tR$ 1.479,04\nEnviar p/ callcenter\nSalvar como orçamento\nContinuar comprando\nProsseguir para pagamento\nBaixar carrinho em XLSX"
+  },
+  {
+    "tagName": "TABLE",
+    "className": "table table-bordered",
+    "id": "",
+    "innerText": "Total itens:\tR$ 1.479,04\nDespesa acessoria:\tR$ 4,90\nTotal pedido:\tR$ 1.479,04"
+  },
+  {
+    "tagName": "TR",
+    "className": "",
+    "id": "",
+    "innerText": "Total itens:\tR$ 1.479,04"
+  },
+  {
+    "tagName": "TR",
+    "className": "",
+    "id": "",
+    "innerText": "Despesa acessoria:\tR$ 4,90"
+  },
+  {
+    "tagName": "TR",
+    "className": "",
+    "id": "",
+    "innerText": "Total pedido:\tR$ 1.479,04"
+  }
+]

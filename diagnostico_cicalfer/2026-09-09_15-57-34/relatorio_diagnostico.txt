@@ -1,0 +1,22 @@
+=====================================================
+RELATÓRIO DE DIAGNÓSTICO COM DADOS DO SUPABASE DB
+Fornecedor: Cicalfer
+=====================================================
+
+PROVA DE ORIGEM DOS DADOS DO BANCO:
+ - ID Supabase: 33e03495-100d-45a3-9e34-899de56b0ab1
+ - Nome: Cicalfer
+ - URL Cadastrada: https://cicalfer.com.br/
+ - E-mail Usado: san***@gmail.com
+ - Status Senha: Descriptografada AES-256 com sucesso (6 caracteres)
+ - Seletores Utilizados (DB): {"campo_email":"input[name=\"email\"].form-control","campo_senha":"input#senha[name=\"senha\"]","botao_entrar":"div:has-text(\"Entrar\")","botao_ver_carrinho":"button.componentes-ver_carrinho-color","botao_abrir_carrinho":"button#botao-abrir-carrinho","botao_confirmar_filial":"span:has-text(\"Confirmar seleção\")","botao_abrir_modal_login":"text=Entrar | Cadastrar","botao_selecionar_filial":".ModalClienteFilial_selectedTitle__uJhF8","campo_pesquisar_produto":"input#filtro-dimensao[placeholder=\"Pesquisar categorias\"]","campo_quantidade_produto":"input.QuantidadeMaisMenos_input__grKxO"}
+
+RESUMO DOS TESTES:
+ - Subpasta da Execução: C:\Users\User\Desktop\Saracota\diagnostico_cicalfer\2026-09-09_15-57-34
+ - Total de Repetições: 10
+ - Taxa Real de Sucesso: 10 / 10 (100%)
+ - Status Final: SUCESSO - Autenticação confirmada na área logada (https://cicalfer.com.br/).
+
+HISTÓRICO E RETENÇÃO:
+ - Subpasta criada: 2026-09-09_15-57-34
+ - Retenção de 20 execuções mantida em C:\Users\User\Desktop\Saracota\diagnostico_cicalfer.

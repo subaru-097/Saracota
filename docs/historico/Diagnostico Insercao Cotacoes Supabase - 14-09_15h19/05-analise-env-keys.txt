@@ -1,0 +1,24 @@
+====================================================================
+ANÁLISE DAS VARIÁVEIS DE AMBIENTE SUPABASE NO PROJETO
+====================================================================
+
+VARIAVEIS PRESENTES NO PROJETO (.env.local e .env):
+
+1. .env.local:
+   - NEXT_PUBLIC_SUPABASE_URL = https://ulvsfwgrhgfvpghmfvnx.supabase.co
+   - NEXT_PUBLIC_SUPABASE_ANON_KEY = sb_publishable_RiqXdAtpR7-aKNhbbSQ5Fg_W8KNim4v
+
+2. .env:
+   - SUPABASE_URL = https://ulvsfwgrhgfvpghmfvnx.supabase.co
+   - SUPABASE_ANON_KEY = sb_publishable_RiqXdAtpR7-aKNhbbSQ5Fg_W8KNim4v
+
+--------------------------------------------------------------------
+STATUS DA SERVICE_ROLE KEY:
+--------------------------------------------------------------------
+SUPABASE_SERVICE_ROLE_KEY = UNDEFINED (NÃO EXISTE NOS ARQUIVOS .env/.env.local)
+
+CONSEQUÊNCIA TÉCNICA:
+Como a SUPABASE_SERVICE_ROLE_KEY não existe no ambiente e a lib/db/client.ts
+instancia o Supabase apenas com a ANON_KEY (pública), todas as chamadas de banco
+passadas pelo servidor backend continuam sujeitas às políticas de RLS e validações
+rigorosas da tabela sem privilégios administrativos de serviço.

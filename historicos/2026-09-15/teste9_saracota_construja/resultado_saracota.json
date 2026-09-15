@@ -1,0 +1,115 @@
+{
+  "obraDestino": "Reserva das Palmeiras",
+  "fornecedor": "Construjá",
+  "valorTotalCotacao": 1249.655,
+  "itensCotados": [
+    {
+      "sku": "N/A",
+      "solicitado": "CAIXA DA AGUA FECHADA FORTLEV 310L",
+      "qSolicitada": 3,
+      "multiploM": 1,
+      "qFinal": 0,
+      "diferenca": -3,
+      "status": "NÃO LOCALIZADO",
+      "produtoEncontrado": "N/A",
+      "precoUnitario": 0,
+      "subtotal": 0
+    },
+    {
+      "sku": "#127207",
+      "solicitado": "DUCHA LORENZETTI BELLA DUCHA 127V",
+      "qSolicitada": 6,
+      "multiploM": 1,
+      "qFinal": 6,
+      "diferenca": 0,
+      "status": "ADICIONADO",
+      "produtoEncontrado": "NORMAL#127207EMB: 1Emb. Venda:22 Master:22PÇ",
+      "precoUnitario": 80.95,
+      "subtotal": 485.70000000000005
+    },
+    {
+      "sku": "N/A",
+      "solicitado": "BIANCO 900G",
+      "qSolicitada": 4,
+      "multiploM": 1,
+      "qFinal": 0,
+      "diferenca": -4,
+      "status": "NÃO LOCALIZADO",
+      "produtoEncontrado": "N/A",
+      "precoUnitario": 0,
+      "subtotal": 0
+    },
+    {
+      "sku": "#127130",
+      "solicitado": "DUCHA LORENZETTI MAXI DUCHA 127V",
+      "qSolicitada": 7,
+      "multiploM": 1,
+      "qFinal": 7,
+      "diferenca": 0,
+      "status": "ADICIONADO",
+      "produtoEncontrado": "NORMAL#127130EMB: 1Emb. Venda:21 Master:21 CX",
+      "precoUnitario": 80.95,
+      "subtotal": 485.70000000000005
+    },
+    {
+      "sku": "N/A",
+      "solicitado": "ALICATE BOMBA D AGUA MTX 10",
+      "qSolicitada": 12,
+      "multiploM": 1,
+      "qFinal": 0,
+      "diferenca": -12,
+      "status": "NÃO LOCALIZADO",
+      "produtoEncontrado": "N/A",
+      "precoUnitario": 0,
+      "subtotal": 0
+    },
+    {
+      "sku": "N/A",
+      "solicitado": "CONDUITE CORR AM FORTLEV 25MM 50M",
+      "qSolicitada": 5,
+      "multiploM": 1,
+      "qFinal": 0,
+      "diferenca": -5,
+      "status": "NÃO LOCALIZADO",
+      "produtoEncontrado": "N/A",
+      "precoUnitario": 0,
+      "subtotal": 0
+    },
+    {
+      "sku": "#180197",
+      "solicitado": "ALICATE PRESSAO CURVO MTX 10",
+      "qSolicitada": 2,
+      "multiploM": 1,
+      "qFinal": 2,
+      "diferenca": 0,
+      "status": "ADICIONADO",
+      "produtoEncontrado": "NORMAL#180197EMB: 1Emb. Venda:48 Master:48 UN",
+      "precoUnitario": 23.651,
+      "subtotal": 47.302
+    },
+    {
+      "sku": "N/A",
+      "solicitado": "APLICADOR SILICONE REFOR SPARTA",
+      "qSolicitada": 5,
+      "multiploM": 1,
+      "qFinal": 0,
+      "diferenca": -5,
+      "status": "NÃO LOCALIZADO",
+      "produtoEncontrado": "N/A",
+      "precoUnitario": 0,
+      "subtotal": 0
+    },
+    {
+      "sku": "#17094",
+      "solicitado": "BROCA CHATA MADEIRA IRWIN 1/2",
+      "qSolicitada": 7,
+      "multiploM": 1,
+      "qFinal": 7,
+      "diferenca": 0,
+      "status": "ADICIONADO",
+      "produtoEncontrado": "NORMAL#17094EMB: 1Emb. Venda:6 Master:1 UN",
+      "precoUnitario": 21.429,
+      "subtotal": 150.003
+    }
+  ]
+}

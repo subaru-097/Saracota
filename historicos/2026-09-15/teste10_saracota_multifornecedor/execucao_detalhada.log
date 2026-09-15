@@ -1,0 +1,70 @@
+[2026-09-15T19:14:38.690Z] =================================================================
+[2026-09-15T19:14:38.691Z] === INÍCIO DO DIAGNÓSTICO TESTE 10: SARACOTA MULTI-FORNECEDOR ===
+[2026-09-15T19:14:38.691Z] =================================================================
+[2026-09-15T19:14:39.029Z] Passo 1: Navegando para http://localhost:3000/cotacoes com sessão injetada...
+[2026-09-15T19:14:39.337Z] [BROWSER CONSOLE INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-09-15T19:14:39.530Z] [BROWSER CONSOLE LOG] [ProtectedRoute] Verification loading... Timer 4.5s iniciado.
+[2026-09-15T19:14:39.534Z] [BROWSER CONSOLE LOG] [ProtectedRoute] Verification loading... Timer 4.5s iniciado.
+[2026-09-15T19:14:39.611Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 (Not Found)
+[2026-09-15T19:14:39.859Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T19:14:39.860Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T19:14:39.866Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T19:14:39.903Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T19:14:39.975Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T19:14:39.980Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T19:14:40.037Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T19:14:40.065Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T19:14:42.105Z] Clicando na sub-aba "Bloco de Notas"...
+[2026-09-15T19:14:43.154Z] Campo de entrada de itens localizado com sucesso!
+[2026-09-15T19:14:43.157Z] Passo 2.1: Inserindo Item 1 ("3x CAIXA DA AGUA FORTLEV 310L")...
+[2026-09-15T19:14:43.219Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T19:14:43.989Z] Passo 2.2: Inserindo Item 2 ("6x DUCHA LORENZETTI BELLA DUCHA 127V")...
+[2026-09-15T19:14:44.029Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T19:14:44.815Z] Passo 3: Clicando em "Cotar com Fornecedores"...
+[2026-09-15T19:14:45.869Z] Passo 4: Verificando fornecedores selecionados no modal...
+[2026-09-15T19:14:45.873Z] Fornecedores com RPA já vieram pré-selecionados por padrão!
+[2026-09-15T19:14:46.458Z] Screenshot do modal salvo em 00_modal_fornecedores_selecionados.png
+[2026-09-15T19:14:46.458Z] Passo 5: Clicando em "Cotar" para disparar cotação multi-fornecedor...
+[2026-09-15T19:14:46.493Z] [TIMELINE] Timestamp do clique no botão Cotar: 2026-09-15T19:14:46.492Z
+[2026-09-15T19:14:46.522Z] [BROWSER CONSOLE LOG] [RESOLVE CART URL BEFORE CALL] {supplierId: 33e03495-100d-45a3-9e34-899de56b0ab1, supplierName: Cicalfer, rawCapturedUrl: https://www.cicalfer.com.br/carrinho, rawOfficialPortalUrl: https://cicalfer.com.br/}
+[2026-09-15T19:14:46.523Z] [BROWSER CONSOLE LOG] [CART_STRATEGY LOG] {supplier: Cicalfer, strategy: CART_STRATEGY: manual_fallback_no_cart_link, reason: Plataforma SPA exige auth POST individual por sess…Lista cotada completa exibida no modal Sara Cota., resolvedUrl: https://www.cicalfer.com.br}
+[2026-09-15T19:14:46.524Z] [BROWSER CONSOLE LOG] [RESOLVE CART URL BEFORE CALL] {supplierId: a1684c4d-d896-4ba9-a591-cda455c5ffe2, supplierName: Construjá, rawCapturedUrl: undefined, rawOfficialPortalUrl: https://www.construja.com.br/produtos}
+[2026-09-15T19:14:46.524Z] [BROWSER CONSOLE LOG] [CART_STRATEGY LOG] {supplier: Construjá, priority: PRIORITY_2: official_db_url, strategy: session_param, resolvedUrl: https://www.construja.com.br/carrinho}
+[2026-09-15T19:14:46.525Z] [BROWSER CONSOLE LOG] [RPA DEBUG URL PERSISTED] {fornecedores: Array(2)}
+[2026-09-15T19:14:46.525Z] [BROWSER CONSOLE LOG] [DB JOB INVALIDAÇÃO] Cotações anteriores marcadas como expiradas ao iniciar nova cotação.
+[2026-09-15T19:14:46.689Z] [HTTP REQ] POST http://localhost:3000/api/cotacoes/ebb083c2-0702-4025-918b-86844266d121/processar
+[2026-09-15T19:14:46.690Z] [HTTP REQ BODY] {"itens":[{"id":"item-1789499684000-n014","texto":"6x DUCHA LORENZETTI BELLA DUCHA 127V","quantidade":6,"origem":"texto","criadoEm":"16:14"},{"id":"item-1789499683169-641l","texto":"3x CAIXA DA AGUA FORTLEV 310L","quantidade":3,"origem":"texto","criadoEm":"16:14"}],"fornecedorIds":["33e03495-100d-45a3-9e34-899de56b0ab1","a1684c4d-d896-4ba9-a591-cda455c5ffe2"]}
+[2026-09-15T19:14:46.908Z] [BROWSER CONSOLE LOG] Automação RPA iniciada com sucesso: {sucesso: true, status: processamento iniciado, mensagem: Processamento de cotação com robôs RPA iniciado em…a a cotação ebb083c2-0702-4025-918b-86844266d121., cotacaoId: ebb083c2-0702-4025-918b-86844266d121, timestamp: 2026-09-15T19:14:46.900Z}
+[2026-09-15T19:14:46.916Z] [HTTP RES 200] http://localhost:3000/api/cotacoes/ebb083c2-0702-4025-918b-86844266d121/processar -> {"sucesso":true,"status":"processamento iniciado","mensagem":"Processamento de cotação com robôs RPA iniciado em segundo plano para a cotação ebb083c2-0702-4025-918b-86844266d121.","cotacaoId":"ebb083c2-0702-4025-918b-86844266d121","timestamp":"2026-09-15T19:14:46.900Z"}
+[2026-09-15T19:14:46.973Z] PRINT 1 salvo: 01_apos_clicar_cotar.png
+[2026-09-15T19:14:49.027Z] PRINT 2 salvo: 02_redirecionamento_ou_progresso.png
+[2026-09-15T19:14:49.912Z] [HTTP REQ] GET http://localhost:3000/api/cotacoes/ebb083c2-0702-4025-918b-86844266d121/status
+[2026-09-15T19:14:49.934Z] [HTTP RES 200] http://localhost:3000/api/cotacoes/ebb083c2-0702-4025-918b-86844266d121/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":2,"percentualConcluido":25,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B..."],"cotacaoId":"ebb083c2-0702-4025-918b-86844266d121","timestamp":"2026-09-15T19:14:47.186Z"}
+[2026-09-15T19:14:52.078Z] PRINT 3 salvo: 03_progresso_ou_resultado_intermediario.png
+[2026-09-15T19:14:52.078Z] Aguardando 20 segundos adicionais para observação do fluxo completo...
+[2026-09-15T19:14:52.912Z] [HTTP REQ] GET http://localhost:3000/api/cotacoes/ebb083c2-0702-4025-918b-86844266d121/status
+[2026-09-15T19:14:52.934Z] [HTTP RES 200] http://localhost:3000/api/cotacoes/ebb083c2-0702-4025-918b-86844266d121/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":2,"percentualConcluido":25,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B..."],"cotacaoId":"ebb083c2-0702-4025-918b-86844266d121","timestamp":"2026-09-15T19:14:47.186Z"}
+[2026-09-15T19:14:55.907Z] [HTTP REQ] GET http://localhost:3000/api/cotacoes/ebb083c2-0702-4025-918b-86844266d121/status
+[2026-09-15T19:14:55.930Z] [HTTP RES 200] http://localhost:3000/api/cotacoes/ebb083c2-0702-4025-918b-86844266d121/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":2,"percentualConcluido":25,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B..."],"cotacaoId":"ebb083c2-0702-4025-918b-86844266d121","timestamp":"2026-09-15T19:14:47.186Z"}
+[2026-09-15T19:14:58.907Z] [HTTP REQ] GET http://localhost:3000/api/cotacoes/ebb083c2-0702-4025-918b-86844266d121/status
+[2026-09-15T19:14:58.930Z] [HTTP RES 200] http://localhost:3000/api/cotacoes/ebb083c2-0702-4025-918b-86844266d121/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":2,"percentualConcluido":25,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B..."],"cotacaoId":"ebb083c2-0702-4025-918b-86844266d121","timestamp":"2026-09-15T19:14:47.186Z"}
+[2026-09-15T19:15:01.908Z] [HTTP REQ] GET http://localhost:3000/api/cotacoes/ebb083c2-0702-4025-918b-86844266d121/status
+[2026-09-15T19:15:01.962Z] [HTTP RES 200] http://localhost:3000/api/cotacoes/ebb083c2-0702-4025-918b-86844266d121/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":2,"percentualConcluido":25,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B..."],"cotacaoId":"ebb083c2-0702-4025-918b-86844266d121","timestamp":"2026-09-15T19:14:47.186Z"}
+[2026-09-15T19:15:04.909Z] [HTTP REQ] GET http://localhost:3000/api/cotacoes/ebb083c2-0702-4025-918b-86844266d121/status
+[2026-09-15T19:15:04.931Z] [HTTP RES 200] http://localhost:3000/api/cotacoes/ebb083c2-0702-4025-918b-86844266d121/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":2,"percentualConcluido":25,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B..."],"cotacaoId":"ebb083c2-0702-4025-918b-86844266d121","timestamp":"2026-09-15T19:14:47.186Z"}
+[2026-09-15T19:15:07.909Z] [HTTP REQ] GET http://localhost:3000/api/cotacoes/ebb083c2-0702-4025-918b-86844266d121/status
+[2026-09-15T19:15:07.930Z] [HTTP RES 200] http://localhost:3000/api/cotacoes/ebb083c2-0702-4025-918b-86844266d121/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":2,"percentualConcluido":25,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B...","[Cicalfer] 🔍 Cotando e ajustando quantidade em lote: 6x DUCHA LORENZETTI BELLA DUCHA 127V..."],"c
+[2026-09-15T19:15:10.910Z] [HTTP REQ] GET http://localhost:3000/api/cotacoes/ebb083c2-0702-4025-918b-86844266d121/status
+[2026-09-15T19:15:10.931Z] [HTTP RES 200] http://localhost:3000/api/cotacoes/ebb083c2-0702-4025-918b-86844266d121/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":2,"percentualConcluido":25,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B...","[Cicalfer] 🔍 Cotando e ajustando quantidade em lote: 6x DUCHA LORENZETTI BELLA DUCHA 127V..."],"c
+[2026-09-15T19:15:12.132Z] PRINT 4 salvo: 04_resultado_final.png
+[2026-09-15T19:15:12.144Z] === TESTE 10 MULTI-FORNECEDOR CONCLUÍDO ===
+[2026-09-15T19:15:47.740Z] === INÍCIO DOS TESTES DE CONTROLE (SINGLE-SUPPLIER) ===
+[2026-09-15T19:15:47.741Z] =================================================================
+[2026-09-15T19:15:47.741Z] === INÍCIO DO TESTE DE CONTROLE SINGLE: CONSTRUJÁ ===
+[2026-09-15T19:15:47.742Z] =================================================================
+[2026-09-15T19:15:54.042Z] [CONTROLE Construjá] Disparado clique em Cotar (1)...
+[2026-09-15T19:15:57.508Z] [STATUS SINGLE Construjá] pct: 50% | status: processando | msgs: ["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B..."]
+[2026-09-15T19:16:00.508Z] [STATUS SINGLE Construjá] pct: 50% | status: processando | msgs: ["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B..."]
+[2026-09-15T19:16:03.508Z] [STATUS SINGLE Construjá] pct: 50% | status: processando | msgs: ["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B..."]
+[2026-09-15T19:16:06.511Z] [STATUS SINGLE Construjá] pct: 50% | status: processando | msgs: ["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B..."]
+[2026-09-15T19:16:09.278Z] === TESTES DE CONTROLE CONCLUÍDOS ===

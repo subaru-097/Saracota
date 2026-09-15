@@ -1,0 +1,44 @@
+[2026-09-15T15:42:03.889Z] ==============================================================================
+[2026-09-15T15:42:03.889Z] 🚀 INICIANDO TESTE REAL DE COTAÇÃO — FORNECEDOR CONSTRUJÁ (9 ITENS)
+[2026-09-15T15:42:03.889Z] ==============================================================================
+[2026-09-15T15:42:03.890Z] ✅ Config construja.json salvo em C:\Users\User\Desktop\Saracota\docs\historico\2026-09-15\teste1_construja\construja.json
+[2026-09-15T15:42:04.250Z] 🔑 Credenciais resgatadas do banco para Construjá: Usuário: "comercialsantana@gmail.com" | Senha: [DESCRIPTOGRAFADA DA VAULT - 5 chars]
+[2026-09-15T15:42:04.251Z] 🌐 Iniciando navegador Chromium para automação Playwright...
+[2026-09-15T15:42:04.455Z] 🔑 Executando login no portal Construjá (https://www.construja.com.br/produtos)...
+[2026-09-15T15:42:18.490Z] ✅ Login e seleção de filial finalizados com sucesso.
+[2026-09-15T15:42:18.559Z] 📸 Print pós-login salvo em: 01_pos_login.png
+[2026-09-15T15:42:18.559Z] 
+🔍 [Item 1/9] Pesquisando: "CAIXA DA AGUA FECHADA FORTLEV 310L" (Quantidade: 3)...
+[2026-09-15T15:42:28.053Z]   └─ Resultado: ENCONTRADO | Produto Encontrado: "FORTLEV - CX DAGUA C/TAMPA 310L" | Preço: R$ 0,00
+[2026-09-15T15:42:28.053Z] 
+🔍 [Item 2/9] Pesquisando: "DUCHA LORENZETTI BELLA DUCHA 127V" (Quantidade: 6)...
+[2026-09-15T15:42:34.962Z]   └─ Resultado: ENCONTRADO | Produto Encontrado: "LORENZETTI - DUCHA BELLA DUCHA ULTRA 5500X127" | Preço: R$ 0,00
+[2026-09-15T15:42:34.962Z] 
+🔍 [Item 3/9] Pesquisando: "BIANCO 900G" (Quantidade: 4)...
+[2026-09-15T15:42:38.689Z]   └─ Resultado: FALHA | Produto Encontrado: "Nenhum" | Preço: R$ 0,00
+[2026-09-15T15:42:38.689Z] 
+🔍 [Item 4/9] Pesquisando: "DUCHA LORENZETTI MAXI DUCHA 127V" (Quantidade: 7)...
+[2026-09-15T15:42:45.546Z]   └─ Resultado: ENCONTRADO | Produto Encontrado: "LORENZETTI - DUCHA MAXI DUCHA ULTRA 5500X127" | Preço: R$ 0,00
+[2026-09-15T15:42:45.546Z] 
+🔍 [Item 5/9] Pesquisando: "ALICATE BOMBA D AGUA MTX 10" (Quantidade: 12)...
+[2026-09-15T15:42:55.186Z]   └─ Resultado: ENCONTRADO | Produto Encontrado: "EDA - ALICATE PRESSAO CURVO 10 5RO" | Preço: R$ 0,00
+[2026-09-15T15:42:55.186Z] 
+🔍 [Item 6/9] Pesquisando: "CONDUITE CORR AM FORTLEV 25MM 50M" (Quantidade: 5)...
+[2026-09-15T15:43:04.810Z]   └─ Resultado: ENCONTRADO | Produto Encontrado: "KRONA - CORRUGADO PVC 32MM AM METRO/25" | Preço: R$ 0,00
+[2026-09-15T15:43:04.810Z] 
+🔍 [Item 7/9] Pesquisando: "ALICATE PRESSAO CURVO MTX 10" (Quantidade: 2)...
+[2026-09-15T15:43:11.654Z]   └─ Resultado: ENCONTRADO | Produto Encontrado: "EDA - ALICATE PRESSAO CURVO 10 5RO" | Preço: R$ 0,00
+[2026-09-15T15:43:11.654Z] 
+🔍 [Item 8/9] Pesquisando: "APLICADOR SILICONE REFOR SPARTA" (Quantidade: 5)...
+[2026-09-15T15:43:21.263Z]   └─ Resultado: ENCONTRADO | Produto Encontrado: "EDA - APLICADOR SILICONE PROF" | Preço: R$ 0,00
+[2026-09-15T15:43:21.263Z] 
+🔍 [Item 9/9] Pesquisando: "BROCA CHATA MADEIRA IRWIN 1/2" (Quantidade: 7)...
+[2026-09-15T15:43:28.154Z]   └─ Resultado: ENCONTRADO | Produto Encontrado: "IRWIN - BROCA CHATA E 1/2 PRO" | Preço: R$ 0,00
+[2026-09-15T15:43:28.224Z] 
+🛒 Navegando para o carrinho para extração dos valores finais...
+[2026-09-15T15:43:48.610Z] ✅ Payload final salvo em C:\Users\User\Desktop\Saracota\docs\historico\2026-09-15\teste1_construja\payload_final_construja.json
+[2026-09-15T15:43:48.672Z] ✅ Relatório Markdown gerado com SUCESSO em C:\Users\User\Desktop\Saracota\docs\historico\2026-09-15\teste1_construja\relatorio_construja_teste1.md
+[2026-09-15T15:43:48.672Z] 
+==============================================================================
+[2026-09-15T15:43:48.672Z] 🎉 COTAÇÃO REAL CONSTRUJÁ CONCLUÍDA COM SUCESSO!
+[2026-09-15T15:43:48.672Z] ==============================================================================

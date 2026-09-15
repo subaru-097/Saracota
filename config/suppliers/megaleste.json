@@ -1,0 +1,26 @@
+{
+  "id": "megaleste",
+  "nome": "Megaleste",
+  "url_site": "https://www.megaleste.com.br/",
+  "selectors": {
+    "cookie_accept": "button:has-text(\"Prosseguir\"), .lgpd-accept",
+    "login_trigger": "a[href*=\"login\"], button:has-text(\"Área do Cliente\")",
+    "email_input": "input[name=\"email\"], input[name=\"login\"]",
+    "password_input": "input[name=\"senha\"]",
+    "login_submit": "button#btn-login",
+    "filial_cards": "div.filial-option",
+    "filial_confirm": "button.btn-confirm-filial",
+    "search_input": "input[name=\"termo\"]",
+    "search_button": "button#btn-busca",
+    "quantity_input": "input[name=\"qtd\"], input[type=\"number\"]",
+    "modal_confirm_alteration": "div.modal-orcamento",
+    "modal_confirm_button": "button.btn-ok",
+    "cart_url": "https://www.megaleste.com.br/carrinho",
+    "view_cart_button": "a.btn-carrinho"
+  },
+  "lote_rules": {
+    "default_lot_text": "EMB:",
+    "fallback_lot_size": 1
+  },
+  "default_filial_keyword": "ENTREGA"
+}

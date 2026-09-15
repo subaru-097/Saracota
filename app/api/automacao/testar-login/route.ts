@@ -6,6 +6,13 @@ import { loginFornecedor } from '@/lib/services/automacao/loginFornecedor';
  * Body: { fornecedorId: string }
  */
 export async function POST(req: NextRequest) {
+  if (process.env.NODE_ENV === 'production') {
+    return NextResponse.json(
+      { sucesso: false, mensagem: 'Endpoint de teste desabilitado em ambiente de produção.' },
+      { status: 403 }
+    );
+  }
+
   try {
     const body = await req.json().catch(() => ({}));
     const fornecedorId = body.fornecedorId || body.id;

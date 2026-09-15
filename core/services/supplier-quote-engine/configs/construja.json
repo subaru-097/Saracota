@@ -1,0 +1,45 @@
+{
+  "nome": "Construjá",
+  "slug": "construja",
+  "url_site": "https://www.construja.com.br/produtos",
+  "base_url": "https://www.construja.com.br",
+  "login_url": "https://www.construja.com.br/produtos",
+  "cart_url": "https://www.construja.com.br/produtos",
+  "selectors": {
+    "cookie_accept": "button:has-text(\"Aceitar\"), button:has-text(\"Concordar\"), button:has-text(\"Entendi\"), #lgpd-aceitar, .lgpd-accept",
+    "login_trigger": "#botao-login",
+    "email_input": "input[name=\"email\"].form-control",
+    "password_input": "input#senha[name=\"senha\"]",
+    "login_submit": "button#btn-entrar",
+    "campo_pesquisar_produto": "input[name=\"search\"]",
+    "campo_quantidade_produto": "input.QuantidadeMaisMenos_input__grKxO",
+    "botao_aumentar_quantidade": "button[aria-label=\"Aumentar quantidade\"]",
+    "item_container": ".ProdutoCompactCarrinho_itemContainer__Eaq76, div[class*=\"ProdutoCompactCarrinho_itemContainer\"]",
+    "product_card_title": ".ProdutoCompactCarrinho_productTitle__n7FXX, .ProdutoCard_title__1Fm0w, a[href*=\"/produto/\"]",
+    "product_title": ".ProdutoCompactCarrinho_productTitle__n7FXX",
+    "unit_price": ".d-flex.flex-column > span.fs-14.fw-bold, span.fs-14.fw-bold",
+    "total_price_item": ".d-flex.flex-column:has(strong:text-is(\"Total\")) span.fs-14.fw-bold",
+    "quantity_input_cart": "input.QuantidadeMaisMenos_input__grKxO",
+    "increase_qty_button": "button[aria-label=\"Aumentar quantidade\"]",
+    "decrease_qty_button": "button[aria-label=\"Diminuir quantidade\"]",
+    "remove_item_button": "button[aria-label=\"Remover item\"]",
+    "ver_carrinho_button": "button:has-text(\"Ver carrinho\")",
+    "abrir_carrinho_button": "#botao-abrir-carrinho",
+    "limpar_carrinho_button": "button[title=\"Limpar carrinho\"]",
+    "resumo_total_itens": "tr:has-text(\"Total itens\") td.text-end",
+    "resumo_total_pedido": "tr:has-text(\"Total pedido\") td.text-end",
+    "cart_url": "https://www.construja.com.br/produtos"
+  },
+  "compra_rapida": {
+    "container": "#compra-rapida-pesquisa",
+    "codigo_produto_input": "#codigoProduto",
+    "quantidade_input": "#quantidade",
+    "add_button": null,
+    "acao_confirmacao": "PRESSIONAR_ENTER_NO_CAMPO_CODIGO_OU_QUANTIDADE"
+  },
+  "regras_negocio": {
+    "metodo_adicao_produto": "ENTER_KEY",
+    "formato_preco": "R$0,00 (vírgula decimal)",
+    "parse_preco": "trocar_virgula_por_ponto_parseFloat_padrao"
+  }
+}

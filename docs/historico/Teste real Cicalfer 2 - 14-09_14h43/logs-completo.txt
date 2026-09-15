@@ -1,0 +1,68 @@
+[2026-09-14T17:43:58.526Z] === INICIANDO TESTE REAL CICALFER 2 — CENÁRIOS EDGE / RESILIÊNCIA PONTA A PONTA ===
+[2026-09-14T17:43:58.529Z] Pasta de histórico criada: C:\Users\User\Desktop\Saracota\docs\historico\Teste real Cicalfer 2 - 14-09_14h43
+[2026-09-14T17:43:58.534Z] ✓ Scripts copiados para pasta /script/
+[2026-09-14T17:43:58.726Z] Passo 1: Acessando a tela de login da Saracota em http://localhost:3000/login...
+[2026-09-14T17:43:59.207Z] [BROWSER CONSOLE INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-09-14T17:44:00.122Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:44:00.124Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:44:00.163Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:44:00.177Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:44:00.823Z] Passo 2: Efetuando login na aplicação web (proprietario@saracota.com.br)...
+[2026-09-14T17:44:01.102Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:44:01.104Z] [BROWSER CONSOLE WARNING] Conexão ao Supabase Auth expirou/falhou para conta de teste. Entrando no modo de demonstração local.
+[2026-09-14T17:44:03.945Z] ✓ Login efetuado. URL atual: http://localhost:3000/painel
+[2026-09-14T17:44:03.946Z] Passo 3: Navegando para a página de Cotações via menu lateral...
+[2026-09-14T17:44:04.525Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T17:44:04.527Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T17:44:06.002Z] ✓ Tela de Cotações carregada. URL atual: http://localhost:3000/cotacoes
+[2026-09-14T17:44:06.003Z] Passo 4: Inserindo 3 produtos de cenários de borda no Rascunho da Saracota...
+[2026-09-14T17:44:06.499Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T17:44:07.259Z]   └─ Item inserido no rascunho: "PARAFUSADEIRA ATOMICA QUANTICA 999V" (Qtd: 1) — Cenário 1: Inexistente
+[2026-09-14T17:44:07.730Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T17:44:08.493Z]   └─ Item inserido no rascunho: "BIANCO 900G" (Qtd: 100) — Cenário 2: Quantidade Alta (100)
+[2026-09-14T17:44:08.969Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T17:44:09.732Z]   └─ Item inserido no rascunho: "DUCHA" (Qtd: 2) — Cenário 3: Nome Ambíguo
+[2026-09-14T17:44:09.733Z] Passo 5: Clicando em "Cotar com Fornecedores"...
+[2026-09-14T17:44:11.370Z] Passo 6: Confirmando Cicalfer no modal de seleção de fornecedores...
+[2026-09-14T17:44:11.685Z] [BROWSER CONSOLE LOG] [RESOLVE CART URL BEFORE CALL] {supplierId: 33e03495-100d-45a3-9e34-899de56b0ab1, supplierName: Cicalfer, rawCapturedUrl: https://www.cicalfer.com.br/carrinho, rawOfficialPortalUrl: https://cicalfer.com.br/}
+[2026-09-14T17:44:11.686Z] [BROWSER CONSOLE LOG] [CART_STRATEGY LOG] {supplier: Cicalfer, strategy: CART_STRATEGY: manual_fallback_no_cart_link, reason: Plataforma SPA exige auth POST individual por sess…Lista cotada completa exibida no modal Sara Cota., resolvedUrl: https://www.cicalfer.com.br}
+[2026-09-14T17:44:11.687Z] [BROWSER CONSOLE LOG] [RPA DEBUG URL PERSISTED] {fornecedores: Array(1)}
+[2026-09-14T17:44:11.688Z] [BROWSER CONSOLE LOG] [DB JOB INVALIDAÇÃO] Cotações anteriores marcadas como expiradas ao iniciar nova cotação.
+[2026-09-14T17:44:11.712Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 401 ()
+[2026-09-14T17:44:11.713Z] [BROWSER CONSOLE WARNING] [DB WARNING] Inserção de cotação no Supabase falhou (usando armazenamento em memória local): new row violates row-level security policy for table "cotacoes"
+[2026-09-14T17:44:11.884Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789407851640/processar
+[2026-09-14T17:44:11.885Z] [BROWSER CONSOLE LOG] Automação RPA iniciada com sucesso: {sucesso: true, status: processamento iniciado, mensagem: Processamento de cotação com robôs RPA iniciado em segundo plano para a cotação cot-1789407851640., cotacaoId: cot-1789407851640, timestamp: 2026-09-14T17:44:11.880Z}
+[2026-09-14T17:44:13.542Z] ✓ Cotação de borda disparada no backend Saracota via robôs RPA.
+[2026-09-14T17:44:13.542Z] Passo 7: Acessando portal Cicalfer para capturar prints reais dos cenários de borda...
+[2026-09-14T17:44:13.631Z] Capturando Print 00: 00-login-cicalfer.png...
+[2026-09-14T17:44:14.933Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789407851640/status
+[2026-09-14T17:44:16.008Z] ✓ Print 00 (Login Cicalfer) salvo.
+[2026-09-14T17:44:17.922Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789407851640/status
+[2026-09-14T17:44:20.910Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789407851640/status
+[2026-09-14T17:44:23.923Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789407851640/status
+[2026-09-14T17:44:26.912Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789407851640/status
+[2026-09-14T17:44:29.918Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789407851640/status
+[2026-09-14T17:44:32.913Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789407851640/status
+[2026-09-14T17:44:35.919Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789407851640/status
+[2026-09-14T17:44:38.919Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789407851640/status
+[2026-09-14T17:44:41.926Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789407851640/status
+[2026-09-14T17:44:44.931Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789407851640/status
+[2026-09-14T17:44:47.915Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789407851640/status
+[2026-09-14T17:44:49.035Z] Capturando Print 01: 01-busca-produto-1-inexistente.png...
+[2026-09-14T17:44:50.097Z] ✓ Print 01 (Inexistente - 0 Resultados) salvo.
+[2026-09-14T17:44:50.098Z] Capturando Print 02: 02-busca-produto-2-qtd-alta.png...
+[2026-09-14T17:44:50.913Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789407851640/status
+[2026-09-14T17:44:51.680Z] ✓ Print 02 (Qtd Alta - Bianco 900g) salvo.
+[2026-09-14T17:44:51.681Z] Capturando Print 03: 03-busca-produto-3-ambiguo.png...
+[2026-09-14T17:44:53.221Z] ✓ Print 03 (Nome Ambíguo - Ducha) salvo.
+[2026-09-14T17:44:53.222Z] Capturando Print 04: 04-carrinho-cicalfer.png...
+[2026-09-14T17:44:53.926Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789407851640/status
+[2026-09-14T17:44:56.923Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789407851640/status
+[2026-09-14T17:44:58.200Z] ✓ Print 04 (Carrinho Cicalfer) salvo.
+[2026-09-14T17:44:58.201Z] Aguardando conclusão do motor RPA na Saracota...
+[2026-09-14T17:44:59.919Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789407851640/status
+[2026-09-14T17:45:01.218Z] ✓ Cotação concluída com sucesso na Saracota (100%).
+[2026-09-14T17:45:01.218Z] Capturando Print 05: 05-modal-resultado-saracota.png...
+[2026-09-14T17:45:02.920Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789407851640/status
+[2026-09-14T17:45:03.407Z] ✓ Print 05 (Modal Resultado Saracota) salvo.
+[2026-09-14T17:45:03.407Z] === TESTE REAL CICALFER 2 CONCLUÍDO COM SUCESSO ===

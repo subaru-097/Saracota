@@ -1,0 +1,31 @@
+=====================================================
+RELATÓRIO DE EXECUÇÃO DO MOTOR CENTRAL DE COTAÇÃO SARA COTA
+=====================================================
+Data/Hora: 2026-09-10T01:40:03.910Z
+Fornecedor: Cicalfer (ID: 33e03495-100d-45a3-9e34-899de56b0ab1)
+Diretório de Auditoria: C:\Users\User\Desktop\Saracota\diagnostico_cicalfer\2026-09_09-22-39-21
+-----------------------------------------------------
+
+PASSO 1 — MOTOR CENTRAL E REGRA DE LOTE APLICADA:
+-----------------------------------------------------
+- Item: "13329" (REF: undefined)
+  - Qtd Pedida pelo Cliente: 12
+  - Lote Detectado: Vende de 1 em 1
+  - Log de Arredondamento: Cliente pediu 12, lote unitário (1 em 1) → quantidade mantida em 12.
+  - Preço Unitário Exibido: R$ 1.47
+-----------------------------------------------------
+- Item: "11992" (REF: undefined)
+  - Qtd Pedida pelo Cliente: 13
+  - Lote Detectado: Vende de 12 em 12
+  - Log de Arredondamento: Cliente pediu 13, lote de 12 em 12, mais próximo é 12 (distâncias: baixo=1, alto=11) → quantidade ajustada para 12.
+  - Preço Unitário Exibido: R$ 1.47
+-----------------------------------------------------
+
+PASSO 2 — PERSISTÊNCIA DENTRO DA SARA COTA (SUPABASE):
+-----------------------------------------------------
+- ID da Cotação Criada: "8bda1098-8556-4c87-8592-7d7f551d0944"
+- Tabela Principal: cotacoes
+- Tabela de Itens: itens_cotacao
+- Total Geral Salvo: R$ 1479.04
+- Total de Itens Gravados: 11
+-----------------------------------------------------

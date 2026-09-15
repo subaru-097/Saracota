@@ -1,0 +1,40 @@
+{
+  "rodada": 1,
+  "timestamp": "2026-09-11T21:26:22.949Z",
+  "fornecedor": "Cicalfer",
+  "urlCarrinho": "https://www.cicalfer.com.br/carrinho",
+  "statusCotacao": "CONCLUIDO",
+  "itensCotados": [
+    {
+      "nomeOriginalPedido": "2 uni CABO FLEX 100M COBRECOM 2,50MM",
+      "nomeExatoSite": "uni CABO FLEX 100M COBRECOM 2,50MM",
+      "quantidade": 2,
+      "unidade": "un",
+      "precoUnitarioBRL": 0,
+      "precoTotalBRL": 0,
+      "statusItem": "ENCONTRADO"
+    },
+    {
+      "nomeOriginalPedido": "5 uni DUCHA LORENZETTI BELLA DUCHA 127V",
+      "nomeExatoSite": "uni DUCHA LORENZETTI BELLA DUCHA 127V",
+      "quantidade": 5,
+      "unidade": "un",
+      "precoUnitarioBRL": 0,
+      "precoTotalBRL": 0,
+      "statusItem": "ENCONTRADO"
+    },
+    {
+      "nomeOriginalPedido": "7 uni DUCHA LORENZETTI TOP JET MULTI 127V",
+      "nomeExatoSite": "uni DUCHA LORENZETTI TOP JET MULTI 127V",
+      "quantidade": 7,
+      "unidade": "un",
+      "precoUnitarioBRL": 0,
+      "precoTotalBRL": 0,
+      "statusItem": "ENCONTRADO"
+    }
+  ],
+  "subtotalProdutosBRL": 0,
+  "despesaAcessoriaSTBRL": 4.9,
+  "valorTotalGeralBRL": 4.9,
+  "totalFallbacks": 0
+}

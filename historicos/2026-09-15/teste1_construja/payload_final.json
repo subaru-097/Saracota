@@ -1,0 +1,82 @@
+{
+  "sucesso": true,
+  "fornecedor": "Construjá",
+  "fornecedor_id": "a1684c4d-d896-4ba9-a591-cda455c5ffe2",
+  "dataExecucao": "2026-09-15T16:57:10.507Z",
+  "totalGeralPedido": 0,
+  "itensCotados": [
+    {
+      "solicitado": "CAIXA DA AGUA FECHADA FORTLEV 310L",
+      "quantidadePedida": 3,
+      "status": "NÃO LOCALIZADO",
+      "produtoEncontrado": "N/A",
+      "precoUnitario": 0,
+      "subtotal": 0
+    },
+    {
+      "solicitado": "DUCHA LORENZETTI BELLA DUCHA 127V",
+      "quantidadePedida": 6,
+      "status": "NÃO COMPROVADO NO CARRINHO",
+      "produtoEncontrado": "#127207EMB: 1Emb. Venda:22 Master:22PÇLORENZETTI - DUCHA BELLA DUCHA ULTRA 5500X127Faça login ou cadastre-se para ver os preços",
+      "precoUnitario": 0,
+      "subtotal": 0
+    },
+    {
+      "solicitado": "BIANCO 900G",
+      "quantidadePedida": 4,
+      "status": "NÃO LOCALIZADO",
+      "produtoEncontrado": "N/A",
+      "precoUnitario": 0,
+      "subtotal": 0
+    },
+    {
+      "solicitado": "DUCHA LORENZETTI MAXI DUCHA 127V",
+      "quantidadePedida": 7,
+      "status": "NÃO COMPROVADO NO CARRINHO",
+      "produtoEncontrado": "#127130EMB: 1Emb. Venda:21 Master:21 CXLORENZETTI - DUCHA MAXI DUCHA ULTRA 5500X127Faça login ou cadastre-se para ver os preços",
+      "precoUnitario": 0,
+      "subtotal": 0
+    },
+    {
+      "solicitado": "ALICATE BOMBA D AGUA MTX 10",
+      "quantidadePedida": 12,
+      "status": "NÃO LOCALIZADO",
+      "produtoEncontrado": "N/A",
+      "precoUnitario": 0,
+      "subtotal": 0
+    },
+    {
+      "solicitado": "CONDUITE CORR AM FORTLEV 25MM 50M",
+      "quantidadePedida": 5,
+      "status": "NÃO LOCALIZADO",
+      "produtoEncontrado": "N/A",
+      "precoUnitario": 0,
+      "subtotal": 0
+    },
+    {
+      "solicitado": "ALICATE PRESSAO CURVO MTX 10",
+      "quantidadePedida": 2,
+      "status": "NÃO COMPROVADO NO CARRINHO",
+      "produtoEncontrado": "#180197EMB: 1Emb. Venda:48 Master:48 UNEDA - ALICATE PRESSAO CURVO 10 5ROFaça login ou cadastre-se para ver os preços",
+      "precoUnitario": 0,
+      "subtotal": 0
+    },
+    {
+      "solicitado": "APLICADOR SILICONE REFOR SPARTA",
+      "quantidadePedida": 5,
+      "status": "NÃO LOCALIZADO",
+      "produtoEncontrado": "N/A",
+      "precoUnitario": 0,
+      "subtotal": 0
+    },
+    {
+      "solicitado": "BROCA CHATA MADEIRA IRWIN 1/2",
+      "quantidadePedida": 7,
+      "status": "NÃO COMPROVADO NO CARRINHO",
+      "produtoEncontrado": "#17094EMB: 1Emb. Venda:6 Master:1 UNIRWIN - BROCA CHATA E 1/2 PROFaça login ou cadastre-se para ver os preços",
+      "precoUnitario": 0,
+      "subtotal": 0
+    }
+  ],
+  "itensDOMCarrinho": []
+}

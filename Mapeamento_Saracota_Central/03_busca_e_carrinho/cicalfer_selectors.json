@@ -1,0 +1,26 @@
+{
+  "id": "cicalfer",
+  "nome": "Cicalfer Material Elétrico e Hidráulico",
+  "url_site": "https://cicalfer.com.br/",
+  "selectors": {
+    "cookie_accept": "button:has-text(\"Aceitar todos\"), button:has-text(\"Aceitar\")",
+    "login_trigger": ".dropdown:has-text(\"Entrar\"), a:has-text(\"Entrar\"), button#botao-login, button:has-text(\"Faça Login\")",
+    "email_input": "input[name=\"email\"].form-control, input[name=\"email\"]",
+    "password_input": "input#senha[name=\"senha\"], input[type=\"password\"]",
+    "login_submit": "button#btn-entrar, .modal button[type=\"submit\"]",
+    "filial_cards": "button.ModalClienteFilial_optionCard__vj1Sf, #select-filial",
+    "filial_confirm": "button:has-text(\"Confirmar seleção\"), span:has-text(\"Confirmar seleção\")",
+    "search_input": "input[name=\"search\"]",
+    "search_button": "button#botao-busca-produtos",
+    "quantity_input": "input.QuantidadeMaisMenos_input__grKxO, input[type=\"number\"]",
+    "modal_confirm_alteration": "div.modal:has-text(\"Confirmar alteração\"), div.modal:has-text(\"orçamento\"), button:has-text(\"Confirmar alteração\")",
+    "modal_confirm_button": "button:has-text(\"Confirmar alteração\"), button:has-text(\"Confirmar\")",
+    "cart_url": "https://cicalfer.com.br/carrinho",
+    "view_cart_button": "button#botao-abrir-carrinho, button:has-text(\"Ver carrinho\")"
+  },
+  "lote_rules": {
+    "default_lot_text": "VENDE DE",
+    "fallback_lot_size": 1
+  },
+  "default_filial_keyword": "ENTREGA"
+}

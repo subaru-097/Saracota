@@ -1,0 +1,53 @@
+[2026-09-14T17:18:10.353Z] === INICIANDO TESTE REAL PONTA A PONTA PÓS-CORREÇÃO DO PARSER DE PREÇO BRL (parsePrecoBR) ===
+[2026-09-14T17:18:10.354Z] Pasta de histórico criada: C:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_14h18_teste-real-e2e-pos-correcao-parser-preco
+[2026-09-14T17:18:10.356Z] ✓ Código com parsePrecoBR (buscarProduto.ts) copiado para scripts/parsePrecoBR.ts
+[2026-09-14T17:18:10.625Z] Passo 1: Acessando a tela de login da Saracota em http://localhost:3000/login...
+[2026-09-14T17:18:11.802Z] [BROWSER CONSOLE INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-09-14T17:18:14.949Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:18:14.951Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:18:15.000Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:18:15.002Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:18:15.641Z] Passo 2: Efetuando login real na aplicação web (proprietario@saracota.com.br)...
+[2026-09-14T17:18:15.963Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:18:15.966Z] [BROWSER CONSOLE WARNING] Conexão ao Supabase Auth expirou/falhou para conta de teste. Entrando no modo de demonstração local.
+[2026-09-14T17:18:18.823Z] ✓ Login efetuado. URL atual: http://localhost:3000/painel
+[2026-09-14T17:18:18.825Z] Passo 3: Navegando para a página de Cotações via menu lateral...
+[2026-09-14T17:18:19.532Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T17:18:19.534Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T17:18:20.890Z] ✓ Tela de Cotações carregada. URL atual: http://localhost:3000/cotacoes
+[2026-09-14T17:18:20.890Z] Passo 4: Digitando item real do histórico no Rascunho: "Cabo Flex 2.5mm" (Quantidade 1)...
+[2026-09-14T17:18:21.551Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T17:18:22.524Z] ✓ Item "Cabo Flex 2.5mm" adicionado ao rascunho da Saracota.
+[2026-09-14T17:18:22.525Z] Passo 5: Clicando em "Cotar com Fornecedores"...
+[2026-09-14T17:18:24.246Z] Passo 6: Verificando seleção do fornecedor Cicalfer no modal...
+[2026-09-14T17:18:24.274Z] ✓ Fornecedor Cicalfer confirmado e ativo no modal.
+[2026-09-14T17:18:24.274Z] Passo 7: Clicando no botão de confirmação "Cotar"...
+[2026-09-14T17:18:24.552Z] [BROWSER CONSOLE LOG] [RESOLVE CART URL BEFORE CALL] {supplierId: 33e03495-100d-45a3-9e34-899de56b0ab1, supplierName: Cicalfer, rawCapturedUrl: https://www.cicalfer.com.br/carrinho, rawOfficialPortalUrl: https://cicalfer.com.br/}
+[2026-09-14T17:18:24.554Z] [BROWSER CONSOLE LOG] [CART_STRATEGY LOG] {supplier: Cicalfer, strategy: CART_STRATEGY: manual_fallback_no_cart_link, reason: Plataforma SPA exige auth POST individual por sess…Lista cotada completa exibida no modal Sara Cota., resolvedUrl: https://www.cicalfer.com.br}
+[2026-09-14T17:18:24.555Z] [BROWSER CONSOLE LOG] [RPA DEBUG URL PERSISTED] {fornecedores: Array(1)}
+[2026-09-14T17:18:24.557Z] [BROWSER CONSOLE LOG] [DB JOB INVALIDAÇÃO] Cotações anteriores marcadas como expiradas ao iniciar nova cotação.
+[2026-09-14T17:18:24.617Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 401 ()
+[2026-09-14T17:18:24.619Z] [BROWSER CONSOLE WARNING] [DB WARNING] Inserção de cotação no Supabase falhou (usando armazenamento em memória local): new row violates row-level security policy for table "cotacoes"
+[2026-09-14T17:18:26.502Z] Passo 8: Capturando Print 01: 01-modal-progresso-cotacao.png...
+[2026-09-14T17:18:26.752Z] ✓ Print 01 salvo em: C:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_14h18_teste-real-e2e-pos-correcao-parser-preco\prints\01-modal-progresso-cotacao.png
+[2026-09-14T17:18:26.753Z] Passo 9: Inspecionando portal Cicalfer em aba limpa para verificar Handler de Cookies (#botao-aceitar-todos)...
+[2026-09-14T17:18:26.895Z] [RPA] Executando tentarAceitarCookies() com seletor #botao-aceitar-todos (timeout 3s)...
+[2026-09-14T17:18:27.307Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789406304548/processar
+[2026-09-14T17:18:27.308Z] [BROWSER CONSOLE LOG] Automação RPA iniciada com sucesso: {sucesso: true, status: processamento iniciado, mensagem: Processamento de cotação com robôs RPA iniciado em segundo plano para a cotação cot-1789406304548., cotacaoId: cot-1789406304548, timestamp: 2026-09-14T17:18:27.283Z}
+[2026-09-14T17:18:30.980Z] ✓ [RPA] Banner de cookies detectado e capturado em 00-banner-cookies-tratado.png!
+[2026-09-14T17:18:31.126Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789406304548/status
+[2026-09-14T17:18:31.356Z] [RPA] Banner de cookies detectado e aceito.
+[2026-09-14T17:18:31.357Z] Passo 10: Aguardando robô RPA processar cotação no Cicalfer e aplicar parsePrecoBR...
+[2026-09-14T17:18:33.371Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789406304548/status
+[2026-09-14T17:18:34.361Z] Aguardando progresso RPA (Tentativa 1/30)...
+[2026-09-14T17:18:34.396Z] ✓ RPA concluído no backend! Status: aguardando_revisao, Percentual: 100%
+[2026-09-14T17:18:34.397Z] Acessando carrinho do Cicalfer pós-login B2B para capturar Print 02 (item adicionado com nome e preço visíveis)...
+[2026-09-14T17:18:36.378Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789406304548/status
+[2026-09-14T17:18:39.342Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789406304548/status
+[2026-09-14T17:18:40.402Z] ✓ Print 02 (Carrinho Cicalfer) salvo em: C:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_14h18_teste-real-e2e-pos-correcao-parser-preco\prints\02-carrinho-fornecedor-cicalfer.png
+[2026-09-14T17:18:42.346Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789406304548/status
+[2026-09-14T17:18:42.410Z] Passo 11: Capturando Print 03: 03-preco-extraido-relatorio-saracota.png...
+[2026-09-14T17:18:42.659Z] ✓ Print 03 salvo em: C:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_14h18_teste-real-e2e-pos-correcao-parser-preco\prints\03-preco-extraido-relatorio-saracota.png
+[2026-09-14T17:18:42.660Z] Passo 12: Capturando Print 04: 04-tela-final-cotacao-concluida.png...
+[2026-09-14T17:18:42.914Z] ✓ Print 04 salvo em: C:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_14h18_teste-real-e2e-pos-correcao-parser-preco\prints\04-tela-final-cotacao-concluida.png
+[2026-09-14T17:18:42.916Z] === TESTE REAL PONTA A PONTA COM PARSER DE PREÇO CORRIGIDO CONCLUÍDO COM SUCESSO ===

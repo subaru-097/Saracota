@@ -1,0 +1,65 @@
+=====================================================
+RESUMO DOS TESTES DE LOGIN REAIS (SUPABASE DB) - Cicalfer
+=====================================================
+Data/Hora da Execução: 2026-09-09_15-57-34 (2026-09-09T18:59:09.234Z)
+Fornecedor Testado (DB): Cicalfer
+URL do Cadastro (DB): https://cicalfer.com.br/
+Usuário Usado (DB): san***@gmail.com
+Subpasta da Execução: C:\Users\User\Desktop\Saracota\diagnostico_cicalfer\2026-09-09_15-57-34
+Total de Tentativas: 10
+Taxa Real de Sucesso: 10 / 10 (100%)
+Total de Falhas: 0 / 10
+-----------------------------------------------------
+
+Detalhamento por Tentativa:
+-----------------------------------------------------
+Tentativa #1: [SUCESSO]
+  - Duração: 16.62s
+  - URL Final: https://cicalfer.com.br/
+  - Motivo/Resultado: Autenticação confirmada na área logada (https://cicalfer.com.br/).
+-----------------------------------------------------
+Tentativa #2: [SUCESSO]
+  - Duração: 8.61s
+  - URL Final: https://cicalfer.com.br/
+  - Motivo/Resultado: Autenticação confirmada na área logada (https://cicalfer.com.br/).
+-----------------------------------------------------
+Tentativa #3: [SUCESSO]
+  - Duração: 8.60s
+  - URL Final: https://cicalfer.com.br/
+  - Motivo/Resultado: Autenticação confirmada na área logada (https://cicalfer.com.br/).
+-----------------------------------------------------
+Tentativa #4: [SUCESSO]
+  - Duração: 8.53s
+  - URL Final: https://cicalfer.com.br/
+  - Motivo/Resultado: Autenticação confirmada na área logada (https://cicalfer.com.br/).
+-----------------------------------------------------
+Tentativa #5: [SUCESSO]
+  - Duração: 8.51s
+  - URL Final: https://cicalfer.com.br/
+  - Motivo/Resultado: Autenticação confirmada na área logada (https://cicalfer.com.br/).
+-----------------------------------------------------
+Tentativa #6: [SUCESSO]
+  - Duração: 8.55s
+  - URL Final: https://cicalfer.com.br/
+  - Motivo/Resultado: Autenticação confirmada na área logada (https://cicalfer.com.br/).
+-----------------------------------------------------
+Tentativa #7: [SUCESSO]
+  - Duração: 8.50s
+  - URL Final: https://cicalfer.com.br/
+  - Motivo/Resultado: Autenticação confirmada na área logada (https://cicalfer.com.br/).
+-----------------------------------------------------
+Tentativa #8: [SUCESSO]
+  - Duração: 8.84s
+  - URL Final: https://cicalfer.com.br/
+  - Motivo/Resultado: Autenticação confirmada na área logada (https://cicalfer.com.br/).
+-----------------------------------------------------
+Tentativa #9: [SUCESSO]
+  - Duração: 8.54s
+  - URL Final: https://cicalfer.com.br/
+  - Motivo/Resultado: Autenticação confirmada na área logada (https://cicalfer.com.br/).
+-----------------------------------------------------
+Tentativa #10: [SUCESSO]
+  - Duração: 8.52s
+  - URL Final: https://cicalfer.com.br/
+  - Motivo/Resultado: Autenticação confirmada na área logada (https://cicalfer.com.br/).
+-----------------------------------------------------

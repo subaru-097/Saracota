@@ -1,0 +1,18 @@
+================================================================
+HASH SHA256 DOS ARQUIVOS CENTRAIS DO FLUXO DE COTAÇÃO & SCRAPING
+Gerado em: 2026-09-11T21:24:52.975Z
+================================================================
+File: core/services/supplier-quote-engine/index.js
+SHA256: 09d1ef2b4e2d91f86223533693657c7d298f3a4d76aabaef6cd51b8683fefe2b
+
+File: lib/services/automacao/matchingEngine.ts
+SHA256: 9cb99e1429d53792e07f182fdd8042c65ba0beac14f50600ee06dd67f82b80e4
+
+File: config/suppliers/cicalfer.json
+SHA256: 98c4f1532725858886e88d5b41aa64b4398d476b13e722b5e2d4eae719b4ad05
+
+File: app/api/cotacoes/processar/route.ts
+SHA256: 0852faebebbf68b7265dc6a1d6b45d15b0724e6490dabd5c47c21e8452afef68
+
+File: lib/db/client.ts
+SHA256: f0b5b914f14746dc2061d8c7dd33b61cd8c501c328ea98a833ec7bab35e4beb4

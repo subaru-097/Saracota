@@ -1,0 +1,57 @@
+====================================================================
+TESTE REAL DE VALIDAÇÃO DE INSERT E CONSULTA SELECT NO SUPABASE POSTGRESQL
+====================================================================
+
+COMANDO EXECUTADO:
+npx tsx scratch/verify_cotacoes_fix.ts
+
+LOG DE SAÍDA DO TESTE E SELECT:
+=== TESTE REAL E2E DE VALIDAÇÃO DA CORREÇÃO DA TABELA "cotacoes" ===
+
+Passo 1: Invocando db.cotacoes.create() com UUID "29d7314d-3bf3-4ba4-8e20-1e8a6e146e9d"...
+[DB JOB INVALIDAÇÃO] Cotações anteriores marcadas como expiradas ao iniciar nova cotação.
+✓ Retorno da função db.cotacoes.create(): { id: '29d7314d-3bf3-4ba4-8e20-1e8a6e146e9d', status: 'em_analise' }
+
+Passo 2: Efetuando SELECT direto na tabela "cotacoes" do Supabase PostgreSQL para o ID "29d7314d-3bf3-4ba4-8e20-1e8a6e146e9d"...
+
+====================================================
+✅ REGISTRO CONFIRMADO GRAVADO NO BANCO SUPABASE POSTGRESQL:
+{
+  "id": "29d7314d-3bf3-4ba4-8e20-1e8a6e146e9d",
+  "user_id": "61ab64e4-c2cb-46df-bb14-6cc326293085",
+  "fornecedores_selecionados": [
+    "33e03495-100d-45a3-9e34-899de56b0ab1"
+  ],
+  "itens": [
+    {
+      "unidade": "un",
+      "material": "CAIXA DE ÁGUA FECHADA FORTLEV 310 LITROS",
+      "categoria": "hidraulica",
+      "quantidade": 5,
+      "preco_unitario": 438.03
+    },
+    {
+      "unidade": "un",
+      "material": "DUCHA LORENZETTI MAXI DUCHA 127V",
+      "categoria": "eletrica",
+      "quantidade": 5,
+      "preco_unitario": 83.44
+    },
+    {
+      "unidade": "un",
+      "material": "BIANCO OTTO 900G",
+      "categoria": "hidraulica",
+      "quantidade": 10,
+      "preco_unitario": 31.35
+    }
+  ],
+  "status": "pendente",
+  "resultado": null,
+  "criado_em": "2026-09-14T18:28:34.802276+00:00",
+  "atualizado_em": "2026-09-14T18:28:34.802276+00:00",
+  "valor_total": 4500,
+  "browserbase_session_id": null
+}
+====================================================
+
+=== TESTE DE VALIDAÇÃO CONCLUÍDO COM 100% DE SUCESSO ===

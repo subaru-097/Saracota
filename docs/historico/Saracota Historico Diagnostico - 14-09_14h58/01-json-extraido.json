@@ -1,0 +1,75 @@
+{
+  "cartUrl": "https://cicalfer.com.br/carrinho",
+  "containersFoundCount": 5,
+  "produtos": [
+    {
+      "nomeProduto": "CAIXA D AGUA FECHADA FORTLEV 310L REF: 10263",
+      "codigoProduto": "0000003030",
+      "codigoBadge": "#10263",
+      "embalagem": "EMB: 1",
+      "precoUnitario": 438.03,
+      "quantidade": 5,
+      "totalItem": 2190.15,
+      "rawUnitPriceStr": "R$438,03",
+      "rawTotalItemStr": "R$2.190,15"
+    },
+    {
+      "nomeProduto": "DUCHA LORENZETTI MAXI DUCHA 127V 5500W REF: 11137",
+      "codigoProduto": "0000000208",
+      "codigoBadge": "#11137",
+      "embalagem": "EMB: 21",
+      "precoUnitario": 83.44,
+      "quantidade": 5,
+      "totalItem": 417.2,
+      "rawUnitPriceStr": "R$83,44",
+      "rawTotalItemStr": "R$417,20"
+    },
+    {
+      "nomeProduto": "BIANCO OTTO 900G REF: OTTO010",
+      "codigoProduto": "0000002218",
+      "codigoBadge": "#15314",
+      "embalagem": "EMB: 6",
+      "precoUnitario": 31.35,
+      "quantidade": 10,
+      "totalItem": 313.5,
+      "rawUnitPriceStr": "R$31,35",
+      "rawTotalItemStr": "R$313,50"
+    },
+    {
+      "nomeProduto": "ALICATE BOMBA D AGUA MTX 10 REF: 13330",
+      "codigoProduto": "0000002725",
+      "codigoBadge": "#13330",
+      "embalagem": "EMB: 60",
+      "precoUnitario": 33.8,
+      "quantidade": 5,
+      "totalItem": 169,
+      "rawUnitPriceStr": "R$33,80",
+      "rawTotalItemStr": "R$169,00"
+    },
+    {
+      "nomeProduto": "DUCHA LORENZETTI BELLA DUCHA 127V 5500W REF: 11239",
+      "codigoProduto": "0000000214",
+      "codigoBadge": "#11239",
+      "embalagem": "EMB: 22",
+      "precoUnitario": 77.8,
+      "quantidade": 2,
+      "totalItem": 155.6,
+      "rawUnitPriceStr": "R$77,80",
+      "rawTotalItemStr": "R$155,60"
+    }
+  ],
+  "errosExtracao": [],
+  "resumo": {
+    "resumoTabelaEncontrada": true,
+    "totalItens": 3245.45,
+    "despesaAcessoria": 4.9,
+    "totalPedido": 3245.45
+  },
+  "rawPriceLogs": [
+    "Item #1 | Titulo: \"CAIXA D AGUA FECHADA FORTLEV 310L REF: 10263\" | 1º .fs-14.fw-bold (Unit): \"R$438,03\" | 2º .fs-14.fw-bold (Total): \"R$2.190,15\"",
+    "Item #2 | Titulo: \"DUCHA LORENZETTI MAXI DUCHA 127V 5500W REF: 11137\" | 1º .fs-14.fw-bold (Unit): \"R$83,44\" | 2º .fs-14.fw-bold (Total): \"R$417,20\"",
+    "Item #3 | Titulo: \"BIANCO OTTO 900G REF: OTTO010\" | 1º .fs-14.fw-bold (Unit): \"R$31,35\" | 2º .fs-14.fw-bold (Total): \"R$313,50\"",
+    "Item #4 | Titulo: \"ALICATE BOMBA D AGUA MTX 10 REF: 13330\" | 1º .fs-14.fw-bold (Unit): \"R$33,80\" | 2º .fs-14.fw-bold (Total): \"R$169,00\"",
+    "Item #5 | Titulo: \"DUCHA LORENZETTI BELLA DUCHA 127V 5500W REF: 11239\" | 1º .fs-14.fw-bold (Unit): \"R$77,80\" | 2º .fs-14.fw-bold (Total): \"R$155,60\""
+  ]
+}

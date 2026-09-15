@@ -1,0 +1,36 @@
+{
+  "fornecedor_id": "9b34c120-410a-4290-8e12-3004569123cd",
+  "slug": "megaleste",
+  "nome": "Megaleste Distribuidora de Materiais",
+  "base_url": "https://www.megaleste.com.br",
+  "url_site": "https://www.megaleste.com.br/",
+  "selectors": {
+    "cookie_accept": "button:has-text(\"Prosseguir\"), button.cookie-btn, #lgpd-accept",
+    "login_trigger": "a[href*=\"login\"], button:has-text(\"Área do Cliente\"), .login-link",
+    "email_input": "input[name=\"login\"], input[name=\"email\"], input[type=\"email\"]",
+    "password_input": "input[name=\"senha\"], input[type=\"password\"]",
+    "login_submit": "button#btn-login, button[type=\"submit\"]",
+    "filial_cards": "div.filial-option",
+    "filial_confirm": "button.btn-confirm-filial",
+    "search_input": "input#input-busca, input[name=\"termo\"]",
+    "search_button": "button#btn-busca",
+    "search_url_pattern": "/produtos?busca={query}",
+    "product_card_title": ".nome-produto, .product-card-title",
+    "product_lote_pattern": "EMB: {X}",
+    "quantity_input": "input[name=\"qtd\"], input[type=\"number\"]",
+    "add_to_cart_button": "button.btn-comprar, button:has-text(\"Adicionar\")",
+    "modal_confirm_alteration": "div.modal-orcamento",
+    "modal_confirm_button": "button.btn-ok",
+    "cart_url": "/carrinho",
+    "cart_item_container": ".item-carrinho, div.cart-row",
+    "cart_item_title": ".titulo-item, .product-name",
+    "cart_item_price": ".preco-unitario, .unit-price",
+    "cart_summary_table": ".resumo-pedido-tabela, table",
+    "view_cart_button": "a.btn-carrinho"
+  },
+  "lote_rules": {
+    "default_lot_text": "EMB:",
+    "fallback_lot_size": 1
+  },
+  "default_filial_keyword": "ENTREGA"
+}

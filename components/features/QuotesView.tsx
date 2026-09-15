@@ -287,12 +287,14 @@ export const QuotesView: React.FC = () => {
                             <span>Produtos:</span>
                             <span>{formatCurrencyBRL(forn.valorProdutos)}</span>
                           </div>
-                          <div className="flex justify-between text-accent-cyan">
-                            <span>ICMS-ST Retido:</span>
-                            <span>{formatCurrencyBRL(forn.valorST)}</span>
-                          </div>
+                          {forn.valorST > 0 && (
+                            <div className="flex justify-between text-accent-cyan">
+                              <span>ICMS-ST Retido:</span>
+                              <span>{formatCurrencyBRL(forn.valorST)}</span>
+                            </div>
+                          )}
                           <div className="pt-2 border-t border-sara-border flex justify-between font-bold text-sm text-brand">
-                            <span>Total com ST:</span>
+                            <span>Total do Pedido:</span>
                             <span>{formatCurrencyBRL(forn.valorTotalGeral)}</span>
                           </div>
 

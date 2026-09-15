@@ -1,0 +1,36 @@
+{
+  "fornecedor_id": "8f12a450-7819-4b12-9c31-1002348192ab",
+  "slug": "construtor",
+  "nome": "Construtor Material de Construção",
+  "base_url": "https://www.brasilconstrutor.com",
+  "url_site": "https://www.brasilconstrutor.com/",
+  "selectors": {
+    "cookie_accept": "button:has-text(\"Aceitar\"), button.cookie-accept, #accept-cookies",
+    "login_trigger": "a:has-text(\"Entrar\"), button:has-text(\"Login\"), .header-login-btn",
+    "email_input": "input[type=\"email\"], input[name=\"email\"], input[name=\"usuario\"]",
+    "password_input": "input[type=\"password\"], input[name=\"senha\"]",
+    "login_submit": "button[type=\"submit\"], button:has-text(\"Entrar\")",
+    "filial_cards": "div.filial-card, button.select-branch",
+    "filial_confirm": "button:has-text(\"Confirmar Filial\"), button.confirm-branch",
+    "search_input": "input[type=\"search\"], input[name=\"q\"], input[name=\"busca\"]",
+    "search_button": "button[type=\"submit\"].btn-search, button.search-btn",
+    "search_url_pattern": "/busca?q={query}",
+    "product_card_title": ".product-title, .card-title, a.product-link",
+    "product_lote_pattern": "LOTE DE {X} UNIDADES",
+    "quantity_input": "input.qty-input, input[name=\"quantidade\"], input[type=\"number\"]",
+    "add_to_cart_button": "button.btn-add-cart, button:has-text(\"Adicionar ao Carrinho\"), button:has-text(\"Comprar\")",
+    "modal_confirm_alteration": "div.modal-confirm, div.modal:has-text(\"Confirmar\")",
+    "modal_confirm_button": "button.btn-confirm-modal, button:has-text(\"Confirmar\")",
+    "cart_url": "/carrinho",
+    "cart_item_container": "tr.cart-item, div.cart-item-row",
+    "cart_item_title": ".cart-item-name, td.product-name",
+    "cart_item_price": ".unit-price, td.price",
+    "cart_summary_table": "table.cart-summary, .cart-totals-table",
+    "view_cart_button": "a.view-cart, button:has-text(\"Ir para o Carrinho\")"
+  },
+  "lote_rules": {
+    "default_lot_text": "LOTE DE",
+    "fallback_lot_size": 1
+  },
+  "default_filial_keyword": "ENTREGA"
+}

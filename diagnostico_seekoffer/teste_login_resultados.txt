@@ -1,0 +1,62 @@
+=====================================================
+RESULTADO DOS TESTES DE LOGIN (10 REPETIÇÕES) - SEEKOFFER
+Data/Hora Execução: 2026-09-09T18:40:14.247Z
+=====================================================
+
+Resumo por Tentativa:
+-----------------------------------------------------
+Tentativa #1: [CONCLUÍDO (Formulário Submetido)]
+  - Duração: 13.80s
+  - URL Final: https://domainmanage.com/
+  - Detalhe: Submissão executada sem erros de seletor. URL Final: https://domainmanage.com/
+-----------------------------------------------------
+Tentativa #2: [CONCLUÍDO (Formulário Submetido)]
+  - Duração: 9.69s
+  - URL Final: https://domainmanage.com/
+  - Detalhe: Submissão executada sem erros de seletor. URL Final: https://domainmanage.com/
+-----------------------------------------------------
+Tentativa #3: [CONCLUÍDO (Formulário Submetido)]
+  - Duração: 9.44s
+  - URL Final: https://domainmanage.com/
+  - Detalhe: Submissão executada sem erros de seletor. URL Final: https://domainmanage.com/
+-----------------------------------------------------
+Tentativa #4: [CONCLUÍDO (Formulário Submetido)]
+  - Duração: 9.72s
+  - URL Final: https://domainmanage.com/
+  - Detalhe: Submissão executada sem erros de seletor. URL Final: https://domainmanage.com/
+-----------------------------------------------------
+Tentativa #5: [CONCLUÍDO (Formulário Submetido)]
+  - Duração: 9.15s
+  - URL Final: https://domainmanage.com/
+  - Detalhe: Submissão executada sem erros de seletor. URL Final: https://domainmanage.com/
+-----------------------------------------------------
+Tentativa #6: [CONCLUÍDO (Formulário Submetido)]
+  - Duração: 9.33s
+  - URL Final: https://domainmanage.com/
+  - Detalhe: Submissão executada sem erros de seletor. URL Final: https://domainmanage.com/
+-----------------------------------------------------
+Tentativa #7: [CONCLUÍDO (Formulário Submetido)]
+  - Duração: 9.27s
+  - URL Final: https://domainmanage.com/
+  - Detalhe: Submissão executada sem erros de seletor. URL Final: https://domainmanage.com/
+-----------------------------------------------------
+Tentativa #8: [CONCLUÍDO (Formulário Submetido)]
+  - Duração: 9.32s
+  - URL Final: https://domainmanage.com/
+  - Detalhe: Submissão executada sem erros de seletor. URL Final: https://domainmanage.com/
+-----------------------------------------------------
+Tentativa #9: [CONCLUÍDO (Formulário Submetido)]
+  - Duração: 9.45s
+  - URL Final: https://domainmanage.com/
+  - Detalhe: Submissão executada sem erros de seletor. URL Final: https://domainmanage.com/
+-----------------------------------------------------
+Tentativa #10: [CONCLUÍDO (Formulário Submetido)]
+  - Duração: 9.13s
+  - URL Final: https://domainmanage.com/
+  - Detalhe: Submissão executada sem erros de seletor. URL Final: https://domainmanage.com/
+-----------------------------------------------------
+
+ESTATÍSTICA FINAL:
+- Total de Tentativas: 10
+- Sucessos / Form Submetido Sem Erros de Seletor: 10 / 10 (100%)
+- Falhas por Erro de Seletor: 0 / 10

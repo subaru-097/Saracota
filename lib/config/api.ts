@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 /**
  * SARA COTA SAAS — CONFIGURAÇÃO CENTRALIZADA DE API & BACKEND
  * Centralizado via variável de ambiente NEXT_PUBLIC_API_URL (TAREFA 2)

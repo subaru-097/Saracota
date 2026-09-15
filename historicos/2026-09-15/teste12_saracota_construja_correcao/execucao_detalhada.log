@@ -1,0 +1,194 @@
+[2026-09-15T20:35:11.386Z] =================================================================
+[2026-09-15T20:35:11.387Z] === INÍCIO DA BATERIA DE TESTES 12 (POS-CORREÇÃO DE CONFIGS) ===
+[2026-09-15T20:35:11.387Z] =================================================================
+[2026-09-15T20:35:11.388Z] =================================================================
+[2026-09-15T20:35:11.388Z] === INÍCIO DO CENÁRIO: CONSTRUJÁ SOLO ===
+[2026-09-15T20:35:11.388Z] =================================================================
+[2026-09-15T20:35:11.756Z] Passo 1 (Construjá Solo): Navegando para http://localhost:3000/cotacoes...
+[2026-09-15T20:35:12.085Z] [BROWSER CONSOLE INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-09-15T20:35:12.289Z] [BROWSER CONSOLE LOG] [ProtectedRoute] Verification loading... Timer 4.5s iniciado.
+[2026-09-15T20:35:12.293Z] [BROWSER CONSOLE LOG] [ProtectedRoute] Verification loading... Timer 4.5s iniciado.
+[2026-09-15T20:35:12.377Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 (Not Found)
+[2026-09-15T20:35:12.614Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:35:12.618Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:35:12.619Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:35:12.646Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:35:12.728Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:35:12.731Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:35:12.861Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:35:12.889Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:35:14.932Z] Clicando na sub-aba "Bloco de Notas"...
+[2026-09-15T20:35:15.983Z] Passo 2.1 (Construjá Solo): Inserindo Item 1 ("3x Caixa d'Água Fortlev 310L")...
+[2026-09-15T20:35:16.056Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:35:16.816Z] Passo 2.2 (Construjá Solo): Inserindo Item 2 ("6x Ducha Lorenzetti Bella Ducha 127V")...
+[2026-09-15T20:35:16.858Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:35:17.646Z] Passo 3 (Construjá Solo): Clicando em "Cotar com Fornecedores"...
+[2026-09-15T20:35:19.138Z] Marcando fornecedor: "Construjá"...
+[2026-09-15T20:35:19.643Z] Screenshot do modal salvo em construja_solo_00_modal_selecao.png
+[2026-09-15T20:35:19.644Z] Passo 5 (Construjá Solo): Disparando cotação via botão Cotar...
+[2026-09-15T20:35:19.747Z] [BROWSER CONSOLE LOG] [RESOLVE CART URL BEFORE CALL] {supplierId: a1684c4d-d896-4ba9-a591-cda455c5ffe2, supplierName: Construjá, rawCapturedUrl: undefined, rawOfficialPortalUrl: https://www.construja.com.br/produtos}
+[2026-09-15T20:35:19.748Z] [BROWSER CONSOLE LOG] [CART_STRATEGY LOG] {supplier: Construjá, priority: PRIORITY_2: official_db_url, strategy: session_param, resolvedUrl: https://www.construja.com.br/carrinho}
+[2026-09-15T20:35:19.748Z] [BROWSER CONSOLE LOG] [RPA DEBUG URL PERSISTED] {fornecedores: Array(1)}
+[2026-09-15T20:35:19.749Z] [BROWSER CONSOLE LOG] [DB JOB INVALIDAÇÃO] Cotações anteriores marcadas como expiradas ao iniciar nova cotação.
+[2026-09-15T20:35:19.752Z] Aguardando API status/conclusão do robô (Construjá Solo)...
+[2026-09-15T20:35:19.882Z] [HTTP REQ Construjá Solo] POST http://localhost:3000/api/cotacoes/e4d1cfaf-6baa-4c0c-8c39-e816c0c80201/processar
+[2026-09-15T20:35:19.883Z] [HTTP REQ BODY Construjá Solo] {"itens":[{"id":"item-1789504516828-n52i","texto":"6x Ducha Lorenzetti Bella Ducha 127V","quantidade":6,"origem":"texto","criadoEm":"17:35"},{"id":"item-1789504516000-iggl","texto":"3x Caixa d'Água Fortlev 310L","quantidade":3,"origem":"texto","criadoEm":"17:35"}],"fornecedorIds":["a1684c4d-d896-4ba9-a591-cda455c5ffe2"]}
+[2026-09-15T20:35:20.067Z] [BROWSER CONSOLE LOG] Automação RPA iniciada com sucesso: {sucesso: true, status: processamento iniciado, mensagem: Processamento de cotação com robôs RPA iniciado em…a a cotação e4d1cfaf-6baa-4c0c-8c39-e816c0c80201., cotacaoId: e4d1cfaf-6baa-4c0c-8c39-e816c0c80201, timestamp: 2026-09-15T20:35:20.062Z}
+[2026-09-15T20:35:20.068Z] [API RESPONSE Construjá Solo] Processamento iniciado para cotacaoId: e4d1cfaf-6baa-4c0c-8c39-e816c0c80201
+[2026-09-15T20:35:22.807Z] [API STATUS POLL Construjá Solo] status=processando, percentual=25%
+[2026-09-15T20:35:23.069Z] [HTTP REQ Construjá Solo] GET http://localhost:3000/api/cotacoes/e4d1cfaf-6baa-4c0c-8c39-e816c0c80201/status
+[2026-09-15T20:35:25.843Z] [API STATUS POLL Construjá Solo] status=processando, percentual=25%
+[2026-09-15T20:35:26.069Z] [HTTP REQ Construjá Solo] GET http://localhost:3000/api/cotacoes/e4d1cfaf-6baa-4c0c-8c39-e816c0c80201/status
+[2026-09-15T20:35:28.879Z] [API STATUS POLL Construjá Solo] status=processando, percentual=25%
+[2026-09-15T20:35:29.070Z] [HTTP REQ Construjá Solo] GET http://localhost:3000/api/cotacoes/e4d1cfaf-6baa-4c0c-8c39-e816c0c80201/status
+[2026-09-15T20:35:31.904Z] [API STATUS POLL Construjá Solo] status=processando, percentual=25%
+[2026-09-15T20:35:32.071Z] [HTTP REQ Construjá Solo] GET http://localhost:3000/api/cotacoes/e4d1cfaf-6baa-4c0c-8c39-e816c0c80201/status
+[2026-09-15T20:35:34.931Z] [API STATUS POLL Construjá Solo] status=processando, percentual=25%
+[2026-09-15T20:35:35.070Z] [HTTP REQ Construjá Solo] GET http://localhost:3000/api/cotacoes/e4d1cfaf-6baa-4c0c-8c39-e816c0c80201/status
+[2026-09-15T20:35:37.966Z] [API STATUS POLL Construjá Solo] status=processando, percentual=25%
+[2026-09-15T20:35:38.071Z] [HTTP REQ Construjá Solo] GET http://localhost:3000/api/cotacoes/e4d1cfaf-6baa-4c0c-8c39-e816c0c80201/status
+[2026-09-15T20:35:40.989Z] [API STATUS POLL Construjá Solo] status=processando, percentual=25%
+[2026-09-15T20:35:41.067Z] [HTTP REQ Construjá Solo] GET http://localhost:3000/api/cotacoes/e4d1cfaf-6baa-4c0c-8c39-e816c0c80201/status
+[2026-09-15T20:35:44.012Z] [API STATUS POLL Construjá Solo] status=processando, percentual=25%
+[2026-09-15T20:35:44.068Z] [HTTP REQ Construjá Solo] GET http://localhost:3000/api/cotacoes/e4d1cfaf-6baa-4c0c-8c39-e816c0c80201/status
+[2026-09-15T20:35:47.041Z] [API STATUS POLL Construjá Solo] status=processando, percentual=25%
+[2026-09-15T20:35:47.069Z] [HTTP REQ Construjá Solo] GET http://localhost:3000/api/cotacoes/e4d1cfaf-6baa-4c0c-8c39-e816c0c80201/status
+[2026-09-15T20:35:50.069Z] [API STATUS POLL Construjá Solo] status=processando, percentual=25%
+[2026-09-15T20:35:50.071Z] [HTTP REQ Construjá Solo] GET http://localhost:3000/api/cotacoes/e4d1cfaf-6baa-4c0c-8c39-e816c0c80201/status
+[2026-09-15T20:35:53.070Z] [HTTP REQ Construjá Solo] GET http://localhost:3000/api/cotacoes/e4d1cfaf-6baa-4c0c-8c39-e816c0c80201/status
+[2026-09-15T20:35:53.093Z] [API STATUS POLL Construjá Solo] status=processando, percentual=25%
+[2026-09-15T20:35:56.071Z] [HTTP REQ Construjá Solo] GET http://localhost:3000/api/cotacoes/e4d1cfaf-6baa-4c0c-8c39-e816c0c80201/status
+[2026-09-15T20:35:56.120Z] [API STATUS POLL Construjá Solo] status=processando, percentual=25%
+[2026-09-15T20:35:59.071Z] [HTTP REQ Construjá Solo] GET http://localhost:3000/api/cotacoes/e4d1cfaf-6baa-4c0c-8c39-e816c0c80201/status
+[2026-09-15T20:35:59.149Z] [API STATUS POLL Construjá Solo] status=processando, percentual=25%
+[2026-09-15T20:36:02.067Z] [HTTP REQ Construjá Solo] GET http://localhost:3000/api/cotacoes/e4d1cfaf-6baa-4c0c-8c39-e816c0c80201/status
+[2026-09-15T20:36:02.173Z] [API STATUS POLL Construjá Solo] status=processando, percentual=25%
+[2026-09-15T20:36:05.067Z] [HTTP REQ Construjá Solo] GET http://localhost:3000/api/cotacoes/e4d1cfaf-6baa-4c0c-8c39-e816c0c80201/status
+[2026-09-15T20:36:05.186Z] [API STATUS POLL Construjá Solo] status=processando, percentual=25%
+[2026-09-15T20:36:08.068Z] [HTTP REQ Construjá Solo] GET http://localhost:3000/api/cotacoes/e4d1cfaf-6baa-4c0c-8c39-e816c0c80201/status
+[2026-09-15T20:36:08.208Z] [API STATUS POLL Construjá Solo] status=aguardando_revisao, percentual=100%
+[2026-09-15T20:36:08.343Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:36:08.394Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-15T20:36:08.481Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:36:08.523Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-15T20:36:08.721Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:36:11.233Z] [API STATUS POLL Construjá Solo] status=aguardando_revisao, percentual=100%
+[2026-09-15T20:36:14.259Z] [API STATUS POLL Construjá Solo] status=aguardando_revisao, percentual=100%
+[2026-09-15T20:36:17.290Z] [API STATUS POLL Construjá Solo] status=aguardando_revisao, percentual=100%
+[2026-09-15T20:36:20.321Z] [API STATUS POLL Construjá Solo] status=aguardando_revisao, percentual=100%
+[2026-09-15T20:36:23.351Z] [API STATUS POLL Construjá Solo] status=aguardando_revisao, percentual=100%
+[2026-09-15T20:36:26.385Z] [API STATUS POLL Construjá Solo] status=aguardando_revisao, percentual=100%
+[2026-09-15T20:36:29.411Z] [API STATUS POLL Construjá Solo] status=aguardando_revisao, percentual=100%
+[2026-09-15T20:36:32.451Z] [API STATUS POLL Construjá Solo] status=aguardando_revisao, percentual=100%
+[2026-09-15T20:36:35.477Z] [API STATUS POLL Construjá Solo] status=aguardando_revisao, percentual=100%
+[2026-09-15T20:36:38.498Z] [API STATUS POLL Construjá Solo] status=aguardando_revisao, percentual=100%
+[2026-09-15T20:36:41.519Z] [API STATUS POLL Construjá Solo] status=aguardando_revisao, percentual=100%
+[2026-09-15T20:36:44.551Z] [API STATUS POLL Construjá Solo] status=aguardando_revisao, percentual=100%
+[2026-09-15T20:36:47.582Z] [API STATUS POLL Construjá Solo] status=aguardando_revisao, percentual=100%
+[2026-09-15T20:36:50.614Z] [API STATUS POLL Construjá Solo] status=aguardando_revisao, percentual=100%
+[2026-09-15T20:36:53.665Z] Screenshot do resultado salvo em construja_solo_04_resultado_final.png
+[2026-09-15T20:36:58.884Z] =================================================================
+[2026-09-15T20:36:58.885Z] === INÍCIO DO CENÁRIO: CICALFER + CONSTRUJÁ MULTI ===
+[2026-09-15T20:36:58.885Z] =================================================================
+[2026-09-15T20:36:59.296Z] Passo 1 (Cicalfer + Construjá Multi): Navegando para http://localhost:3000/cotacoes...
+[2026-09-15T20:36:59.625Z] [BROWSER CONSOLE INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-09-15T20:36:59.840Z] [BROWSER CONSOLE LOG] [ProtectedRoute] Verification loading... Timer 4.5s iniciado.
+[2026-09-15T20:36:59.844Z] [BROWSER CONSOLE LOG] [ProtectedRoute] Verification loading... Timer 4.5s iniciado.
+[2026-09-15T20:36:59.960Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:36:59.964Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:36:59.965Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 (Not Found)
+[2026-09-15T20:36:59.974Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:36:59.978Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:37:00.052Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:37:00.059Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:37:00.135Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:37:00.171Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:37:02.199Z] Clicando na sub-aba "Bloco de Notas"...
+[2026-09-15T20:37:03.242Z] Passo 2.1 (Cicalfer + Construjá Multi): Inserindo Item 1 ("3x Caixa d'Água Fortlev 310L")...
+[2026-09-15T20:37:03.306Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:37:04.073Z] Passo 2.2 (Cicalfer + Construjá Multi): Inserindo Item 2 ("6x Ducha Lorenzetti Bella Ducha 127V")...
+[2026-09-15T20:37:04.114Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:37:04.895Z] Passo 3 (Cicalfer + Construjá Multi): Clicando em "Cotar com Fornecedores"...
+[2026-09-15T20:37:06.381Z] Marcando fornecedor: "Cicalfer"...
+[2026-09-15T20:37:06.814Z] Marcando fornecedor: "Construjá"...
+[2026-09-15T20:37:07.309Z] Screenshot do modal salvo em cicalfer_construja_multi_00_modal_selecao.png
+[2026-09-15T20:37:07.309Z] Passo 5 (Cicalfer + Construjá Multi): Disparando cotação via botão Cotar...
+[2026-09-15T20:37:07.407Z] [BROWSER CONSOLE LOG] [RESOLVE CART URL BEFORE CALL] {supplierId: 33e03495-100d-45a3-9e34-899de56b0ab1, supplierName: Cicalfer, rawCapturedUrl: https://www.cicalfer.com.br/carrinho, rawOfficialPortalUrl: https://cicalfer.com.br/}
+[2026-09-15T20:37:07.408Z] [BROWSER CONSOLE LOG] [CART_STRATEGY LOG] {supplier: Cicalfer, strategy: CART_STRATEGY: manual_fallback_no_cart_link, reason: Plataforma SPA exige auth POST individual por sess…Lista cotada completa exibida no modal Sara Cota., resolvedUrl: https://www.cicalfer.com.br}
+[2026-09-15T20:37:07.409Z] [BROWSER CONSOLE LOG] [RESOLVE CART URL BEFORE CALL] {supplierId: a1684c4d-d896-4ba9-a591-cda455c5ffe2, supplierName: Construjá, rawCapturedUrl: undefined, rawOfficialPortalUrl: https://www.construja.com.br/produtos}
+[2026-09-15T20:37:07.409Z] [BROWSER CONSOLE LOG] [CART_STRATEGY LOG] {supplier: Construjá, priority: PRIORITY_2: official_db_url, strategy: session_param, resolvedUrl: https://www.construja.com.br/carrinho}
+[2026-09-15T20:37:07.410Z] [BROWSER CONSOLE LOG] [RPA DEBUG URL PERSISTED] {fornecedores: Array(2)}
+[2026-09-15T20:37:07.410Z] [BROWSER CONSOLE LOG] [DB JOB INVALIDAÇÃO] Cotações anteriores marcadas como expiradas ao iniciar nova cotação.
+[2026-09-15T20:37:07.412Z] Aguardando API status/conclusão do robô (Cicalfer + Construjá Multi)...
+[2026-09-15T20:37:07.548Z] [HTTP REQ Cicalfer + Construjá Multi] POST http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/processar
+[2026-09-15T20:37:07.549Z] [HTTP REQ BODY Cicalfer + Construjá Multi] {"itens":[{"id":"item-1789504624083-jr1o","texto":"6x Ducha Lorenzetti Bella Ducha 127V","quantidade":6,"origem":"texto","criadoEm":"17:37"},{"id":"item-1789504623257-qbaa","texto":"3x Caixa d'Água Fortlev 310L","quantidade":3,"origem":"texto","criadoEm":"17:37"}],"fornecedorIds":["33e03495-100d-45a3-9e34-899de56b0ab1","a1684c4d-d896-4ba9-a591-cda455c5ffe2"]}
+[2026-09-15T20:37:07.699Z] [BROWSER CONSOLE LOG] Automação RPA iniciada com sucesso: {sucesso: true, status: processamento iniciado, mensagem: Processamento de cotação com robôs RPA iniciado em…a a cotação c76ac4fd-9c94-431b-9de2-654014d8624a., cotacaoId: c76ac4fd-9c94-431b-9de2-654014d8624a, timestamp: 2026-09-15T20:37:07.694Z}
+[2026-09-15T20:37:07.700Z] [API RESPONSE Cicalfer + Construjá Multi] Processamento iniciado para cotacaoId: c76ac4fd-9c94-431b-9de2-654014d8624a
+[2026-09-15T20:37:10.437Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=20%
+[2026-09-15T20:37:10.700Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:37:13.460Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=20%
+[2026-09-15T20:37:13.702Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:37:16.503Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=20%
+[2026-09-15T20:37:16.700Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:37:19.536Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=20%
+[2026-09-15T20:37:19.702Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:37:22.558Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=20%
+[2026-09-15T20:37:22.703Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:37:25.582Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=20%
+[2026-09-15T20:37:25.697Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:37:28.608Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=20%
+[2026-09-15T20:37:28.698Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:37:31.631Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=20%
+[2026-09-15T20:37:31.699Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:37:34.649Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=20%
+[2026-09-15T20:37:34.699Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:37:37.677Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=20%
+[2026-09-15T20:37:37.696Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:37:40.702Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:37:40.703Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=20%
+[2026-09-15T20:37:43.702Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:37:43.752Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=63%
+[2026-09-15T20:37:46.703Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:37:46.786Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=63%
+[2026-09-15T20:37:49.697Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:37:49.819Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=63%
+[2026-09-15T20:37:52.698Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:37:52.846Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=63%
+[2026-09-15T20:37:55.699Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:37:55.864Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=63%
+[2026-09-15T20:37:58.700Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:37:58.894Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=63%
+[2026-09-15T20:38:01.700Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:38:01.921Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=63%
+[2026-09-15T20:38:04.701Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:38:04.938Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=63%
+[2026-09-15T20:38:07.702Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:38:07.964Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=63%
+[2026-09-15T20:38:10.696Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:38:10.990Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=63%
+[2026-09-15T20:38:13.697Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:38:14.010Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=63%
+[2026-09-15T20:38:16.697Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:38:17.036Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=63%
+[2026-09-15T20:38:19.698Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:38:20.068Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=63%
+[2026-09-15T20:38:22.698Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:38:23.087Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=63%
+[2026-09-15T20:38:25.699Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:38:26.109Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=63%
+[2026-09-15T20:38:28.700Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:38:29.145Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=63%
+[2026-09-15T20:38:31.700Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:38:32.170Z] [API STATUS POLL Cicalfer + Construjá Multi] status=processando, percentual=63%
+[2026-09-15T20:38:34.701Z] [HTTP REQ Cicalfer + Construjá Multi] GET http://localhost:3000/api/cotacoes/c76ac4fd-9c94-431b-9de2-654014d8624a/status
+[2026-09-15T20:38:34.871Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:38:34.899Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-15T20:38:34.942Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:38:34.968Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-15T20:38:35.002Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:38:35.054Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-15T20:38:35.185Z] [API STATUS POLL Cicalfer + Construjá Multi] status=aguardando_revisao, percentual=100%
+[2026-09-15T20:38:35.217Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-15T20:38:38.209Z] [API STATUS POLL Cicalfer + Construjá Multi] status=aguardando_revisao, percentual=100%
+[2026-09-15T20:38:41.274Z] Screenshot do resultado salvo em cicalfer_construja_multi_04_resultado_final.png
+[2026-09-15T20:38:41.490Z] === BATERIA DE TESTES 12 FINALIZADA COM SUCESSO ===

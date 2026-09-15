@@ -1,0 +1,46 @@
+=====================================================
+RELATÓRIO DE EXECUÇÃO DE COTAÇÃO - COM VALIDAÇÃO DE DOM
+=====================================================
+Data/Hora: 2026-09-09T19:17:42.673Z
+Fornecedor (DB): Cicalfer (https://cicalfer.com.br/)
+Usuário (DB): san***@gmail.com
+Produto Solicitado: CABO FLEX 100M COBRECOM 2,50MM
+Quantidade Solicitada: 5 unidades
+Subpasta da Execução: C:\Users\User\Desktop\Saracota\diagnostico_cicalfer\2026-09-09_16-17-19
+-----------------------------------------------------
+
+DETALHAMENTO E VALIDAÇÃO DAS ETAPAS (1 a 6):
+-----------------------------------------------------
+ETAPA 1 - LOGIN: [SUCESSO]
+  - Observação: Login autenticado no servidor Cicalfer B2B.
+  - Elemento/Evidência de Validação: Identificador de usuário logado visível ("SANTANA / MARIA EDUARDA"). Header de visitante removido.
+  - Screenshot: C:\Users\User\Desktop\Saracota\diagnostico_cicalfer\2026-09-09_16-17-19\01_login_confirmado.png
+-----------------------------------------------------
+ETAPA 2 - SELEÇÃO DE EMPRESA: [SUCESSO]
+  - Observação: Empresa/Filial selecionada e confirmada (COMERCIAL SANTANA - CICALFER ATACADISTA).
+  - Elemento/Evidência de Validação: Empresa ativa exibida na tela / confirmada no modal: "Bem-vindo(a), MARIA EDUARDA SANTANA SILVA 52062625871! Selecione para qual loja "
+  - Screenshot: C:\Users\User\Desktop\Saracota\diagnostico_cicalfer\2026-09-09_16-17-19\02_selecao_empresa.png
+-----------------------------------------------------
+ETAPA 3 - BUSCA DO PRODUTO: [FALHA CRÍTICA]
+  - Observação: O card do produto exibe "FAÇA LOGIN OU CADASTRE-SE PARA VISUALIZAR OS PREÇOS". Prova de que a sessão não foi ativada.
+  - Elemento/Evidência de Validação: Elemento de aviso "FAÇA LOGIN" detectado nos produtos.
+  - Screenshot: C:\Users\User\Desktop\Saracota\diagnostico_cicalfer\2026-09-09_16-17-19\03_resultado_busca.png
+-----------------------------------------------------
+ETAPA 4 - INSERÇÃO DA QUANTIDADE: [NÃO EXECUTADA / BLOQUEADA POR FALHA DE ETAPA ANTERIOR]
+  - Observação: Execução suspensa devido a falha que impede a continuidade do fluxo.
+  - Elemento/Evidência de Validação: N/A
+  - Screenshot: N/A
+-----------------------------------------------------
+ETAPA 5 - ADICIONAR AO CARRINHO: [NÃO EXECUTADA / BLOQUEADA POR FALHA DE ETAPA ANTERIOR]
+  - Observação: Execução suspensa devido a falha que impede a continuidade do fluxo.
+  - Elemento/Evidência de Validação: N/A
+  - Screenshot: N/A
+-----------------------------------------------------
+ETAPA 6 - VISUALIZAR CARRINHO: [NÃO EXECUTADA / BLOQUEADA POR FALHA DE ETAPA ANTERIOR]
+  - Observação: Execução suspensa devido a falha que impede a continuidade do fluxo.
+  - Elemento/Evidência de Validação: N/A
+  - Screenshot: N/A
+-----------------------------------------------------
+
+DECLARAÇÃO FINAL:
+COTAÇÃO INTERROMPIDA NA ETAPA 3 (BUSCA DO PRODUTO)

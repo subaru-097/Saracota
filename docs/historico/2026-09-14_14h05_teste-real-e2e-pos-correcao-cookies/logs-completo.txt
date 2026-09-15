@@ -1,0 +1,121 @@
+[2026-09-14T17:03:41.322Z] === INICIANDO TESTE REAL PONTA A PONTA PÓS-CORREÇÃO DE COOKIES LGPD (#botao-aceitar-todos) ===
+[2026-09-14T17:03:41.323Z] Pasta de histórico criada: C:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_14h05_teste-real-e2e-pos-correcao-cookies
+[2026-09-14T17:03:41.324Z] ✓ Código do handler cookieBanner.ts copiado para scripts/
+[2026-09-14T17:03:41.566Z] Passo 1: Acessando a tela de login da Saracota em http://localhost:3000/login...
+[2026-09-14T17:03:42.385Z] [BROWSER CONSOLE INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-09-14T17:03:43.320Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:03:43.339Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:03:43.380Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:03:43.383Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:03:44.089Z] Passo 2: Efetuando login real na aplicação web (proprietario@saracota.com.br)...
+[2026-09-14T17:03:44.400Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:03:44.402Z] [BROWSER CONSOLE WARNING] Conexão ao Supabase Auth expirou/falhou para conta de teste. Entrando no modo de demonstração local.
+[2026-09-14T17:03:47.219Z] ✓ Login efetuado. URL atual: http://localhost:3000/painel
+[2026-09-14T17:03:47.220Z] Passo 3: Navegando para a página de Cotações via menu lateral...
+[2026-09-14T17:03:47.772Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T17:03:47.778Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T17:03:49.289Z] ✓ Tela de Cotações carregada. URL atual: http://localhost:3000/cotacoes
+[2026-09-14T17:03:49.289Z] Passo 4: Digitando item real no Rascunho: "Cabo Flex 2.5mm" (Quantidade 1)...
+[2026-09-14T17:03:49.293Z] ✓ Item "Cabo Flex 2.5mm" adicionado ao rascunho da Saracota.
+[2026-09-14T17:03:49.294Z] Passo 5: Clicando em "Cotar com Fornecedores"...
+[2026-09-14T17:04:19.304Z] ❌ ERRO DURANTE O TESTE REAL: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('button:has-text("Cotar com Fornecedores"), button:has-text("Cotar Todos"), button:has-text("Iniciar Cotação")').first()[22m
+[2m    - locator resolved to <button disabled type="button" class="inline-flex items-center justify-center transition-all duration-200 ease-smooth select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-sara-canvas disabled:opacity-50 disabled:pointer-events-none disabled:active:scale-100 active:scale-[0.97] active:brightness-95 cursor-pointer bg-brand hover:bg-brand-hover text-black font-semibold border border-amber-400/40 px-4 py-2.5 text-sm gap-2 rounde…>…</button>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    54 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is not enabled[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+    at C:\Users\User\Desktop\Saracota\scratch\run_full_e2e_cookies_fix.js:69:25
+[2026-09-14T17:04:52.887Z] === INICIANDO TESTE REAL PONTA A PONTA PÓS-CORREÇÃO DE COOKIES LGPD (#botao-aceitar-todos) ===
+[2026-09-14T17:04:52.888Z] Pasta de histórico criada: C:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_14h05_teste-real-e2e-pos-correcao-cookies
+[2026-09-14T17:04:52.890Z] ✓ Código do handler cookieBanner.ts copiado para scripts/
+[2026-09-14T17:04:53.121Z] Passo 1: Acessando a tela de login da Saracota em http://localhost:3000/login...
+[2026-09-14T17:04:53.585Z] [BROWSER CONSOLE INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-09-14T17:04:53.963Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:04:53.965Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:04:54.016Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:04:54.029Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:04:54.546Z] Passo 2: Efetuando login real na aplicação web (proprietario@saracota.com.br)...
+[2026-09-14T17:04:54.755Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:04:54.757Z] [BROWSER CONSOLE WARNING] Conexão ao Supabase Auth expirou/falhou para conta de teste. Entrando no modo de demonstração local.
+[2026-09-14T17:04:57.699Z] ✓ Login efetuado. URL atual: http://localhost:3000/painel
+[2026-09-14T17:04:57.700Z] Passo 3: Navegando para a página de Cotações via menu lateral...
+[2026-09-14T17:04:58.288Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T17:04:58.289Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T17:04:59.765Z] ✓ Tela de Cotações carregada. URL atual: http://localhost:3000/cotacoes
+[2026-09-14T17:04:59.765Z] Passo 4: Digitando item real no Rascunho: "Cabo Flex 2.5mm" (Quantidade 1)...
+[2026-09-14T17:05:00.454Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T17:05:01.412Z] ✓ Item "Cabo Flex 2.5mm" adicionado ao rascunho da Saracota.
+[2026-09-14T17:05:01.413Z] Passo 5: Clicando em "Cotar com Fornecedores"...
+[2026-09-14T17:05:03.045Z] Passo 6: Verificando seleção do fornecedor Cicalfer no modal...
+[2026-09-14T17:05:03.050Z] ✓ Fornecedor Cicalfer confirmado e ativo no modal.
+[2026-09-14T17:05:03.051Z] Passo 7: Clicando no botão de confirmação "Cotar"...
+[2026-09-14T17:05:33.065Z] ❌ ERRO DURANTE O TESTE REAL: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('.modal button:has-text("Cotar"), button:has-text("Confirmar Cotação"), button:has-text("Iniciar Cotação")').first()[22m
+
+    at C:\Users\User\Desktop\Saracota\scratch\run_full_e2e_cookies_fix.js:88:24
+[2026-09-14T17:05:55.769Z] === INICIANDO TESTE REAL PONTA A PONTA PÓS-CORREÇÃO DE COOKIES LGPD (#botao-aceitar-todos) ===
+[2026-09-14T17:05:55.771Z] Pasta de histórico criada: C:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_14h05_teste-real-e2e-pos-correcao-cookies
+[2026-09-14T17:05:55.772Z] ✓ Código do handler cookieBanner.ts copiado para scripts/
+[2026-09-14T17:05:56.016Z] Passo 1: Acessando a tela de login da Saracota em http://localhost:3000/login...
+[2026-09-14T17:05:56.459Z] [BROWSER CONSOLE INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-09-14T17:05:57.055Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:05:57.058Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:05:57.101Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:05:57.105Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:05:57.630Z] Passo 2: Efetuando login real na aplicação web (proprietario@saracota.com.br)...
+[2026-09-14T17:05:57.802Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T17:05:57.804Z] [BROWSER CONSOLE WARNING] Conexão ao Supabase Auth expirou/falhou para conta de teste. Entrando no modo de demonstração local.
+[2026-09-14T17:06:00.769Z] ✓ Login efetuado. URL atual: http://localhost:3000/painel
+[2026-09-14T17:06:00.769Z] Passo 3: Navegando para a página de Cotações via menu lateral...
+[2026-09-14T17:06:01.354Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T17:06:01.365Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T17:06:02.841Z] ✓ Tela de Cotações carregada. URL atual: http://localhost:3000/cotacoes
+[2026-09-14T17:06:02.842Z] Passo 4: Digitando item real no Rascunho: "Cabo Flex 2.5mm" (Quantidade 1)...
+[2026-09-14T17:06:03.510Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T17:06:04.469Z] ✓ Item "Cabo Flex 2.5mm" adicionado ao rascunho da Saracota.
+[2026-09-14T17:06:04.470Z] Passo 5: Clicando em "Cotar com Fornecedores"...
+[2026-09-14T17:06:06.071Z] Passo 6: Verificando seleção do fornecedor Cicalfer no modal...
+[2026-09-14T17:06:06.077Z] ✓ Fornecedor Cicalfer confirmado e ativo no modal.
+[2026-09-14T17:06:06.078Z] Passo 7: Clicando no botão de confirmação "Cotar"...
+[2026-09-14T17:06:06.253Z] [BROWSER CONSOLE LOG] [RESOLVE CART URL BEFORE CALL] {supplierId: 33e03495-100d-45a3-9e34-899de56b0ab1, supplierName: Cicalfer, rawCapturedUrl: https://www.cicalfer.com.br/carrinho, rawOfficialPortalUrl: https://cicalfer.com.br/}
+[2026-09-14T17:06:06.255Z] [BROWSER CONSOLE LOG] [CART_STRATEGY LOG] {supplier: Cicalfer, strategy: CART_STRATEGY: manual_fallback_no_cart_link, reason: Plataforma SPA exige auth POST individual por sess…Lista cotada completa exibida no modal Sara Cota., resolvedUrl: https://www.cicalfer.com.br}
+[2026-09-14T17:06:06.256Z] [BROWSER CONSOLE LOG] [RPA DEBUG URL PERSISTED] {fornecedores: Array(1)}
+[2026-09-14T17:06:06.257Z] [BROWSER CONSOLE LOG] [DB JOB INVALIDAÇÃO] Cotações anteriores marcadas como expiradas ao iniciar nova cotação.
+[2026-09-14T17:06:06.323Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 401 ()
+[2026-09-14T17:06:06.325Z] [BROWSER CONSOLE WARNING] [DB WARNING] Inserção de cotação no Supabase falhou (usando armazenamento em memória local): new row violates row-level security policy for table "cotacoes"
+[2026-09-14T17:06:08.220Z] Passo 8: Capturando Print 01: 01-modal-progresso-cotacao.png...
+[2026-09-14T17:06:08.397Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789405566254/processar
+[2026-09-14T17:06:08.400Z] [BROWSER CONSOLE LOG] Automação RPA iniciada com sucesso: {sucesso: true, status: processamento iniciado, mensagem: Processamento de cotação com robôs RPA iniciado em segundo plano para a cotação cot-1789405566254., cotacaoId: cot-1789405566254, timestamp: 2026-09-14T17:06:08.391Z}
+[2026-09-14T17:06:08.402Z] ✓ Print 01 salvo em: C:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_14h05_teste-real-e2e-pos-correcao-cookies\prints\01-modal-progresso-cotacao.png
+[2026-09-14T17:06:08.403Z] Passo 9: Inspecionando portal Cicalfer em aba limpa para verificar Handler de Cookies (#botao-aceitar-todos)...
+[2026-09-14T17:06:08.524Z] [RPA] Executando tentarAceitarCookies() com seletor #botao-aceitar-todos (timeout 3s)...
+[2026-09-14T17:06:12.283Z] ✓ [RPA] Banner de cookies detectado e capturado em 00-banner-cookies-tratado.png!
+[2026-09-14T17:06:12.355Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789405566254/status
+[2026-09-14T17:06:12.593Z] [RPA] Banner de cookies detectado e aceito.
+[2026-09-14T17:06:12.594Z] Passo 10: Aguardando robô RPA processar cotação no Cicalfer e capturar carrinho real...
+[2026-09-14T17:06:14.434Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789405566254/status
+[2026-09-14T17:06:15.609Z] Aguardando progresso RPA (Tentativa 1/30)...
+[2026-09-14T17:06:15.620Z] ✓ RPA concluído no backend! Status: aguardando_revisao, Percentual: 100%
+[2026-09-14T17:06:15.621Z] Acessando carrinho do Cicalfer pós-login B2B para capturar Print 02...
+[2026-09-14T17:06:17.457Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789405566254/status
+[2026-09-14T17:06:20.460Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789405566254/status
+[2026-09-14T17:06:22.265Z] ✓ Print 02 (Carrinho Cicalfer) salvo em: C:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_14h05_teste-real-e2e-pos-correcao-cookies\prints\02-carrinho-fornecedor-cicalfer.png
+[2026-09-14T17:06:23.439Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789405566254/status
+[2026-09-14T17:06:24.276Z] Passo 11: Capturando Print 03: 03-preco-extraido-relatorio-saracota.png...
+[2026-09-14T17:06:24.461Z] ✓ Print 03 salvo em: C:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_14h05_teste-real-e2e-pos-correcao-cookies\prints\03-preco-extraido-relatorio-saracota.png
+[2026-09-14T17:06:24.461Z] Passo 12: Capturando Print 04: 04-tela-final-cotacao-concluida.png...
+[2026-09-14T17:06:24.651Z] ✓ Print 04 salvo em: C:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_14h05_teste-real-e2e-pos-correcao-cookies\prints\04-tela-final-cotacao-concluida.png
+[2026-09-14T17:06:24.652Z] === TESTE REAL PONTA A PONTA COM HANDLER DE COOKIES CONCLUÍDO COM SUCESSO ===

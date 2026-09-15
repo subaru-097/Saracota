@@ -1,0 +1,361 @@
+[2026-09-14T16:26:58.229Z] === INICIANDO TESTE REAL PONTA A PONTA PELA INTERFACE WEB DA SARACOTA ===
+[2026-09-14T16:26:58.230Z] Pasta de histórico criada: c:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_13h25_teste-real-e2e-pos-fases-1-2-3
+[2026-09-14T16:27:00.293Z] Passo 1: Acessando a interface web da Saracota em http://localhost:3000...
+[2026-09-14T16:27:00.689Z] [BROWSER CONSOLE INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-09-14T16:27:00.910Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 (Not Found)
+[2026-09-14T16:27:01.638Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:27:01.642Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:27:01.664Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:27:01.670Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:27:04.343Z] Passo 2: Verificando e navegando para a tela de Cotações...
+[2026-09-14T16:27:04.506Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T16:27:04.544Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T16:27:04.706Z] [BROWSER CONSOLE LOG] [Fast Refresh] rebuilding
+[2026-09-14T16:27:05.371Z] [BROWSER CONSOLE LOG] [Fast Refresh] done in 665ms
+[2026-09-14T16:27:05.722Z] [BROWSER CONSOLE LOG] [Fast Refresh] rebuilding
+[2026-09-14T16:27:05.962Z] Passo 3: Digitando item real no Rascunho: "Cabo Flex 2.5mm" (Quantidade 1)...
+[2026-09-14T16:27:05.966Z] Input de item não encontrado diretamente. Verificando se já existem itens cadastrados...
+[2026-09-14T16:27:05.966Z] Passo 4: Clicando em "Cotar com Fornecedores"...
+[2026-09-14T16:27:06.087Z] [BROWSER CONSOLE LOG] [Fast Refresh] done in 365ms
+[2026-09-14T16:27:26.673Z] === INICIANDO TESTE REAL PONTA A PONTA PELA INTERFACE WEB DA SARACOTA ===
+[2026-09-14T16:27:26.674Z] Pasta de histórico criada: c:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_13h25_teste-real-e2e-pos-fases-1-2-3
+[2026-09-14T16:27:26.992Z] Passo 1: Acessando a interface web da Saracota em http://localhost:3000...
+[2026-09-14T16:27:27.544Z] [BROWSER CONSOLE INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-09-14T16:27:27.756Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 (Not Found)
+[2026-09-14T16:27:27.882Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:27:27.884Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:27:27.922Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:27:27.945Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:27:30.454Z] Passo 2: Digitando item no Rascunho de Cotação ("Cabo Flex 2.5mm")...
+[2026-09-14T16:27:35.976Z] [ERRO NO TESTE REAL] locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('button:has-text("Cotar com Fornecedores")').first()[22m
+
+    at C:\Users\User\.gemini\antigravity-ide\brain\62124b49-42ab-42c3-a836-ca04ede98a08\scratch\prepare_and_run_e2e.js:92:20
+[2026-09-14T16:27:40.458Z] [ERRO NO TESTE REAL] locator.waitFor: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('input[placeholder*="Digite o item"]').first() to be visible[22m
+
+    at C:\Users\User\.gemini\antigravity-ide\brain\62124b49-42ab-42c3-a836-ca04ede98a08\scratch\prepare_and_run_e2e.js:63:21
+[2026-09-14T16:28:01.929Z] === INICIANDO TESTE REAL PONTA A PONTA PELA INTERFACE WEB DA SARACOTA ===
+[2026-09-14T16:28:01.929Z] Pasta de histórico criada: c:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_13h25_teste-real-e2e-pos-fases-1-2-3
+[2026-09-14T16:28:02.312Z] Passo 1: Acessando a interface web da Saracota em http://localhost:3000...
+[2026-09-14T16:28:02.714Z] [BROWSER CONSOLE INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-09-14T16:28:02.921Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 (Not Found)
+[2026-09-14T16:28:03.068Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:28:03.078Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:28:03.115Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:28:03.117Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:28:05.631Z] Passo 2: Navegando para a aba Cotações na barra lateral...
+[2026-09-14T16:28:05.782Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T16:28:05.786Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T16:28:07.745Z] ✓ Tela de Cotações carregada.
+[2026-09-14T16:28:07.745Z] Passo 3: Digitando item no Rascunho de Cotação ("Cabo Flex 2.5mm")...
+[2026-09-14T16:28:17.753Z] [ERRO NO TESTE REAL] locator.waitFor: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('input[placeholder*="Digite o item"]').first() to be visible[22m
+
+    at C:\Users\User\.gemini\antigravity-ide\brain\62124b49-42ab-42c3-a836-ca04ede98a08\scratch\prepare_and_run_e2e.js:70:21
+[2026-09-14T16:29:58.046Z] === INICIANDO TESTE REAL PONTA A PONTA PELA INTERFACE WEB DA SARACOTA ===
+[2026-09-14T16:29:58.046Z] Pasta de histórico criada: c:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_13h25_teste-real-e2e-pos-fases-1-2-3
+[2026-09-14T16:29:58.379Z] Passo 1: Acessando a interface web da Saracota em http://localhost:3000...
+[2026-09-14T16:29:58.803Z] [BROWSER CONSOLE INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-09-14T16:29:59.026Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 (Not Found)
+[2026-09-14T16:29:59.156Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:29:59.157Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:29:59.187Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:29:59.190Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:30:01.719Z] Passo 2: Navegando para a aba Cotações na barra lateral...
+[2026-09-14T16:30:01.889Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T16:30:01.893Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T16:30:03.880Z] ✓ Tela de Cotações carregada.
+[2026-09-14T16:30:03.881Z] Passo 3: Digitando item no Rascunho de Cotação ("Cabo Flex 2.5mm")...
+[2026-09-14T16:30:13.886Z] [ERRO NO TESTE REAL] locator.waitFor: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('input[placeholder*="Digite o item"]').first() to be visible[22m
+
+    at C:\Users\User\.gemini\antigravity-ide\brain\62124b49-42ab-42c3-a836-ca04ede98a08\scratch\prepare_and_run_e2e.js:94:21
+[2026-09-14T16:34:47.138Z] === INICIANDO TESTE REAL PONTA A PONTA PELA INTERFACE WEB DA SARACOTA ===
+[2026-09-14T16:34:47.139Z] Pasta de histórico criada: c:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_13h25_teste-real-e2e-pos-fases-1-2-3
+[2026-09-14T16:34:47.538Z] Passo 1: Acessando a tela de login da Saracota em http://localhost:3000/login...
+[2026-09-14T16:34:47.855Z] [BROWSER CONSOLE INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-09-14T16:34:48.086Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 (Not Found)
+[2026-09-14T16:34:48.117Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:34:48.117Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:34:48.140Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:34:48.146Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:34:50.165Z] Passo 2: Efetuando login real na aplicação web (proprietario@saracota.com.br)...
+[2026-09-14T16:34:50.290Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:34:50.291Z] [BROWSER CONSOLE WARNING] Conexão ao Supabase Auth expirou/falhou para conta de teste. Entrando no modo de demonstração local.
+[2026-09-14T16:34:53.254Z] ✓ Login efetuado. URL atual: http://localhost:3000/painel
+[2026-09-14T16:34:53.255Z] Passo 3: Navegando para a página de Cotações via menu lateral...
+[2026-09-14T16:34:53.606Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T16:34:53.636Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T16:34:55.798Z] ✓ Tela de Cotações carregada. URL atual: http://localhost:3000/cotacoes
+[2026-09-14T16:34:55.799Z] Passo 4: Digitando item real no Rascunho: "Cabo Flex 2.5mm" (Quantidade 1)...
+[2026-09-14T16:34:56.439Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T16:34:57.882Z] ✓ Item "Cabo Flex 2.5mm" adicionado ao rascunho da Saracota.
+[2026-09-14T16:34:57.882Z] Passo 5: Clicando em "Cotar com Fornecedores"...
+[2026-09-14T16:34:59.433Z] Passo 6: Selecionando o fornecedor Cicalfer no modal...
+[2026-09-14T16:35:00.474Z] Passo 7: Clicando no botão de confirmação "Cotar"...
+[2026-09-14T16:35:30.490Z] [ERRO NO TESTE REAL] locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('button:has-text("Cotar ("), button:has-text("Cotar")').last()[22m
+[2m    - locator resolved to <button disabled type="button" class="inline-flex items-center justify-center transition-all duration-200 ease-smooth select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-sara-canvas disabled:opacity-50 disabled:pointer-events-none disabled:active:scale-100 active:scale-[0.97] active:brightness-95 cursor-pointer bg-brand hover:bg-brand-hover text-black font-semibold shadow-glow border border-amber-400/40 px-4 py-2.5 text-sm …>…</button>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    58 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is not enabled[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+    at C:\Users\User\.gemini\antigravity-ide\brain\62124b49-42ab-42c3-a836-ca04ede98a08\scratch\prepare_and_run_e2e.js:98:22
+[2026-09-14T16:35:49.860Z] === INICIANDO TESTE REAL PONTA A PONTA PELA INTERFACE WEB DA SARACOTA ===
+[2026-09-14T16:35:49.861Z] Pasta de histórico criada: c:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_13h25_teste-real-e2e-pos-fases-1-2-3
+[2026-09-14T16:35:50.213Z] Passo 1: Acessando a tela de login da Saracota em http://localhost:3000/login...
+[2026-09-14T16:35:50.605Z] [BROWSER CONSOLE INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-09-14T16:35:50.767Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 (Not Found)
+[2026-09-14T16:35:51.100Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:35:51.116Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:35:51.151Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:35:51.163Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:35:53.172Z] Passo 2: Efetuando login real na aplicação web (proprietario@saracota.com.br)...
+[2026-09-14T16:35:53.320Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:35:53.321Z] [BROWSER CONSOLE WARNING] Conexão ao Supabase Auth expirou/falhou para conta de teste. Entrando no modo de demonstração local.
+[2026-09-14T16:35:56.273Z] ✓ Login efetuado. URL atual: http://localhost:3000/painel
+[2026-09-14T16:35:56.273Z] Passo 3: Navegando para a página de Cotações via menu lateral...
+[2026-09-14T16:35:56.449Z] [BROWSER CONSOLE ERROR] Failed to load resource: net::ERR_CONNECTION_RESET
+[2026-09-14T16:35:56.450Z] [BROWSER CONSOLE ERROR] Failed to fetch RSC payload for http://localhost:3000/cotacoes. Falling back to browser navigation. ChunkLoadError: Loading chunk app/cotacoes/page failed.
+(error: http://localhost:3000/_next/static/chunks/app/cotacoes/page.js)
+    at __webpack_require__.f.j (http://localhost:3000/_next/static/chunks/webpack.js?v=1789403750238:852:29)
+    at http://localhost:3000/_next/static/chunks/webpack.js?v=1789403750238:155:40
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (http://localhost:3000/_next/static/chunks/webpack.js?v=1789403750238:154:67)
+    at fn.e (http://localhost:3000/_next/static/chunks/webpack.js?v=1789403750238:391:50)
+    at loadChunk (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:251:30)
+    at preloadModule (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:173:22)
+    at resolveModule (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:1819:17)
+    at processFullRow (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:1908:9)
+    at processBinaryChunk (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2078:7)
+    at progress (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2159:5)
+[2026-09-14T16:35:58.806Z] ✓ Tela de Cotações carregada. URL atual: http://localhost:3000/painel
+[2026-09-14T16:35:58.806Z] Passo 4: Digitando item real no Rascunho: "Cabo Flex 2.5mm" (Quantidade 1)...
+[2026-09-14T16:36:08.814Z] [ERRO NO TESTE REAL] locator.waitFor: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('input[placeholder*="Digite o item"]').first() to be visible[22m
+[2m    2 × waiting for "http://localhost:3000/cotacoes" navigation to finish...[22m
+
+    at C:\Users\User\.gemini\antigravity-ide\brain\62124b49-42ab-42c3-a836-ca04ede98a08\scratch\prepare_and_run_e2e.js:77:21
+[2026-09-14T16:36:26.309Z] === INICIANDO TESTE REAL PONTA A PONTA PELA INTERFACE WEB DA SARACOTA ===
+[2026-09-14T16:36:26.310Z] Pasta de histórico criada: c:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_13h25_teste-real-e2e-pos-fases-1-2-3
+[2026-09-14T16:36:26.623Z] Passo 1: Acessando a tela de login da Saracota em http://localhost:3000/login...
+[2026-09-14T16:36:29.651Z] [BROWSER UNCAUGHT ERROR] Invalid or unexpected token
+[2026-09-14T16:36:29.894Z] [BROWSER CONSOLE INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-09-14T16:36:30.044Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 (Not Found)
+[2026-09-14T16:36:32.035Z] Passo 2: Efetuando login real na aplicação web (proprietario@saracota.com.br)...
+[2026-09-14T16:37:02.091Z] [ERRO NO TESTE REAL] page.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('button[type="submit"]')[22m
+[2m    - locator resolved to <button disabled type="submit" class="inline-flex items-center transition-all duration-200 ease-smooth select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-sara-canvas disabled:opacity-50 disabled:pointer-events-none disabled:active:scale-100 active:scale-[0.97] active:brightness-95 cursor-pointer bg-brand hover:bg-brand-hover text-black font-semibold border border-amber-400/40 px-4 py-2.5 text-sm gap-2 rounded-xl min-h-[44p…>…</button>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    58 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is not enabled[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+    at C:\Users\User\.gemini\antigravity-ide\brain\62124b49-42ab-42c3-a836-ca04ede98a08\scratch\prepare_and_run_e2e.js:64:16
+[2026-09-14T16:37:18.214Z] === INICIANDO TESTE REAL PONTA A PONTA PELA INTERFACE WEB DA SARACOTA ===
+[2026-09-14T16:37:18.215Z] Pasta de histórico criada: c:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_13h25_teste-real-e2e-pos-fases-1-2-3
+[2026-09-14T16:37:18.565Z] Passo 1: Acessando a tela de login da Saracota em http://localhost:3000/login...
+[2026-09-14T16:37:18.976Z] [BROWSER CONSOLE INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-09-14T16:37:19.162Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 (Not Found)
+[2026-09-14T16:37:19.269Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:37:19.272Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:37:19.324Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:37:19.326Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:37:21.842Z] Passo 2: Efetuando login real na aplicação web (proprietario@saracota.com.br)...
+[2026-09-14T16:37:22.020Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:37:22.021Z] [BROWSER CONSOLE WARNING] Conexão ao Supabase Auth expirou/falhou para conta de teste. Entrando no modo de demonstração local.
+[2026-09-14T16:37:22.181Z] [BROWSER CONSOLE LOG] [Fast Refresh] rebuilding
+[2026-09-14T16:37:22.833Z] [BROWSER CONSOLE LOG] [Fast Refresh] done in 652ms
+[2026-09-14T16:37:24.971Z] ✓ Login efetuado. URL atual: http://localhost:3000/painel
+[2026-09-14T16:37:24.971Z] Passo 3: Navegando para a página de Cotações via menu lateral...
+[2026-09-14T16:37:25.037Z] [BROWSER CONSOLE LOG] [Fast Refresh] rebuilding
+[2026-09-14T16:37:26.417Z] [BROWSER CONSOLE LOG] [Fast Refresh] done in 1379ms
+[2026-09-14T16:37:26.870Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T16:37:26.878Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T16:37:27.521Z] ✓ Tela de Cotações carregada. URL atual: http://localhost:3000/cotacoes
+[2026-09-14T16:37:27.521Z] Passo 4: Digitando item real no Rascunho: "Cabo Flex 2.5mm" (Quantidade 1)...
+[2026-09-14T16:37:28.136Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T16:37:29.597Z] ✓ Item "Cabo Flex 2.5mm" adicionado ao rascunho da Saracota.
+[2026-09-14T16:37:29.597Z] Passo 5: Clicando em "Cotar com Fornecedores"...
+[2026-09-14T16:37:31.214Z] Passo 6: Selecionando o fornecedor Cicalfer no modal (toggle fornecedores com RPA)...
+[2026-09-14T16:37:32.008Z] ✓ Fornecedor selecionado.
+[2026-09-14T16:37:32.008Z] Passo 7: Clicando no botão de confirmação "Cotar"...
+[2026-09-14T16:38:02.021Z] [ERRO NO TESTE REAL] locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('button:has-text("Cotar ("), button:has-text("Cotar")').last()[22m
+[2m    - locator resolved to <button disabled type="button" class="inline-flex items-center justify-center transition-all duration-200 ease-smooth select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-sara-canvas disabled:opacity-50 disabled:pointer-events-none disabled:active:scale-100 active:scale-[0.97] active:brightness-95 cursor-pointer bg-brand hover:bg-brand-hover text-black font-semibold shadow-glow border border-amber-400/40 px-4 py-2.5 text-sm …>…</button>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    54 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is not enabled[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+    at C:\Users\User\.gemini\antigravity-ide\brain\62124b49-42ab-42c3-a836-ca04ede98a08\scratch\prepare_and_run_e2e.js:108:22
+[2026-09-14T16:38:17.202Z] === INICIANDO TESTE REAL PONTA A PONTA PELA INTERFACE WEB DA SARACOTA ===
+[2026-09-14T16:38:17.203Z] Pasta de histórico criada: c:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_13h25_teste-real-e2e-pos-fases-1-2-3
+[2026-09-14T16:38:17.581Z] Passo 1: Acessando a tela de login da Saracota em http://localhost:3000/login...
+[2026-09-14T16:38:18.045Z] [BROWSER CONSOLE INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-09-14T16:38:18.289Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 (Not Found)
+[2026-09-14T16:38:18.537Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:38:18.547Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:38:18.562Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:38:18.572Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:38:21.098Z] Passo 2: Efetuando login real na aplicação web (proprietario@saracota.com.br)...
+[2026-09-14T16:38:21.269Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:38:21.270Z] [BROWSER CONSOLE WARNING] Conexão ao Supabase Auth expirou/falhou para conta de teste. Entrando no modo de demonstração local.
+[2026-09-14T16:38:24.215Z] ✓ Login efetuado. URL atual: http://localhost:3000/painel
+[2026-09-14T16:38:24.216Z] Passo 3: Navegando para a página de Cotações via menu lateral...
+[2026-09-14T16:38:24.683Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T16:38:24.689Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T16:38:26.789Z] ✓ Tela de Cotações carregada. URL atual: http://localhost:3000/cotacoes
+[2026-09-14T16:38:26.789Z] Passo 4: Digitando item real no Rascunho: "Cabo Flex 2.5mm" (Quantidade 1)...
+[2026-09-14T16:38:27.429Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T16:38:28.883Z] ✓ Item "Cabo Flex 2.5mm" adicionado ao rascunho da Saracota.
+[2026-09-14T16:38:28.883Z] Passo 5: Clicando em "Cotar com Fornecedores"...
+[2026-09-14T16:38:30.471Z] Passo 6: Verificando seleção do fornecedor Cicalfer no modal...
+[2026-09-14T16:38:30.475Z] ✓ Fornecedor Cicalfer confirmado e ativo no modal.
+[2026-09-14T16:38:30.475Z] Passo 7: Clicando no botão de confirmação "Cotar"...
+[2026-09-14T16:38:30.550Z] [BROWSER CONSOLE LOG] [RESOLVE CART URL BEFORE CALL] {supplierId: 33e03495-100d-45a3-9e34-899de56b0ab1, supplierName: Cicalfer, rawCapturedUrl: https://www.cicalfer.com.br/carrinho, rawOfficialPortalUrl: https://cicalfer.com.br/}
+[2026-09-14T16:38:30.551Z] [BROWSER CONSOLE LOG] [CART_STRATEGY LOG] {supplier: Cicalfer, strategy: CART_STRATEGY: manual_fallback_no_cart_link, reason: Plataforma SPA exige auth POST individual por sess…Lista cotada completa exibida no modal Sara Cota., resolvedUrl: https://www.cicalfer.com.br}
+[2026-09-14T16:38:30.551Z] [BROWSER CONSOLE LOG] [RPA DEBUG URL PERSISTED] {fornecedores: Array(1)}
+[2026-09-14T16:38:30.552Z] [BROWSER CONSOLE LOG] [DB JOB INVALIDAÇÃO] Cotações anteriores marcadas como expiradas ao iniciar nova cotação.
+[2026-09-14T16:38:30.608Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 401 ()
+[2026-09-14T16:38:30.608Z] [BROWSER CONSOLE WARNING] [DB WARNING] Inserção de cotação no Supabase falhou (usando armazenamento em memória local): new row violates row-level security policy for table "cotacoes"
+[2026-09-14T16:38:32.523Z] Passo 8: Capturando Print 01: 01-modal-progresso-cotacao.png...
+[2026-09-14T16:38:32.611Z] ✓ Print 01 salvo em: c:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_13h25_teste-real-e2e-pos-fases-1-2-3\prints\01-modal-progresso-cotacao.png
+[2026-09-14T16:38:32.611Z] Passo 9: Aguardando robô RPA processar cotação no Cicalfer (polling de progresso)...
+[2026-09-14T16:38:33.819Z] [BROWSER CONSOLE LOG] Automação RPA iniciada com sucesso: {sucesso: true, status: processamento iniciado, mensagem: Processamento de cotação com robôs RPA iniciado em segundo plano para a cotação cot-1789403910551., cotacaoId: cot-1789403910551, timestamp: 2026-09-14T16:38:33.811Z}
+[2026-09-14T16:38:33.820Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789403910551/processar -> {"sucesso":true,"status":"processamento iniciado","mensagem":"Processamento de cotação com robôs RPA iniciado em segundo plano para a cotação cot-1789403910551.","cotacaoId":"cot-1789403910551","timestamp":"2026-09-14T16:38:33.811Z"}
+[2026-09-14T16:38:35.676Z] Aguardando progresso RPA (Tentativa 1/30)...
+[2026-09-14T16:38:37.872Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789403910551/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":1,"percentualConcluido":50,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B..."],"cotacaoId":"cot-1789403910551","timestamp":"2026-09-14T16:38:33.931Z"}
+[2026-09-14T16:38:38.701Z] Aguardando progresso RPA (Tentativa 2/30)...
+[2026-09-14T16:38:39.846Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789403910551/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":1,"percentualConcluido":50,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B..."],"cotacaoId":"cot-1789403910551","timestamp":"2026-09-14T16:38:33.931Z"}
+[2026-09-14T16:38:41.722Z] Aguardando progresso RPA (Tentativa 3/30)...
+[2026-09-14T16:38:41.722Z] Acessando o carrinho do Cicalfer para capturar Print 02...
+[2026-09-14T16:38:42.856Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789403910551/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":1,"percentualConcluido":50,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B..."],"cotacaoId":"cot-1789403910551","timestamp":"2026-09-14T16:38:33.931Z"}
+[2026-09-14T16:38:45.291Z] ✓ Print 02 (Carrinho Cicalfer) salvo em: c:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_13h25_teste-real-e2e-pos-fases-1-2-3\prints\02-carrinho-fornecedor-cicalfer.png
+[2026-09-14T16:38:45.850Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789403910551/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":1,"percentualConcluido":50,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B..."],"cotacaoId":"cot-1789403910551","timestamp":"2026-09-14T16:38:33.931Z"}
+[2026-09-14T16:38:48.302Z] Aguardando progresso RPA (Tentativa 4/30)...
+[2026-09-14T16:38:48.865Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789403910551/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":1,"percentualConcluido":50,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B..."],"cotacaoId":"cot-1789403910551","timestamp":"2026-09-14T16:38:33.931Z"}
+[2026-09-14T16:38:51.324Z] Aguardando progresso RPA (Tentativa 5/30)...
+[2026-09-14T16:38:51.852Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789403910551/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":1,"percentualConcluido":50,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B...","[Cicalfer] 🔍 Cotando e ajustando quantidade em lote: Cabo Flex 2.5mm..."],"cotacaoId":"cot-1789403910551","timestamp":"2026-09-14T16:38:51.770Z"}
+[2026-09-14T16:38:54.340Z] Aguardando progresso RPA (Tentativa 6/30)...
+[2026-09-14T16:38:54.850Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789403910551/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":1,"percentualConcluido":50,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B...","[Cicalfer] 🔍 Cotando e ajustando quantidade em lote: Cabo Flex 2.5mm..."],"cotacaoId":"cot-1789403910551","timestamp":"2026-09-14T16:38:51.770Z"}
+[2026-09-14T16:38:57.356Z] Aguardando progresso RPA (Tentativa 7/30)...
+[2026-09-14T16:38:57.857Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789403910551/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":1,"percentualConcluido":50,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B...","[Cicalfer] 🔍 Cotando e ajustando quantidade em lote: Cabo Flex 2.5mm...","[Cicalfer] 🛒 Lendo dados do carrinho (itemContainer por itemContainer)..."],"cotacaoId":"cot-1789403910551","timestamp":"2
+[2026-09-14T16:39:00.371Z] Aguardando progresso RPA (Tentativa 8/30)...
+[2026-09-14T16:39:00.853Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789403910551/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":1,"percentualConcluido":50,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B...","[Cicalfer] 🔍 Cotando e ajustando quantidade em lote: Cabo Flex 2.5mm...","[Cicalfer] 🛒 Lendo dados do carrinho (itemContainer por itemContainer)..."],"cotacaoId":"cot-1789403910551","timestamp":"2
+[2026-09-14T16:39:03.379Z] Aguardando progresso RPA (Tentativa 9/30)...
+[2026-09-14T16:39:03.857Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789403910551/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":1,"percentualConcluido":50,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B...","[Cicalfer] 🔍 Cotando e ajustando quantidade em lote: Cabo Flex 2.5mm...","[Cicalfer] 🛒 Lendo dados do carrinho (itemContainer por itemContainer)..."],"cotacaoId":"cot-1789403910551","timestamp":"2
+[2026-09-14T16:39:06.393Z] Aguardando progresso RPA (Tentativa 10/30)...
+[2026-09-14T16:39:06.856Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789403910551/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":1,"percentualConcluido":50,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B...","[Cicalfer] 🔍 Cotando e ajustando quantidade em lote: Cabo Flex 2.5mm...","[Cicalfer] 🛒 Lendo dados do carrinho (itemContainer por itemContainer)..."],"cotacaoId":"cot-1789403910551","timestamp":"2
+[2026-09-14T16:39:09.407Z] Aguardando progresso RPA (Tentativa 11/30)...
+[2026-09-14T16:39:09.850Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789403910551/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":1,"percentualConcluido":50,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B...","[Cicalfer] 🔍 Cotando e ajustando quantidade em lote: Cabo Flex 2.5mm...","[Cicalfer] 🛒 Lendo dados do carrinho (itemContainer por itemContainer)..."],"cotacaoId":"cot-1789403910551","timestamp":"2
+[2026-09-14T16:39:12.425Z] Aguardando progresso RPA (Tentativa 12/30)...
+[2026-09-14T16:39:12.856Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789403910551/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":1,"percentualConcluido":50,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B...","[Cicalfer] 🔍 Cotando e ajustando quantidade em lote: Cabo Flex 2.5mm...","[Cicalfer] 🛒 Lendo dados do carrinho (itemContainer por itemContainer)..."],"cotacaoId":"cot-1789403910551","timestamp":"2
+[2026-09-14T16:39:15.439Z] Aguardando progresso RPA (Tentativa 13/30)...
+[2026-09-14T16:39:15.851Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789403910551/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":1,"percentualConcluido":50,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B...","[Cicalfer] 🔍 Cotando e ajustando quantidade em lote: Cabo Flex 2.5mm...","[Cicalfer] 🛒 Lendo dados do carrinho (itemContainer por itemContainer)..."],"cotacaoId":"cot-1789403910551","timestamp":"2
+[2026-09-14T16:39:18.451Z] Aguardando progresso RPA (Tentativa 14/30)...
+[2026-09-14T16:39:18.857Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789403910551/status -> {"sucesso":true,"status":"aguardando_revisao","itensProcessados":1,"totalItens":1,"percentualConcluido":100,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B...","[Cicalfer] 🔍 Cotando e ajustando quantidade em lote: Cabo Flex 2.5mm...","[Cicalfer] 🛒 Lendo dados do carrinho (itemContainer por itemContainer)...","⚠️ [ERRO EXTRAÇÃO CICALFER] Tabela de 
+[2026-09-14T16:39:18.945Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:39:19.069Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:39:21.469Z] Aguardando progresso RPA (Tentativa 15/30)...
+[2026-09-14T16:39:24.488Z] Aguardando progresso RPA (Tentativa 16/30)...
+[2026-09-14T16:39:27.499Z] Aguardando progresso RPA (Tentativa 17/30)...
+[2026-09-14T16:39:30.509Z] Aguardando progresso RPA (Tentativa 18/30)...
+[2026-09-14T16:39:33.527Z] Aguardando progresso RPA (Tentativa 19/30)...
+[2026-09-14T16:39:36.544Z] Aguardando progresso RPA (Tentativa 20/30)...
+[2026-09-14T16:39:39.554Z] Aguardando progresso RPA (Tentativa 21/30)...
+[2026-09-14T16:39:42.566Z] Aguardando progresso RPA (Tentativa 22/30)...
+[2026-09-14T16:39:45.575Z] Aguardando progresso RPA (Tentativa 23/30)...
+[2026-09-14T16:39:48.588Z] Aguardando progresso RPA (Tentativa 24/30)...
+[2026-09-14T16:39:51.592Z] Aguardando progresso RPA (Tentativa 25/30)...
+[2026-09-14T16:39:54.600Z] Aguardando progresso RPA (Tentativa 26/30)...
+[2026-09-14T16:39:57.606Z] Aguardando progresso RPA (Tentativa 27/30)...
+[2026-09-14T16:40:00.620Z] Aguardando progresso RPA (Tentativa 28/30)...
+[2026-09-14T16:40:03.631Z] Aguardando progresso RPA (Tentativa 29/30)...
+[2026-09-14T16:40:06.636Z] Aguardando progresso RPA (Tentativa 30/30)...
+[2026-09-14T16:40:08.697Z] Passo 10: Capturando Print 03: 03-preco-extraido-relatorio-saracota.png...
+[2026-09-14T16:40:08.741Z] ✓ Print 03 salvo em: c:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_13h25_teste-real-e2e-pos-fases-1-2-3\prints\03-preco-extraido-relatorio-saracota.png
+[2026-09-14T16:40:08.741Z] Passo 11: Capturando Print 04: 04-tela-final-cotacao-concluida.png...
+[2026-09-14T16:40:08.832Z] ✓ Print 04 salvo em: c:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_13h25_teste-real-e2e-pos-fases-1-2-3\prints\04-tela-final-cotacao-concluida.png
+[2026-09-14T16:40:08.832Z] === TESTE REAL PONTA A PONTA CONCLUÍDO COM SUCESSO ===
+[2026-09-14T16:40:09.334Z] === INICIANDO TESTE REAL PONTA A PONTA PELA INTERFACE WEB DA SARACOTA ===
+[2026-09-14T16:40:09.335Z] Pasta de histórico criada: c:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_13h25_teste-real-e2e-pos-fases-1-2-3
+[2026-09-14T16:40:09.807Z] Passo 1: Acessando a tela de login da Saracota em http://localhost:3000/login...
+[2026-09-14T16:40:10.391Z] [BROWSER CONSOLE INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2026-09-14T16:40:10.678Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 (Not Found)
+[2026-09-14T16:40:10.809Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:40:10.818Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:40:10.855Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:40:10.869Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:40:13.394Z] Passo 2: Efetuando login real na aplicação web (proprietario@saracota.com.br)...
+[2026-09-14T16:40:13.602Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 400 ()
+[2026-09-14T16:40:13.604Z] [BROWSER CONSOLE WARNING] Conexão ao Supabase Auth expirou/falhou para conta de teste. Entrando no modo de demonstração local.
+[2026-09-14T16:40:16.557Z] ✓ Login efetuado. URL atual: http://localhost:3000/painel
+[2026-09-14T16:40:16.557Z] Passo 3: Navegando para a página de Cotações via menu lateral...
+[2026-09-14T16:40:17.393Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T16:40:17.405Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T16:40:19.107Z] ✓ Tela de Cotações carregada. URL atual: http://localhost:3000/cotacoes
+[2026-09-14T16:40:19.107Z] Passo 4: Digitando item real no Rascunho: "Cabo Flex 2.5mm" (Quantidade 1)...
+[2026-09-14T16:40:19.828Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 404 ()
+[2026-09-14T16:40:21.198Z] ✓ Item "Cabo Flex 2.5mm" adicionado ao rascunho da Saracota.
+[2026-09-14T16:40:21.198Z] Passo 5: Clicando em "Cotar com Fornecedores"...
+[2026-09-14T16:40:22.780Z] Passo 6: Verificando seleção do fornecedor Cicalfer no modal...
+[2026-09-14T16:40:22.791Z] ✓ Fornecedor Cicalfer confirmado e ativo no modal.
+[2026-09-14T16:40:22.791Z] Passo 7: Clicando no botão de confirmação "Cotar"...
+[2026-09-14T16:40:22.901Z] [BROWSER CONSOLE LOG] [RESOLVE CART URL BEFORE CALL] {supplierId: 33e03495-100d-45a3-9e34-899de56b0ab1, supplierName: Cicalfer, rawCapturedUrl: https://www.cicalfer.com.br/carrinho, rawOfficialPortalUrl: https://cicalfer.com.br/}
+[2026-09-14T16:40:22.902Z] [BROWSER CONSOLE LOG] [CART_STRATEGY LOG] {supplier: Cicalfer, strategy: CART_STRATEGY: manual_fallback_no_cart_link, reason: Plataforma SPA exige auth POST individual por sess…Lista cotada completa exibida no modal Sara Cota., resolvedUrl: https://www.cicalfer.com.br}
+[2026-09-14T16:40:22.902Z] [BROWSER CONSOLE LOG] [RPA DEBUG URL PERSISTED] {fornecedores: Array(1)}
+[2026-09-14T16:40:22.903Z] [BROWSER CONSOLE LOG] [DB JOB INVALIDAÇÃO] Cotações anteriores marcadas como expiradas ao iniciar nova cotação.
+[2026-09-14T16:40:23.004Z] [BROWSER CONSOLE ERROR] Failed to load resource: the server responded with a status of 401 ()
+[2026-09-14T16:40:23.005Z] [BROWSER CONSOLE WARNING] [DB WARNING] Inserção de cotação no Supabase falhou (usando armazenamento em memória local): new row violates row-level security policy for table "cotacoes"
+[2026-09-14T16:40:23.191Z] [BROWSER CONSOLE LOG] Automação RPA iniciada com sucesso: {sucesso: true, status: processamento iniciado, mensagem: Processamento de cotação com robôs RPA iniciado em segundo plano para a cotação cot-1789404022901., cotacaoId: cot-1789404022901, timestamp: 2026-09-14T16:40:23.183Z}
+[2026-09-14T16:40:23.191Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789404022901/processar -> {"sucesso":true,"status":"processamento iniciado","mensagem":"Processamento de cotação com robôs RPA iniciado em segundo plano para a cotação cot-1789404022901.","cotacaoId":"cot-1789404022901","timestamp":"2026-09-14T16:40:23.183Z"}
+[2026-09-14T16:40:24.845Z] Passo 8: Capturando Print 01: 01-modal-progresso-cotacao.png...
+[2026-09-14T16:40:24.972Z] ✓ Print 01 salvo em: c:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_13h25_teste-real-e2e-pos-fases-1-2-3\prints\01-modal-progresso-cotacao.png
+[2026-09-14T16:40:24.973Z] Passo 9: Aguardando robô RPA processar cotação no Cicalfer (polling de progresso)...
+[2026-09-14T16:40:26.269Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789404022901/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":1,"percentualConcluido":50,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B..."],"cotacaoId":"cot-1789404022901","timestamp":"2026-09-14T16:40:23.353Z"}
+[2026-09-14T16:40:27.579Z] Aguardando progresso RPA (Tentativa 1/30)...
+[2026-09-14T16:40:29.237Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789404022901/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":1,"percentualConcluido":50,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B..."],"cotacaoId":"cot-1789404022901","timestamp":"2026-09-14T16:40:23.353Z"}
+[2026-09-14T16:40:30.152Z] Aguardando progresso RPA (Tentativa 2/30)...
+[2026-09-14T16:40:32.240Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789404022901/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":1,"percentualConcluido":50,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B..."],"cotacaoId":"cot-1789404022901","timestamp":"2026-09-14T16:40:23.353Z"}
+[2026-09-14T16:40:32.683Z] Aguardando progresso RPA (Tentativa 3/30)...
+[2026-09-14T16:40:32.683Z] Acessando o carrinho do Cicalfer para capturar Print 02...
+[2026-09-14T16:40:35.246Z] [API RESPONSE 200] http://localhost:3000/api/cotacoes/cot-1789404022901/status -> {"sucesso":true,"status":"processando","itensProcessados":0,"totalItens":1,"percentualConcluido":50,"mensagens":["Iniciando processamento autônomo no servidor para 1 fornecedor(es)...","[Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA...","[Cicalfer] 🔑 Autenticando e selecionando Filial B2B..."],"cotacaoId":"cot-1789404022901","timestamp":"2026-09-14T16:40:23.353Z"}
+[2026-09-14T16:40:36.777Z] ✓ Print 02 (Carrinho Cicalfer) salvo em: c:\Users\User\Desktop\Saracota\docs\historico\2026-09-14_13h25_teste-real-e2e-pos-fases-1-2-3\prints\02-carrinho-fornecedor-cicalfer.png
