@@ -1,0 +1,1672 @@
+[
+  {
+    "method": "GET",
+    "url": "https://api.construja.com.br/v1/vitrines/home?",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "access-control-max-age": "86400",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "cliente-id": "undefined",
+      "filial-id": "",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/10114",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/102901",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/10124",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/10130",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/10135",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/10137",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/10126",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/10117",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/10121",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/10119",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/10125",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/10113",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/10112",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/10120",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/10123",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/10138",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/10118",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/10122",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/10116",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/10115",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/121144",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/121117",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/121131",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/121118",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/121145",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/107503",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/121114",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/121130",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/107508",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/107507",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/107506",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/121115",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/121143",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/154195",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/121116",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/121129",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/121120",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/107505",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/121119",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/107504",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/120560",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/127547",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/127546",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/120558",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/105453",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/127544",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/120559",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/118418",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/127549",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/118417",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/127548",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/113124",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/120561",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/128330",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/128331",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/127545",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/128332",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/128333",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/127550",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/127551",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/132149",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/139295",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/120492",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/132153",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/120491",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/120490",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/120437",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/120452",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/132171",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/137111",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/105396",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/105394",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/137114",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/137113",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/120457",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/137112",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/132170",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/120493",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/132360",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/135414",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/101174",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/101413",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/101411",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/101404",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/101155",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/101431",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/101440",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/101410",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/101437",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/101392",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/101415",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/101430",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/101436",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/101412",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/101442",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/101405",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/101367",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/101438",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/101439",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://cdn.construja.com.br/v1/produtos/101426",
+    "headers": {
+      "access-control-max-age": "86400",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "accept-language": "pt-BR",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "sec-ch-ua-mobile": "?0",
+      "app": "VCOM",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "postData": null
+  },
+  {
+    "method": "POST",
+    "url": "https://ad.doubleclick.net/ccm/s/collect?auid=1727712348.1789875248&gtm=45He69g1v831886916za200zd831886916xeaxf1&fmt=8",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "accept-language": "pt-BR",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://construja.com.br/_next/static/css/e41ee1d9c7413e84.css",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "accept-language": "pt-BR",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://construja.com.br/_next/static/css/8143e1212aed885f.css",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "accept-language": "pt-BR",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "postData": null
+  },
+  {
+    "method": "GET",
+    "url": "https://construja.com.br/_next/static/css/4b9a6acbe862c6ca.css",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://construja.com.br/",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Google Chrome\";v=\"153\", \"Not_A Brand\";v=\"8\", \"Chromium\";v=\"153\"",
+      "accept-language": "pt-BR",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "postData": null
+  }
+]

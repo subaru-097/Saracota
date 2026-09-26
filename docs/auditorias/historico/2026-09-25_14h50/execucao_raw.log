@@ -1,0 +1,28 @@
+[2026-09-25T17:49:22.202Z] === INICIANDO AUDITORIA DEFINITIVA DO ZERO: COFEMA B2B ===
+[2026-09-25T17:49:22.719Z] Fornecedor: Cofema (ID: 752e18bd-4f41-414a-8f66-0d8f538de99e)
+[2026-09-25T17:49:22.719Z] Usuário B2B: 43.313.798/0001-34
+[2026-09-25T17:49:22.987Z] Cotação criada no banco com ID: "a114d5f3-ab48-4dca-aa2e-7f93d86253fe"
+[2026-09-25T17:49:22.987Z] Passo 1: Executando processarCotacaoFornecedor no motor Saracota...
+[2026-09-25T17:49:23.028Z] [PROGRESS] [Cofema] 🚀 Iniciando Motor Central de Cotação RPA (cofema)...
+[2026-09-25T17:49:23.034Z] [PROGRESS] [Cofema] 🔑 Autenticando e selecionando Filial B2B...
+[2026-09-25T17:50:17.834Z] [PROGRESS] [Cofema] 🔍 Cotando e ajustando quantidade em lote: Chave Inglesa 12 Brasfort...
+[2026-09-25T17:50:27.756Z] [PROGRESS] [Cofema] 🛒 Lendo dados do carrinho (itemContainer por itemContainer)...
+[2026-09-25T17:50:30.842Z] [PROGRESS] [Cofema] ❌ [FALHA DE INTEGRIDADE] Leitura do carrinho DOM real falhou ou retornou 0 itens. Cotação abortada com erro.
+[2026-09-25T17:50:31.399Z] === OBJETO BRUTO DO PROCESSAMENTO ANTES DA PERSISTÊNCIA ===
+[2026-09-25T17:50:31.399Z] {
+  "cotacaoId": "a114d5f3-ab48-4dca-aa2e-7f93d86253fe",
+  "fornecedorId": "752e18bd-4f41-414a-8f66-0d8f538de99e",
+  "fornecedorNome": "Cofema",
+  "sucesso": false,
+  "tempoTotalMs": 68292,
+  "itensProcessados": [
+    {
+      "itemPedido": "Chave Inglesa 12 Brasfort",
+      "status": "NAO_ENCONTRADO",
+      "confianca": 0,
+      "preco": 0,
+      "fornecedorId": "752e18bd-4f41-414a-8f66-0d8f538de99e"
+    }
+  ]
+}
+[2026-09-25T17:50:31.399Z] ❌ ERRO: O processamento falhou! Verifique a integridade do carrinho real.

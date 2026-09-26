@@ -1,0 +1,82 @@
+{
+  "fornecedor": "Cofema Atacavista",
+  "timestamp": "2026-09-17T18:59:28.742Z",
+  "cnpjAcesso": "43.313.798/0001-34",
+  "statusExecucao": "CONCLUIDO_COM_SUCESSO",
+  "itensCotados": [
+    {
+      "id": 1,
+      "termoOriginal": "6x DUCHA LORENZETTI BELLA DUCHA 127V",
+      "queryBusca": "BELLA DUCHA 127V",
+      "quantidadePedida": 6,
+      "quantidadeRealComprada": 6,
+      "produtoEncontrado": "LORENZETTI",
+      "sku": "300497",
+      "multiploAplicado": 1,
+      "precoUnitario": 74.72,
+      "totalItem": 448.32,
+      "status": "OK"
+    },
+    {
+      "id": 2,
+      "termoOriginal": "4x BIANCO 900G",
+      "queryBusca": "BIANCO 900G",
+      "quantidadePedida": 4,
+      "quantidadeRealComprada": 4,
+      "produtoEncontrado": "OTTO BAUMGART",
+      "sku": "410409",
+      "multiploAplicado": 1,
+      "precoUnitario": 24.57,
+      "totalItem": 98.28,
+      "status": "OK"
+    },
+    {
+      "id": 3,
+      "termoOriginal": "7x DUCHA LORENZETTI MAXI DUCHA 127V",
+      "queryBusca": "MAXI DUCHA 127V",
+      "quantidadePedida": 7,
+      "quantidadeRealComprada": 7,
+      "produtoEncontrado": "LORENZETTI",
+      "sku": "149853",
+      "multiploAplicado": 1,
+      "precoUnitario": 74.72,
+      "totalItem": 523.04,
+      "status": "OK"
+    },
+    {
+      "id": 4,
+      "termoOriginal": "12x ALICATE BOMBA D AGUA MTX 10",
+      "queryBusca": "ALICATE BOMBA",
+      "quantidadePedida": 12,
+      "quantidadeRealComprada": 0,
+      "produtoEncontrado": "PERKON",
+      "sku": "406042",
+      "multiploAplicado": 1,
+      "precoUnitario": 33.99,
+      "totalItem": 0,
+      "status": "DIVERGENCIA_DE_MARCA",
+      "motivo": "Marca solicitada \"MTX\" não coincide com os produtos disponíveis (\"PERKON\")."
+    },
+    {
+      "id": 5,
+      "termoOriginal": "5x CONDUITE CORR AM FORTLEV 25MM 50M",
+      "queryBusca": "CONDUITE 25MM",
+      "quantidadePedida": 5,
+      "quantidadeRealComprada": 0,
+      "produtoEncontrado": "CONDUITES CORRUGADO",
+      "sku": "74179",
+      "multiploAplicado": 1,
+      "precoUnitario": 99.95,
+      "totalItem": 0,
+      "status": "DIVERGENCIA_DE_MARCA",
+      "motivo": "Marca solicitada \"FORTLEV\" não coincide com os produtos disponíveis (\"CONDUITES CORRUGADO\")."
+    }
+  ],
+  "resumoExecucao": {
+    "totalItens": 3,
+    "totalPedido": 0,
+    "cartUrl": "https://www.cofema.com.br/page/pedidos",
+    "totalCalculado": 1069.6399999999999,
+    "requerRevisaoManual": false
+  }
+}

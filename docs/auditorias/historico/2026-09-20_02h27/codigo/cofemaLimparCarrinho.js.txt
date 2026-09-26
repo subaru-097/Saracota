@@ -1,0 +1,88 @@
+/**
+ * ==============================================================================
+ * 🔒 TRAVA DE INTEGRIDADE E MAPEAMENTO DEFINITIVO — COFEMA (ATACADISTA B2B)
+ * ==============================================================================
+ * STATUS: LOCKED / TRAVADO E VALIDADO
+ * EVIDÊNCIA: Carrinho #130620 (6 itens, R$ 286,91 — Batimento 100% Exato no DOM)
+ * DOCUMENTAÇÃO DE REFERÊNCIA: docs/mapeamentos/cofema-locked.md
+ * 
+ * ATENÇÃO - REGRAS DE ISOLAMENTO:
+ * 1. A LÓGICA E A SEQUÊNCIA DE PASSOS (login B2B -> busca escopada na grade -> 
+ *    adição -> navegação /page/pedidos -> aba Carrinhos -> expansão do modal 
+ *    Detalhes do Pedido -> rolagem scrollTop do container -> parser de cards com 
+ *    badges 'Abre' / 'Não Abre') SÃO DEFINITIVAS E CONGELADAS.
+ * 2. Alterações, novas funcionalidades ou refatorações de outros fornecedores 
+ *    (Cicalfer, Construjá, Megalast, etc.) JAMAIS devem alterar este arquivo.
+ * 3. Somente seletores HTML (classes CSS, IDs, atributos do DOM) podem ser 
+ *    ajustados futuramente caso o portal B2B da Cofema modifique seu layout.
+ * ==============================================================================
+ */
+
+function calcularSimilaridade(str1, str2) {
+  const s1 = (str1 || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const s2 = (str2 || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const words1 = s1.split(/\s+/).filter(w => w.length > 2);
+  const words2 = s2.split(/\s+/).filter(w => w.length > 2);
+  if (words1.length === 0 || words2.length === 0) return 0;
+  let matches = 0;
+  for (const w1 of words1) {
+    if (words2.some(w2 => w2.includes(w1) || w1.includes(w2))) {
+      matches++;
+    }
+  }
+  return matches / Math.max(words1.length, words2.length);
+}
+
+function validarMarca(marcaEsperada, tituloProduto) {
+  if (!marcaEsperada) return true;
+  const brandNorm = marcaEsperada.toLowerCase().trim();
+  const titleNorm = tituloProduto.toLowerCase().trim();
+  if (brandNorm.includes('lorenzetti')) return titleNorm.includes('lorenzetti') || titleNorm.includes('lorenz');
+  if (brandNorm.includes('fortlev')) return titleNorm.includes('fortlev');
+  if (brandNorm.includes('mtx')) return titleNorm.includes('mtx');
+  if (brandNorm.includes('otto') || brandNorm.includes('vedacit')) return titleNorm.includes('otto') || titleNorm.includes('bianco') || titleNorm.includes('vedacit');
+  return titleNorm.includes(brandNorm);
+}
+
+function validarCorrelacaoSemantica(termoPedido, tituloSite) {
+  const normPedido = (termoPedido || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const normSite = (tituloSite || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  
+  const isDuchaPedido = normPedido.includes('ducha') || normPedido.includes('chuveiro');
+  const isDuchaSite = normSite.includes('ducha') || normSite.includes('chuveiro') || normSite.includes('resist');
+  if (isDuchaPedido && !isDuchaSite) return false;
+
+  const isBiancoPedido = normPedido.includes('bianco') || normPedido.includes('impermeabilizante');
+  const isBiancoSite = normSite.includes('bianco') || normSite.includes('otto') || normSite.includes('impermeab');
+  if (isBiancoPedido && !isBiancoSite) return false;
+
+  const isAlicatePedido = normPedido.includes('alicate');
+  const isAlicateSite = normSite.includes('alicate');
+  if (isAlicatePedido && !isAlicateSite) return false;
+
+  const isConduitePedido = normPedido.includes('conduite') || normPedido.includes('corrugado');
+  const isConduiteSite = normSite.includes('conduite') || normSite.includes('corrugado') || normSite.includes('eletroduto');
+  if (isConduitePedido && !isConduiteSite) return false;
+
+  return true;
+}
+
+async function garantirCarrinhoFechado(page) {
+  try {
+    const closeBtn = page.locator('button[aria-label="Close"], button[aria-label="Fechar"], svg.lucide-x, .offcanvas-header button.btn-close').first();
+    if (await closeBtn.isVisible({ timeout: 1500 }).catch(() => false)) {
+      await closeBtn.click({ force: true }).catch(() => {});
+      await page.waitForTimeout(1000);
+    }
+  } catch (e) {}
+}
+
+/**
+ * 🔒 FLUXO DE LOGIN B2B COFEMA
+ */
+async function cofemaRealizarLogin(page, config, credentials) {
+  const sel = config.selectors || {};
+  const baseUrl = config.url_site || 'https://www.cofema.com.br/';
+
+  console.log(`[${new Date().toISOString()}] [CofemaExtractor] Executando login B2B Cofema (${credentials.user})...`);
+  await page.goto(baseUrl, { waitUntil: 'domcontentl

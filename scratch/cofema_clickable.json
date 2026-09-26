@@ -1,0 +1,16 @@
+[
+  {
+    "tag": "DIV",
+    "id": "",
+    "class": "icon",
+    "text": "!",
+    "href": ""
+  },
+  {
+    "tag": "A",
+    "id": "",
+    "class": "retry",
+    "text": "Tentar novamente",
+    "href": "https://www.cofema.com.br/"
+  }
+]

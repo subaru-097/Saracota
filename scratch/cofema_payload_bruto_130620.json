@@ -1,0 +1,66 @@
+{
+  "totalHeader": 286.91,
+  "itemCount": 6,
+  "items": [
+    {
+      "codigo": "74179",
+      "nomeProduto": "Itens do Pedido",
+      "quantidade": 1,
+      "badge": "Não Abre",
+      "embalagem": "50 M.",
+      "precoUnitario": 2,
+      "totalItem": 99.95,
+      "rawText": "Itens do Pedido | Exibir preço unitário | COND CORR.AM.TIGRE(C)3/4X50M 25MM | Código: 74179 | Quantidade: 1 | Não Abre | 1 un. | TOTAL | R$ 99,95 | ALICATE BOMBA DAGUA IRWIN 8\" 13942 | Código: 250562 | Quantidade: 1 | Abre | 5 un. | TOTAL | R$ 63,80 | DUCHA LORENZ.MAXI-DUCHA 3T 127V 5500W | Código: 149853 | Quantidade: 1 | Abre | 21 un. | TOTAL | 15.00 % | R$ 74,72 | R$ 87,90 | OTTO B. BIANCO 900G SACHE | Código: 410409 | Quantidade: 1 | Abre | 6 un. | TOTAL | 15.00 % | R$ 24,57 | R$ 28,90 | Expira em 1 dia 3h e 57min | RESIST TIPO BELLA DUCHA FASH.127V5500W | Código: 418416 | Quantidade: 1 | Não Abre | 1 un. | TOTAL | R$ 12,89 | RESIST TIPO BELLA DUCHA 127V5500W 451 | Código: 401301 | Quantidade: 1 | Não Abre | 1 un. | TOTAL | R$ 10,99 | Quantidade Itens: | 6"
+    },
+    {
+      "codigo": "250562",
+      "nomeProduto": "ALICATE BOMBA DAGUA IRWIN 8\" 13942",
+      "quantidade": 1,
+      "badge": "Abre",
+      "embalagem": "5 un.",
+      "precoUnitario": 12.76,
+      "totalItem": 63.8,
+      "rawText": "ALICATE BOMBA DAGUA IRWIN 8\" 13942 | Código: 250562 | Quantidade: 1 | Abre | 5 un. | TOTAL | R$ 63,80"
+    },
+    {
+      "codigo": "149853",
+      "nomeProduto": "DUCHA LORENZ.MAXI-DUCHA 3T 127V 5500W",
+      "quantidade": 1,
+      "badge": "Abre",
+      "embalagem": "21 un.",
+      "precoUnitario": 3.56,
+      "totalItem": 74.72,
+      "rawText": "DUCHA LORENZ.MAXI-DUCHA 3T 127V 5500W | Código: 149853 | Quantidade: 1 | Abre | 21 un. | TOTAL | 15.00 % | R$ 74,72 | R$ 87,90"
+    },
+    {
+      "codigo": "410409",
+      "nomeProduto": "OTTO B. BIANCO 900G SACHE",
+      "quantidade": 1,
+      "badge": "Abre",
+      "embalagem": "6 un.",
+      "precoUnitario": 4.1,
+      "totalItem": 24.57,
+      "rawText": "OTTO B. BIANCO 900G SACHE | Código: 410409 | Quantidade: 1 | Abre | 6 un. | TOTAL | 15.00 % | R$ 24,57 | R$ 28,90 | Expira em 1 dia 3h e 57min"
+    },
+    {
+      "codigo": "418416",
+      "nomeProduto": "RESIST TIPO BELLA DUCHA FASH.127V5500W",
+      "quantidade": 1,
+      "badge": "Não Abre",
+      "embalagem": "1 un.",
+      "precoUnitario": 12.89,
+      "totalItem": 12.89,
+      "rawText": "RESIST TIPO BELLA DUCHA FASH.127V5500W | Código: 418416 | Quantidade: 1 | Não Abre | 1 un. | TOTAL | R$ 12,89"
+    },
+    {
+      "codigo": "401301",
+      "nomeProduto": "RESIST TIPO BELLA DUCHA 127V5500W 451",
+      "quantidade": 1,
+      "badge": "Não Abre",
+      "embalagem": "1 un.",
+      "precoUnitario": 10.99,
+      "totalItem": 10.99,
+      "rawText": "RESIST TIPO BELLA DUCHA 127V5500W 451 | Código: 401301 | Quantidade: 1 | Não Abre | 1 un. | TOTAL | R$ 10,99"
+    }
+  ]
+}

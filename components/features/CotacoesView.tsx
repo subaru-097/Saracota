@@ -206,8 +206,8 @@ export const CotacoesView: React.FC = () => {
   const temAutomacaoRpaDisponivel = useCallback((forn: any): boolean => {
     if (!forn) return false;
     const isRpaAtivo = forn.rpa_ativo === true || forn.rpaAtivo === true || forn.seletores?.rpa_ativo === true;
-    const hasConfigSlug = Boolean(forn.config_slug || forn.configSlug || forn.seletores?.config_slug);
-    const hasSeletoresConfig = Boolean(forn.seletores && (forn.seletores.login || forn.seletores.carrinho || forn.seletores.campo_email));
+    const hasConfigSlug = Boolean(forn.config_slug || forn.configSlug || forn.seletores?.config_slug || forn.seletores?.slug);
+    const hasSeletoresConfig = Boolean(forn.seletores && (forn.seletores.login || forn.seletores.carrinho || forn.seletores.campo_email || forn.seletores.email_input || forn.seletores.selectors));
 
     return isRpaAtivo && (hasConfigSlug || hasSeletoresConfig);
   }, []);

@@ -1,0 +1,146 @@
+          const qtd = Number(itemAny.quantidade) || 1;
+
+          if (onProgressMsg) {
+            await onProgressMsg(`[${fornecedorNome}] 🔍 Cotando e ajustando quantidade em lote: ${nomeItem}...`);
+          }
+
+          const addRes = await quoteEngine.adicionarItem(page, activeConfig, { ...itemAny, termo: nomeItem, quantidade: qtd, itemIndex: itemIdx++ }).catch((err: any) => ({
+            termo: nomeItem,
+            tituloProduto: null,
+            status: 'FALHA',
+            erro: err.message
+          }));
+
+          itensAdicionadosMap.push(addRes);
+        }
+
+        if (onProgressMsg) {
+          await onProgressMsg(`[${fornecedorNome}] 🛒 Lendo dados do carrinho (itemContainer por itemContainer)...`);
+        }
+
+        const cartResult = await quoteEngine.extrairCarrinho(page, activeConfig);
+        const cartProdutos = cartResult.produtos || cartResult.itens || [];
+        const resumo = cartResult.resumo || {};
+        const totalCarrinho = resumo.totalPedido || cartResult.totalGeral || 0;
+        const cartUrl = cartResult.cartUrl || page.url();
+
+        // Tratamento de Resumo: Se a tabela de resumo não for encontrada ou totalPedido for <= 0, logar aviso e prosseguir
+        if (!resumo.resumoTabelaEncontrada || totalCarrinho <= 0) {
+          const errResumo = `[RPA AVISO ${fornecedorNome.toUpperCase()}] Resumo do pedido ou totalPedido zerado ou não localizado na página do carrinho (${cartUrl}). Processando com totais dos itens adicionados...`;
+          console.warn(`[${new Date().toISOString()}] ${errResumo}`);
+          if (onProgressMsg) {
+            await onProgressMsg(`⚠️ ${errResumo}`);
+          }
+        }
+
+        // Registrar no log do backend quaisquer erros de extração de itens individuais
+        if (cartResult.errosExtracao && cartResult.errosExtracao.length > 0) {
+          for (const errItem of cartResult.errosExtracao) {
+            console.error(`[${new Date().toISOString()}] ${errItem.mensagem}`);
+            if (onProgressMsg) {
+              await onProgressMsg(`⚠️ ${errItem.mensagem}`);
+            }
+          }
+        }
+
+        // 3a. Para cada produto pedido: Mapeamento 1-para-1 único com itens do carrinho (evitando duplicações por similaridade)
+        const usedCartIndices = new Set<number>();
+        let itemIdxLoop = 0;
+        let temFalhaIntegridade = false;
+
+        for (const itemObj of itensParaCotar) {
+          const itemAny = itemObj as any;
+          const nomeItem = typeof itemObj === 'string' ? itemObj : itemAny.material || itemAny.nomeOriginal || itemAny.texto || 'Material';
+          const reqQty = Number(itemAny.quantidade) || 1;
+          const addedInfo = itensAdicionadosMap[itemIdxLoop];
+          itemIdxLoop++;
+
+          const requestedSku = String(itemAny.skuFornecedor || itemAny.sku || itemAny.codigo_fornecedor || itemAny.codigo || addedInfo?.sku || '').trim();
+          const targetRef = (addedInfo?.tituloProduto || nomeItem).match(/\b\d{4,7}\b/)?.[0] || '';
+          const tokens = nomeItem.toLowerCase().split(/\s+/).filter((w: string) => w.length >= 3);
+
+          let chosenCpIdx = -1;
+
+          // Priority 0: Match exato por SKU/Código do Fornecedor no carrinho (ex: 300500)
+          if (requestedSku) {
+            chosenCpIdx = cartProdutos.findIndex((cp: any, idx: number) => {
+              if (usedCartIndices.has(idx)) return false;
+              const cpCode = String(cp.codigoProduto || cp.codigo || cp.sku || '').trim();
+              const cpName = String(cp.nomeProduto || cp.nome || '').toLowerCase();
+              return cpCode === requestedSku || (cpCode.length >= 4 && requestedSku.includes(cpCode)) || (requestedSku.length >= 4 && cpName.includes(requestedSku));
+            });
+          }
+
+          // Priority 1: REF único (ex: REF: 11239 vs 300500) nos itens não utilizados
+          if (chosenCpIdx === -1 && targetRef) {
+            chosenCpIdx = cartProdutos.findIndex((cp: any, idx: number) => {
+              if (usedCartIndices.has(idx)) return false;
+              const cpCode = String(cp.codigoProduto || cp.codigo || cp.sku || '').toLowerCase();
+              const cpName = (cp.nomeProduto || cp.nome || '').toLowerCase();
+              return cpCode.includes(targetRef) || cpName.includes(targetRef);
+            });
+          }
+
+          // Priority 2: Título exato capturado durante a navegação real
+          if (chosenCpIdx === -1 && targetTitle) {
+            chosenCpIdx = cartProdutos.findIndex((cp: any, idx: number) => {
+              if (usedCartIndices.has(idx)) return false;
+              const pName = (cp.nomeProduto || cp.nome || '').toLowerCase();
+              return pName.includes(targetTitle) || targetTitle.includes(pName);
+            });
+          }
+
+          // Priority 3: Maior pontuação de palavras-chave entre itens não utilizados
+          if (chosenCpIdx === -1) {
+            let bestScore = -1;
+            let bestIdx = -1;
+            cartProdutos.forEach((cp: any, idx: number) => {
+              if (usedCartIndices.has(idx)) return;
+              const pName = (cp.nomeProduto || cp.nome || '').toLowerCase();
+              if (pName.includes(nomeItem.toLowerCase()) || nomeItem.toLowerCase().includes(pName)) {
+                if (10 > bestScore) {
+                  bestScore = 10;
+                  bestIdx = idx;
+                }
+              }
+              const matchesCount = tokens.filter((w: string) => pName.includes(w)).length;
+              if (matchesCount > bestScore && matchesCount >= 2) {
+                bestScore = matchesCount;
+                bestIdx = idx;
+              }
+            });
+            if (bestIdx !== -1) {
+              chosenCpIdx = bestIdx;
+            }
+          }
+
+          let matchedItem: any = null;
+          if (chosenCpIdx !== -1) {
+            const candidate = cartProdutos[chosenCpIdx];
+            const candidateName = candidate?.nomeProduto || candidate?.nome || '';
+
+            // TRAVA DE CORRELAÇÃO SEMÂNTICA NO CARRINHO
+            const isCorrelated = (function(termoBuscado: string, tituloProduto: string): boolean {
+              if (!termoBuscado || !tituloProduto) return false;
+              const normBusca = termoBuscado.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+              const normTitulo = tituloProduto.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+              if (normBusca.includes('BIANCO') && !normTitulo.includes('BIANCO') && !normTitulo.includes('VEDACIT') && !normTitulo.includes('IMPERMEABILIZANTE') && !normTitulo.includes('OTTO')) return false;
+              if (normBusca.includes('ALICATE') && !normTitulo.includes('ALICATE')) return false;
+              if ((normBusca.includes('CONDUITE') || normBusca.includes('CORRUGADO')) && !normTitulo.includes('CONDUITE') && !normTitulo.includes('CORRUGADO') && !normTitulo.includes('ELETRODUTO')) return false;
+              if ((normBusca.includes('DUCHA') || normBusca.includes('CHUVEIRO')) && !normTitulo.includes('DUCHA') && !normTitulo.includes('CHUVEIRO')) return false;
+
+              const tokensBusca = normBusca.split(/\s+/).filter(t => t.length > 1);
+              const tokensTitulo = normTitulo.split(/\s+/).filter(t => t.length > 1);
+              if (tokensBusca.length === 0 || tokensTitulo.length === 0) return false;
+              let matches = 0;
+              for (const tb of tokensBusca) {
+                if (tokensTitulo.some(tt => tt.includes(tb) || tb.includes(tt))) matches++;
+              }
+              return (2.0 * matches) / (tokensBusca.length + tokensTitulo.length) >= 0.15;
+            })(nomeItem, candidateName);
+
+            if (isCorrelated || (targetTitle && candidateName.toLowerCase().includes(targetTitle.toLowerCase()))) {
+              matchedItem = candidate;
+              usedCartIndices.add(chosenCpIdx);
+            }

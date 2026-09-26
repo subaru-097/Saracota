@@ -1,0 +1,195 @@
+ => false)) {
+      console.log(`[CofemaExtractor ✅ ADD TO CART LOG] Adicionando ao carrinho CARD CONFIRMADO: "${melhorCandidato.title}" (SKU: ${melhorCandidato.sku}, Qtd: ${qAjustada}, Preço Unit: R$ ${melhorCandidato.precoUnitario.toFixed(2)})`);
+      await addBtn.click({ force: true });
+      await page.waitForTimeout(3000);
+    } else {
+      console.error(`❌ [ERRO B2B] Botão Adicionar não visível dentro do card de "${melhorCandidato.title}". NENHUM ITEM ADICIONADO.`);
+      return {
+        termo: rawTerm,
+        qPedida,
+        status: 'FALHA_BOTAO',
+        erro: 'Botão Adicionar ausente no card do produto',
+        unitPriceStr: 'R$ 0,00'
+      };
+    }
+  } else {
+    console.log(`[CofemaExtractor] Item ${melhorCandidato.sku} (${melhorCandidato.title}) já está presente no carrinho.`);
+  }
+
+  await garantirCarrinhoFechado(page);
+
+  const divergenciaMarca = Boolean(marcaEsperada && melhorResultadoMatching?.divergencias?.some((d) => d.includes('Marca')));
+
+  return {
+    termo: searchTerm,
+    tituloProduto: melhorCandidato.title,
+    sku: melhorCandidato.sku,
+    qPedida,
+    loteSize: mult,
+    qAjustada,
+    precoUnitario: melhorCandidato.precoUnitario,
+    unitPriceStr: `R$ ${melhorCandidato.precoUnitario.toFixed(2)}`,
+    status: divergenciaMarca ? 'MARCA_SUBSTITUIDA' : 'ENCONTRADO',
+    marcaSubstituida: divergenciaMarca,
+    marcaSolicitada: marcaEsperada || null,
+    marcaCotada: melhorCandidato.title,
+  };
+}
+
+/**
+ * 🔒 FLUXO DE EXTRAÇÃO DO CARRINHO COFEMA DO DOM (GAVETA DO CARRINHO ATIVO DO PORTAL)
+ */
+async function cofemaExtrairCarrinho(page, config) {
+  console.log(`[${new Date().toISOString()}] [CofemaExtractor] Extraindo carrinho ativo da gaveta do header...`);
+  
+  if (!page.url().includes('cofema.com.br')) {
+    await page.goto('https://www.cofema.com.br/', { waitUntil: 'domcontentloaded', timeout: 35000 }).catch(() => {});
+    await page.waitForTimeout(2000);
+  }
+
+  await garantirCarrinhoFechado(page);
+
+  // Abrir gaveta do carrinho no header
+  const cartTrigger = page.locator('header button:has(svg), header a:has(svg)').first();
+  if (await cartTrigger.isVisible({ timeout: 3000 }).catch(() => false)) {
+    await cartTrigger.evaluate((el) => el.click()).catch(() => {});
+    await page.waitForTimeout(2000);
+  }
+
+  const cartData = await page.evaluate(() => {
+    const drawer = document.querySelector('[role="dialog"], [class*="drawer"], [class*="sheet"], [class*="offcanvas"], div[class*="cart"]') || document.body;
+    const text = drawer.innerText || '';
+
+    if (text.includes('vazio') || text.includes('Nenhum item') || text.includes('0 produtos')) {
+      return {
+        cartUrl: window.location.href,
+        containersFoundCount: 0,
+        produtos: [],
+        errosExtracao: [],
+        resumo: {
+          resumoTabelaEncontrada: true,
+          totalItens: 0,
+          despesaAcessoria: 0,
+          totalPedido: 0.00
+        }
+      };
+    }
+
+    const cardNodes = Array.from(drawer.querySelectorAll('div')).filter(d => (d.innerText || '').includes('SKU:') && (d.innerText || '').includes('R$'));
+    const items = [];
+    const seenSkus = new Set();
+
+    cardNodes.forEach(node => {
+      const itemText = node.innerText || '';
+      const skuMatch = itemText.match(/SKU:\s*(\d+)/i);
+      const sku = skuMatch ? skuMatch[1] : null;
+
+      if (sku && !seenSkus.has(sku)) {
+        seenSkus.add(sku);
+        const lines = itemText.split('\n').map(l => l.trim()).filter(Boolean);
+        const title = lines.find(l => !l.startsWith('SKU:') && !l.startsWith('R$') && l.length > 3) || lines[0] || 'Produto Cofema';
+
+        const inputEl = node.querySelector('input[type="number"], input[value]');
+        let qtd = 1;
+        if (inputEl && inputEl.value) {
+          qtd = parseInt(inputEl.value, 10) || 1;
+        } else {
+          const qtdMatch = itemText.match(/(\d+)\s*un/i);
+          if (qtdMatch) qtd = parseInt(qtdMatch[1], 10);
+        }
+
+        const prices = Array.from(itemText.matchAll(/R\$\s*([\d\.,]+)/gi)).map(m => parseFloat(m[1].replace(/\./g, '').replace(',', '.')));
+        let unitPrice = prices.length > 0 ? prices[0] : 0;
+        let totalVal = prices.length > 1 ? prices[1] : (unitPrice * Math.max(qtd, 1));
+
+        if (prices.length === 1 && qtd > 1) {
+          totalVal = unitPrice;
+          unitPrice = Math.round((totalVal / qtd) * 100) / 100;
+        }
+
+        items.push({
+          nomeProduto: title,
+          codigoProduto: sku,
+          quantidade: qtd,
+          precoUnitario: Math.round(unitPrice * 100) / 100,
+          totalItem: Math.round(totalVal * 100) / 100,
+          rawUnitPriceStr: `R$ ${unitPrice.toFixed(2)}`
+        });
+      }
+    });
+
+    const totalMatch = text.match(/Total\s*Carrinho:?\s*R\$\s*([\d\.,]+)/i) || text.match(/Total:?\s*R\$\s*([\d\.,]+)/i);
+    const totalPedido = totalMatch ? parseFloat(totalMatch[1].replace(/\./g, '').replace(',', '.')) : items.reduce((acc, i) => acc + i.totalItem, 0);
+
+    return {
+      cartUrl: window.location.href,
+      containersFoundCount: items.length,
+      produtos: items,
+      errosExtracao: [],
+      resumo: {
+        resumoTabelaEncontrada: true,
+        totalItens: items.length,
+        despesaAcessoria: 0,
+        totalPedido: Math.round(totalPedido * 100) / 100
+      }
+    };
+  });
+
+  console.log(`[CofemaExtractor] ${cartData.produtos.length} item(ns) extraído(s) do carrinho real Cofema. Total: R$ ${cartData.resumo.totalPedido.toFixed(2)}`);
+  return cartData;
+}
+
+/**
+ * 🔒 FLUXO DE RESET / LIMPEZA DO CARRINHO COFEMA ANTES DA COTAÇÃO
+ */
+async function cofemaLimparCarrinho(page, config) {
+  console.log(`[${new Date().toISOString()}] [CofemaExtractor] Executando higiene/reset do carrinho B2B...`);
+  try {
+    if (!page.url().includes('cofema.com.br')) {
+      await page.goto('https://www.cofema.com.br/', { waitUntil: 'domcontentloaded', timeout: 35000 }).catch(() => {});
+      await page.waitForTimeout(2000);
+    }
+
+    // 1. Abrir gaveta do carrinho no header
+    const cartTrigger = page.locator('header button:has(svg), header a:has(svg)').first();
+    if (await cartTrigger.isVisible({ timeout: 3000 }).catch(() => false)) {
+      await cartTrigger.evaluate((el) => el.click()).catch(() => {});
+      await page.waitForTimeout(2000);
+    }
+
+    // 2. Clicar em "Excluir carrinho permanentemente" se visível
+    const deleteCartBtn = page.locator('button[title="Excluir carrinho permanentemente"]').first();
+    if (await deleteCartBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
+      await deleteCartBtn.evaluate((b) => b.click()).catch(() => {});
+      await page.waitForTimeout(1500);
+
+      const confirmBtn = page.locator('button:has-text("Sim"), button:has-text("Confirmar"), button:has-text("Excluir")').first();
+      if (await confirmBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
+        await confirmBtn.evaluate((b) => b.click()).catch(() => {});
+        await page.waitForTimeout(2000);
+      }
+    }
+
+    // 3. Purga individual de cada card de item restante na gaveta
+    for (let loop = 0; loop < 10; loop++) {
+      const removeBtn = page.locator('button[title="Remover item"]').first();
+      if (await removeBtn.isVisible({ timeout: 1500 }).catch(() => false)) {
+        console.log(`[CofemaExtractor RESET] Removendo item residual ${loop + 1}...`);
+        await removeBtn.evaluate((b) => b.click()).catch(() => {});
+        await page.waitForTimeout(1500);
+
+        const confirmBtn = page.locator('button:has-text("Sim"), button:has-text("Confirmar"), button:has-text("Excluir")').first();
+        if (await confirmBtn.isVisible({ timeout: 1500 }).catch(() => false)) {
+          await confirmBtn.evaluate((b) => b.click()).catch(() => {});
+          await page.waitForTimeout(1500);
+        }
+      } else {
+        break;
+      }
+    }
+
+    // 🔒 VALIDAÇÃO PÓS-LIMPEZA DO DOM DO PORTAL (GAVETA DE CARRINHO ATIVO)
+    const cartCheck = await cofemaExtrairCarrinho(page, config);
+    const remCount = cartCheck.produtos.length;
+
+    if (remCoun

@@ -1,0 +1,122 @@
+[
+  {
+    "query": "configSlug",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\components\\features\\CotacoesView.tsx",
+    "lineNum": 209,
+    "lineContent": "const hasConfigSlug = Boolean(forn.config_slug || forn.configSlug || forn.seletores?.config_slug);"
+  },
+  {
+    "query": "configSlug",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\export_construja\\components\\features\\CotacoesView.tsx",
+    "lineNum": 209,
+    "lineContent": "const hasConfigSlug = Boolean(forn.config_slug || forn.configSlug || forn.seletores?.config_slug);"
+  },
+  {
+    "query": "configSlug",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\export_construja\\lib\\db\\client.ts",
+    "lineNum": 982,
+    "lineContent": "configSlug: f.config_slug || f.seletores?.config_slug || (f.nome?.toLowerCase().includes('construja') ? 'construja' : f.nome?.toLowerCase().includes('cicalfer') ? 'cicalfer' : undefined),"
+  },
+  {
+    "query": "configSlug",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\export_construja\\lib\\services\\automacao\\matchingEngine.ts",
+    "lineNum": 197,
+    "lineContent": "const configSlug = (fornDbRecord as any)?.config_slug || (fornDbRecord as any)?.configSlug;"
+  },
+  {
+    "query": "configSlug",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\export_construja\\lib\\services\\automacao\\matchingEngine.ts",
+    "lineNum": 200,
+    "lineContent": "const supplierConfig = carregarConfigFornecedor(fornecedorId, fornecedorNome, configSlug);"
+  },
+  {
+    "query": "configSlug",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\export_construja\\lib\\services\\automacao\\matchingEngine.ts",
+    "lineNum": 209,
+    "lineContent": "const isConstruja = fornecedorNome.toLowerCase().includes('construja') || (configSlug || '').toLowerCase().includes('construja') || fornecedorId === 'a1684c4d-d896-4ba9-a591-cda455c5ffe2';"
+  },
+  {
+    "query": "configSlug",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\export_construja\\lib\\services\\automacao\\matchingEngine.ts",
+    "lineNum": 210,
+    "lineContent": "const isCicalfer = fornecedorNome.toLowerCase().includes('cicalfer') || (configSlug || '').toLowerCase().includes('cicalfer') || fornecedorId === '33e03495-100d-45a3-9e34-899de56b0ab1';"
+  },
+  {
+    "query": "configSlug",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\export_construja\\lib\\services\\automacao\\matchingEngine.ts",
+    "lineNum": 218,
+    "lineContent": "slug: configSlug || (isConstruja ? 'construja' : isCicalfer ? 'cicalfer' : fornecedorId),"
+  },
+  {
+    "query": "configSlug",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\historicos\\2026-09-15\\teste11_saracota_construja\\relatorio_final.md",
+    "lineNum": 67,
+    "lineContent": "const supplierConfig = carregarConfigFornecedor(fornecedorId, fornecedorNome, configSlug);"
+  },
+  {
+    "query": "configSlug",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\historicos\\2026-09-15\\teste11_saracota_construja\\relatorio_final.md",
+    "lineNum": 101,
+    "lineContent": "slug: configSlug || 'construja',"
+  },
+  {
+    "query": "configSlug",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\lib\\db\\client.ts",
+    "lineNum": 982,
+    "lineContent": "configSlug: f.config_slug || f.seletores?.config_slug || (f.nome?.toLowerCase().includes('construja') ? 'construja' : f.nome?.toLowerCase().includes('cicalfer') ? 'cicalfer' : undefined),"
+  },
+  {
+    "query": "configSlug",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\lib\\services\\automacao\\matchingEngine.ts",
+    "lineNum": 197,
+    "lineContent": "const configSlug = (fornDbRecord as any)?.config_slug || (fornDbRecord as any)?.configSlug;"
+  },
+  {
+    "query": "configSlug",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\lib\\services\\automacao\\matchingEngine.ts",
+    "lineNum": 200,
+    "lineContent": "const supplierConfig = carregarConfigFornecedor(fornecedorId, fornecedorNome, configSlug);"
+  },
+  {
+    "query": "configSlug",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\lib\\services\\automacao\\matchingEngine.ts",
+    "lineNum": 209,
+    "lineContent": "const isConstruja = fornecedorNome.toLowerCase().includes('construja') || (configSlug || '').toLowerCase().includes('construja') || fornecedorId === 'a1684c4d-d896-4ba9-a591-cda455c5ffe2';"
+  },
+  {
+    "query": "configSlug",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\lib\\services\\automacao\\matchingEngine.ts",
+    "lineNum": 210,
+    "lineContent": "const isCicalfer = fornecedorNome.toLowerCase().includes('cicalfer') || (configSlug || '').toLowerCase().includes('cicalfer') || fornecedorId === '33e03495-100d-45a3-9e34-899de56b0ab1';"
+  },
+  {
+    "query": "configSlug",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\lib\\services\\automacao\\matchingEngine.ts",
+    "lineNum": 218,
+    "lineContent": "slug: configSlug || (isConstruja ? 'construja' : isCicalfer ? 'cicalfer' : fornecedorId),"
+  },
+  {
+    "query": "configSlug",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\inspect_construja_supabase.ts",
+    "lineNum": 23,
+    "lineContent": "**Config Slug:** ${forn?.configSlug || (forn as any)?.config_slug}"
+  },
+  {
+    "query": "configSlug",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\verify_final_suppliers.ts",
+    "lineNum": 14,
+    "lineContent": "const hasConfigSlug = Boolean(f.config_slug || f.configSlug || (f.seletores && f.seletores.config_slug));"
+  },
+  {
+    "query": "configSlug",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\verify_final_suppliers.ts",
+    "lineNum": 20,
+    "lineContent": "console.log(`   - Config Slug: \"${f.config_slug || f.configSlug || 'N/A'}\"`);"
+  },
+  {
+    "query": "configSlug",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\types\\index.ts",
+    "lineNum": 87,
+    "lineContent": "configSlug?: string;"
+  }
+]

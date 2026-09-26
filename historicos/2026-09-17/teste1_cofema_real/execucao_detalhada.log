@@ -1,0 +1,359 @@
+[2026-09-17T18:07:18.956Z] ================================================================
+[2026-09-17T18:07:18.956Z] 🚀 INICIANDO EXECUÇÃO REAL DE COTAÇÃO NO FORNECEDOR COFEMA
+[2026-09-17T18:07:18.956Z] 📂 Pasta de Evidências: C:\Users\User\Desktop\Saracota\historicos\2026-09-17\teste1_cofema_real
+[2026-09-17T18:07:18.956Z] 👤 Credencial CNPJ: 43.313.798/0001-34
+[2026-09-17T18:07:18.956Z] ================================================================
+[2026-09-17T18:07:19.342Z] 
+--- PASSO 1: Navegando para https://www.cofema.com.br/ ---
+[2026-09-17T18:07:23.514Z] 📸 Screenshot salvo: 01_pagina_inicial_cofema.png
+[2026-09-17T18:07:23.544Z] 
+--- PASSO 2: Realizando Login no Portal B2B ---
+[2026-09-17T18:07:26.886Z] ⌨️ Preenchendo CNPJ (43.313.798/0001-34) e senha no modal de login...
+[2026-09-17T18:07:28.474Z] 📸 Screenshot salvo: 03_login_preenchido.png
+[2026-09-17T18:07:28.474Z] 👆 Clicando no botão "Entrar"...
+[2026-09-17T18:07:33.643Z] 📸 Screenshot salvo: 04_login_confirmado.png
+[2026-09-17T18:07:33.643Z] 🌐 URL pós-login: https://www.cofema.com.br/
+[2026-09-17T18:07:33.643Z] 
+--- PASSO 3: Buscando e Adicionando 5 Itens ao Carrinho ---
+[2026-09-17T18:07:33.643Z] 
+🔎 [ITEM 1/5] Pedido original: "6x DUCHA LORENZETTI BELLA DUCHA 127V" | Busca: "BELLA DUCHA 127V" | Qtd: 6
+[2026-09-17T18:07:40.432Z] 📸 Screenshot salvo: 05_item_1_busca.png
+[2026-09-17T18:07:40.436Z] ✅ Produto localizado: "Preço unit." (SKU: 74179)
+[2026-09-17T18:07:40.436Z] 💲 Preço Unitário identificado: R$ 1499.25
+[2026-09-17T18:07:43.335Z] 🛒 6x adicionados ao carrinho com sucesso.
+[2026-09-17T18:07:43.423Z] 📸 Screenshot salvo: 06_item_1_adicionado.png
+[2026-09-17T18:07:43.423Z] 
+🔎 [ITEM 2/5] Pedido original: "4x BIANCO 900G" | Busca: "BIANCO 900G" | Qtd: 4
+[2026-09-17T18:07:49.545Z] 📸 Screenshot salvo: 05_item_2_busca.png
+[2026-09-17T18:07:49.548Z] ✅ Produto localizado: "Preço unit." (SKU: 300497)
+[2026-09-17T18:07:49.548Z] 💲 Preço Unitário identificado: R$ 74.72
+[2026-09-17T18:07:51.984Z] 📸 Screenshot salvo: 06_item_2_adicionado.png
+[2026-09-17T18:07:51.984Z] 
+🔎 [ITEM 3/5] Pedido original: "7x DUCHA LORENZETTI MAXI DUCHA 127V" | Busca: "MAXI DUCHA 127V" | Qtd: 7
+[2026-09-17T18:07:58.303Z] 📸 Screenshot salvo: 05_item_3_busca.png
+[2026-09-17T18:07:58.306Z] ✅ Produto localizado: "Preço unit." (SKU: 300497)
+[2026-09-17T18:07:58.306Z] 💲 Preço Unitário identificado: R$ 74.72
+[2026-09-17T18:08:00.717Z] 📸 Screenshot salvo: 06_item_3_adicionado.png
+[2026-09-17T18:08:00.717Z] 
+🔎 [ITEM 4/5] Pedido original: "12x ALICATE BOMBA D AGUA MTX 10" | Busca: "ALICATE BOMBA" | Qtd: 12
+[2026-09-17T18:08:06.932Z] 📸 Screenshot salvo: 05_item_4_busca.png
+[2026-09-17T18:08:06.935Z] ✅ Produto localizado: "Preço unit." (SKU: 300497)
+[2026-09-17T18:08:06.935Z] 💲 Preço Unitário identificado: R$ 74.72
+[2026-09-17T18:08:09.880Z] 🛒 12x adicionados ao carrinho com sucesso.
+[2026-09-17T18:08:09.967Z] 📸 Screenshot salvo: 06_item_4_adicionado.png
+[2026-09-17T18:08:09.967Z] 
+🔎 [ITEM 5/5] Pedido original: "5x CONDUITE CORR AM FORTLEV 25MM 50M" | Busca: "CONDUITE 25MM" | Qtd: 5
+[2026-09-17T18:08:16.215Z] 📸 Screenshot salvo: 05_item_5_busca.png
+[2026-09-17T18:08:16.218Z] ✅ Produto localizado: "Preço unit." (SKU: 406043)
+[2026-09-17T18:08:16.218Z] 💲 Preço Unitário identificado: R$ 54.90
+[2026-09-17T18:08:19.098Z] 🛒 5x adicionados ao carrinho com sucesso.
+[2026-09-17T18:08:19.205Z] 📸 Screenshot salvo: 06_item_5_adicionado.png
+[2026-09-17T18:08:19.205Z] 
+--- PASSO 4: Navegando para o Resumo do Pedido / Carrinho (/page/pedidos) ---
+[2026-09-17T18:08:23.832Z] 📸 Screenshot salvo: 07_carrinho_resumo_pedido.png
+[2026-09-17T18:08:23.838Z] 🛒 Leitura da Tela de Carrinho: 52 linhas de produto encontradas.
+[2026-09-17T18:08:23.838Z] 📊 Resumo Total no Carrinho: Home
+Pedidos
+Financeiro
+Fornecedores
+Seja Cliente
+Contato
+Toggle theme
+11
+MARIA
+Sumaré
+Elétrica
+Ferragens
+Hidráulica
+Jardinagem
+Limpeza
+Máquinas
+Pintura
+Segurança
+Utilidades Domésticas
+Pedidos
+Ver produtos
+Filtros:
+Todos
+Pedidos
+Orçamentos
+Carrinhos
+Aplicar
+Número do Pedido
+Status
+Todos os status
+Criado por
+Todos
+Filtros Avançados
+2 filtros ativos
+Data de alteração: 17/09/2026
+Filial: Sumaré
+Limpar filtros
+1 registros
+Lista de Pedidos (1)
+Agrupar (0)
+	
+ID
+	
+Ações
+	
+Filial
+	
+Tipo
+	
+Status
+	
+Status Financeiro
+	
+Total
+	
+Itens
+	
+Modalidade
+	
+Desc.
+	
+NF
+	
+Peso
+	
+Usuário
+	
+Criação
+	
+Alteração
+	
+Finalização
+
+
+	
+#129562
+	
+	
+Sumaré
+	
+Carrinho
+	
+Aberto
+	
+-
+	
+R$ 7.722,32
+	
+11
+	
+-
+	
+4.30%
+	
+-
+	
+132,17 kg
+	
+0082860624
+	
+17/09/2026
+	
+17/09/2026
+	
+-
+Total: R$ 7.722,32
+Exibir:
+25
+1 registro(s)
+Precisa de ajuda com seu pedido?
+
+Nossa equipe está pronta para ajudar com pedidos, entregas, devoluções e financeiro.
+
+Fale Conosco
+O Cofema
+Quem Somos
+Seja Cliente
+Fornecedores
+Trabalhe Conosco
+Transparência
+Contato
+Atendimento
+
+Unidade São Paulo
+
+(11) 2782-6000
+(11) 4040-5888
+contato.sp@cofema.com.br
+SEG A SEX - 08:00 às 18:00
+
+Unidade Sumaré
+
+(19) 3854-8600
+(19) 3922-9000
+(19) 3045-9000
+contato.sum@cofema.com.br
+SEG A QUINTA - 08:00 às 18:00 e SEX - 08:00 às 17:48
+Redes Sociais
+Instagram
+Facebook
+LinkedIn
+TikTok
+Segurança
+Site Seguro SSL
+LGPD
+Ambiente Protegido
+Compra Segura
+
+Há mais de 35 anos no mercado, o COFEMA é referência em materiais Elétricos, Hidráulicos, Ferragens e Ferramentas. Atuando para garantir o abastecimento constante do varejo sem ruptura de estoque, disponibiliza um amplo mix com mais de 29 mil itens.
+
+Unidade São Paulo
+
+Avenida Aricanduva, 3241 - Vila Aricanduva | São Paulo | SP - 03527-000
+
+CNPJ
+
+69.194.454/0001-47
+
+COFEMA ATACADISTA LTDA.
+
+Unidade Sumaré
+
+Rua Julia Maria Galieta, 825 - Jardim Nova Terra | Sumaré | SP - 13175-040
+
+CNPJ
+
+69.194.454/0003-09
+
+COFEMA ATACADISTA LTDA.
+
+Atenção! Esta tabela pode sofrer alterações durante o decorrer do mês, consulte nossos vendedores. Em conformidade com a Lei nº 8.078/90, a aprovação do pedido estará sujeita à análise da disponibilidade do produto no estoque. Nos reservamos o direito de possíveis erros de digitação.
+
+Política de Privacidade
+|
+LGPD
+|
+Mapa do Site
+
+© 2026 Cofema Atacadista. Todos os direitos reservados.
+
+v0 · 1020
+
+11
+#129562
+Todos
+Preço unit.
+
+SKU: 415494
+
+COND CORR.LR.TIGRE(A)3/4X50M 25MM
+Não Abre
+1 un.
+R$ 142,00
+
+SKU: 406043
+
+ALICATE BOMBA DAGUA PERKON 12" 1014
+Abre
+6 un.
+R$ 54,90
+
+SKU: 300497
+
+DUCHA LORENZ.BELLA DUCHA 5500W4T 127V BR
+Abre
+22 un.
+15.00 %
+R$ 74,72
+R$ 87,90
+15% de desconto_pedido
+Campanha: 8213
+R$ 1.758,00 / R$ 0,00
+mais dessa campanha
+100%
+
+SKU: 74179
+
+COND CORR.AM.TIGRE(C)3/4X50M 25MM
+Não Abre
+1 un.
+R$ 1.499,25
+
+SKU: 406042
+
+ALICATE BOMBA DAGUA PERKON 10" 1013
+Abre
+6 un.
+R$ 3.806,88
+
+SKU: 149853
+
+DUCHA LORENZ.MAXI-DUCHA 3T 127V 5500W
+Abre
+21 un.
+15.00 %
+R$ 1.270,16
+R$ 1.494,30
+15% de desconto_pedido
+Campanha: 8213
+R$ 1.758,00 / R$ 0,00
+mais dessa campanha
+100%
+
+SKU: 410409
+
+OTTO B. BIANCO 900G SACHE
+Abre
+6 un.
+15.00 %
+R$ 343,91
+R$ 404,60
+Expira em 1 dia 8h e 51min
+
+SKU: 401301
+
+RESIST TIPO BELLA DUCHA 127V5500W 451
+Não Abre
+1 un.
+R$ 175,84
+
+SKU: 134597
+
+FITA CREPE ADELBRAS/MASK 48X50M 710
+Não Abre
+2 un.
+10.00 %
+R$ 58,54
+R$ 65,04
+Expira em 1 dia 8h e 51min
+
+SKU: 300500
+
+DUCHA LORENZ.BELLA DUCHA 6800W4T 220V BR
+Abre
+22 un.
+15.00 %
+R$ 149,43
+R$ 175,80
+15% de desconto_pedido
+Campanha: 8213
+R$ 1.758,00 / R$ 0,00
+mais dessa campanha
+100%
+
+SKU: 9970
+
+FECHAD ALIANCA 1500/100PF PORTAO
+Abre
+25 un.
+10.00 %
+R$ 146,70
+R$ 163,00
+Expira em 1 dia 8h e 51min
+Total Carrinho:
+4.30%
+R$ 7.722,32
+R$ 8.069,51
+Finalizar pedido
+Salvar
+Pedidos
+Excluir
+[2026-09-17T18:08:23.838Z] 📊 Total Geral Cotado dos Itens: R$ 10988.56
+[2026-09-17T18:08:23.838Z] ✅ Payload final salvo em payload_final_cofema.json
+[2026-09-17T18:08:23.859Z] ✅ Relatório final salvo em relatorio_final.md
+[2026-09-17T18:08:27.050Z] 🏁 Execução de Cotação concluída com sucesso!

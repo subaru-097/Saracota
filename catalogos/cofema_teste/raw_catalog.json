@@ -1,0 +1,19 @@
+[
+  {
+    "sku": "SKU-101",
+    "nome_original": "DUCHA LORENZETTI MAXI DUCHA 127V",
+    "categoria_site": "Chuveiros",
+    "preco": 84.67,
+    "unidade_venda": "UNIDADE",
+    "url_produto": "https://cofema.com.br/ducha-maxi",
+    "scraped_at": "2026-09-18T21:10:18.071Z"
+  },
+  {
+    "sku": "SKU-102",
+    "nome_original": "BIANCO VEDACIT 900G",
+    "categoria_site": "Impermeabilizantes",
+    "preco": 31.35,
+    "unidade_venda": "UNIDADE",
+    "scraped_at": "2026-09-18T21:10:18.071Z"
+  }
+]

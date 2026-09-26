@@ -1,0 +1,4088 @@
+[
+  {
+    "categoria": "ELETRICA > ELETRICA",
+    "dim1": "00001003",
+    "dim2": "00001003-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > ABRAÇADEIRA NYLON BRANCA",
+    "dim1": "00001003",
+    "dim2": "00000007-00001003",
+    "produtosEncontradosNoSite": 5,
+    "produtosEfetivamenteSalvos": 5,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > ABRAÇADEIRA NYLON PRETA",
+    "dim1": "00001003",
+    "dim2": "00000014-00001003",
+    "produtosEncontradosNoSite": 5,
+    "produtosEfetivamenteSalvos": 5,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > ACOPLAMENTO INDUSTRIAL",
+    "dim1": "00001003",
+    "dim2": "00000643-00001003",
+    "produtosEncontradosNoSite": 4,
+    "produtosEfetivamenteSalvos": 4,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > BARRAMENTO",
+    "dim1": "00001003",
+    "dim2": "00000055-00001003",
+    "produtosEncontradosNoSite": 7,
+    "produtosEfetivamenteSalvos": 7,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > BARRAMENTO NEUTRO/TERRA",
+    "dim1": "00001003",
+    "dim2": "00000056-00001003",
+    "produtosEncontradosNoSite": 6,
+    "produtosEfetivamenteSalvos": 6,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CABO COBRE",
+    "dim1": "00001003",
+    "dim2": "00000073-00001003",
+    "produtosEncontradosNoSite": 1,
+    "produtosEfetivamenteSalvos": 1,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CABO FLEXÍVEL 10,0MM 750 V",
+    "dim1": "00001003",
+    "dim2": "00000551-00001003",
+    "produtosEncontradosNoSite": 3,
+    "produtosEfetivamenteSalvos": 3,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CABO FLEXÍVEL 1,50MM 750V",
+    "dim1": "00001003",
+    "dim2": "00000547-00001003",
+    "produtosEncontradosNoSite": 6,
+    "produtosEfetivamenteSalvos": 6,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CABO FLEXÍVEL 16MM 750 V",
+    "dim1": "00001003",
+    "dim2": "00000559-00001003",
+    "produtosEncontradosNoSite": 3,
+    "produtosEfetivamenteSalvos": 3,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CABO FLEXÍVEL 2,50MM 750 V",
+    "dim1": "00001003",
+    "dim2": "00000548-00001003",
+    "produtosEncontradosNoSite": 6,
+    "produtosEfetivamenteSalvos": 6,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CABO FLEXÍVEL 4,0MM 750 V",
+    "dim1": "00001003",
+    "dim2": "00000549-00001003",
+    "produtosEncontradosNoSite": 5,
+    "produtosEfetivamenteSalvos": 5,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CABO FLEXÍVEL 6,0MM 750 V",
+    "dim1": "00001003",
+    "dim2": "00000550-00001003",
+    "produtosEncontradosNoSite": 4,
+    "produtosEfetivamenteSalvos": 4,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CABO FLEXÍVEL METRO 10MM 750V",
+    "dim1": "00001003",
+    "dim2": "00000580-00001003",
+    "produtosEncontradosNoSite": 2,
+    "produtosEfetivamenteSalvos": 2,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CABO FLEXÍVEL METRO 1,5MM 750V",
+    "dim1": "00001003",
+    "dim2": "00000579-00001003",
+    "produtosEncontradosNoSite": 7,
+    "produtosEfetivamenteSalvos": 7,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CABO FLEXÍVEL METRO 16MM 750V",
+    "dim1": "00001003",
+    "dim2": "00000581-00001003",
+    "produtosEncontradosNoSite": 1,
+    "produtosEfetivamenteSalvos": 1,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CABO FLEXÍVEL METRO 25MM 1KV",
+    "dim1": "00001003",
+    "dim2": "00000583-00001003",
+    "produtosEncontradosNoSite": 3,
+    "produtosEfetivamenteSalvos": 3,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CABO FLEXÍVEL METRO 2,5MM 750V",
+    "dim1": "00001003",
+    "dim2": "00000582-00001003",
+    "produtosEncontradosNoSite": 6,
+    "produtosEfetivamenteSalvos": 6,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CABO FLEXÍVEL METRO 35MM 1KV",
+    "dim1": "00001003",
+    "dim2": "00000584-00001003",
+    "produtosEncontradosNoSite": 3,
+    "produtosEfetivamenteSalvos": 3,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CABO FLEXÍVEL METRO 4MM 750V",
+    "dim1": "00001003",
+    "dim2": "00000585-00001003",
+    "produtosEncontradosNoSite": 5,
+    "produtosEfetivamenteSalvos": 5,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CABO FLEXÍVEL METRO 50MM 1KV",
+    "dim1": "00001003",
+    "dim2": "00000586-00001003",
+    "produtosEncontradosNoSite": 2,
+    "produtosEfetivamenteSalvos": 2,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CABO FLEXÍVEL METRO 6MM 750V",
+    "dim1": "00001003",
+    "dim2": "00000587-00001003",
+    "produtosEncontradosNoSite": 5,
+    "produtosEfetivamenteSalvos": 5,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CABO FLEXÍVEL METRO 70MM 1KV",
+    "dim1": "00001003",
+    "dim2": "00000588-00001003",
+    "produtosEncontradosNoSite": 1,
+    "produtosEfetivamenteSalvos": 1,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CABO PP 500V",
+    "dim1": "00001003",
+    "dim2": "00000017-00001003",
+    "produtosEncontradosNoSite": 4,
+    "produtosEfetivamenteSalvos": 4,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CAIXA DE PASSAGEM",
+    "dim1": "00001003",
+    "dim2": "00000044-00001003",
+    "produtosEncontradosNoSite": 5,
+    "produtosEfetivamenteSalvos": 5,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CAIXINHA DE LUZ PVC",
+    "dim1": "00001003",
+    "dim2": "00000013-00001003",
+    "produtosEncontradosNoSite": 10,
+    "produtosEfetivamenteSalvos": 10,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CANALETAS",
+    "dim1": "00001003",
+    "dim2": "00000031-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CENTR.PVC DISJ. S/ BARRAMENTO",
+    "dim1": "00001003",
+    "dim2": "00000009-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CHAVE MAGNÉTICA",
+    "dim1": "00001003",
+    "dim2": "00000642-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CONDUITES CORRUGADO",
+    "dim1": "00001003",
+    "dim2": "00000011-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CONECTOR DE PORCELANA",
+    "dim1": "00001003",
+    "dim2": "00000043-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CONECTOR EMENDA DERIVAÇÃO",
+    "dim1": "00001003",
+    "dim2": "00000061-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CONECTOR GENÉRICO",
+    "dim1": "00001003",
+    "dim2": "00000646-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CONECTOR PARA HASTE",
+    "dim1": "00001003",
+    "dim2": "00000069-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CONJUNTO ILUMI LEV",
+    "dim1": "00001003",
+    "dim2": "00000024-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CONJUNTO ILUMI SLIM",
+    "dim1": "00001003",
+    "dim2": "00000025-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CONJUNTO ILUMI STYLUS",
+    "dim1": "00001003",
+    "dim2": "00000021-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CONJUNTO WEG COMPOSÉ",
+    "dim1": "00001003",
+    "dim2": "00000036-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > CORDÃO PARALELO",
+    "dim1": "00001003",
+    "dim2": "00000016-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > DISJUNTOR BIPOLAR DIN",
+    "dim1": "00001003",
+    "dim2": "00000019-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > DISJUNTOR TRIPOLAR DIN",
+    "dim1": "00001003",
+    "dim2": "00000020-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > DISJUNTOR UNIPOLAR DIN",
+    "dim1": "00001003",
+    "dim2": "00000018-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > DISPOS. DE SURTO E PROTEÇÃO",
+    "dim1": "00001003",
+    "dim2": "00000054-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > DUCHA BELLA DUCHA",
+    "dim1": "00001003",
+    "dim2": "00000595-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > DUCHA LOREN SHOWER ELETRÔNICA",
+    "dim1": "00001003",
+    "dim2": "00000596-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > DUCHA LOREN SHOWER MULTI",
+    "dim1": "00001003",
+    "dim2": "00000592-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > DUCHA MAXI DUCHA",
+    "dim1": "00001003",
+    "dim2": "00000597-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > DUCHA TOP JET MULTI",
+    "dim1": "00001003",
+    "dim2": "00000598-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > ELETRODUTO CORRUGADO",
+    "dim1": "00001003",
+    "dim2": "00000059-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > EXTENSÃO ELÉTRICA",
+    "dim1": "00001003",
+    "dim2": "00000034-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > FITA ISOLANTE",
+    "dim1": "00001003",
+    "dim2": "00000544-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > FITA ISOLANTE AUTOFUSÃO",
+    "dim1": "00001003",
+    "dim2": "00000008-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > GRAMPO FIXA FIO",
+    "dim1": "00001003",
+    "dim2": "00000067-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > INTERRUPTOR EXTERNO",
+    "dim1": "00001003",
+    "dim2": "00000075-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > INTERRUPTOR MEIO CORDÃO",
+    "dim1": "00001003",
+    "dim2": "00000028-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > LÂMPADA LED BULBO",
+    "dim1": "00001003",
+    "dim2": "00000052-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > LÂMPADA LED TUBULAR",
+    "dim1": "00001003",
+    "dim2": "00000053-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > LUMINARIA",
+    "dim1": "00001003",
+    "dim2": "00000065-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > LUMINÁRIA TARTARUGA",
+    "dim1": "00001003",
+    "dim2": "00000440-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > LUVAS P/ CONDUITE CORRUGADO",
+    "dim1": "00001003",
+    "dim2": "00000012-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > MANGUEIRA POLIETILENO",
+    "dim1": "00001003",
+    "dim2": "00000060-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > PASSA FIO",
+    "dim1": "00001003",
+    "dim2": "00000064-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > PILHA",
+    "dim1": "00001003",
+    "dim2": "00000046-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > PINO 3 SAÍDAS",
+    "dim1": "00001003",
+    "dim2": "00000030-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > PINO ADAPTADOR",
+    "dim1": "00001003",
+    "dim2": "00000029-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > PINO FÊMEA",
+    "dim1": "00001003",
+    "dim2": "00000027-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > PINO PORTA LAMPADA",
+    "dim1": "00001003",
+    "dim2": "00000033-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > PINO PRENSA CABO",
+    "dim1": "00001003",
+    "dim2": "00000026-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > PLAFON PVC",
+    "dim1": "00001003",
+    "dim2": "00000439-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > PLUGUE INDUSTRIAL",
+    "dim1": "00001003",
+    "dim2": "00000644-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > PORTA LAMPADA",
+    "dim1": "00001003",
+    "dim2": "00000041-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > REFLETOR LED",
+    "dim1": "00001003",
+    "dim2": "00000442-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > RESISTENCIA BELLA DUCHA",
+    "dim1": "00001003",
+    "dim2": "00000609-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > RESISTENCIA BELLA/FASH",
+    "dim1": "00001003",
+    "dim2": "00000607-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > RESISTENCIA DUO SHOWER/FUTURA",
+    "dim1": "00001003",
+    "dim2": "00000610-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > RESISTÊNCIA ELÉTRICA",
+    "dim1": "00001003",
+    "dim2": "00000039-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > RESISTENCIA ELETRONICA ADV/TOP",
+    "dim1": "00001003",
+    "dim2": "00000611-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > RESISTENCIA LOREN SHOWER",
+    "dim1": "00001003",
+    "dim2": "00000608-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > RESISTENCIA MAXI/BELLO",
+    "dim1": "00001003",
+    "dim2": "00000612-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > RESISTENCIA MAXI/BELLO/ULTRA",
+    "dim1": "00001003",
+    "dim2": "00000613-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > RESISTENCIA MULTI ADV/TOPJ",
+    "dim1": "00001003",
+    "dim2": "00000614-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > RESISTENCIA STAR/STORM",
+    "dim1": "00001003",
+    "dim2": "00000615-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > SISTEMA X ILUMI",
+    "dim1": "00001003",
+    "dim2": "00000022-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > SISTEMA X ILUMI RETANGULAR",
+    "dim1": "00001003",
+    "dim2": "00000023-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > SOQUETE COM RABICHO",
+    "dim1": "00001003",
+    "dim2": "00000032-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > TERMINAL COMPRESSÃO",
+    "dim1": "00001003",
+    "dim2": "00000647-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > TOMADA EM BARRA",
+    "dim1": "00001003",
+    "dim2": "00000035-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > TOMADA EXTERNA",
+    "dim1": "00001003",
+    "dim2": "00000074-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > TOMADA INDUSTRIAL",
+    "dim1": "00001003",
+    "dim2": "00000645-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > TRILHO FERRO",
+    "dim1": "00001003",
+    "dim2": "00000045-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > HIDRAULICA",
+    "dim1": "00001003",
+    "dim2": "00001005-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > ACABAMENTO REGISTRO",
+    "dim1": "00001005",
+    "dim2": "00000329-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > ACABAMENTO VALVULA",
+    "dim1": "00001005",
+    "dim2": "00000328-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > ACESSÓRIOS CAIXA ACOPLADA",
+    "dim1": "00001005",
+    "dim2": "00000271-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > ADAPTADOR CAIXA D AGUA",
+    "dim1": "00001005",
+    "dim2": "00000355-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > ADAPTADOR COM FLANGE",
+    "dim1": "00001005",
+    "dim2": "00000259-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > ADAPTADOR CURTO MARROM",
+    "dim1": "00001005",
+    "dim2": "00000260-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > ANEL DE VEDAÇÃO P/ VASO",
+    "dim1": "00001005",
+    "dim2": "00000317-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > ANEL VEDAÇÃO ESGOTO",
+    "dim1": "00001005",
+    "dim2": "00000226-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > ASSENTO SANITÁRIO",
+    "dim1": "00001005",
+    "dim2": "00000268-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > AUMENTO TORNEIRA ZAMAC",
+    "dim1": "00001005",
+    "dim2": "00000326-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > BACIAS SANITARIAS",
+    "dim1": "00001005",
+    "dim2": "00000284-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > BASE MICHU",
+    "dim1": "00001005",
+    "dim2": "00000330-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > BASE MONOCOMANDO",
+    "dim1": "00001005",
+    "dim2": "00000354-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > BASE REGISTRO",
+    "dim1": "00001005",
+    "dim2": "00000331-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > BASE VALVULA",
+    "dim1": "00001005",
+    "dim2": "00000332-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > BRAÇO CHUVEIRO",
+    "dim1": "00001005",
+    "dim2": "00000269-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > BUCHA DE REDUÇÃO CURTA",
+    "dim1": "00001005",
+    "dim2": "00000261-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > BUCHA DE REDUÇÃO LONGA",
+    "dim1": "00001005",
+    "dim2": "00000262-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > BUCHA DE REDUÇÃO RR",
+    "dim1": "00001005",
+    "dim2": "00000306-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > BUCHA REDUÇÃO ESGOTO",
+    "dim1": "00001005",
+    "dim2": "00000258-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > CAIXA DE GORDURA",
+    "dim1": "00001005",
+    "dim2": "00000356-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > CAIXA DESCARGA",
+    "dim1": "00001005",
+    "dim2": "00000270-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > CAIXA DESCARGA ACOPL. (LOUÇA)",
+    "dim1": "00001005",
+    "dim2": "00000287-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > CAIXA PARA HIDROMETRO",
+    "dim1": "00001005",
+    "dim2": "00000313-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > CAIXA SIFONADA",
+    "dim1": "00001005",
+    "dim2": "00000244-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > CAP ESGOTO",
+    "dim1": "00001005",
+    "dim2": "00000232-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > CAP MARROM LL",
+    "dim1": "00001005",
+    "dim2": "00000264-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > CESTINHA P/ VALVULA AMERICANA",
+    "dim1": "00001005",
+    "dim2": "00000309-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > CHAVE BOIA",
+    "dim1": "00001005",
+    "dim2": "00000322-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > CICALFER PREMIUM",
+    "dim1": "00001005",
+    "dim2": "00000297-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > COLA TUBO CPVC",
+    "dim1": "00001005",
+    "dim2": "00000301-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > COLA TUBO PVC",
+    "dim1": "00001005",
+    "dim2": "00000296-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > COLUNA P/ TANQUE (LOUÇA)",
+    "dim1": "00001005",
+    "dim2": "00000288-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > CONECTOR CPVC AGUA QUENTE",
+    "dim1": "00001005",
+    "dim2": "00000375-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > CONEXAO TORNEIRA",
+    "dim1": "00001005",
+    "dim2": "00000293-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > CONJUNTO REGISTRO E TORNEIRA",
+    "dim1": "00001005",
+    "dim2": "00000346-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > COTOVELO AZUL LR",
+    "dim1": "00001005",
+    "dim2": "00000255-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > COTOVELO CPVC AGUA QUENTE",
+    "dim1": "00001005",
+    "dim2": "00000377-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > COTOVELO ESGOTO",
+    "dim1": "00001005",
+    "dim2": "00000235-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > COTOVELO ESGOTO COM VISITA",
+    "dim1": "00001005",
+    "dim2": "00000236-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > COTOVELO MARROM LL",
+    "dim1": "00001005",
+    "dim2": "00000267-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > COTOVELO MARROM LR",
+    "dim1": "00001005",
+    "dim2": "00000245-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > CURVA CPVC AGUA QUENTE",
+    "dim1": "00001005",
+    "dim2": "00000380-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > CURVA ESGOTO CURTA",
+    "dim1": "00001005",
+    "dim2": "00000233-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > CURVA ESGOTO LONGA",
+    "dim1": "00001005",
+    "dim2": "00000234-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > CURVA MARROM LL",
+    "dim1": "00001005",
+    "dim2": "00000265-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > CURVA TRANSPOSIÇÃO MARROM LL",
+    "dim1": "00001005",
+    "dim2": "00000266-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > CX D'AGUA POLIET. ABER.E TAMPA",
+    "dim1": "00001005",
+    "dim2": "00000229-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > CX D'AGUA POLIET. FECH.E TAMPA",
+    "dim1": "00001005",
+    "dim2": "00000545-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > ENGATE FLEXÍVEL METALIZADO",
+    "dim1": "00001005",
+    "dim2": "00000337-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > ENGATE FLEXÍVEL PVC",
+    "dim1": "00001005",
+    "dim2": "00000272-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > ENGATE RAPIDO",
+    "dim1": "00001005",
+    "dim2": "00000292-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > ESGUICHO",
+    "dim1": "00001005",
+    "dim2": "00000290-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > ESPIGÃO FIXO",
+    "dim1": "00001005",
+    "dim2": "00000321-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > EXTENSÃO P/ TORNEIRA",
+    "dim1": "00001005",
+    "dim2": "00000311-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > FILTRO E REFIL P/ CAIXA D'AGUA",
+    "dim1": "00001005",
+    "dim2": "00000227-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > GRELHA DE INOX",
+    "dim1": "00001005",
+    "dim2": "00000307-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > GRELHA DE PVC QUADRADA",
+    "dim1": "00001005",
+    "dim2": "00000280-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > GRELHA DE PVC REDONDA",
+    "dim1": "00001005",
+    "dim2": "00000281-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > JUNÇÃO ESGOTO",
+    "dim1": "00001005",
+    "dim2": "00000237-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > JUNÇÃO ESGOTO C/ REDUÇÃO",
+    "dim1": "00001005",
+    "dim2": "00000238-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > KIT BACIA E CAIXA ACOPLADA",
+    "dim1": "00001005",
+    "dim2": "00000381-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > LIGA FACIL",
+    "dim1": "00001005",
+    "dim2": "00000371-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > LUVA AZUL LR",
+    "dim1": "00001005",
+    "dim2": "00000256-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > LUVA CPVC AGUA QUENTE",
+    "dim1": "00001005",
+    "dim2": "00000374-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > LUVA DE CORRER ESGOTO",
+    "dim1": "00001005",
+    "dim2": "00000240-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > LUVA DE CORRER MARROM LL",
+    "dim1": "00001005",
+    "dim2": "00000248-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > LUVA ESGOTO",
+    "dim1": "00001005",
+    "dim2": "00000239-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > LUVA MARROM LL",
+    "dim1": "00001005",
+    "dim2": "00000246-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > LUVA MARROM LR",
+    "dim1": "00001005",
+    "dim2": "00000247-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > MANGUEIRA FLEXÍVEL",
+    "dim1": "00001005",
+    "dim2": "00000299-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > MANGUEIRA GÁS",
+    "dim1": "00001005",
+    "dim2": "00000366-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > MANGUEIRA MAQUINA DE LAVAR",
+    "dim1": "00001005",
+    "dim2": "00000365-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > MANGUEIRA NÍVEL",
+    "dim1": "00001005",
+    "dim2": "00000364-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > NIPLE BRANCO",
+    "dim1": "00001005",
+    "dim2": "00000327-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > PASTA LUBRIFICANTE",
+    "dim1": "00001005",
+    "dim2": "00000302-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > PLUG ÁGUA RR",
+    "dim1": "00001005",
+    "dim2": "00000249-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > PORTA-GRELHA DE PVC",
+    "dim1": "00001005",
+    "dim2": "00000282-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > PRESSURIZADOR P/ CAIXA D AGUA",
+    "dim1": "00001005",
+    "dim2": "00000538-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > PROLONGADOR P/ CX SIFONADA",
+    "dim1": "00001005",
+    "dim2": "00000283-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > RAIO LINEAR",
+    "dim1": "00001005",
+    "dim2": "00000345-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > REDUÇÃO ESGOTO",
+    "dim1": "00001005",
+    "dim2": "00000241-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > REFIL PARA FILTRO D'AGUA",
+    "dim1": "00001005",
+    "dim2": "00000305-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > REG.ESF.PVC C/ UNIÃO ROSCÁVEL",
+    "dim1": "00001005",
+    "dim2": "00000254-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > REG.ESF.PVC C/ UNIÃO SOLDÁVEL",
+    "dim1": "00001005",
+    "dim2": "00000253-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > REGISTRO ESFERA SOLDAVEL",
+    "dim1": "00001005",
+    "dim2": "00000334-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > REGISTRO GAVETA",
+    "dim1": "00001005",
+    "dim2": "00000339-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > REPARO P/ MANGUEIRA",
+    "dim1": "00001005",
+    "dim2": "00000298-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > REPARO P/ VALVULA",
+    "dim1": "00001005",
+    "dim2": "00000333-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > SIFÃO COPO",
+    "dim1": "00001005",
+    "dim2": "00000275-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > SIFÃO SANFONADO",
+    "dim1": "00001005",
+    "dim2": "00000274-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > SOLUÇÃO PREPARADORA",
+    "dim1": "00001005",
+    "dim2": "00000303-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > SPUD PVC",
+    "dim1": "00001005",
+    "dim2": "00000276-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TAMPA CAIXA DE INSPEÇÃO",
+    "dim1": "00001005",
+    "dim2": "00000314-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TANQUE DE POLIETILENO",
+    "dim1": "00001005",
+    "dim2": "00000324-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TANQUE (LOUÇA)",
+    "dim1": "00001005",
+    "dim2": "00000359-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TÊ AZUL LLR",
+    "dim1": "00001005",
+    "dim2": "00000257-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TÊ CPVC AGUA QUENTE",
+    "dim1": "00001005",
+    "dim2": "00000376-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TÊ ESGOTO",
+    "dim1": "00001005",
+    "dim2": "00000242-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TÊ ESGOTO C/ REDUÇÃO",
+    "dim1": "00001005",
+    "dim2": "00000243-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TÊ MARROM LLL",
+    "dim1": "00001005",
+    "dim2": "00000250-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TÊ MARROM LLL C/ REDUÇÃO",
+    "dim1": "00001005",
+    "dim2": "00000252-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TÊ MARROM LLR",
+    "dim1": "00001005",
+    "dim2": "00000251-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TORNEIRA ABS",
+    "dim1": "00001005",
+    "dim2": "00000289-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TORNEIRA BOIA",
+    "dim1": "00001005",
+    "dim2": "00000347-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TORNEIRA JARDIM",
+    "dim1": "00001005",
+    "dim2": "00000340-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TORNEIRA LAVATORIO",
+    "dim1": "00001005",
+    "dim2": "00000343-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TORNEIRA MAQUINA DE LAVAR",
+    "dim1": "00001005",
+    "dim2": "00000336-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TORNEIRA MESA",
+    "dim1": "00001005",
+    "dim2": "00000344-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TORNEIRA TANQUE",
+    "dim1": "00001005",
+    "dim2": "00000341-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TUBO ÁGUA MARROM",
+    "dim1": "00001005",
+    "dim2": "00000230-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TUBO CPVC AGUA QUENTE",
+    "dim1": "00001005",
+    "dim2": "00000378-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TUBO DESCARGA",
+    "dim1": "00001005",
+    "dim2": "00000348-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TUBO DESCIDA",
+    "dim1": "00001005",
+    "dim2": "00000362-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TUBO ESGOTO",
+    "dim1": "00001005",
+    "dim2": "00000231-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > TUBO LIGAÇÃO",
+    "dim1": "00001005",
+    "dim2": "00000278-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > UNIÃO MARROM LL",
+    "dim1": "00001005",
+    "dim2": "00000263-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > VALVULA DE RETENÇÃO",
+    "dim1": "00001005",
+    "dim2": "00000357-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > VALVULA DE RETENÇÃO ESGOTO",
+    "dim1": "00001005",
+    "dim2": "00000308-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > VÁLVULA LAVATÓRIO",
+    "dim1": "00001005",
+    "dim2": "00000279-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > VEDANTE TORNEIRA",
+    "dim1": "00001005",
+    "dim2": "00000363-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "HIDRAULICA > VEDA ROSCA",
+    "dim1": "00001005",
+    "dim2": "00000546-00001005",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > PINTURA",
+    "dim1": "00001003",
+    "dim2": "00001006-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > AGUARRAS",
+    "dim1": "00001006",
+    "dim2": "00000413-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > APLICADOR MASSA",
+    "dim1": "00001006",
+    "dim2": "00000426-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > BANDEJAS P/ TINTA",
+    "dim1": "00001006",
+    "dim2": "00000424-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > BLOCO DE ESPUMA",
+    "dim1": "00001006",
+    "dim2": "00000394-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > BROXAS",
+    "dim1": "00001006",
+    "dim2": "00000392-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > CAÇAMBA P/ TINTA",
+    "dim1": "00001006",
+    "dim2": "00000423-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > CIMENTO BRANCO",
+    "dim1": "00001006",
+    "dim2": "00000420-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > CONVERTEDOR DE FERRUGEM",
+    "dim1": "00001006",
+    "dim2": "00000409-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > CORANTE LIQUIDO XADREZ",
+    "dim1": "00001006",
+    "dim2": "00000591-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > DESEMPENADEIRA DE AÇO",
+    "dim1": "00001006",
+    "dim2": "00000470-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > ESPATULAS DE AÇO",
+    "dim1": "00001006",
+    "dim2": "00000419-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > ESTOPA",
+    "dim1": "00001006",
+    "dim2": "00000405-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > EXTENSOR P/ ROLO DE PINTURA",
+    "dim1": "00001006",
+    "dim2": "00000393-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > FITA CREPE",
+    "dim1": "00001006",
+    "dim2": "00000386-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > FUNDO PREPARADOR",
+    "dim1": "00001006",
+    "dim2": "00000431-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > GARFOS P/ ROLO",
+    "dim1": "00001006",
+    "dim2": "00000391-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > GESSO",
+    "dim1": "00001006",
+    "dim2": "00000401-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > IMPERMEABILIZANTES",
+    "dim1": "00001006",
+    "dim2": "00000387-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > KIT PINTURA",
+    "dim1": "00001006",
+    "dim2": "00000395-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > LIXA D'AGUA",
+    "dim1": "00001006",
+    "dim2": "00000382-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > LIXA FERRO",
+    "dim1": "00001006",
+    "dim2": "00000383-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > LIXA MADEIRA",
+    "dim1": "00001006",
+    "dim2": "00000385-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > LIXA MASSA",
+    "dim1": "00001006",
+    "dim2": "00000384-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > MASSA ACRILICA",
+    "dim1": "00001006",
+    "dim2": "00000408-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > MASSA CORRIDA",
+    "dim1": "00001006",
+    "dim2": "00000407-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > MASSA PLASTICA",
+    "dim1": "00001006",
+    "dim2": "00000398-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > MASSA PLASTICA IBERE",
+    "dim1": "00001006",
+    "dim2": "00000604-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > NEUTRALIZADOR FERRUGEM",
+    "dim1": "00001006",
+    "dim2": "00000397-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > QUEROSENE",
+    "dim1": "00001006",
+    "dim2": "00000421-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > REMOVEDOR DE PINTURA",
+    "dim1": "00001006",
+    "dim2": "00000406-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > ROLO DE ESPUMA POLIESTER",
+    "dim1": "00001006",
+    "dim2": "00000390-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > ROLO DE LÃ",
+    "dim1": "00001006",
+    "dim2": "00000389-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > ROLO DE TEXTURA",
+    "dim1": "00001006",
+    "dim2": "00000402-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > SELADOR",
+    "dim1": "00001006",
+    "dim2": "00000430-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > SELADORA P/ MADEIRA",
+    "dim1": "00001006",
+    "dim2": "00000403-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > STAIN IMPREGNANTE",
+    "dim1": "00001006",
+    "dim2": "00000414-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > TELA PARA REFORÇO",
+    "dim1": "00001006",
+    "dim2": "00000415-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > THINNER",
+    "dim1": "00001006",
+    "dim2": "00000412-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > TINTA ACRÍLICA",
+    "dim1": "00001006",
+    "dim2": "00000429-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > TINTA ACRILICA DELANIL 15L",
+    "dim1": "00001006",
+    "dim2": "00000627-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > TINTA ACRILICA DELANIL 3,6L",
+    "dim1": "00001006",
+    "dim2": "00000626-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > TINTA ACRILICA DIAPISO 18L",
+    "dim1": "00001006",
+    "dim2": "00000620-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > TINTA ACRILICA DIAPISO 3,6L",
+    "dim1": "00001006",
+    "dim2": "00000621-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > TINTA ACRILICA PINTALAR 15L",
+    "dim1": "00001006",
+    "dim2": "00000622-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > TINTA ACRILICA PINTALAR 3,6L",
+    "dim1": "00001006",
+    "dim2": "00000623-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > TINTA EPOXI",
+    "dim1": "00001006",
+    "dim2": "00000434-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > TINTA ESMALTE DELANIL 3L",
+    "dim1": "00001006",
+    "dim2": "00000629-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > TINTA ESMALTE DELANIL 750ML",
+    "dim1": "00001006",
+    "dim2": "00000630-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > TINTA FACHADA EMBORRACHADA",
+    "dim1": "00001006",
+    "dim2": "00000432-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > TINTA SPRAY",
+    "dim1": "00001006",
+    "dim2": "00000422-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > TINTA SPRAY PEG&UZE ETANIZ",
+    "dim1": "00001006",
+    "dim2": "00000633-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > TINTA SPRAY TEKBOND",
+    "dim1": "00001006",
+    "dim2": "00000634-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > TRINCHAS",
+    "dim1": "00001006",
+    "dim2": "00000388-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > VERNIZ",
+    "dim1": "00001006",
+    "dim2": "00000427-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "PINTURA > VERNIZ POLIREX SAYERLACK 3,6L",
+    "dim1": "00001006",
+    "dim2": "00000635-00001006",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > FERRAMENTAS",
+    "dim1": "00001003",
+    "dim2": "00001008-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > ABRAÇADEIRA NYLON BRANCA",
+    "dim1": "00001008",
+    "dim2": "00000007-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > ADAPTADOR SDS PLUS",
+    "dim1": "00001008",
+    "dim2": "00000560-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > ALICATE BOMBA D'AGUA",
+    "dim1": "00001008",
+    "dim2": "00000501-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > ALICATE CRIMPAR",
+    "dim1": "00001008",
+    "dim2": "00000530-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > ALICATE DE BICO",
+    "dim1": "00001008",
+    "dim2": "00000462-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > ALICATE DE CORTE",
+    "dim1": "00001008",
+    "dim2": "00000461-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > ALICATE NIVELADOR PISO",
+    "dim1": "00001008",
+    "dim2": "00000495-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > ALICATE PRESSÃO",
+    "dim1": "00001008",
+    "dim2": "00000502-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > ALICATE REBITADOR",
+    "dim1": "00001008",
+    "dim2": "00000463-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > ALICATE UNIVERSAL",
+    "dim1": "00001008",
+    "dim2": "00000448-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > APLICADOR DE SILICONE",
+    "dim1": "00001008",
+    "dim2": "00000486-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > ARCO DE SERRA",
+    "dim1": "00001008",
+    "dim2": "00000503-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > BROCA AÇO MOURÃO",
+    "dim1": "00001008",
+    "dim2": "00000529-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > BROCA AÇO RAPIDO",
+    "dim1": "00001008",
+    "dim2": "00000453-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > BROCA CHATA MADEIRA",
+    "dim1": "00001008",
+    "dim2": "00000454-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > BROCA CONCRETO SDS",
+    "dim1": "00001008",
+    "dim2": "00000518-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > BROCA ESCALONADA",
+    "dim1": "00001008",
+    "dim2": "00000561-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > BROCA VIDEA CONCRETO",
+    "dim1": "00001008",
+    "dim2": "00000455-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > CABO MADEIRA",
+    "dim1": "00001008",
+    "dim2": "00000516-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > CAIXA DE FERRAMENTAS",
+    "dim1": "00001008",
+    "dim2": "00000484-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > CAMARA AR PNEU",
+    "dim1": "00001008",
+    "dim2": "00000535-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > CARRETEL DE LINHA",
+    "dim1": "00001008",
+    "dim2": "00000515-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > CARRINHO DE PEDREIRO",
+    "dim1": "00001008",
+    "dim2": "00000446-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > CAVADEIRA",
+    "dim1": "00001008",
+    "dim2": "00000499-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > CHAVE ALLEN JOGO",
+    "dim1": "00001008",
+    "dim2": "00000508-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > CHAVE COMBINADA",
+    "dim1": "00001008",
+    "dim2": "00000449-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > CHAVE COMBINADA JOGO",
+    "dim1": "00001008",
+    "dim2": "00000562-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > CHAVE DE FENDA",
+    "dim1": "00001008",
+    "dim2": "00000451-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > CHAVE DE FENDA TOCO",
+    "dim1": "00001008",
+    "dim2": "00000524-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > CHAVE DE VIRAR FERRO",
+    "dim1": "00001008",
+    "dim2": "00000525-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > CHAVE INGLESA",
+    "dim1": "00001008",
+    "dim2": "00000506-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > CHAVE PARA MANDRIL",
+    "dim1": "00001008",
+    "dim2": "00000526-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > CHAVE PHILIPS",
+    "dim1": "00001008",
+    "dim2": "00000452-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > CHAVE PHILIPS TOCO",
+    "dim1": "00001008",
+    "dim2": "00000523-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > CHAVE TESTE",
+    "dim1": "00001008",
+    "dim2": "00000537-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > COLHEDOR FRUTAS",
+    "dim1": "00001008",
+    "dim2": "00000494-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > COLHER DE PEDREIRO",
+    "dim1": "00001008",
+    "dim2": "00000459-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > DESEMPENADEIRA DE AÇO",
+    "dim1": "00001008",
+    "dim2": "00000470-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > DESEMPENADEIRA DE PVC C/ESPUMA",
+    "dim1": "00001008",
+    "dim2": "00000533-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > DESEMPENADEIRA PVC CORRUGADA",
+    "dim1": "00001008",
+    "dim2": "00000465-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > DESEMPENADEIRA PVC P/TEXTURA",
+    "dim1": "00001008",
+    "dim2": "00000534-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > DISCO CIRCULAR WIDEA",
+    "dim1": "00001008",
+    "dim2": "00000507-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > DISCO CORTE INOX",
+    "dim1": "00001008",
+    "dim2": "00000500-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > DISCO DIAMANTADO",
+    "dim1": "00001008",
+    "dim2": "00000491-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > DISCO FLAP",
+    "dim1": "00001008",
+    "dim2": "00000225-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > DISCO LIXA",
+    "dim1": "00001008",
+    "dim2": "00000482-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > ELETRODO",
+    "dim1": "00001008",
+    "dim2": "00000464-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > ENXADA",
+    "dim1": "00001008",
+    "dim2": "00000456-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > ENXADÃO",
+    "dim1": "00001008",
+    "dim2": "00000496-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > ESCOVA DE AÇO",
+    "dim1": "00001008",
+    "dim2": "00000469-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > ESPATULAS DE AÇO",
+    "dim1": "00001008",
+    "dim2": "00000419-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > ESQUADRO",
+    "dim1": "00001008",
+    "dim2": "00000513-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > ESTILETE",
+    "dim1": "00001008",
+    "dim2": "00000514-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > GARRAFÃO TERMICO",
+    "dim1": "00001008",
+    "dim2": "00000471-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > LAMINA P/ ESTILETE",
+    "dim1": "00001008",
+    "dim2": "00000527-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > LÁPIS CARPINTEIRO",
+    "dim1": "00001008",
+    "dim2": "00000468-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > LIMPA BOLOR",
+    "dim1": "00001008",
+    "dim2": "00000175-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > MANDRIL PARA FURADEIRA",
+    "dim1": "00001008",
+    "dim2": "00000485-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > MARRETA",
+    "dim1": "00001008",
+    "dim2": "00000493-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > MARTELO DE UNHA",
+    "dim1": "00001008",
+    "dim2": "00000450-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > MASCARAS",
+    "dim1": "00001008",
+    "dim2": "00000480-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > MISTURADOR",
+    "dim1": "00001008",
+    "dim2": "00000511-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > NIVEL",
+    "dim1": "00001008",
+    "dim2": "00000479-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > PÁ DE BICO",
+    "dim1": "00001008",
+    "dim2": "00000457-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > PÁ QUADRADA",
+    "dim1": "00001008",
+    "dim2": "00000498-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > PNEU CARRINHO PEDREIRO",
+    "dim1": "00001008",
+    "dim2": "00000536-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > PONTEIRA/BITS",
+    "dim1": "00001008",
+    "dim2": "00000517-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > PONTEIRO",
+    "dim1": "00001008",
+    "dim2": "00000488-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > REGUA PEDREIRO ALUMINIO",
+    "dim1": "00001008",
+    "dim2": "00000474-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > RODA CARRINHO PEDREIRO",
+    "dim1": "00001008",
+    "dim2": "00000447-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > RODEL",
+    "dim1": "00001008",
+    "dim2": "00000478-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > SERRA COPO",
+    "dim1": "00001008",
+    "dim2": "00000573-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > SERROTE",
+    "dim1": "00001008",
+    "dim2": "00000522-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > SOQUETE PARAFUSADEIRA",
+    "dim1": "00001008",
+    "dim2": "00000574-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > SUPORTE BOINA",
+    "dim1": "00001008",
+    "dim2": "00000520-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > SUPORTE PARA SERRA COPO",
+    "dim1": "00001008",
+    "dim2": "00000575-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > TALHADEIRA",
+    "dim1": "00001008",
+    "dim2": "00000519-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > TESOURA PARA PODA",
+    "dim1": "00001008",
+    "dim2": "00000576-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > TORQUES",
+    "dim1": "00001008",
+    "dim2": "00000481-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > TRENA",
+    "dim1": "00001008",
+    "dim2": "00000460-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAMENTAS > VANGA QUADRADA",
+    "dim1": "00001008",
+    "dim2": "00000497-00001008",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "ELETRICA > FERRAGENS",
+    "dim1": "00001003",
+    "dim2": "00001004-00001003",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > ABRAÇADEIRA ROSCA SEM FIM",
+    "dim1": "00001004",
+    "dim2": "00000206-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > ABRAÇADEIRA TIPO D",
+    "dim1": "00001004",
+    "dim2": "00000207-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > ABRAÇADEIRA TIPO U",
+    "dim1": "00001004",
+    "dim2": "00000208-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > ARAME GALVANIZADO",
+    "dim1": "00001004",
+    "dim2": "00000444-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > ARAME RECOZIDO",
+    "dim1": "00001004",
+    "dim2": "00000222-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > BALDE",
+    "dim1": "00001004",
+    "dim2": "00000091-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > BALDE DOMÉSTICO",
+    "dim1": "00001004",
+    "dim2": "00000004-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > BALDE MULTIUSO",
+    "dim1": "00001004",
+    "dim2": "00000005-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > BOTINA ELASTICO CARTOM",
+    "dim1": "00001004",
+    "dim2": "00000578-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > BRILHO INOX",
+    "dim1": "00001004",
+    "dim2": "00000181-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > BUCHA FIXAÇÃO",
+    "dim1": "00001004",
+    "dim2": "00000144-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > BUCHA FIXAÇÃO COM ANEL",
+    "dim1": "00001004",
+    "dim2": "00000145-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > BUCHA FLY",
+    "dim1": "00001004",
+    "dim2": "00000209-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > CADEADO",
+    "dim1": "00001004",
+    "dim2": "00000084-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > CADEADO HASTE LONGA",
+    "dim1": "00001004",
+    "dim2": "00000123-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > CAIXA PARA MASSA",
+    "dim1": "00001004",
+    "dim2": "00000217-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > CAPACETE PLASTCOR",
+    "dim1": "00001004",
+    "dim2": "00000590-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > COLA BRANCA",
+    "dim1": "00001004",
+    "dim2": "00000100-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > COLA CONTATO",
+    "dim1": "00001004",
+    "dim2": "00000105-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > COLA EPOXI LÍQUIDA",
+    "dim1": "00001004",
+    "dim2": "00000077-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > COLA FIXA TUDO",
+    "dim1": "00001004",
+    "dim2": "00000095-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > COLA INSTANTÂNEA",
+    "dim1": "00001004",
+    "dim2": "00000078-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > COLA MADEIRA",
+    "dim1": "00001004",
+    "dim2": "00000082-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > COLA VEDACALHA",
+    "dim1": "00001004",
+    "dim2": "00000083-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > CONJUNTO IRRIGAÇÃO",
+    "dim1": "00001004",
+    "dim2": "00000131-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > CORDA POLIESTER CARRETEL",
+    "dim1": "00001004",
+    "dim2": "00000122-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > CUNHA P/ NIVELADOR",
+    "dim1": "00001004",
+    "dim2": "00000134-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > DESENGRIPANTE ANTICORROSIVO",
+    "dim1": "00001004",
+    "dim2": "00000174-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > ESCADA ALUMINIO",
+    "dim1": "00001004",
+    "dim2": "00000121-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > ESCOVÃO",
+    "dim1": "00001004",
+    "dim2": "00000566-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > ESCOVA PARA LIMPEZA",
+    "dim1": "00001004",
+    "dim2": "00000192-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > ESPAÇADOR NIVELADOR",
+    "dim1": "00001004",
+    "dim2": "00000135-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > ESPAÇADOR REVESTIMENTO",
+    "dim1": "00001004",
+    "dim2": "00000136-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > ESPUMA EXPANSIVA",
+    "dim1": "00001004",
+    "dim2": "00000079-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > ESTRIBO ARMAÇÃO DE COLUNA",
+    "dim1": "00001004",
+    "dim2": "00000218-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > FITA DUPLA FACE",
+    "dim1": "00001004",
+    "dim2": "00000076-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > FITA EMPACOTAMENTO",
+    "dim1": "00001004",
+    "dim2": "00000124-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > FITA MULTIUSO",
+    "dim1": "00001004",
+    "dim2": "00000153-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > FITILHO",
+    "dim1": "00001004",
+    "dim2": "00000085-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > FIXADOR PORTA",
+    "dim1": "00001004",
+    "dim2": "00000202-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > GÁS",
+    "dim1": "00001004",
+    "dim2": "00000166-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > GEL ODORIZADOR ETANIZ",
+    "dim1": "00001004",
+    "dim2": "00000600-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > GRAFITE EM PÓ",
+    "dim1": "00001004",
+    "dim2": "00000180-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > GRAXA",
+    "dim1": "00001004",
+    "dim2": "00000156-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > JOELHEIRA EVA",
+    "dim1": "00001004",
+    "dim2": "00000137-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > LAMINA SERRA BIMETAL",
+    "dim1": "00001004",
+    "dim2": "00000193-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > LIMPA BOLOR",
+    "dim1": "00001004",
+    "dim2": "00000175-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > LIMPA CONTATO",
+    "dim1": "00001004",
+    "dim2": "00000104-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > LIMPA FOSSA",
+    "dim1": "00001004",
+    "dim2": "00000177-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > LIMPA GRELHA",
+    "dim1": "00001004",
+    "dim2": "00000176-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > LIMPA OBRA",
+    "dim1": "00001004",
+    "dim2": "00000178-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > LIMPA REJUNTE",
+    "dim1": "00001004",
+    "dim2": "00000179-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > LINHA DE PEDREIRO",
+    "dim1": "00001004",
+    "dim2": "00000120-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > LONA PLASTICA",
+    "dim1": "00001004",
+    "dim2": "00000087-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > LUVA LATEX FORRADA SANRO",
+    "dim1": "00001004",
+    "dim2": "00000601-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > LUVA PU KALIPSO",
+    "dim1": "00001004",
+    "dim2": "00000602-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > LUVAS HELANCA",
+    "dim1": "00001004",
+    "dim2": "00000097-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > LUVAS TRICOTADA",
+    "dim1": "00001004",
+    "dim2": "00000152-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > MASSA EPOXI",
+    "dim1": "00001004",
+    "dim2": "00000127-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > NUMERO RESIDENCIAL",
+    "dim1": "00001004",
+    "dim2": "00000163-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > ÓCULOS DE PROTEÇÃO",
+    "dim1": "00001004",
+    "dim2": "00000088-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > ODORIZADORES DE AMBIENTE",
+    "dim1": "00001004",
+    "dim2": "00000173-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > ÓLEO LUBRIFICANTE",
+    "dim1": "00001004",
+    "dim2": "00000092-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > PÁ DE LIXO",
+    "dim1": "00001004",
+    "dim2": "00000164-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > PARAF. SEXTAVADO ROSCA MÉTRICA",
+    "dim1": "00001004",
+    "dim2": "00000140-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > PARAF. SEXTAVADO ROSCA SOBERBA",
+    "dim1": "00001004",
+    "dim2": "00000148-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > PARAFUSO CHIPBOARD PANELA",
+    "dim1": "00001004",
+    "dim2": "00000139-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > PARAFUSO MADEIRA",
+    "dim1": "00001004",
+    "dim2": "00000142-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > PARAFUSO P/ TELHA",
+    "dim1": "00001004",
+    "dim2": "00000146-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > PARAFUSO SEXTAVADO",
+    "dim1": "00001004",
+    "dim2": "00000141-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > PORCA",
+    "dim1": "00001004",
+    "dim2": "00000149-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > PORTA CADEADO",
+    "dim1": "00001004",
+    "dim2": "00000200-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > PORTA MANGUEIRA",
+    "dim1": "00001004",
+    "dim2": "00000133-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > PORTA SANFONADA",
+    "dim1": "00001004",
+    "dim2": "00000093-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > PORTA SHAMPOO",
+    "dim1": "00001004",
+    "dim2": "00000195-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > PREGO COM CABEÇA",
+    "dim1": "00001004",
+    "dim2": "00000223-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > PREGO SEM CABEÇA",
+    "dim1": "00001004",
+    "dim2": "00000224-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > PREGO TELHEIRO",
+    "dim1": "00001004",
+    "dim2": "00000213-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > PROLONGADOR",
+    "dim1": "00001004",
+    "dim2": "00000196-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > PROTETOR AUDITIVO",
+    "dim1": "00001004",
+    "dim2": "00000090-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > PULVERIZADOR",
+    "dim1": "00001004",
+    "dim2": "00000129-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > PUXADOR",
+    "dim1": "00001004",
+    "dim2": "00000109-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > RALINHO INOX",
+    "dim1": "00001004",
+    "dim2": "00000086-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > REGULADOR DE GAS",
+    "dim1": "00001004",
+    "dim2": "00000114-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > RODIZIO MOVEL",
+    "dim1": "00001004",
+    "dim2": "00000112-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > RODOS",
+    "dim1": "00001004",
+    "dim2": "00000572-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > ROLDANA PARA TRILHO",
+    "dim1": "00001004",
+    "dim2": "00000110-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > SACO ENTULHO",
+    "dim1": "00001004",
+    "dim2": "00000154-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > SELANTE PU40 BARONE",
+    "dim1": "00001004",
+    "dim2": "00000616-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > SELANTE PU40 CIBRA",
+    "dim1": "00001004",
+    "dim2": "00000617-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > SELANTE PU40FIX TEKBOND",
+    "dim1": "00001004",
+    "dim2": "00000618-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > SILICONE ACÉTICO",
+    "dim1": "00001004",
+    "dim2": "00000080-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > SILICONE ACÉTICO BARONE",
+    "dim1": "00001004",
+    "dim2": "00000619-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > SILICONE ALTA TEMPERATURA",
+    "dim1": "00001004",
+    "dim2": "00000189-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > SILICONE BASE ÁGUA",
+    "dim1": "00001004",
+    "dim2": "00000101-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > SUPORTE TV",
+    "dim1": "00001004",
+    "dim2": "00000099-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > TRANQUETA",
+    "dim1": "00001004",
+    "dim2": "00000199-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > TRAVA SEGURANÇA",
+    "dim1": "00001004",
+    "dim2": "00000201-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > VARAL CHÃO",
+    "dim1": "00001004",
+    "dim2": "00000126-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > VASELINA",
+    "dim1": "00001004",
+    "dim2": "00000157-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > VASSOURA DOMÉSTICA",
+    "dim1": "00001004",
+    "dim2": "00000162-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  },
+  {
+    "categoria": "FERRAGENS > VASSOURÃO GARI",
+    "dim1": "00001004",
+    "dim2": "00000160-00001004",
+    "produtosEncontradosNoSite": 0,
+    "produtosEfetivamenteSalvos": 0,
+    "paginasPercorridas": 1,
+    "statusCobertura": "ok"
+  }
+]

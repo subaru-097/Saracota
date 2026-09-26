@@ -1,0 +1,51 @@
+{
+  "selectedTextBefore": {
+    "singleValueText": "40 / página",
+    "containerText": "40 / página"
+  },
+  "availableOptions": [],
+  "selectedTextPage2": {
+    "singleValueText": "",
+    "containerText": "",
+    "url": "https://www.construja.com.br/paginas/central-de-vendas",
+    "cardsCount": 0
+  },
+  "cardsCountAfter96": 0,
+  "sampleProducts": [
+    {
+      "idx": 1,
+      "rawTitle": "IRWIN - DISCO DIAM LISO 43/8X3/4",
+      "priceContainerHtml": "<div class=\"w-100 CardProduto_precoCardProduto__rY1bO\"></div>",
+      "wholeText": "",
+      "fullCardTextSnippet": "#17028EMB: 1CX: Emb. Venda:100 Master:100 UNIRWIN - DISCO DIAM LISO 43/8X3/4Faça login ou cadastre-se para ver os preços"
+    },
+    {
+      "idx": 2,
+      "rawTitle": "JNG - DISJ DIN BIP  32A CURVA C",
+      "priceContainerHtml": "<div class=\"w-100 CardProduto_precoCardProduto__rY1bO\"></div>",
+      "wholeText": "",
+      "fullCardTextSnippet": "#159329EMB: 6CX: Emb. Venda:120 Master:120 PCJNG - DISJ DIN BIP  32A CURVA CFaça login ou cadastre-se para ver os preços"
+    },
+    {
+      "idx": 3,
+      "rawTitle": "JNG - DISJ DIN BIP  40A CURVA C",
+      "priceContainerHtml": "<div class=\"w-100 CardProduto_precoCardProduto__rY1bO\"></div>",
+      "wholeText": "",
+      "fullCardTextSnippet": "#159330EMB: 6CX: Emb. Venda:120 Master:120 PCJNG - DISJ DIN BIP  40A CURVA CFaça login ou cadastre-se para ver os preços"
+    },
+    {
+      "idx": 4,
+      "rawTitle": "QUARTZOLIT - REJUNTE CERAMICA PALHA 1KG",
+      "priceContainerHtml": "<div class=\"w-100 CardProduto_precoCardProduto__rY1bO\"></div>",
+      "wholeText": "",
+      "fullCardTextSnippet": "#164446EMB: 15CX: Emb. Venda:15 Master:15 KGQUARTZOLIT - REJUNTE CERAMICA PALHA 1KGFaça login ou cadastre-se para ver os preços"
+    },
+    {
+      "idx": 5,
+      "rawTitle": "PENZEL - TERM PRESSAO REFORÇ  25MM",
+      "priceContainerHtml": "<div class=\"w-100 CardProduto_precoCardProduto__rY1bO\"></div>",
+      "wholeText": "",
+      "fullCardTextSnippet": "#15587EMB: 10CX: Emb. Venda:10 Master:10 pçPENZEL - TERM PRESSAO REFORÇ  25MMFaça login ou cadastre-se para ver os preços"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+    const fullText = container ? container.innerText : '';
+      const lines = fullText.split('\n').map(l => l.trim()).filter(Boolean);
+
+      const skuMatch = fullText.match(/\b(\d{5,8})\b/);
+      const sku = skuMatch ? skuMatch[1] : `SKU-${idx}`;
+
+      const titleLine = lines.find(l => /\d{5,8}•/.test(l)) || lines.find(l => l.length > 8 && l !== '•' && !l.startsWith('R$') && !l.toLowerCase().includes('adicionar') && !l.toLowerCase().includes('no carrinho') && !l.includes('•')) || lines[0] || 'Produto Cofema';
+      const cleanTitle = titleLine.replace(/^\d+•/, '').trim();
+
+      // Remover menções a estoque/disponibilidade para não confundir estoque ("22 un.") com múltiplo de embalagem
+      const textWithoutStock = fullText.replace(/(?:estoque|dispon[íi]vel|disp\.?)\s*:?\s*\d+\s*un\.?/gi, '');
+      const multMatch = textWithoutStock.match(/(?:embalagem|cx|caixa|m[úu]ltiplo|fator|m[úu]lt)\s*:?\s*(\d+)/i) ||
+                        textWithoutStock.match(/(\d+)\s*un\s*(?:fechada|caixa|emb|master)/i);
+      const mult = multMatch ? parseInt(multMatch[1], 10) : 1;
+
+      const priceMatch = fullText.match(/R\$\s*([\d\.,]+)/i);
+      const priceUnit = priceMatch ? parseFloat(priceMatch[1].replace(/\./g, '').replace(',', '.')) : 0;
+
+      const btnText = (container.querySelector('button')?.textContent || '').toLowerCase();
+      const isAlreadyInCart = btnText.includes('no carrinho');
+
+      return {
+        index: idx,
+        title: cleanTitle,
+        sku,
+        multiploVenda: mult,
+        precoUnitario: priceUnit,
+        isAlreadyInCart,
+      };
+    });
+  });
+
+  if (candidatos.length === 0) {
+    return { termo: searchTerm, qPedida, status: 'FALHA', erro: 'Nenhum produto na grade', unitPriceStr: 'R$ 0,00' };
+  }
+
+  const { executarMatchingEmCamadas } = require('../../../lib/services/normalizer/canonicalIdGenerator');
+
+  let melhorCandidato = null;
+  let melhorResultadoMatching = null;
+
+  for (const cand of candidatos) {
+    const matchRes = executarMatchingEmCamadas(rawTerm, cand.title, cand.sku, itemObjContext);
+    if (matchRes.status === 'MATCH_EXATO' || matchRes.status === 'MATCH_SIMILAR') {
+      if (!melhorResultadoMatching || matchRes.scoreConfianca > melhorResultadoMatching.scoreConfianca) {
+        melhorResultadoMatching = matchRes;
+        melhorCandidato = cand;
+      }
+    } else {
+      console.log(`[CofemaExtractor 🛑 MATCH REJEITADO] "${rawTerm}" vs "${cand.title}" -> ${matchRes.motivo}`);
+    }
+  }
+
+  if (!melhorCandidato || !melhorResultadoMatching) {
+    console.warn(`[CofemaExtractor ⚠️] Nenhum candidato passou no matching em camadas para "${rawTerm}". Interrompendo adição ao carrinho.`);
+    return {
+      termo: rawTerm,
+      qPedida,
+      status: 'AMBIGUO_REVISAO_MANUAL',
+      erro: 'Item ambíguo ou com voltagem/atributo divergente — pendente de revisão manual',
+      unitPriceStr: 'R$ 0,00'
+    };
+  }
+
+  const targetQty = quantidadeDesejada || qPedida || 1;
+  const mult = melhorCandidato.multiploVenda || 1;
+  let qAjustada = targetQty;
+  if (targetQty % mult !== 0) {
+    qAjustada = Math.ceil(targetQty / mult) * mult;
+  }
+
+  if (!melhorCandidato.isAlreadyInCart) {
+    // Tentar preencher a quantidade desejada no card antes de adicionar
+    try {
+      const qtyInputs = page.locator('input[type="number"], input[name*="qtd"], input[class*="qty"]');
+      const qtyCount = await qtyInputs.count();
+      if (qtyCount > melhorCandidato.index) {
+        await qtyInputs.nth(melhorCandidato.index).fill(String(qAjustada));
+        await page.waitForTimeout(500);
+      } else if (qtyCount > 0) {
+        await qtyInputs.first().fill(String(qAjustada));
+        await page.waitForTimeout(500);
+      }
+    } catch (e) {}
+
+    const addButtons = page.locator('button:has-text("Adicionar"), button:has-text("ADICIONAR")');
+    const addBtnCount = await addButtons.count();
+
+    if (addBtnCount > melhorCandidato.index) {
+      await addButtons.nth(melhorCandidato.index).click({ force: true });
+      await page.wa

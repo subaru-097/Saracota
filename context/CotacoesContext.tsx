@@ -234,9 +234,13 @@ export const CotacoesProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         const totalCalculado = itensDetalhados.reduce((acc, item) => acc + item.subtotal, 0);
         const valorGeralFinal = totalCalculado > 0 ? totalCalculado : Number(c.valorTotalGeral || c.valor_total || 0);
 
+        const fId = (c as any).fornecedor_id || (c as any).fornecedores_selecionados?.[0] || c.fornecedorIds?.[0] || '752e18bd-4f41-414a-8f66-0d8f538de99e';
+        const isCofema = fId === '752e18bd-4f41-414a-8f66-0d8f538de99e' || String(fId).toLowerCase().includes('cofema');
+        const fNome = isCofema ? 'Cofema' : 'Cicalfer Material Elétrico';
+
         const fornecedorReal: FornecedorCotado = {
-          id: '33e03495-100d-45a3-9e34-899de56b0ab1',
-          nome: 'Cicalfer Material Elétrico',
+          id: fId,
+          nome: fNome,
           score: 5.0,
           fatorPreco: 1.0,
           prazoDias: 1,
@@ -273,7 +277,7 @@ export const CotacoesProvider: React.FC<{ children: React.ReactNode }> = ({ chil
             };
           }),
           fornecedores: [fornecedorReal],
-          fornecedorVencedorNome: 'Cicalfer Material Elétrico',
+          fornecedorVencedorNome: fNome,
           valorTotalGeral: Number(valorGeralFinal.toFixed(2)),
           valorTotalSTTotal: 0,
           economiaEstimadaBRL: Number((valorGeralFinal * 0.12).toFixed(2)),
@@ -407,16 +411,24 @@ export const CotacoesProvider: React.FC<{ children: React.ReactNode }> = ({ chil
               valorST: 0,
               valorTotalGeral: c.valor_total,
               urlCarrinhoDireto: 'https://www.cicalfer.com.br/carrinho',
-              itensCotados: (c.itens || []).map((it: any, idx: number) => ({
-                itemId: `hist-item-${idx}`,
-                nomeSolicitado: it.nome || it.nomeSolicitado || 'Item',
-                nomeEncontrado: it.nome || it.nomeEncontrado || 'Item',
-                quantidade: Number(it.qtd || it.quantidade || 1),
-                unidade: it.unidade || 'un',
-                precoUnitario: Number(it.precoUnitario || 0),
-                subtotalComSt: Number(it.precoTotal || (Number(it.precoUnitario || 0) * Number(it.qtd || 1))),
-                status: 'encontrado',
-              })),
+              itensCotados: (c.itens || []).map((it: any, idx: number) => {
+                const pUnit = Number(it.precoUnitario || 0);
+                const qtd = Number(it.qtd || it.quantidade || 1);
+                const sub = pUnit * qtd;
+                return {
+                  itemId: `hist-item-${idx}`,
+                  nomeSolicitado: it.nome || it.nomeSolicitado || 'Item',
+                  nomeEncontrado: it.nome || it.nomeEncontrado || 'Item',
+                  quantidade: qtd,
+                  unidade: it.unidade || 'un',
+                  precoUnitario: pUnit,
+                  subtotal: sub,
+                  subtotalComSt: Number(it.precoTotal || sub),
+                  icmsStPercent: 0,
+                  icmsStValor: 0,
+                  status: 'encontrado' as const,
+                };
+              }),
             },
           ],
           fornecedorVencedorNome: c.fornecedor,

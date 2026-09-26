@@ -1,0 +1,320 @@
+[
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\docs\\auditorias\\2026-09-09-cicalfer-cotacao-quebrada\\codigo\\quote-engine-cicalfer.js",
+    "lineNum": 2,
+    "lineContent": "// CONFIGURAÇÃO SELETORES CICALFER (config/suppliers/cicalfer.json)"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\docs\\auditorias\\2026-09-09-cicalfer-cotacao-quebrada\\historico-commits.md",
+    "lineNum": 5,
+    "lineContent": "- `config/suppliers/cicalfer.json`"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\docs\\historico\\2026-09-11_18h24_teste-estabilidade-rodada1\\diagnostico-fluxo.md",
+    "lineNum": 23,
+    "lineContent": "- **Configuração**: [`config/suppliers/cicalfer.json`](file:///c:/Users/User/Desktop/Saracota/config/suppliers/cicalfer.json)"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\docs\\historico\\2026-09-11_18h24_teste-estabilidade-rodada1\\hash-codigo.txt",
+    "lineNum": 11,
+    "lineContent": "File: config/suppliers/cicalfer.json"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\docs\\historico\\2026-09-11_18h24_teste-estabilidade-rodada2\\diagnostico-fluxo.md",
+    "lineNum": 23,
+    "lineContent": "- **Configuração**: [`config/suppliers/cicalfer.json`](file:///c:/Users/User/Desktop/Saracota/config/suppliers/cicalfer.json)"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\docs\\historico\\2026-09-11_18h24_teste-estabilidade-rodada2\\hash-codigo.txt",
+    "lineNum": 11,
+    "lineContent": "File: config/suppliers/cicalfer.json"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\docs\\historico\\2026-09-11_18h24_teste-estabilidade-rodada3\\diagnostico-fluxo.md",
+    "lineNum": 23,
+    "lineContent": "- **Configuração**: [`config/suppliers/cicalfer.json`](file:///c:/Users/User/Desktop/Saracota/config/suppliers/cicalfer.json)"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\docs\\historico\\2026-09-11_18h24_teste-estabilidade-rodada3\\hash-codigo.txt",
+    "lineNum": 11,
+    "lineContent": "File: config/suppliers/cicalfer.json"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\docs\\historico\\diagnostico-fluxo-cotacao-2026-09-10.md",
+    "lineNum": 71,
+    "lineContent": "- [`config/suppliers/cicalfer.json`](file:///c:/Users/User/Desktop/Saracota/config/suppliers/cicalfer.json)"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\docs\\historico\\diagnostico-fluxo-cotacao-2026-09-10.md",
+    "lineNum": 178,
+    "lineContent": "| **Cicalfer** | **SIM** | `core/services/supplier-quote-engine/index.js` + `config/suppliers/cicalfer.json` | **100% Funcional** (Login B2B, Filial ENTREGA, Adição em Lote, Leitura em Par Container e Tabela de Resumo). |"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\docs\\historico\\diagnostico-fluxo-cotacao-2026-09-10.md",
+    "lineNum": 199,
+    "lineContent": "#### 1. Seletores Reais da Cicalfer (`config/suppliers/cicalfer.json` & Extrator Real):"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\docs\\supplier-integration-pattern.md",
+    "lineNum": 14,
+    "lineContent": "2. **Arquivos de Configuração de Fornecedor (`config/suppliers/<fornecedor_id>.json`)**:"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\docs\\supplier-integration-pattern.md",
+    "lineNum": 81,
+    "lineContent": "1. **Criar o arquivo de configuração `config/suppliers/construgama.json`**:"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\docs\\supplier-integration-pattern.md",
+    "lineNum": 107,
+    "lineContent": "const construgamaConfig = require('./config/suppliers/construgama.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\docs\\supplier-integration-pattern.md",
+    "lineNum": 117,
+    "lineContent": "- **Configuração do Cicalfer:** [`config/suppliers/cicalfer.json`](file:///c:/Users/User/Desktop/Saracota/config/suppliers/cicalfer.json)"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\historico\\2026-09-11_18h24_teste-estabilidade-rodada1\\diagnostico-fluxo.md",
+    "lineNum": 23,
+    "lineContent": "- **Configuração**: [`config/suppliers/cicalfer.json`](file:///c:/Users/User/Desktop/Saracota/config/suppliers/cicalfer.json)"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\historico\\2026-09-11_18h24_teste-estabilidade-rodada1\\hash-codigo.txt",
+    "lineNum": 11,
+    "lineContent": "File: config/suppliers/cicalfer.json"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\historico\\2026-09-11_18h24_teste-estabilidade-rodada2\\diagnostico-fluxo.md",
+    "lineNum": 23,
+    "lineContent": "- **Configuração**: [`config/suppliers/cicalfer.json`](file:///c:/Users/User/Desktop/Saracota/config/suppliers/cicalfer.json)"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\historico\\2026-09-11_18h24_teste-estabilidade-rodada2\\hash-codigo.txt",
+    "lineNum": 11,
+    "lineContent": "File: config/suppliers/cicalfer.json"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\historico\\2026-09-11_18h24_teste-estabilidade-rodada3\\diagnostico-fluxo.md",
+    "lineNum": 23,
+    "lineContent": "- **Configuração**: [`config/suppliers/cicalfer.json`](file:///c:/Users/User/Desktop/Saracota/config/suppliers/cicalfer.json)"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\historico\\2026-09-11_18h24_teste-estabilidade-rodada3\\hash-codigo.txt",
+    "lineNum": 11,
+    "lineContent": "File: config/suppliers/cicalfer.json"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\historico\\diagnostico-fluxo-cotacao-2026-09-10.md",
+    "lineNum": 71,
+    "lineContent": "- [`config/suppliers/cicalfer.json`](file:///c:/Users/User/Desktop/Saracota/config/suppliers/cicalfer.json)"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\historico\\diagnostico-fluxo-cotacao-2026-09-10.md",
+    "lineNum": 178,
+    "lineContent": "| **Cicalfer** | **SIM** | `core/services/supplier-quote-engine/index.js` + `config/suppliers/cicalfer.json` | **100% Funcional** (Login B2B, Filial ENTREGA, Adição em Lote, Leitura em Par Container e Tabela de Resumo). |"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\historico\\diagnostico-fluxo-cotacao-2026-09-10.md",
+    "lineNum": 199,
+    "lineContent": "#### 1. Seletores Reais da Cicalfer (`config/suppliers/cicalfer.json` & Extrator Real):"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\debug_cicalfer_buy.js",
+    "lineNum": 5,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\execute_stability_3_rounds.js",
+    "lineNum": 29,
+    "lineContent": "{ name: 'cicalferConfig', relPath: 'config/suppliers/cicalfer.json' },"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\execute_stability_3_rounds.js",
+    "lineNum": 81,
+    "lineContent": "- **Configuração**: [\\`config/suppliers/cicalfer.json\\`](file:///c:/Users/User/Desktop/Saracota/config/suppliers/cicalfer.json)"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\inspect_3itens_cicalfer.ts",
+    "lineNum": 22,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\inspect_cart_containers.js",
+    "lineNum": 5,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\inspect_cart_dom.js",
+    "lineNum": 6,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\inspect_cart_dom.ts",
+    "lineNum": 20,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\inspect_product_detail_dom.js",
+    "lineNum": 5,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\run_audit_cicalfer_full.js",
+    "lineNum": 9,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\run_audit_cicalfer_full.js",
+    "lineNum": 234,
+    "lineContent": "// CONFIGURAÇÃO SELETORES CICALFER (config/suppliers/cicalfer.json)"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\run_audit_cicalfer_full.js",
+    "lineNum": 265,
+    "lineContent": "- \\`config/suppliers/cicalfer.json\\`"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\run_audit_cicalfer_full.js",
+    "lineNum": 377,
+    "lineContent": "- Nenhuma alteração foi realizada nos arquivos de produção (\\`core/services/supplier-quote-engine/index.js\\` ou \\`config/suppliers/cicalfer.json\\`) cumprindo a regra de não alterar nada antes da aprovação."
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\run_full_real_frontend_test.js",
+    "lineNum": 23,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\run_pipeline_diagnostic.js",
+    "lineNum": 23,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\run_validation_subtotal_fix.js",
+    "lineNum": 23,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\test_add_4_cicalfer.js",
+    "lineNum": 6,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\test_cicalfer_4itens_search.js",
+    "lineNum": 6,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\test_cicalfer_4_items_full.js",
+    "lineNum": 3,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\test_cicalfer_edge_cases.js",
+    "lineNum": 3,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\test_cicalfer_full_flow.js",
+    "lineNum": 42,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\test_custom_items_quotation.js",
+    "lineNum": 9,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\test_detail_page_add.js",
+    "lineNum": 5,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scratch\\test_extract_4_cart.js",
+    "lineNum": 5,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scripts\\testes-manuais\\inspect_cicalfer.js",
+    "lineNum": 10,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scripts\\testes-manuais\\inspect_cicalfer_cart_dom.js",
+    "lineNum": 12,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scripts\\testes-manuais\\inspect_cicalfer_grid_selectors.js",
+    "lineNum": 10,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scripts\\testes-manuais\\run_e2e_4itens_saracota.js",
+    "lineNum": 11,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scripts\\testes-manuais\\run_supplier_quote.js",
+    "lineNum": 11,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  },
+  {
+    "query": "config/suppliers",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\scripts\\testes-manuais\\test_3_itens_cicalfer_full.js",
+    "lineNum": 15,
+    "lineContent": "const cicalferConfig = require('../config/suppliers/cicalfer.json');"
+  }
+]

@@ -1,0 +1,146 @@
+[
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\export_construja\\Mapeamento_Saracota_Central\\README_mapeamento_construja.md",
+    "lineNum": 26,
+    "lineContent": "- **Onde ocorre**: Componente frontend [`CotacoesView.tsx`](file:///c:/Users/User/Desktop/Saracota/components/features/CotacoesView.tsx) e [`boot_cotacao_construja.tsx`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/01_boot_e_leitura_lista/boot_cotacao_construja.tsx)."
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\export_construja\\Mapeamento_Saracota_Central\\README_mapeamento_construja.md",
+    "lineNum": 34,
+    "lineContent": "- **Onde ocorre**: [`busca_credenciais_vault.ts`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/02_autenticacao_fornecedor/busca_credenciais_vault.ts) e [`login_construja_rpa.js`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/02_autenticacao_fornecedor/login_construja_rpa.js)."
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\export_construja\\Mapeamento_Saracota_Central\\README_mapeamento_construja.md",
+    "lineNum": 50,
+    "lineContent": "- **Onde ocorre**: [`busca_e_matching_construja.js`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/03_busca_e_carrinho/busca_e_matching_construja.js)."
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\export_construja\\Mapeamento_Saracota_Central\\README_mapeamento_construja.md",
+    "lineNum": 58,
+    "lineContent": "- **Onde ocorre**: [`extracao_gaveta_carrinho_construja.js`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/04_leitura_carrinho/extracao_gaveta_carrinho_construja.js)."
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\export_construja\\Mapeamento_Saracota_Central\\README_mapeamento_construja.md",
+    "lineNum": 69,
+    "lineContent": "- **Onde ocorre**: [`payload_e_matching_engine_construja.ts`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/05_retorno_dados/payload_e_matching_engine_construja.ts)."
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\export_construja\\Mapeamento_Saracota_Central\\README_mapeamento_construja.md",
+    "lineNum": 74,
+    "lineContent": "- **Onde ocorre**: [`ModalDetalheConstruja.tsx`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/06_modal_resultado/ModalDetalheConstruja.tsx)."
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\Mapeamento_Saracota_Central\\Mapeamento_Construja\\README_mapeamento_construja.md",
+    "lineNum": 26,
+    "lineContent": "- **Onde ocorre**: Componente frontend [`CotacoesView.tsx`](file:///c:/Users/User/Desktop/Saracota/components/features/CotacoesView.tsx) e [`boot_cotacao_construja.tsx`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/01_boot_e_leitura_lista/boot_cotacao_construja.tsx)."
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\Mapeamento_Saracota_Central\\Mapeamento_Construja\\README_mapeamento_construja.md",
+    "lineNum": 36,
+    "lineContent": "- **Onde ocorre**: [`busca_credenciais_vault.ts`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/02_autenticacao_fornecedor/busca_credenciais_vault.ts) e [`login_construja_rpa.js`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/02_autenticacao_fornecedor/login_construja_rpa.js)."
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\Mapeamento_Saracota_Central\\Mapeamento_Construja\\README_mapeamento_construja.md",
+    "lineNum": 55,
+    "lineContent": "- **Onde ocorre**: [`busca_e_matching_construja.js`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/03_busca_e_carrinho/busca_e_matching_construja.js)."
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\Mapeamento_Saracota_Central\\Mapeamento_Construja\\README_mapeamento_construja.md",
+    "lineNum": 68,
+    "lineContent": "- **Onde ocorre**: [`extracao_gaveta_carrinho_construja.js`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/04_leitura_carrinho/extracao_gaveta_carrinho_construja.js)."
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\Mapeamento_Saracota_Central\\Mapeamento_Construja\\README_mapeamento_construja.md",
+    "lineNum": 82,
+    "lineContent": "- **Onde ocorre**: [`payload_e_matching_engine_construja.ts`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/05_retorno_dados/payload_e_matching_engine_construja.ts)."
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\Mapeamento_Saracota_Central\\Mapeamento_Construja\\README_mapeamento_construja.md",
+    "lineNum": 90,
+    "lineContent": "- **Onde ocorre**: [`ModalDetalheConstruja.tsx`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/06_modal_resultado/ModalDetalheConstruja.tsx)."
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\Mapeamento_Saracota_Central\\README_mapeamento_cicalfer.md",
+    "lineNum": 161,
+    "lineContent": "- [`/01_boot_e_leitura_lista`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/01_boot_e_leitura_lista)"
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\Mapeamento_Saracota_Central\\README_mapeamento_cicalfer.md",
+    "lineNum": 162,
+    "lineContent": "- [`/02_autenticacao_fornecedor`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/02_autenticacao_fornecedor)"
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\Mapeamento_Saracota_Central\\README_mapeamento_cicalfer.md",
+    "lineNum": 163,
+    "lineContent": "- [`/03_busca_e_carrinho`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/03_busca_e_carrinho)"
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\Mapeamento_Saracota_Central\\README_mapeamento_cicalfer.md",
+    "lineNum": 164,
+    "lineContent": "- [`/04_leitura_carrinho`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/04_leitura_carrinho)"
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\Mapeamento_Saracota_Central\\README_mapeamento_cicalfer.md",
+    "lineNum": 165,
+    "lineContent": "- [`/05_retorno_dados`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/05_retorno_dados)"
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\Mapeamento_Saracota_Central\\README_mapeamento_cicalfer.md",
+    "lineNum": 166,
+    "lineContent": "- [`/06_modal_resultado`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/06_modal_resultado)"
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\Mapeamento_Saracota_Central\\README_mapeamento_construja.md",
+    "lineNum": 26,
+    "lineContent": "- **Onde ocorre**: Componente frontend [`CotacoesView.tsx`](file:///c:/Users/User/Desktop/Saracota/components/features/CotacoesView.tsx) e [`boot_cotacao_construja.tsx`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/01_boot_e_leitura_lista/boot_cotacao_construja.tsx)."
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\Mapeamento_Saracota_Central\\README_mapeamento_construja.md",
+    "lineNum": 34,
+    "lineContent": "- **Onde ocorre**: [`busca_credenciais_vault.ts`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/02_autenticacao_fornecedor/busca_credenciais_vault.ts) e [`login_construja_rpa.js`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/02_autenticacao_fornecedor/login_construja_rpa.js)."
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\Mapeamento_Saracota_Central\\README_mapeamento_construja.md",
+    "lineNum": 50,
+    "lineContent": "- **Onde ocorre**: [`busca_e_matching_construja.js`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/03_busca_e_carrinho/busca_e_matching_construja.js)."
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\Mapeamento_Saracota_Central\\README_mapeamento_construja.md",
+    "lineNum": 58,
+    "lineContent": "- **Onde ocorre**: [`extracao_gaveta_carrinho_construja.js`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/04_leitura_carrinho/extracao_gaveta_carrinho_construja.js)."
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\Mapeamento_Saracota_Central\\README_mapeamento_construja.md",
+    "lineNum": 69,
+    "lineContent": "- **Onde ocorre**: [`payload_e_matching_engine_construja.ts`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/05_retorno_dados/payload_e_matching_engine_construja.ts)."
+  },
+  {
+    "query": "Mapeamento_Saracota_Central",
+    "file": "c:\\Users\\User\\Desktop\\Saracota\\Mapeamento_Saracota_Central\\README_mapeamento_construja.md",
+    "lineNum": 74,
+    "lineContent": "- **Onde ocorre**: [`ModalDetalheConstruja.tsx`](file:///c:/Users/User/Desktop/Saracota/Mapeamento_Saracota_Central/Mapeamento_Construja/06_modal_resultado/ModalDetalheConstruja.tsx)."
+  }
+]

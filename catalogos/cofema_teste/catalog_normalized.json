@@ -1,0 +1,57 @@
+[
+  {
+    "sku": "SKU-101",
+    "nome_original": "DUCHA LORENZETTI MAXI DUCHA 127V",
+    "atributos": {
+      "nomeLimpo": "Ducha Maxi Ducha",
+      "marca": "Lorenzetti",
+      "comprimento": "indisponível",
+      "diametro": "indisponível",
+      "cor": "indisponível",
+      "unidadeVenda": "indisponível",
+      "voltagem": "127V",
+      "material": "indisponível",
+      "amperagem": "indisponível",
+      "detalhesTecnicos": {
+        "categoriaSite": "Chuveiros"
+      }
+    },
+    "precoNormalizado": {
+      "precoOriginal": 84.67,
+      "unidadeOriginal": "UNIDADE",
+      "unidadeBase": "unidade",
+      "fatorConversaoBase": 1,
+      "precoUnitarioBase": 84.67
+    },
+    "categoria_site": "Chuveiros",
+    "url_produto": "https://cofema.com.br/ducha-maxi",
+    "scraped_at": "2026-09-18T21:10:18.071Z"
+  },
+  {
+    "sku": "SKU-102",
+    "nome_original": "BIANCO VEDACIT 900G",
+    "atributos": {
+      "nomeLimpo": "Bianco 900g",
+      "marca": "Vedacit",
+      "comprimento": "indisponível",
+      "diametro": "indisponível",
+      "cor": "indisponível",
+      "unidadeVenda": "indisponível",
+      "voltagem": "indisponível",
+      "material": "indisponível",
+      "amperagem": "indisponível",
+      "detalhesTecnicos": {
+        "categoriaSite": "Impermeabilizantes"
+      }
+    },
+    "precoNormalizado": {
+      "precoOriginal": 31.35,
+      "unidadeOriginal": "UNIDADE",
+      "unidadeBase": "unidade",
+      "fatorConversaoBase": 1,
+      "precoUnitarioBase": 31.35
+    },
+    "categoria_site": "Impermeabilizantes",
+    "scraped_at": "2026-09-18T21:10:18.071Z"
+  }
+]

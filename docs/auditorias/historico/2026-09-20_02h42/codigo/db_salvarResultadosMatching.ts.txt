@@ -1,0 +1,113 @@
+sando'}).`];
+            }
+
+            return {
+              cotacaoId,
+              status: isConcluido ? 'concluido' : isAguardando ? 'aguardando_revisao' : 'processando',
+              itensProcessados: itensCount,
+              totalItens: Math.max(1, itensCount),
+              percentualConcluido: percentual,
+              mensagens: msgs,
+              timestamp: new Date().toISOString(),
+            };
+          }
+        } catch (e) {
+          console.warn('Erro ao ler progresso do Supabase:', e);
+        }
+      }
+
+      return null;
+    },
+
+    async salvarResultadosMatching(
+      cotacaoId: string,
+      fornecedorId: string,
+      resultados: any[]
+    ): Promise<boolean> {
+      // 0. Atualizar cache em memória de forma atômica/idempotente
+      const resultadosComForn = resultados.map((r) => ({ ...r, fornecedorId }));
+      if (!memoryMatchingStore[cotacaoId]) {
+        memoryMatchingStore[cotacaoId] = [];
+      }
+      memoryMatchingStore[cotacaoId] = [
+        ...memoryMatchingStore[cotacaoId].filter((r: any) => r.fornecedorId !== fornecedorId),
+        ...resultadosComForn
+      ];
+
+      if (typeof window !== 'undefined') {
+        try {
+          const key = `saracota_matching_${cotacaoId}_${fornecedorId}`;
+          localStorage.setItem(key, JSON.stringify(resultadosComForn));
+        } catch (e) {
+          console.warn('Erro ao salvar matching localmente:', e);
+        }
+      }
+
+      if (supabase) {
+        try {
+          // 1. Limpeza atômica prévia por (cotacao_id, fornecedor_id) para garantir idempotência total no Supabase
+          try {
+            await supabase
+              .from('cotacao_itens')
+              .delete()
+              .eq('cotacao_id', cotacaoId)
+              .eq('fornecedor_id', fornecedorId);
+          } catch (e) {}
+
+          try {
+            await supabase
+              .from('itens_cotacao_fornecedor')
+              .delete()
+              .eq('cotacao_id', cotacaoId)
+              .eq('fornecedor_id', fornecedorId);
+          } catch (e) {}
+
+          // 1. Persistir na tabela cotacao_itens (ou itens_cotacao)
+          const itemRecords = resultados.map((r) => ({
+            cotacao_id: cotacaoId,
+            fornecedor_id: fornecedorId,
+            nome: r.produtoEncontrado || r.itemPedido || 'Material',
+            material: r.produtoEncontrado || r.itemPedido || 'Material',
+            preco_unitario: Number(r.preco) || 0,
+            quantidade: Number(r.quantidade) || 1,
+            total_item: Number(r.preco) * Number(r.quantidade || 1),
+            unidade: 'un',
+            observacoes: JSON.stringify({
+              itemPedido: r.itemPedido,
+              produtoEncontrado: r.produtoEncontrado,
+              confianca: r.confianca,
+              status: r.status,
+              link: r.link,
+              preco_unitario: Number(r.preco) || 0,
+              total_item: Number(r.preco) * Number(r.quantidade || 1)
+            })
+          }));
+
+          try {
+            const { error: errItens } = await supabase.from('cotacao_itens').insert(itemRecords);
+            if (!errItens) {
+              console.log(`✅ [SUPABASE MATCHING SUCCESS ATÔMICO] ${resultados.length} itens salvos na tabela "cotacao_itens"!`);
+            }
+          } catch (errItensEx) {}
+
+          // 1b. Persistir também na tabela itens_cotacao_fornecedor se existir
+          const itensFornRecords = resultados.map((r) => ({
+            cotacao_id: cotacaoId,
+            fornecedor_id: fornecedorId,
+            material: r.itemPedido || r.material || 'Material',
+            produto_encontrado: r.produtoEncontrado || r.itemPedido,
+            preco_unitario: Number(r.preco) || 0,
+            confianca_percent: Number(r.confianca) || 0,
+            status_matching: r.status || 'CONFIRMADO',
+            imagem: r.imagem || null,
+            link: r.link || null,
+          }));
+
+          try {
+            await supabase.from('itens_cotacao_fornecedor').insert(itensFornRecords);
+          } catch (e) {}
+
+          // 2. Persistir em cotacao_fornecedor_sessoes com JSON estruturado
+          const totalGeralCalculado = resultados.reduce((acc, i) => acc + (Number(i.preco) * Number(i.quantidade || 1)), 0);
+          const possuiFalhas = resultados.length === 0 || resultados.some((i) => i.status !== 'CONFIRMADO' || !i.preco || i.preco <= 0);
+          const statusSessao = possu

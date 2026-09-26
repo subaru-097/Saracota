@@ -190,6 +190,14 @@ export const db = {
       return cotacoesFormatadas as Cotacao[];
     },
 
+    resetMemoryStore(): void {
+      (globalThis as any).__saracota_quotes_store = {};
+      for (const k in memoryMatchingStore) {
+        delete memoryMatchingStore[k];
+      }
+      console.log('[DB DAL] Transientes e caches em memória resetados com sucesso (resetMemoryStore).');
+    },
+
     async getById(id: string): Promise<Cotacao | null> {
       if (!(globalThis as any).__saracota_quotes_store) {
         (globalThis as any).__saracota_quotes_store = {};
@@ -787,10 +795,15 @@ export const db = {
           } catch (e) {}
 
           // 2. Persistir em cotacao_fornecedor_sessoes com JSON estruturado
+          const totalGeralCalculado = resultados.reduce((acc, i) => acc + (Number(i.preco) * Number(i.quantidade || 1)), 0);
+          const possuiFalhas = resultados.length === 0 || resultados.some((i) => i.status !== 'CONFIRMADO' || !i.preco || i.preco <= 0);
+          const statusSessao = possuiFalhas ? 'erro_integridade' : 'carrinho_pronto';
+
           const sessionPayload = JSON.stringify({
             origem: 'RPA_MATCHING_ENGINE',
-            totalGeral: resultados.reduce((acc, i) => acc + (Number(i.preco) * Number(i.quantidade || 1)), 0),
+            totalGeral: possuiFalhas ? 0 : totalGeralCalculado,
             itens: resultados,
+            status: statusSessao,
             dataCriacao: new Date().toISOString()
           });
 
@@ -800,7 +813,7 @@ export const db = {
                 cotacao_id: cotacaoId,
                 fornecedor_id: fornecedorId,
                 browserbase_session_id: sessionPayload,
-                status: 'carrinho_pronto',
+                status: statusSessao,
                 updated_at: new Date().toISOString()
               },
               { onConflict: 'cotacao_id,fornecedor_id' }
@@ -808,6 +821,12 @@ export const db = {
           } catch (errSess) {
             console.warn('[SUPABASE SESSAO WARN]:', errSess);
           }
+
+          try {
+            if (totalGeralCalculado > 0) {
+              await supabase.from('cotacoes').update({ valor_total: totalGeralCalculado }).eq('id', cotacaoId);
+            }
+          } catch (errVal) {}
         } catch (e: any) {
           console.warn('Erro ao salvar matching no Supabase:', e.message || e);
         }
@@ -874,16 +893,30 @@ export const db = {
                   try {
                     const payload = JSON.parse(s.browserbase_session_id);
                     if (payload.itens && Array.isArray(payload.itens)) {
-                      const parsedItens = payload.itens.map((it: any) => ({
-                        itemPedido: it.itemPedido || it.nomeOriginalPedido || it.nome || 'Produto',
-                        status: it.status || (it.preco > 0 ? 'CONFIRMADO' : 'NAO_ENCONTRADO'),
-                        confianca: it.confianca || 95,
-                        produtoEncontrado: it.produtoEncontrado || it.nomeExatoSite || it.nome || it.itemPedido,
-                        preco: Number(it.preco || it.precoUnitario || it.preco_unitario || 0),
-                        quantidade: Number(it.quantidade || 1),
-                        fornecedorId: s.fornecedor_id,
-                        fornecedorNome: 'Cicalfer Material Elétrico',
-                      }));
+                      const getFornInfo = (fid: string) => {
+                        if (fid === '33e03495-100d-45a3-9e34-899de56b0ab1') return { nome: 'Cicalfer Material Elétrico', slug: 'cicalfer' };
+                        if (fid === 'a1684c4d-d896-4ba9-a591-cda455c5ffe2') return { nome: 'Construjá', slug: 'construja' };
+                        if (fid === '752e18bd-4f41-414a-8f66-0d8f538de99e') return { nome: 'Cofema', slug: 'cofema' };
+                        return { nome: 'Fornecedor', slug: 'fornecedor' };
+                      };
+
+                      const parsedItens = payload.itens.map((it: any) => {
+                        const fInfo = getFornInfo(s.fornecedor_id);
+                        return {
+                          itemPedido: it.itemPedido || it.nomeOriginalPedido || it.nome || 'Produto',
+                          status: it.status || (it.preco > 0 ? 'CONFIRMADO' : 'NAO_ENCONTRADO'),
+                          confianca: it.confianca || (it.preco > 0 ? 95 : 0),
+                          produtoEncontrado: it.produtoEncontrado || it.nomeExatoSite || it.nome || it.itemPedido,
+                          preco: Number(it.preco || it.precoUnitario || it.preco_unitario || 0),
+                          quantidade: Number(it.quantidade || 1),
+                          fornecedorId: s.fornecedor_id,
+                          fornecedorNome: fInfo.nome,
+                          slug: fInfo.slug,
+                          marcaSubstituida: Boolean(it.marcaSubstituida),
+                          marcaSolicitada: it.marcaSolicitada || null,
+                          marcaCotada: it.marcaCotada || null,
+                        };
+                      });
                       resultados = [...resultados, ...parsedItens];
                     }
                   } catch (err) {}
@@ -978,8 +1011,8 @@ export const db = {
               seletores: f.seletores || null,
               rpa_ativo: f.rpa_ativo ?? f.seletores?.rpa_ativo ?? Boolean(f.seletores && (f.seletores.login || f.seletores.carrinho || f.seletores.campo_email)),
               rpaAtivo: f.rpa_ativo ?? f.seletores?.rpa_ativo ?? Boolean(f.seletores && (f.seletores.login || f.seletores.carrinho || f.seletores.campo_email)),
-              config_slug: f.config_slug || f.seletores?.config_slug || (f.nome?.toLowerCase().includes('construja') ? 'construja' : f.nome?.toLowerCase().includes('cicalfer') ? 'cicalfer' : undefined),
-              configSlug: f.config_slug || f.seletores?.config_slug || (f.nome?.toLowerCase().includes('construja') ? 'construja' : f.nome?.toLowerCase().includes('cicalfer') ? 'cicalfer' : undefined),
+              config_slug: f.config_slug || f.seletores?.config_slug || (f.nome?.toLowerCase().includes('construja') ? 'construja' : f.nome?.toLowerCase().includes('cicalfer') ? 'cicalfer' : f.nome?.toLowerCase().includes('cofema') ? 'cofema' : undefined),
+              configSlug: f.config_slug || f.seletores?.config_slug || (f.nome?.toLowerCase().includes('construja') ? 'construja' : f.nome?.toLowerCase().includes('cicalfer') ? 'cicalfer' : f.nome?.toLowerCase().includes('cofema') ? 'cofema' : undefined),
               temCredencial: Boolean(f.login_salvo || f.url_login),
             }));
           }
@@ -1665,7 +1698,7 @@ export const db = {
       if (supabase) {
         try {
           const { data } = await supabase.from('historico_cotacoes').delete().lt('expira_em', nowIso);
-          expCount += (data as any[])?.length || 0;
+          expCount += (data as unknown as any[])?.length || 0;
         } catch (e) {}
 
         try {

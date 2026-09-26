@@ -1,0 +1,108 @@
+[2026-09-17T18:58:23.402Z] ================================================================
+[2026-09-17T18:58:23.402Z] 🚀 INICIANDO TESTE 2 (CORRIGIDO) DE COTAÇÃO NO FORNECEDOR COFEMA
+[2026-09-17T18:58:23.402Z] 📂 Diretório de Evidências: C:\Users\User\Desktop\Saracota\historicos\2026-09-17\teste2_cofema_corrigido
+[2026-09-17T18:58:23.402Z] 👤 Credencial CNPJ: 43.313.798/0001-34
+[2026-09-17T18:58:23.402Z] ================================================================
+[2026-09-17T18:58:23.714Z] 
+--- PASSO 1: Navegando para https://www.cofema.com.br/ ---
+[2026-09-17T18:58:27.799Z] 📸 Screenshot salvo: 01_pagina_inicial_cofema.png
+[2026-09-17T18:58:27.887Z] 
+--- PASSO 2: Realizando Login no Portal B2B ---
+[2026-09-17T18:58:31.351Z] ⌨️ Preenchendo CNPJ (43.313.798/0001-34) no modal de login...
+[2026-09-17T18:58:32.929Z] 📸 Screenshot salvo: 03_login_preenchido.png
+[2026-09-17T18:58:32.929Z] 👆 Clicando no botão "Entrar"...
+[2026-09-17T18:58:38.125Z] 📸 Screenshot salvo: 04_login_confirmado.png
+[2026-09-17T18:58:38.125Z] 
+--- PASSO 3: Cotando e Processando os 5 Itens ---
+[2026-09-17T18:58:38.125Z] 
+================================================================
+[2026-09-17T18:58:38.125Z] 🔎 [ITEM 1/5] Solicitado: "6x DUCHA LORENZETTI BELLA DUCHA 127V"
+[2026-09-17T18:58:38.125Z]    Busca: "BELLA DUCHA 127V" | Marca Esperada: "LORENZETTI" | Qtd Solicitada: 6
+[2026-09-17T18:58:38.125Z] ================================================================
+[2026-09-17T18:58:38.319Z] 🔒 Painel lateral do carrinho detectado e FECHADO para evitar contaminação do DOM.
+[2026-09-17T18:58:45.976Z] 📸 Screenshot salvo: 05_item_1_busca.png
+[2026-09-17T18:58:45.981Z] 🔍 Total de cartões válidos na grade principal: 3
+[2026-09-17T18:58:45.981Z]    Candidato #1: SKU 401301 | "RESISTENCIAS SIMILARES" | Score: 0.00 | Marca "LORENZETTI": NÃO
+[2026-09-17T18:58:45.981Z]    Candidato #2: SKU 300497 | "LORENZETTI" | Score: 0.00 | Marca "LORENZETTI": SIM
+[2026-09-17T18:58:45.981Z]    Candidato #3: SKU 418416 | "RESISTENCIAS SIMILARES" | Score: 0.00 | Marca "LORENZETTI": NÃO
+[2026-09-17T18:58:45.981Z] 🎯 Produto Escolhido: SKU 300497 — "LORENZETTI" | Preço Unit.: R$ 74.72 | Múltiplo: 1 un.
+[2026-09-17T18:58:45.981Z] 📦 Quantidade Solicitada (6 un.) é múltiplo exato da embalagem (1 un.).
+[2026-09-17T18:58:48.029Z] 🔒 Painel lateral do carrinho detectado e FECHADO para evitar contaminação do DOM.
+[2026-09-17T18:58:49.128Z] 📸 Screenshot salvo: 06_item_1_adicionado.png
+[2026-09-17T18:58:49.128Z] 
+================================================================
+[2026-09-17T18:58:49.128Z] 🔎 [ITEM 2/5] Solicitado: "4x BIANCO 900G"
+[2026-09-17T18:58:49.128Z]    Busca: "BIANCO 900G" | Marca Esperada: "OTTO" | Qtd Solicitada: 4
+[2026-09-17T18:58:49.128Z] ================================================================
+[2026-09-17T18:58:49.149Z] 🔒 Painel lateral do carrinho detectado e FECHADO para evitar contaminação do DOM.
+[2026-09-17T18:58:56.301Z] 📸 Screenshot salvo: 05_item_2_busca.png
+[2026-09-17T18:58:56.303Z] 🔍 Total de cartões válidos na grade principal: 1
+[2026-09-17T18:58:56.304Z]    Candidato #1: SKU 410409 | "OTTO BAUMGART" | Score: 0.00 | Marca "OTTO": SIM
+[2026-09-17T18:58:56.304Z] 🎯 Produto Escolhido: SKU 410409 — "OTTO BAUMGART" | Preço Unit.: R$ 24.57 | Múltiplo: 1 un.
+[2026-09-17T18:58:56.304Z] 📦 Quantidade Solicitada (4 un.) é múltiplo exato da embalagem (1 un.).
+[2026-09-17T18:58:58.341Z] 🔒 Painel lateral do carrinho detectado e FECHADO para evitar contaminação do DOM.
+[2026-09-17T18:58:59.428Z] 📸 Screenshot salvo: 06_item_2_adicionado.png
+[2026-09-17T18:58:59.429Z] 
+================================================================
+[2026-09-17T18:58:59.429Z] 🔎 [ITEM 3/5] Solicitado: "7x DUCHA LORENZETTI MAXI DUCHA 127V"
+[2026-09-17T18:58:59.429Z]    Busca: "MAXI DUCHA 127V" | Marca Esperada: "LORENZETTI" | Qtd Solicitada: 7
+[2026-09-17T18:58:59.429Z] ================================================================
+[2026-09-17T18:58:59.444Z] 🔒 Painel lateral do carrinho detectado e FECHADO para evitar contaminação do DOM.
+[2026-09-17T18:59:06.742Z] 📸 Screenshot salvo: 05_item_3_busca.png
+[2026-09-17T18:59:06.744Z] 🔍 Total de cartões válidos na grade principal: 1
+[2026-09-17T18:59:06.744Z]    Candidato #1: SKU 149853 | "LORENZETTI" | Score: 0.00 | Marca "LORENZETTI": SIM
+[2026-09-17T18:59:06.744Z] 🎯 Produto Escolhido: SKU 149853 — "LORENZETTI" | Preço Unit.: R$ 74.72 | Múltiplo: 1 un.
+[2026-09-17T18:59:06.744Z] 📦 Quantidade Solicitada (7 un.) é múltiplo exato da embalagem (1 un.).
+[2026-09-17T18:59:08.777Z] 🔒 Painel lateral do carrinho detectado e FECHADO para evitar contaminação do DOM.
+[2026-09-17T18:59:09.869Z] 📸 Screenshot salvo: 06_item_3_adicionado.png
+[2026-09-17T18:59:09.869Z] 
+================================================================
+[2026-09-17T18:59:09.869Z] 🔎 [ITEM 4/5] Solicitado: "12x ALICATE BOMBA D AGUA MTX 10"
+[2026-09-17T18:59:09.869Z]    Busca: "ALICATE BOMBA" | Marca Esperada: "MTX" | Qtd Solicitada: 12
+[2026-09-17T18:59:09.869Z] ================================================================
+[2026-09-17T18:59:09.882Z] 🔒 Painel lateral do carrinho detectado e FECHADO para evitar contaminação do DOM.
+[2026-09-17T18:59:17.116Z] 📸 Screenshot salvo: 05_item_4_busca.png
+[2026-09-17T18:59:17.123Z] 🔍 Total de cartões válidos na grade principal: 11
+[2026-09-17T18:59:17.123Z]    Candidato #1: SKU 406042 | "PERKON" | Score: 0.00 | Marca "MTX": NÃO
+[2026-09-17T18:59:17.123Z]    Candidato #2: SKU 406043 | "PERKON" | Score: 0.00 | Marca "MTX": NÃO
+[2026-09-17T18:59:17.123Z]    Candidato #3: SKU 311340 | "BRASFORT" | Score: 0.00 | Marca "MTX": NÃO
+[2026-09-17T18:59:17.123Z]    Candidato #4: SKU 311359 | "BRASFORT" | Score: 0.00 | Marca "MTX": NÃO
+[2026-09-17T18:59:17.123Z]    Candidato #5: SKU 250562 | "ALICATES BOMBA DAGUA" | Score: 0.80 | Marca "MTX": NÃO
+[2026-09-17T18:59:17.123Z]    Candidato #6: SKU 250570 | "ALICATES BOMBA DAGUA" | Score: 0.80 | Marca "MTX": NÃO
+[2026-09-17T18:59:17.123Z]    Candidato #7: SKU 149144 | "STANLEY" | Score: 0.00 | Marca "MTX": NÃO
+[2026-09-17T18:59:17.123Z]    Candidato #8: SKU 149152 | "STANLEY" | Score: 0.00 | Marca "MTX": NÃO
+[2026-09-17T18:59:17.123Z]    Candidato #9: SKU 303852 | "STARFER" | Score: 0.00 | Marca "MTX": NÃO
+[2026-09-17T18:59:17.123Z]    Candidato #10: SKU 251127 | "ALICATES BOMBA DAGUA" | Score: 0.80 | Marca "MTX": NÃO
+[2026-09-17T18:59:17.123Z]    Candidato #11: SKU 251135 | "ALICATES BOMBA DAGUA" | Score: 0.80 | Marca "MTX": NÃO
+[2026-09-17T18:59:17.123Z]   ⚠️ DIVERGÊNCIA DE MARCA DETECTADA! A marca esperada "MTX" não foi encontrada nos produtos retornados ("PERKON").
+[2026-09-17T18:59:17.123Z] 🎯 Produto Escolhido: SKU 406042 — "PERKON" | Preço Unit.: R$ 33.99 | Múltiplo: 1 un.
+[2026-09-17T18:59:17.123Z] ⛔ ITEM NÃO ADICIONADO AO CARRINHO devido à trava de DIVERGÊNCIA DE MARCA.
+[2026-09-17T18:59:17.123Z] 
+================================================================
+[2026-09-17T18:59:17.123Z] 🔎 [ITEM 5/5] Solicitado: "5x CONDUITE CORR AM FORTLEV 25MM 50M"
+[2026-09-17T18:59:17.123Z]    Busca: "CONDUITE 25MM" | Marca Esperada: "FORTLEV" | Qtd Solicitada: 5
+[2026-09-17T18:59:17.124Z] ================================================================
+[2026-09-17T18:59:17.141Z] 🔒 Painel lateral do carrinho detectado e FECHADO para evitar contaminação do DOM.
+[2026-09-17T18:59:24.371Z] 📸 Screenshot salvo: 05_item_5_busca.png
+[2026-09-17T18:59:24.375Z] 🔍 Total de cartões válidos na grade principal: 6
+[2026-09-17T18:59:24.375Z]    Candidato #1: SKU 74179 | "CONDUITES CORRUGADO" | Score: 0.50 | Marca "FORTLEV": NÃO
+[2026-09-17T18:59:24.375Z]    Candidato #2: SKU 415494 | "CONDUITES CORRUGADO" | Score: 0.50 | Marca "FORTLEV": NÃO
+[2026-09-17T18:59:24.375Z]    Candidato #3: SKU 121991 | "CONDUITES CORRUGADO" | Score: 0.50 | Marca "FORTLEV": NÃO
+[2026-09-17T18:59:24.375Z]    Candidato #4: SKU 313246 | "CONDUITES CORRUGADO" | Score: 0.50 | Marca "FORTLEV": NÃO
+[2026-09-17T18:59:24.375Z]    Candidato #5: SKU 418591 | "TUBOS BRAVO" | Score: 0.00 | Marca "FORTLEV": NÃO
+[2026-09-17T18:59:24.375Z]    Candidato #6: SKU 346942 | "LUVAS P/CONDUITE" | Score: 0.50 | Marca "FORTLEV": NÃO
+[2026-09-17T18:59:24.375Z]   ⚠️ DIVERGÊNCIA DE MARCA DETECTADA! A marca esperada "FORTLEV" não foi encontrada nos produtos retornados ("CONDUITES CORRUGADO").
+[2026-09-17T18:59:24.375Z] 🎯 Produto Escolhido: SKU 74179 — "CONDUITES CORRUGADO" | Preço Unit.: R$ 99.95 | Múltiplo: 1 un.
+[2026-09-17T18:59:24.375Z] ⛔ ITEM NÃO ADICIONADO AO CARRINHO devido à trava de DIVERGÊNCIA DE MARCA.
+[2026-09-17T18:59:24.375Z] 
+--- PASSO 4: Navegando para o Carrinho Real (/page/pedidos) e Executando Trava de Segurança ---
+[2026-09-17T18:59:28.735Z] 📸 Screenshot salvo: 07_carrinho_resumo_pedido.png
+[2026-09-17T18:59:28.741Z] 🛒 Itens confirmados no carrinho real do portal: 11
+[2026-09-17T18:59:28.742Z] ✅ TRAVA DE SEGURANÇA: SKU 300497 verificado com sucesso no carrinho real (22 un. a R$ 74.72).
+[2026-09-17T18:59:28.742Z] ✅ TRAVA DE SEGURANÇA: SKU 410409 verificado com sucesso no carrinho real (6 un. a R$ 343.91).
+[2026-09-17T18:59:28.742Z] ✅ TRAVA DE SEGURANÇA: SKU 149853 verificado com sucesso no carrinho real (21 un. a R$ 1270.16).
+[2026-09-17T18:59:28.742Z] ✅ STATUS FINAL DE EXECUÇÃO: COTAÇÃO CONCLUÍDA E VALIDADA COM SUCESSO.
+[2026-09-17T18:59:28.742Z] 📊 Total Geral Cotado dos Itens Válidos: R$ 1069.64
+[2026-09-17T18:59:28.743Z] ✅ Payload final salvo em payload_final_cofema.json
+[2026-09-17T18:59:28.762Z] ✅ Relatório final do Teste 2 salvo em relatorio_final.md
+[2026-09-17T18:59:31.973Z] 🏁 Execução do Teste 2 concluída com sucesso!

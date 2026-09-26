@@ -1,0 +1,37 @@
+{
+  "nome": "Mercadão Lojista",
+  "slug": "mercadao-lojista",
+  "url_site": "https://www.mercadaolojista.com.br/",
+  "base_url": "https://www.mercadaolojista.com.br",
+  "login_url": "https://www.mercadaolojista.com.br/conta/login?next=/conta/index",
+  "cart_url": "https://www.mercadaolojista.com.br/carrinho/index",
+  "selectors": {
+    "cookie_accept": null,
+    "login_trigger": null,
+    "email_input": "#id_email",
+    "password_input": "#id_senha",
+    "login_submit": "button.botao.principal[type=\"submit\"]",
+    "search_input": "#auto-complete",
+    "product_card_title": "a.produto-sobrepor",
+    "add_to_cart_button": "a.botao-comprar-ajax",
+    "modal_continuar_comprando": "a.continuar-comprando",
+    "modal_ir_carrinho": "a.ir-carrinho",
+    "quantity_input": "input.input-mini[name=\"quantidade\"]",
+    "cart_item_title": ".produto-info a",
+    "cart_item_unit_price": "td.col-item-unit-price",
+    "cart_item_unit_price_attr": "data-item-unit-valor",
+    "cart_subtotal": "strong.valor-subtotal",
+    "cart_subtotal_attr": "data-subtotal-valor",
+    "resumo_total_pedido": "strong.valor-total",
+    "resumo_total_pedido_attr": "data-total-valor",
+    "item_container": "tr[data-produto-id]"
+  },
+  "regras_negocio": {
+    "metodo_adicao_produto": "CLICK",
+    "formato_preco": "atributo_data_numerico_puro",
+    "js_variable_extraction": {
+      "metodo": "JS_VARIABLE_CART",
+      "variavel": "var cart"
+    }
+  }
+}

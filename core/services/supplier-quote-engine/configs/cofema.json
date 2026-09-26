@@ -1,0 +1,22 @@
+{
+  "id": "b3791d21-f092-421c-8b24-cofema-b2b",
+  "slug": "cofema",
+  "nome": "Cofema Atacadista",
+  "url_site": "https://www.cofema.com.br/",
+  "selectors": {
+    "cookie_accept": "button:has-text(\"Aceitar\"), button:has-text(\"Concordar\"), #lgpd-aceitar, .lgpd-accept",
+    "login_trigger": "button:has-text(\"Entre ou Cadastre-se\")",
+    "email_input": "#codigo",
+    "password_input": "#senha",
+    "login_submit": "button:has-text(\"Entrar\")",
+    "search_input": "#input-busca-home, input[type=\"search\"], input[placeholder*=\"Buscar\"]",
+    "quantity_input": "input[type=\"number\"]",
+    "add_to_cart_button": "button:has-text(\"Adicionar\")",
+    "cart_url": "https://www.cofema.com.br/page/pedidos",
+    "view_cart_button": "a[href*=\"pedidos\"], button:has-text(\"Carrinho\")"
+  },
+  "lote_rules": {
+    "default_lot_text": "un.",
+    "fallback_lot_size": 1
+  }
+}

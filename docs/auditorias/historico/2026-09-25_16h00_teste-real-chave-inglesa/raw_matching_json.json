@@ -1,0 +1,78 @@
+{
+  "cotacaoId": "afa9858b-15ad-400f-94f6-c1c94393f57f",
+  "timestamp": "2026-09-25T16:15:33.563Z",
+  "itemCotado": {
+    "material": "Chave Inglesa 12 Brasfort",
+    "quantidade": 5,
+    "skuFornecedor": "296511"
+  },
+  "resultados": {
+    "cofema": {
+      "fornecedorId": "752e18bd-4f41-414a-8f66-0d8f538de99e",
+      "fornecedorNome": "Cofema",
+      "sucesso": true,
+      "tempoTotalMs": 83439,
+      "jsonBrutoSalvarResultadosMatching": [
+        {
+          "itemPedido": "Chave Inglesa 12 Brasfort",
+          "status": "CONFIRMADO",
+          "confianca": 95,
+          "produtoEncontrado": "CHAVE INGLESA BRASFORT CROMADA 12 8220",
+          "preco": 69.7,
+          "quantidade": 5,
+          "fornecedorId": "752e18bd-4f41-414a-8f66-0d8f538de99e"
+        }
+      ],
+      "totais": {
+        "precoUnitario": 69.7,
+        "totalItem": 348.5,
+        "totalItensResumo": 348.5,
+        "totalPedido": 348.5
+      }
+    },
+    "cicalfer": {
+      "fornecedorId": "33e03495-100d-45a3-9e34-899de56b0ab1",
+      "fornecedorNome": "Cicalfer",
+      "sucesso": false,
+      "tempoTotalMs": 77106,
+      "jsonBrutoSalvarResultadosMatching": [
+        {
+          "itemPedido": "Chave Inglesa 12 Brasfort",
+          "status": "NAO_ENCONTRADO",
+          "confianca": 0,
+          "preco": 0,
+          "fornecedorId": "33e03495-100d-45a3-9e34-899de56b0ab1"
+        }
+      ],
+      "totais": {
+        "precoUnitario": 0,
+        "totalItem": 0,
+        "totalItensResumo": 0,
+        "totalPedido": 0
+      }
+    },
+    "construja": {
+      "fornecedorId": "a1684c4d-d896-4ba9-a591-cda455c5ffe2",
+      "fornecedorNome": "Construjá",
+      "sucesso": true,
+      "tempoTotalMs": 51325,
+      "jsonBrutoSalvarResultadosMatching": [
+        {
+          "itemPedido": "Chave Inglesa 12 Brasfort",
+          "status": "CONFIRMADO",
+          "confianca": 95,
+          "produtoEncontrado": "FERJA - CHAVE INGLESA 12 PRO C/EMBORR",
+          "preco": 60.99,
+          "quantidade": 5,
+          "fornecedorId": "a1684c4d-d896-4ba9-a591-cda455c5ffe2"
+        }
+      ],
+      "totais": {
+        "precoUnitario": 60.99,
+        "totalItem": 304.95,
+        "totalItensResumo": 304.95,
+        "totalPedido": 304.95
+      }
+    }
+  }
+}

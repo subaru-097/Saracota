@@ -1,0 +1,224 @@
+[2026-09-25T18:31:57.682Z] [INFO] 
+
+================================================================
+[2026-09-25T18:31:57.682Z] [INFO] >>> INICIANDO COTAÇÃO DO FORNECEDOR: Cofema (752e18bd-4f41-414a-8f66-0d8f538de99e) <<<
+[2026-09-25T18:31:57.682Z] [INFO] ================================================================
+
+[2026-09-25T18:31:57.683Z] [INFO] [RPA ITEM LOG] CotacaoId: "137abddc-38b6-4e21-812f-1c600ebc697c" | Total de itens lidos do banco: 1
+[2026-09-25T18:31:57.683Z] [INFO]   └─ Item 1: "Chave Inglesa 12 Brasfort" (Quantidade: 5)
+[2026-09-25T18:31:57.735Z] [INFO] [2026-09-25T18:31:57.735Z] [RPA DIAGNOSTICO - CHECKPOINT 1: INÍCIO DA EXECUÇÃO] Início da cotação RPA | CotacaoId: "137abddc-38b6-4e21-812f-1c600ebc697c" | FornecedorId: "752e18bd-4f41-414a-8f66-0d8f538de99e" (Cofema) | RPA Config: cofema
+[2026-09-25T18:31:57.736Z] [INFO] [PROGRESS - Cofema] [Cofema] 🚀 Iniciando Motor Central de Cotação RPA (cofema)...
+[2026-09-25T18:31:57.737Z] [INFO] [2026-09-25T18:31:57.737Z] [RPA CREDENCIAIS AUDITORIA] Fornecedor: "Cofema" (752e18bd-4f41-414a-8f66-0d8f538de99e) | Origem: Supabase DB (table fornecedores) | User: "43.313.798/0001-34" | PassLength: 11 | PassHashPrefix: 55402fc1f3
+[2026-09-25T18:31:57.737Z] [INFO] [PROGRESS - Cofema] [Cofema] 🔑 Autenticando e selecionando Filial B2B...
+[2026-09-25T18:31:57.994Z] [INFO] [2026-09-25T18:31:57.994Z] [QuoteEngine realizarLogin] Fornecedor: "Cofema Atacadista" | User: "43.313.798/0001-34" | PassLength: 11 | PassHashPrefix: 55402fc1f3
+[2026-09-25T18:31:57.994Z] [INFO] [2026-09-25T18:31:57.994Z] [RPA DIAGNOSTICO - CHECKPOINT 2a: NAVEGAÇÃO] Navegando para URL inicial de Cofema Atacadista: https://www.cofema.com.br/
+[2026-09-25T18:31:57.994Z] [INFO] [2026-09-25T18:31:57.994Z] [CofemaExtractor] Executando login B2B Cofema (43.313.798/0001-34)...
+[2026-09-25T18:32:11.600Z] [INFO] [2026-09-25T18:32:11.600Z] [CofemaExtractor] Login B2B concluído com sucesso.
+[2026-09-25T18:32:11.601Z] [INFO] [2026-09-25T18:32:11.601Z] [CofemaExtractor] Executando higiene/reset do carrinho B2B...
+[2026-09-25T18:32:17.590Z] [INFO] [CofemaExtractor RESET] Removendo item residual 1...
+[2026-09-25T18:32:20.682Z] [INFO] [CofemaExtractor RESET] Removendo item residual 2...
+[2026-09-25T18:32:23.781Z] [INFO] [CofemaExtractor RESET] Removendo item residual 3...
+[2026-09-25T18:32:26.864Z] [INFO] [CofemaExtractor RESET] Removendo item residual 4...
+[2026-09-25T18:32:30.002Z] [INFO] [CofemaExtractor RESET] Removendo item residual 5...
+[2026-09-25T18:32:33.123Z] [INFO] [CofemaExtractor RESET] Removendo item residual 6...
+[2026-09-25T18:32:36.229Z] [INFO] [CofemaExtractor RESET] Removendo item residual 7...
+[2026-09-25T18:32:39.358Z] [INFO] [CofemaExtractor RESET] Removendo item residual 8...
+[2026-09-25T18:32:42.448Z] [INFO] [CofemaExtractor RESET] Removendo item residual 9...
+[2026-09-25T18:32:45.521Z] [INFO] [CofemaExtractor RESET] Removendo item residual 10...
+[2026-09-25T18:32:48.605Z] [INFO] [2026-09-25T18:32:48.605Z] [CofemaExtractor] Extraindo carrinho ativo da página /page/pedidos e modal Detalhes do Pedido...
+[2026-09-25T18:32:57.828Z] [INFO] [CofemaExtractor] 0 item(ns) extraído(s) do modal Detalhes do Pedido em /page/pedidos. Total: R$ 0.00
+[2026-09-25T18:32:57.828Z] [INFO] [2026-09-25T18:32:57.828Z] [CofemaExtractor] ✅ carrinho verificado como vazio: 0 itens
+[2026-09-25T18:32:58.853Z] [INFO] [PROGRESS - Cofema] [Cofema] 🔍 Cotando e ajustando quantidade em lote: Chave Inglesa 12 Brasfort...
+[2026-09-25T18:32:59.880Z] [INFO] [CofemaExtractor] Buscando item: "Chave Inglesa 12" (marca esperada: "qualquer")
+[2026-09-25T18:33:04.724Z] [INFO] [CofemaExtractor ✅ ADD TO CART LOG] Adicionando ao carrinho CARD CONFIRMADO: "CHAVE INGLESA BRASFORT CROMADA 12 8220" (SKU: 296503, Qtd: 5, Preço Unit: R$ 69.70)
+[2026-09-25T18:33:08.858Z] [INFO] [PROGRESS - Cofema] [Cofema] 🛒 Lendo dados do carrinho (itemContainer por itemContainer)...
+[2026-09-25T18:33:08.859Z] [INFO] [2026-09-25T18:33:08.859Z] [CofemaExtractor] Extraindo carrinho ativo da página /page/pedidos e modal Detalhes do Pedido...
+[2026-09-25T18:33:18.022Z] [INFO] [CofemaExtractor] 1 item(ns) extraído(s) do modal Detalhes do Pedido em /page/pedidos. Total: R$ 348.50
+[2026-09-25T18:33:20.274Z] [INFO] [AUDIT SCREENSHOT ✅] carrinho_real_cofema.png salva em: C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-25_15h30_teste-real-chave-inglesa\carrinho_real_cofema.png
+[2026-09-25T18:33:20.274Z] [WARN] ❌ [TRAVA DE CORRELAÇÃO DE CARRINHO] Item do carrinho "Fechar" não tem correlação semântica com o pedido "Chave Inglesa 12 Brasfort". Rejeitando par.
+[2026-09-25T18:33:20.275Z] [WARN] ❌ [TRAVA DE INTEGRIDADE Cofema] Produto "Chave Inglesa 12 Brasfort" não consta no carrinho real do portal. Marcar como NAO_ENCONTRADO / FALHA DE INTEGRIDADE.
+[2026-09-25T18:33:20.275Z] [INFO] [PROGRESS - Cofema] [Cofema] ❌ [INTEGRIDADE FALHOU] Produto "Chave Inglesa 12 Brasfort" não consta no carrinho real do portal.
+[2026-09-25T18:33:20.275Z] [ERROR] [2026-09-25T18:33:20.275Z] [Cofema] ❌ [ERRO DE INTEGRIDADE] Cotação ABORTADA: falha na verificação de integridade no carrinho DOM real (produto ausente ou quantidade divergente).
+[2026-09-25T18:33:20.275Z] [INFO] [PROGRESS - Cofema] [Cofema] ❌ [ERRO DE INTEGRIDADE] Cotação ABORTADA: falha na verificação de integridade no carrinho DOM real (produto ausente ou quantidade divergente).
+[2026-09-25T18:33:20.275Z] [INFO] 
+======================================================
+[2026-09-25T18:33:20.275Z] [INFO] [RAW JSON MATCHING HOOK] Fornecedor: 752e18bd-4f41-414a-8f66-0d8f538de99e | CotacaoId: 137abddc-38b6-4e21-812f-1c600ebc697c
+[2026-09-25T18:33:20.275Z] [INFO] JSON BRUTO PASSDO PARA salvarResultadosMatching:
+[2026-09-25T18:33:20.275Z] [INFO] [
+  {
+    "itemPedido": "Chave Inglesa 12 Brasfort",
+    "status": "NAO_ENCONTRADO",
+    "confianca": 0,
+    "preco": 0,
+    "fornecedorId": "752e18bd-4f41-414a-8f66-0d8f538de99e"
+  }
+]
+[2026-09-25T18:33:20.275Z] [INFO] ======================================================
+
+[2026-09-25T18:33:20.888Z] [INFO] 
+
+================================================================
+[2026-09-25T18:33:20.888Z] [INFO] >>> INICIANDO COTAÇÃO DO FORNECEDOR: Cicalfer (33e03495-100d-45a3-9e34-899de56b0ab1) <<<
+[2026-09-25T18:33:20.888Z] [INFO] ================================================================
+
+[2026-09-25T18:33:20.888Z] [INFO] [RPA ITEM LOG] CotacaoId: "137abddc-38b6-4e21-812f-1c600ebc697c" | Total de itens lidos do banco: 1
+[2026-09-25T18:33:20.888Z] [INFO]   └─ Item 1: "Chave Inglesa 12 Brasfort" (Quantidade: 5)
+[2026-09-25T18:33:20.966Z] [INFO] [2026-09-25T18:33:20.966Z] [RPA DIAGNOSTICO - CHECKPOINT 1: INÍCIO DA EXECUÇÃO] Início da cotação RPA | CotacaoId: "137abddc-38b6-4e21-812f-1c600ebc697c" | FornecedorId: "33e03495-100d-45a3-9e34-899de56b0ab1" (Cicalfer) | RPA Config: cicalfer
+[2026-09-25T18:33:20.966Z] [INFO] [PROGRESS - Cicalfer] [Cicalfer] 🚀 Iniciando Motor Central de Cotação RPA (cicalfer)...
+[2026-09-25T18:33:20.967Z] [INFO] [2026-09-25T18:33:20.967Z] [RPA CREDENCIAIS AUDITORIA] Fornecedor: "Cicalfer" (33e03495-100d-45a3-9e34-899de56b0ab1) | Origem: Supabase DB (table fornecedores) | User: "santanacomercial2021@gmail.com" | PassLength: 6 | PassHashPrefix: bb719584fb
+[2026-09-25T18:33:20.967Z] [INFO] [PROGRESS - Cicalfer] [Cicalfer] 🔑 Autenticando e selecionando Filial B2B...
+[2026-09-25T18:33:21.146Z] [INFO] [2026-09-25T18:33:21.146Z] [QuoteEngine realizarLogin] Fornecedor: "Cicalfer Material Elétrico" | User: "santanacomercial2021@gmail.com" | PassLength: 6 | PassHashPrefix: bb719584fb
+[2026-09-25T18:33:21.146Z] [INFO] [2026-09-25T18:33:21.146Z] [RPA DIAGNOSTICO - CHECKPOINT 2a: NAVEGAÇÃO] Navegando para URL inicial de Cicalfer Material Elétrico: https://cicalfer.com.br/
+[2026-09-25T18:33:25.401Z] [INFO] [2026-09-25T18:33:25.401Z] [RPA DIAGNOSTICO] Clicando no gatilho de login de Cicalfer Material Elétrico...
+[2026-09-25T18:33:27.486Z] [INFO] [2026-09-25T18:33:27.486Z] [RPA DIAGNOSTICO] Preenchendo credenciais de acesso (santanacomercial2021@gmail.com)...
+[2026-09-25T18:33:32.829Z] [INFO] [2026-09-25T18:33:32.829Z] [RPA DIAGNOSTICO - CHECKPOINT 2: LOGIN SUCESSO] Login realizado com sucesso para usuário: santanacomercial2021@gmail.com no portal Cicalfer Material Elétrico
+[2026-09-25T18:33:32.836Z] [INFO] [2026-09-25T18:33:32.836Z] [RPA DIAGNOSTICO - CHECKPOINT 3: BUSCA FILIAL] Modal de filial detectado em Cicalfer Material Elétrico. Buscando filial "ENTREGA"...
+[2026-09-25T18:33:39.129Z] [INFO] [2026-09-25T18:33:39.129Z] [RPA DIAGNOSTICO - CHECKPOINT 3: FILIAL SELECIONADA] Filial selecionada com sucesso.
+[2026-09-25T18:33:39.155Z] [INFO] [2026-09-25T18:33:39.155Z] [CofemaExtractor] Executando higiene/reset do carrinho B2B...
+[2026-09-25T18:33:43.542Z] [INFO] [2026-09-25T18:33:43.542Z] [CofemaExtractor] Extraindo carrinho ativo da página /page/pedidos e modal Detalhes do Pedido...
+[2026-09-25T18:33:47.750Z] [INFO] [CofemaExtractor] 0 item(ns) extraído(s) do modal Detalhes do Pedido em /page/pedidos. Total: R$ 0.00
+[2026-09-25T18:33:47.750Z] [INFO] [2026-09-25T18:33:47.750Z] [CofemaExtractor] ✅ carrinho verificado como vazio: 0 itens
+[2026-09-25T18:33:48.812Z] [INFO] [PROGRESS - Cicalfer] [Cicalfer] 🔍 Cotando e ajustando quantidade em lote: Chave Inglesa 12 Brasfort...
+[2026-09-25T18:33:48.812Z] [INFO] 
+[2026-09-25T18:33:48.812Z] [RPA DIAGNOSTICO - CHECKPOINT 4: PRODUTO BUSCADO] Termo de busca usado em Cicalfer Material Elétrico: "Chave Inglesa 12 Brasfort" (Original: "Chave Inglesa 12 Brasfort" | Quantidade pedida pelo cliente: 5)
+[2026-09-25T18:33:48.812Z] [INFO] [RPA NAVEGAÇÃO BUSCA] Navegando para URL específica de busca: https://cicalfer.com.br/produtos?pagina=1&busca=Chave%20Inglesa%2012%20Brasfort
+[2026-09-25T18:33:51.417Z] [INFO] [RPA FALLBACK BUSCA] 0 produtos encontrados para "Chave Inglesa 12 Brasfort". Tentando busca simplificada: "Chave Inglesa Brasfort"
+[2026-09-25T18:33:54.011Z] [INFO] [RPA TITULO ENCONTRADO] Título capturado no grid de busca de Cicalfer Material Elétrico: ""
+[2026-09-25T18:33:54.011Z] [ERROR] ❌ [RPA VALIDAÇÃO FALHOU] O produto encontrado "" NÃO possui correlação semântica com a busca "Chave Inglesa 12 Brasfort". Item marcado como FALHA.
+[2026-09-25T18:33:54.011Z] [INFO] [PROGRESS - Cicalfer] [Cicalfer] 🛒 Lendo dados do carrinho (itemContainer por itemContainer)...
+[2026-09-25T18:33:54.011Z] [INFO] [2026-09-25T18:33:54.011Z] [QuoteEngine] Navegando para o carrinho de Cicalfer Material Elétrico (https://cicalfer.com.br/carrinho) para extração dos dados...
+[2026-09-25T18:33:54.047Z] [INFO] [QuoteEngine] Clicando no botão do carrinho de Cicalfer Material Elétrico...
+[2026-09-25T18:34:02.303Z] [INFO] [2026-09-25T18:34:02.303Z] [QuoteEngine] URL da página do carrinho capturada: "https://cicalfer.com.br/carrinho"
+[2026-09-25T18:34:21.532Z] [INFO] [AUDIT SCREENSHOT ✅] 02_carrinho_real_cicalfer.png salva em: C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-25_15h30_teste-real-chave-inglesa\02_carrinho_real_cicalfer.png
+[2026-09-25T18:34:21.532Z] [ERROR] [2026-09-25T18:34:21.532Z] [Cicalfer] ❌ [FALHA DE INTEGRIDADE] Leitura do carrinho DOM real falhou ou retornou 0 itens. Cotação abortada com erro.
+[2026-09-25T18:34:21.532Z] [INFO] [PROGRESS - Cicalfer] [Cicalfer] ❌ [FALHA DE INTEGRIDADE] Leitura do carrinho DOM real falhou ou retornou 0 itens. Cotação abortada com erro.
+[2026-09-25T18:34:21.533Z] [INFO] 
+======================================================
+[2026-09-25T18:34:21.533Z] [INFO] [RAW JSON MATCHING HOOK] Fornecedor: 33e03495-100d-45a3-9e34-899de56b0ab1 | CotacaoId: 137abddc-38b6-4e21-812f-1c600ebc697c
+[2026-09-25T18:34:21.533Z] [INFO] JSON BRUTO PASSDO PARA salvarResultadosMatching:
+[2026-09-25T18:34:21.533Z] [INFO] [
+  {
+    "itemPedido": "Chave Inglesa 12 Brasfort",
+    "status": "NAO_ENCONTRADO",
+    "confianca": 0,
+    "preco": 0,
+    "fornecedorId": "33e03495-100d-45a3-9e34-899de56b0ab1"
+  }
+]
+[2026-09-25T18:34:21.533Z] [INFO] ======================================================
+
+[2026-09-25T18:34:22.233Z] [INFO] 
+
+================================================================
+[2026-09-25T18:34:22.233Z] [INFO] >>> INICIANDO COTAÇÃO DO FORNECEDOR: Construjá (a1684c4d-d896-4ba9-a591-cda455c5ffe2) <<<
+[2026-09-25T18:34:22.233Z] [INFO] ================================================================
+
+[2026-09-25T18:34:22.233Z] [INFO] [RPA ITEM LOG] CotacaoId: "137abddc-38b6-4e21-812f-1c600ebc697c" | Total de itens lidos do banco: 1
+[2026-09-25T18:34:22.233Z] [INFO]   └─ Item 1: "Chave Inglesa 12 Brasfort" (Quantidade: 5)
+[2026-09-25T18:34:22.294Z] [INFO] [2026-09-25T18:34:22.294Z] [RPA DIAGNOSTICO - CHECKPOINT 1: INÍCIO DA EXECUÇÃO] Início da cotação RPA | CotacaoId: "137abddc-38b6-4e21-812f-1c600ebc697c" | FornecedorId: "a1684c4d-d896-4ba9-a591-cda455c5ffe2" (Construjá) | RPA Config: construja
+[2026-09-25T18:34:22.294Z] [INFO] [PROGRESS - Construjá] [Construjá] 🚀 Iniciando Motor Central de Cotação RPA (construja)...
+[2026-09-25T18:34:22.296Z] [INFO] [2026-09-25T18:34:22.296Z] [RPA CREDENCIAIS AUDITORIA] Fornecedor: "Construjá" (a1684c4d-d896-4ba9-a591-cda455c5ffe2) | Origem: Supabase DB (table fornecedores) | User: "comercialsantana@gmail.com" | PassLength: 5 | PassHashPrefix: 05c06e5375
+[2026-09-25T18:34:22.296Z] [INFO] [PROGRESS - Construjá] [Construjá] 🔑 Autenticando e selecionando Filial B2B...
+[2026-09-25T18:34:22.489Z] [INFO] [2026-09-25T18:34:22.488Z] [QuoteEngine realizarLogin] Fornecedor: "Construjá" | User: "comercialsantana@gmail.com" | PassLength: 5 | PassHashPrefix: 05c06e5375
+[2026-09-25T18:34:22.489Z] [INFO] [2026-09-25T18:34:22.488Z] [RPA DIAGNOSTICO - CHECKPOINT 2a: NAVEGAÇÃO] Navegando para URL inicial de Construjá: https://www.construja.com.br/produtos
+[2026-09-25T18:34:26.964Z] [INFO] [2026-09-25T18:34:26.964Z] [RPA DIAGNOSTICO] Clicando no gatilho de login de Construjá...
+[2026-09-25T18:34:29.064Z] [INFO] [2026-09-25T18:34:29.064Z] [RPA DIAGNOSTICO] Preenchendo credenciais de acesso (comercialsantana@gmail.com)...
+[2026-09-25T18:34:34.448Z] [INFO] [2026-09-25T18:34:34.448Z] [RPA DIAGNOSTICO - CHECKPOINT 2: LOGIN SUCESSO] Login realizado com sucesso para usuário: comercialsantana@gmail.com no portal Construjá
+[2026-09-25T18:34:34.489Z] [INFO] [2026-09-25T18:34:34.489Z] [CofemaExtractor] Executando higiene/reset do carrinho B2B...
+[2026-09-25T18:34:38.891Z] [INFO] [2026-09-25T18:34:38.891Z] [CofemaExtractor] Extraindo carrinho ativo da página /page/pedidos e modal Detalhes do Pedido...
+[2026-09-25T18:34:43.101Z] [INFO] [CofemaExtractor] 0 item(ns) extraído(s) do modal Detalhes do Pedido em /page/pedidos. Total: R$ 0.00
+[2026-09-25T18:34:43.101Z] [INFO] [2026-09-25T18:34:43.101Z] [CofemaExtractor] ✅ carrinho verificado como vazio: 0 itens
+[2026-09-25T18:34:44.153Z] [INFO] [PROGRESS - Construjá] [Construjá] 🔍 Cotando e ajustando quantidade em lote: Chave Inglesa 12 Brasfort...
+[2026-09-25T18:34:44.153Z] [INFO] 
+[2026-09-25T18:34:44.153Z] [RPA DIAGNOSTICO - CHECKPOINT 4: PRODUTO BUSCADO] Termo de busca usado em Construjá: "Chave Inglesa 12 Brasfort" (Original: "Chave Inglesa 12 Brasfort" | Quantidade pedida pelo cliente: 5)
+[2026-09-25T18:34:44.153Z] [INFO] [RPA NAVEGAÇÃO BUSCA] Navegando para URL específica de busca: https://www.construja.com.br/produtos?pagina=1&busca=Chave%20Inglesa%2012%20Brasfort
+[2026-09-25T18:34:46.763Z] [INFO] [RPA FALLBACK BUSCA] 0 produtos encontrados para "Chave Inglesa 12 Brasfort". Tentando busca simplificada: "Chave Inglesa Brasfort"
+[2026-09-25T18:34:49.365Z] [INFO] [RPA TITULO ENCONTRADO] Título capturado no grid de busca de Construjá: ""
+[2026-09-25T18:34:49.365Z] [ERROR] ❌ [RPA VALIDAÇÃO FALHOU] O produto encontrado "" NÃO possui correlação semântica com a busca "Chave Inglesa 12 Brasfort". Item marcado como FALHA.
+[2026-09-25T18:34:49.365Z] [INFO] [PROGRESS - Construjá] [Construjá] 🛒 Lendo dados do carrinho (itemContainer por itemContainer)...
+[2026-09-25T18:34:49.365Z] [INFO] [2026-09-25T18:34:49.365Z] [QuoteEngine] Navegando para o carrinho de Construjá (https://www.construja.com.br/produtos) para extração dos dados...
+[2026-09-25T18:34:49.422Z] [INFO] [QuoteEngine] Clicando no botão do carrinho de Construjá...
+[2026-09-25T18:34:52.540Z] [INFO] [2026-09-25T18:34:52.540Z] [QuoteEngine] URL da página do carrinho capturada: "https://www.construja.com.br/produtos?pagina=1&busca=Chave%20Inglesa%20Brasfort"
+[2026-09-25T18:34:57.265Z] [INFO] [AUDIT SCREENSHOT ✅] 03_carrinho_real_construja.png salva em: C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-25_15h30_teste-real-chave-inglesa\03_carrinho_real_construja.png
+[2026-09-25T18:34:57.266Z] [INFO] [PROGRESS - Construjá] [Construjá] 📦 Par extraído do carrinho real: "FERJA - CHAVE INGLESA 12 PRO C/EMBORR" ➔ Qtd: 5 un | Preço Unitário: R$ 60.99 (Total Item: R$ 304.96)
+[2026-09-25T18:34:57.266Z] [INFO] [PROGRESS - Construjá] [Construjá] 📊 Resumo do Pedido: Total Itens: R$ 686.06 | Despesas: R$ 0.00 | Total Pedido: R$ 381.10
+[2026-09-25T18:34:57.266Z] [INFO] [PROGRESS - Construjá] [Construjá] 🔗 Link direto do carrinho montado: https://www.construja.com.br/produtos?pagina=1&busca=Chave%20Inglesa%20Brasfort
+[2026-09-25T18:34:57.267Z] [INFO] 💾 [DB SESSION SAVE ATTEMPT] cotacaoId: "137abddc-38b6-4e21-812f-1c600ebc697c" | fornecedorId: "a1684c4d-d896-4ba9-a591-cda455c5ffe2" | cacheKey: "137abddc-38b6-4e21-812f-1c600ebc697c_a1684c4d-d896-4ba9-a591-cda455c5ffe2" | sessionId: "https://www.construja.com.br/produtos?pagina=1&busca=Chave%20Inglesa%20Brasfort"
+[2026-09-25T18:34:57.374Z] [INFO] ✅ [SUPABASE SUCCESS UPSERT] Sessão https://www.construja.com.br/produtos?pagina=1&busca=Chave%20Inglesa%20Brasfort salva em cotacao_fornecedor_sessoes para 137abddc-38b6-4e21-812f-1c600ebc697c / a1684c4d-d896-4ba9-a591-cda455c5ffe2!
+[2026-09-25T18:34:57.465Z] [INFO] 
+======================================================
+[2026-09-25T18:34:57.465Z] [INFO] [RAW JSON MATCHING HOOK] Fornecedor: a1684c4d-d896-4ba9-a591-cda455c5ffe2 | CotacaoId: 137abddc-38b6-4e21-812f-1c600ebc697c
+[2026-09-25T18:34:57.465Z] [INFO] JSON BRUTO PASSDO PARA salvarResultadosMatching:
+[2026-09-25T18:34:57.465Z] [INFO] [
+  {
+    "itemPedido": "Chave Inglesa 12 Brasfort",
+    "status": "CONFIRMADO",
+    "confianca": 95,
+    "produtoEncontrado": "FERJA - CHAVE INGLESA 12 PRO C/EMBORR",
+    "preco": 60.99,
+    "quantidade": 5,
+    "fornecedorId": "a1684c4d-d896-4ba9-a591-cda455c5ffe2"
+  }
+]
+[2026-09-25T18:34:57.465Z] [INFO] ======================================================
+
+[2026-09-25T18:34:57.826Z] [INFO] [2026-09-25T18:34:57.826Z] [RPA DIAGNOSTICO - CHECKPOINT 9: BANCO CONCLUÍDO] Gravação no banco de dados concluída para cotação "137abddc-38b6-4e21-812f-1c600ebc697c" (1 item(ns) salvos).
+[2026-09-25T18:34:57.826Z] [INFO] [PROGRESS - Construjá] [Construjá] ✅ Cotação concluída no fornecedor! Total Geral: R$ 381.10
+[2026-09-25T18:34:58.089Z] [INFO] 
+================================================================
+[2026-09-25T18:34:58.089Z] [INFO] === TODOS OS FORNECEDORES CONCLUÍDOS ===
+[2026-09-25T18:34:58.089Z] [INFO] ================================================================
+[2026-09-25T18:34:58.089Z] [INFO] {
+  "cofema": {
+    "cotacaoId": "137abddc-38b6-4e21-812f-1c600ebc697c",
+    "fornecedorId": "752e18bd-4f41-414a-8f66-0d8f538de99e",
+    "fornecedorNome": "Cofema",
+    "sucesso": false,
+    "tempoTotalMs": 83095,
+    "itensProcessados": [
+      {
+        "itemPedido": "Chave Inglesa 12 Brasfort",
+        "status": "NAO_ENCONTRADO",
+        "confianca": 0,
+        "preco": 0,
+        "fornecedorId": "752e18bd-4f41-414a-8f66-0d8f538de99e"
+      }
+    ]
+  },
+  "cicalfer": {
+    "cotacaoId": "137abddc-38b6-4e21-812f-1c600ebc697c",
+    "fornecedorId": "33e03495-100d-45a3-9e34-899de56b0ab1",
+    "fornecedorNome": "Cicalfer",
+    "sucesso": false,
+    "tempoTotalMs": 61251,
+    "itensProcessados": [
+      {
+        "itemPedido": "Chave Inglesa 12 Brasfort",
+        "status": "NAO_ENCONTRADO",
+        "confianca": 0,
+        "preco": 0,
+        "fornecedorId": "33e03495-100d-45a3-9e34-899de56b0ab1"
+      }
+    ]
+  },
+  "construja": {
+    "cotacaoId": "137abddc-38b6-4e21-812f-1c600ebc697c",
+    "fornecedorId": "a1684c4d-d896-4ba9-a591-cda455c5ffe2",
+    "fornecedorNome": "Construjá",
+    "sucesso": true,
+    "tempoTotalMs": 35593,
+    "itensProcessados": [
+      {
+        "itemPedido": "Chave Inglesa 12 Brasfort",
+        "status": "CONFIRMADO",
+        "confianca": 95,
+        "produtoEncontrado": "FERJA - CHAVE INGLESA 12 PRO C/EMBORR",
+        "preco": 60.99,
+        "quantidade": 5,
+        "fornecedorId": "a1684c4d-d896-4ba9-a591-cda455c5ffe2"
+      }
+    ]
+  }
+}
+[2026-09-25T18:34:58.383Z] [INFO] [AUDIT] Acessando UI da Saracota em http://localhost:3000/cotacoes/137abddc-38b6-4e21-812f-1c600ebc697c...
+[2026-09-25T18:35:03.653Z] [INFO] [AUDIT ✅] Screenshot 04_modal_resumo_saracota.png capturada em: C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-25_15h30_teste-real-chave-inglesa\04_modal_resumo_saracota.png

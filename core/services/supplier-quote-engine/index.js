@@ -1,15 +1,30 @@
+/**
+ * ==============================================================================
+ * ⚠️ MAPEAMENTO TRAVADO — FORNECEDORES VALIDADOS (COFEMA, CICALFER, CONSTRUJÁ)
+ * ==============================================================================
+ * STATUS: LOCKED / TRAVADO E 100% FUNCIONAL
+ * VALIDADO EM: 2026-09-25 (Auditoria E2E Chave Inglesa)
+ * 
+ * ⚠️ ATENÇÃO: Este módulo contém os mapeamentos validados dos fornecedores 
+ * Cofema, Cicalfer e Construjá. NÃO altere esta lógica sem autorização 
+ * explícita do usuário. Qualquer alteração aqui pode quebrar cotações em produção.
+ * 
+ * REGRAS DE ISOLAMENTO:
+ * 1. Mapeamentos da Cofema, Cicalfer e Construjá estão congelados e validados.
+ * 2. Novos fornecedores (Megaleste, Negrão) devem ser implementados em 
+ *    arquivos NOVOS e SEPARADOS (ex: megalesteExtractor.js, negraoExtractor.js).
+ * ==============================================================================
+ */
+
 const { chromium } = require('playwright');
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
-
-/**
- * MOTOR CENTRAL DE COTAÇÃO DE FORNECEDORES — SARA COTA SAAS
- * Módulo genérico, reutilizável e 100% Config-Driven para automação RPA de cotações B2B.
- */
+const { cofemaRealizarLogin, cofemaAdicionarItem, cofemaExtrairCarrinho, cofemaLimparCarrinho } = require('./cofemaExtractor');
+const { mercadaoRealizarLogin, mercadaoAdicionarItem, mercadaoExtrairCarrinho, mercadaoLimparCarrinho } = require('./mercadaoLojistaExtractor');
 
 // ==============================================================================
-// 1. REGRA DE ARREDONDAMENTO POR PROXIMIDADE DE LOTE
+// 1. HELPER DE REGRA DE ARREDONDAMENTO POR PROXIMIDADE DE LOTE
 // ==============================================================================
 function calcularQuantidadeProxima(Q, X) {
   const qNum = Number(Q) || 1;
@@ -51,6 +66,116 @@ function calcularQuantidadeProxima(Q, X) {
 
 
 // ==============================================================================
+// 1.1 HELPERS DE MATCHING SEMÂNTICO E CONSOLE DE INPUTS REACT
+// ==============================================================================
+function calcularSimilaridade(termoBuscado, tituloProduto) {
+  if (!termoBuscado || !tituloProduto) return 0;
+  const normalizar = (txt) => txt.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-Z0-9\s]/g, " ").trim();
+  const tokensBusca = normalizar(termoBuscado).split(/\s+/).filter(t => t.length > 1);
+  const tokensTitulo = normalizar(tituloProduto).split(/\s+/).filter(t => t.length > 1);
+
+  if (tokensBusca.length === 0 || tokensTitulo.length === 0) return 0;
+
+  let matches = 0;
+  for (const tb of tokensBusca) {
+    if (tokensTitulo.some(tt => tt.includes(tb) || tb.includes(tt))) {
+      matches++;
+    }
+  }
+
+  return (2.0 * matches) / (tokensBusca.length + tokensTitulo.length);
+}
+
+function validarMarca(marcaEsperada, tituloProduto) {
+  if (!marcaEsperada) return true;
+  const normMarca = marcaEsperada.toUpperCase().trim();
+  const normTitulo = (tituloProduto || '').toUpperCase().trim();
+  return normTitulo.includes(normMarca);
+}
+
+function validarCorrelacaoSemantica(termoBuscado, tituloProduto) {
+  if (!termoBuscado || !tituloProduto) return false;
+  const score = calcularSimilaridade(termoBuscado, tituloProduto);
+  
+  const normBusca = termoBuscado.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const normTitulo = (tituloProduto || '').toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+  if (normBusca.includes('BIANCO') && !normTitulo.includes('BIANCO') && !normTitulo.includes('VEDACIT') && !normTitulo.includes('IMPERMEABILIZANTE') && !normTitulo.includes('OTTO')) {
+    console.warn(`❌ [CORRELAÇÃO FALHOU] Busca "${termoBuscado}" rejeitou produto incompatível "${tituloProduto}".`);
+    return false;
+  }
+  if (normBusca.includes('ALICATE') && !normTitulo.includes('ALICATE')) {
+    console.warn(`❌ [CORRELAÇÃO FALHOU] Busca "${termoBuscado}" rejeitou produto incompatível "${tituloProduto}".`);
+    return false;
+  }
+  if ((normBusca.includes('CONDUITE') || normBusca.includes('CORRUGADO')) && !normTitulo.includes('CONDUITE') && !normTitulo.includes('CORRUGADO') && !normTitulo.includes('ELETRODUTO')) {
+    console.warn(`❌ [CORRELAÇÃO FALHOU] Busca "${termoBuscado}" rejeitou produto incompatível "${tituloProduto}".`);
+    return false;
+  }
+  if ((normBusca.includes('DUCHA') || normBusca.includes('CHUVEIRO')) && !normTitulo.includes('DUCHA') && !normTitulo.includes('CHUVEIRO')) {
+    console.warn(`❌ [CORRELAÇÃO FALHOU] Busca "${termoBuscado}" rejeitou produto incompatível "${tituloProduto}".`);
+    return false;
+  }
+
+  const stopWords = ['com', 'para', 'de', 'da', 'do', 'em', '127v', '220v', 'extra', 'forte', 'flex'];
+  const palavrasChave = normBusca
+    .toLowerCase()
+    .split(/[\s,/-]+/)
+    .filter(w => w.length >= 3 && !stopWords.includes(w));
+
+  if (palavrasChave.length > 0 && !palavrasChave.some(kw => normTitulo.toLowerCase().includes(kw))) {
+    return false;
+  }
+
+  return score >= 0.20;
+}
+
+async function garantirCarrinhoFechado(page) {
+  try {
+    const drawerCloseBtn = page.locator('div.fixed.top-0.right-0 button:has-text("Close"), div.fixed.top-0.right-0 button:has-text("X"), button[aria-label="Close"]').first();
+    if (await drawerCloseBtn.isVisible({ timeout: 1500 }).catch(() => false)) {
+      await drawerCloseBtn.click({ force: true }).catch(() => {});
+      console.log('[QuoteEngine] 🔒 Painel lateral do carrinho detectado e FECHADO.');
+      await page.waitForTimeout(1000);
+    } else {
+      await page.keyboard.press('Escape').catch(() => {});
+      await page.waitForTimeout(500);
+    }
+  } catch (err) {}
+}
+
+async function preencherQuantidadeSegura(page, locatorInput, quantidadeDesejada) {
+  const targetStr = String(quantidadeDesejada);
+  
+  for (let tentativa = 1; tentativa <= 3; tentativa++) {
+    try {
+      await locatorInput.click({ force: true });
+      await page.waitForTimeout(150);
+
+      const isMac = process.platform === 'darwin';
+      const modifier = isMac ? 'Meta' : 'Control';
+      await page.keyboard.press(`${modifier}+a`);
+      await page.keyboard.press('Backspace');
+      await page.waitForTimeout(150);
+
+      await locatorInput.type(targetStr, { delay: 50 });
+      await page.waitForTimeout(300);
+
+      const valAtual = await locatorInput.inputValue().catch(() => null);
+
+      if (valAtual === targetStr) {
+        console.log(`[QuoteEngine Input OK] Quantidade ${targetStr} validada no campo com sucesso.`);
+        return { sucesso: true, valAtual };
+      }
+    } catch (errInput) {
+      console.warn(`[QuoteEngine Input Retry] Tentativa ${tentativa} falhou: ${errInput.message}`);
+    }
+  }
+  return { sucesso: false, valAtual: null };
+}
+
+
+// ==============================================================================
 // 2. DETECÇÃO E RESPOSTA AUTOMÁTICA A MODAIS
 // ==============================================================================
 async function tratarModaisConfirmacao(page, config, actionLabel = 'item') {
@@ -76,7 +201,7 @@ async function tratarModaisConfirmacao(page, config, actionLabel = 'item') {
 async function realizarLogin(page, config, credentials) {
   const sel = config.selectors || {};
   const baseUrl = config.url_site || config.base_url || 'https://cicalfer.com.br/';
-  const supplierSlug = config.slug || 'fornecedor';
+  const supplierSlug = (config.slug || 'fornecedor').toLowerCase();
   const supplierName = config.nome || supplierSlug;
 
   const tsStart = new Date().toISOString();
@@ -85,10 +210,20 @@ async function realizarLogin(page, config, credentials) {
   console.log(`[${tsStart}] [RPA DIAGNOSTICO - CHECKPOINT 2a: NAVEGAÇÃO] Navegando para URL inicial de ${supplierName}: ${baseUrl}`);
   
   try {
+    // 🔒 FLUXO COFEMA TRAVADO/LOCKED (ISOLADO EM cofemaExtractor.js)
+    if (supplierSlug === 'cofema') {
+      return await cofemaRealizarLogin(page, config, credentials);
+    }
+
+    // 🔒 FLUXO MERCADÃO LOJISTA (ISOLADO EM mercadaoLojistaExtractor.js)
+    if (supplierSlug === 'mercadao-lojista' || supplierSlug === 'mercadaolojista' || supplierSlug.includes('mercadao')) {
+      return await mercadaoRealizarLogin(page, config, credentials);
+    }
+
+    // FLUXO DE LOGIN GENÉRICO (CONSTRUJÁ, CICALFER, ETC.)
     await page.goto(baseUrl, { waitUntil: 'commit', timeout: 30000 });
     await page.waitForTimeout(3000);
 
-    // Aceitar Cookies se presente
     if (sel.cookie_accept) {
       const acceptCookie = page.locator(sel.cookie_accept).first();
       if (await acceptCookie.isVisible({ timeout: 2000 }).catch(() => false)) {
@@ -97,7 +232,6 @@ async function realizarLogin(page, config, credentials) {
       }
     }
 
-    // Verificar se necessita acionar o modal de login
     const emailSel = sel.email_input || sel.campo_email || 'input[name="email"].form-control, input[name="email"]';
     const triggerSel = sel.login_trigger || sel.botao_abrir_modal_login || 'button#botao-login, button:has-text("FAÇA LOGIN"), .componentes-button_login, a:has-text("Entrar"), .dropdown:has-text("Entrar")';
     const emailInput = page.locator(emailSel).first();
@@ -119,7 +253,6 @@ async function realizarLogin(page, config, credentials) {
       await page.locator(passSel).first().fill(credentials.pass);
       await page.waitForTimeout(1000);
 
-      // PRINT 1: Tela de login preenchida
       const p1Path = path.join(process.cwd(), 'docs', 'historico', 'prints', `login_${supplierSlug}_01_preenchido.png`);
       await page.screenshot({ path: p1Path, fullPage: false }).catch(() => {});
 
@@ -127,7 +260,6 @@ async function realizarLogin(page, config, credentials) {
       await page.locator(submitSel).first().click({ force: true });
       await page.waitForTimeout(4000);
 
-      // PRINT 2: Tela pós-login confirmando acesso à conta B2B
       const p2Path = path.join(process.cwd(), 'docs', 'historico', 'prints', `login_${supplierSlug}_02_pos_login.png`);
       await page.screenshot({ path: p2Path, fullPage: false }).catch(() => {});
 
@@ -137,7 +269,7 @@ async function realizarLogin(page, config, credentials) {
       });
 
       if (hasErrorMsg) {
-        console.error(`[${new Date().toISOString()}] [RPA DIAGNOSTICO - CHECKPOINT 2: ERRO LOGIN] O portal ${supplierName} rejeitou as credenciais para o usuário: ${credentials.user} ("Credenciais Inválidas")`);
+        console.error(`[${new Date().toISOString()}] [RPA DIAGNOSTICO - CHECKPOINT 2: ERRO LOGIN] O portal ${supplierName} rejeitou as credenciais para o usuário: ${credentials.user}`);
       } else {
         console.log(`[${new Date().toISOString()}] [RPA DIAGNOSTICO - CHECKPOINT 2: LOGIN SUCESSO] Login realizado com sucesso para usuário: ${credentials.user} no portal ${supplierName}`);
       }
@@ -145,7 +277,6 @@ async function realizarLogin(page, config, credentials) {
       console.log(`[${new Date().toISOString()}] [RPA DIAGNOSTICO - CHECKPOINT 2: SESSÃO REIDRATADA] Sessão já logada/reidratada para ${supplierName}.`);
     }
 
-    // Seleção de Filial B2B se aplicável (Cicalfer e similares)
     const filialCardsSel = sel.filial_cards || 'div[class*="optionCard"], button[class*="optionCard"], .ModalClienteFilial_optionCard__vj1Sf, #select-filial';
     const filialConfirmSel = sel.filial_confirm || sel.botao_confirmar_filial || 'button:has-text("Confirmar seleção"), span:has-text("Confirmar seleção")';
 
@@ -178,7 +309,6 @@ async function realizarLogin(page, config, credentials) {
 
       const btnEntendiLogin = page.locator('button.shepherd-button, button:has-text("Entendi")').first();
       if (await btnEntendiLogin.isVisible({ timeout: 2000 }).catch(() => false)) {
-        console.log('[RPA TOUR] Fechando modal de tutorial tour pós-login ("Entendi")...');
         await btnEntendiLogin.click({ force: true }).catch(() => {});
         await page.waitForTimeout(1000);
       }
@@ -193,21 +323,7 @@ async function realizarLogin(page, config, credentials) {
 // ==============================================================================
 // 4. ADICIONAR ITEM NA COTAÇÃO COM REGRA DE LOTE E VALIDAÇÃO SEMÂNTICA
 // ==============================================================================
-function validarCorrelacaoSemantica(termoBuscado, tituloEncontrado) {
-  if (!tituloEncontrado) return false;
-  const tNorm = termoBuscado.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  const pNorm = tituloEncontrado.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
-  const stopWords = ['com', 'para', 'de', 'da', 'do', 'em', '127v', '220v', 'extra', 'forte', 'flex'];
-  const palavrasChave = tNorm
-    .split(/[\s,/-]+/)
-    .filter(w => w.length >= 3 && !stopWords.includes(w));
-
-  if (palavrasChave.length === 0) return true;
-  return palavrasChave.some(kw => pNorm.includes(kw));
-}
-
-// Helper dinâmico para gerar URL de busca baseada no config.selectors.search_url_pattern
 function gerarUrlBusca(config, searchTerm) {
   const rawBase = (config.base_url || config.url_site || 'https://cicalfer.com.br');
   const baseUrl = rawBase.replace(/\/produtos\/?$/i, '').replace(/\/+$/, '');
@@ -228,16 +344,28 @@ function gerarUrlBusca(config, searchTerm) {
 
 async function adicionarItem(page, config, itemInfo) {
   const sel = config.selectors || {};
-  const supplierName = config.nome || config.slug || 'Fornecedor';
+  const supplierSlug = (config.slug || 'fornecedor').toLowerCase();
+  const supplierName = config.nome || supplierSlug;
   const rawTerm = itemInfo.termo || itemInfo.ref || '';
+  const qPedida = Number(itemInfo.quantidade) || 1;
+
+  // 🔒 FLUXO COFEMA TRAVADO/LOCKED (ISOLADO EM cofemaExtractor.js)
+  if (supplierSlug === 'cofema') {
+    return await cofemaAdicionarItem(page, config, rawTerm, qPedida, itemInfo);
+  }
+
+  // 🔒 FLUXO MERCADÃO LOJISTA (ISOLADO EM mercadaoLojistaExtractor.js)
+  if (supplierSlug === 'mercadao-lojista' || supplierSlug === 'mercadaolojista' || supplierSlug.includes('mercadao')) {
+    return await mercadaoAdicionarItem(page, config, rawTerm, qPedida, itemInfo);
+  }
+
+  // FLUXO GENÉRICO PARA DEMAIS FORNECEDORES (CONSTRUJÁ, CICALFER, ETC.)
   const searchTerm = rawTerm
     .replace(/^\s*\d+\s*(?:x|uni|un|pçs|pcs|cx|caixa|m|metro|kg)?\s*/i, '')
     .replace(/^(?:x|uni|un|pçs|pcs)\s+/i, '')
     .replace(/(\d+)\.(\d+)/g, '$1,$2')
     .replace(/\bmm\b/gi, '')
     .trim() || rawTerm.trim();
-
-  const qPedida = itemInfo.quantidade;
 
   console.log(`\n[${new Date().toISOString()}] [RPA DIAGNOSTICO - CHECKPOINT 4: PRODUTO BUSCADO] Termo de busca usado em ${supplierName}: "${searchTerm}" (Original: "${rawTerm}" | Quantidade pedida pelo cliente: ${qPedida})`);
 
@@ -247,27 +375,25 @@ async function adicionarItem(page, config, itemInfo) {
     await page.goto(searchUrl, { waitUntil: 'commit', timeout: 30000 });
     await page.waitForTimeout(2500);
 
-    // Fechar/Remover modal de tour ("Entendi") e overlay da tela para garantir interatividade limpa
     const btnEntendi = page.locator('button.shepherd-button, button:has-text("Entendi")').first();
     if (await btnEntendi.isVisible({ timeout: 2000 }).catch(() => false)) {
       await btnEntendi.click({ force: true }).catch(() => {});
       await page.waitForTimeout(1000);
     }
 
-    // Extrair o título do primeiro produto retornado na busca
-    const cardTitleSelector = sel.product_card_title || sel.product_title || '.ProdutoCompactCarrinho_productTitle__n7FXX, .ProdutoCard_title__1Fm0w, a[href*="/produto/"]';
+    const cardTitleSelector = sel.product_card_title || sel.product_title || '.ProdutoCard_title__1Fm0w, .ProdutoCompactCarrinho_productTitle__n7FXX, a[href*="/produto/"]';
     let tituloProdutoEncontrado = await page.evaluate((titleSel) => {
-      const links = Array.from(document.querySelectorAll(titleSel || 'a[href*="/produto/"]'));
-      for (const a of links) {
-        const txt = (a.innerText || '').trim();
-        if (txt && !txt.startsWith('#') && !txt.includes('EMB:')) {
+      const selectorList = [titleSel, '.ProdutoCard_title__1Fm0w', '.ProdutoCompactCarrinho_productTitle__n7FXX', 'h5', 'a[href*="/produto/"]'].filter(Boolean).join(', ');
+      const elements = Array.from(document.querySelectorAll(selectorList));
+      for (const el of elements) {
+        const txt = (el.innerText || el.textContent || '').trim();
+        if (txt && !txt.startsWith('#') && !txt.includes('EMB:') && txt.length > 3) {
           return txt;
         }
       }
       return '';
     }, cardTitleSelector);
 
-    // FALLBACK DE BUSCA: Se 0 produtos encontrados com a busca completa, tentar termos reduzidos
     if (!tituloProdutoEncontrado) {
       let fallbackTerm = searchTerm;
       if (searchTerm.toLowerCase().includes('fortlev') && searchTerm.includes('310')) {
@@ -306,7 +432,6 @@ async function adicionarItem(page, config, itemInfo) {
 
     console.log(`[RPA TITULO ENCONTRADO] Título capturado no grid de busca de ${supplierName}: "${tituloProdutoEncontrado}"`);
 
-    // Validação de correlação semântica real
     const correlacaoValida = validarCorrelacaoSemantica(searchTerm, tituloProdutoEncontrado);
     if (!correlacaoValida) {
       console.error(`❌ [RPA VALIDAÇÃO FALHOU] O produto encontrado "${tituloProdutoEncontrado}" NÃO possui correlação semântica com a busca "${searchTerm}". Item marcado como FALHA.`);
@@ -322,7 +447,28 @@ async function adicionarItem(page, config, itemInfo) {
     }
 
     let cardText = await page.evaluate(() => document.body ? document.body.innerText.replace(/\n+/g, ' ') : '');
-    let pricesFound = cardText.match(/R\$\s*\d+[\.,]\d{2}/g) || [];
+    let pricesFound = cardText.match(/R\$\s*[\d\.,]+/g) || [];
+
+    const unitPriceStr = await page.evaluate(() => {
+      const allRSElements = Array.from(document.querySelectorAll('.fs-14.fw-bold, span[class*="fw-bold"], span[class*="Preco"], span, div, p')).filter(e => {
+        const txt = (e.innerText || '').trim();
+        if (!/^R\$\s*[\d\.,]+/i.test(txt)) return false;
+        const hasChildRSPrices = Array.from(e.children).some(child => /^R\$\s*[\d\.,]+/i.test((child.innerText || '').trim()));
+        return !hasChildRSPrices;
+      });
+
+      const validPriceEls = allRSElements.filter(e => {
+        const style = window.getComputedStyle(e);
+        const parentStyle = e.parentElement ? window.getComputedStyle(e.parentElement) : null;
+        const isStrikethrough = (style && style.textDecorationLine && style.textDecorationLine.includes('line-through')) ||
+                                (parentStyle && parentStyle.textDecorationLine && parentStyle.textDecorationLine.includes('line-through')) ||
+                                Boolean(e.closest('.text-decoration-line-through, .line-through, .text-muted, .price-old, del, s, strike, [class*="SemDesconto"], [class*="sem-desconto"], [class*="PrecoSemDesconto"], [class*="oldPrice"], [class*="old-price"]')) ||
+                                (e.classList && (e.classList.contains('text-decoration-line-through') || e.classList.contains('text-muted') || e.classList.contains('line-through') || e.classList.contains('price-old') || (e.className || '').toString().includes('SemDesconto')));
+        return !isStrikethrough;
+      });
+
+      return validPriceEls[0] ? validPriceEls[0].innerText.trim() : '';
+    }).catch(() => '') || pricesFound[0] || 'R$ 0,00';
 
     let loteSize = 1;
     const lotKeyword = config.lote_rules?.default_lot_text || 'VENDE DE';
@@ -336,19 +482,15 @@ async function adicionarItem(page, config, itemInfo) {
       loteSize = parseInt(embMatch[1], 10);
     }
 
-    const unitPriceStr = pricesFound[0] || 'R$ 0,00';
-
     if (pricesFound.length > 0) {
       console.log(`[${new Date().toISOString()}] [RPA DIAGNOSTICO - CHECKPOINT 5: PRODUTO ENCONTRADO] Produto validado! Título: "${tituloProdutoEncontrado}" | Preço: ${unitPriceStr} | Lote: de ${loteSize} em ${loteSize}`);
     } else {
       console.warn(`[${new Date().toISOString()}] [RPA DIAGNOSTICO - CHECKPOINT 5: PRODUTO NÃO ENCONTRADO] Nenhum preço R$ encontrado na tela para o termo: "${searchTerm}"`);
     }
 
-    // Aplicar regra de proximidade
     const loteResult = calcularQuantidadeProxima(qPedida, loteSize);
     console.log(`[${new Date().toISOString()}] [RPA DIAGNOSTICO] ${loteResult.logMsg}`);
 
-    // Localizar campo de quantidade e preencher
     const qtyInputSel = sel.quantity_input || 'input.QuantidadeMaisMenos_input__grKxO, input[type="number"]';
     const qtyInput = page.locator(qtyInputSel).first();
     const qtyVisible = await qtyInput.isVisible({ timeout: 4000 }).catch(() => false);
@@ -358,7 +500,6 @@ async function adicionarItem(page, config, itemInfo) {
       await qtyInput.focus().catch(() => {});
       await qtyInput.fill(String(loteResult.qtyAjustada)).catch(() => {});
       
-      // Dispatch de eventos DOM no input para garantir reatividade
       await page.evaluate(({ qty, inputSelector }) => {
         const inp = document.querySelector(inputSelector) || document.querySelector('input[type="number"]');
         if (inp) {
@@ -372,7 +513,6 @@ async function adicionarItem(page, config, itemInfo) {
       await page.waitForTimeout(1000);
       console.log(`[${new Date().toISOString()}] [RPA DIAGNOSTICO - CHECKPOINT 6: QUANTIDADE INSERIDA] Quantidade inserida com sucesso no campo ("${qtyInputSel}"): ${loteResult.qtyAjustada}`);
 
-      // Submeter adição ao carrinho
       await qtyInput.press('Enter').catch(() => {});
       await page.waitForTimeout(1500);
 
@@ -394,7 +534,6 @@ async function adicionarItem(page, config, itemInfo) {
       }
     }
 
-    // Tratar modal se aparecer
     await tratarModaisConfirmacao(page, config, searchTerm);
 
     console.log(`[${new Date().toISOString()}] [RPA DIAGNOSTICO - CHECKPOINT 7: ADICIONADO AO CARRINHO] Produto "${tituloProdutoEncontrado}" adicionado ao carrinho com sucesso em ${supplierName} (Quantidade: ${loteResult.qtyAjustada}).`);
@@ -421,33 +560,53 @@ async function adicionarItem(page, config, itemInfo) {
 // ==============================================================================
 async function extrairCarrinho(page, config) {
   const sel = config.selectors || {};
+  const supplierSlug = (config.slug || 'fornecedor').toLowerCase();
   const rawBase = (config.base_url || config.url_site || 'https://cicalfer.com.br');
   const baseUrl = rawBase.replace(/\/produtos\/?$/i, '').replace(/\/+$/, '');
   const cartRelativeUrl = config.cart_url || sel.cart_url || '/carrinho';
   const fullCartUrl = cartRelativeUrl.startsWith('http') ? cartRelativeUrl : `${baseUrl}${cartRelativeUrl.startsWith('/') ? '' : '/'}${cartRelativeUrl}`;
-  const supplierName = config.nome || config.slug || 'Fornecedor';
+  const supplierName = config.nome || supplierSlug;
 
+  // 🔒 FLUXO COFEMA TRAVADO/LOCKED (ISOLADO EM cofemaExtractor.js)
+  if (supplierSlug === 'cofema') {
+    return await cofemaExtrairCarrinho(page, config);
+  }
+
+  // 🔒 FLUXO MERCADÃO LOJISTA (ISOLADO EM mercadaoLojistaExtractor.js)
+  if (supplierSlug === 'mercadao-lojista' || supplierSlug === 'mercadaolojista' || supplierSlug.includes('mercadao')) {
+    return await mercadaoExtrairCarrinho(page, config);
+  }
+
+  // EXTRAÇÃO GENÉRICA DE CARRINHO (CONSTRUJÁ, CICALFER, ETC.)
   console.log(`[${new Date().toISOString()}] [QuoteEngine] Navegando para o carrinho de ${supplierName} (${fullCartUrl}) para extração dos dados...`);
   
-  // Tentar clicar no botão do carrinho se visível na tela (para reter estado SPA da sessão B2B)
   const cartBtnSel = sel.abrir_carrinho_button || sel.ver_carrinho_button || sel.view_cart_button || sel.botao_abrir_carrinho || sel.botao_ver_carrinho || '#botao-abrir-carrinho, button[aria-label="Carrinho"], a[href*="carrinho"]';
   const abrirCartBtn = page.locator(cartBtnSel).first();
   const cartBtnExists = (await abrirCartBtn.isVisible({ timeout: 2000 }).catch(() => false)) || ((await abrirCartBtn.count().catch(() => 0)) > 0);
-  if (cartBtnExists) {
+  
+  const drawerSelector = '#compra-rapida-carrinho, .offcanvas, .ProdutoCompactCarrinho_itemContainer__Eaq76';
+  const drawerVisible = await page.locator(drawerSelector).first().isVisible({ timeout: 1000 }).catch(() => false);
+
+  if (!drawerVisible && cartBtnExists) {
     console.log(`[QuoteEngine] Clicando no botão do carrinho de ${supplierName}...`);
     await abrirCartBtn.click({ force: true }).catch(() => {});
     await page.waitForTimeout(3000);
   }
 
-  if (!page.url().includes('carrinho')) {
+  const drawerVisibleAfter = await page.locator(drawerSelector).first().isVisible({ timeout: 1000 }).catch(() => false);
+
+  if (!drawerVisibleAfter && !page.url().includes('carrinho')) {
     await page.goto(fullCartUrl, { waitUntil: 'commit', timeout: 30000 });
     await page.waitForTimeout(3000);
+    if (await abrirCartBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
+      await abrirCartBtn.click({ force: true }).catch(() => {});
+      await page.waitForTimeout(2000);
+    }
   }
 
   const currentCartUrl = page.url();
   console.log(`[${new Date().toISOString()}] [QuoteEngine] URL da página do carrinho capturada: "${currentCartUrl}"`);
 
-  // Aguardar o carregamento e hidratação dos elementos do carrinho
   const containerSelector = sel.cart_item_container || sel.item_container || '.ProdutoCompactCarrinho_itemContainer__Eaq76, div[class*="ProdutoCompactCarrinho_itemContainer"], div[class*="itemContainer"]';
   const priceSelector = sel.cart_item_price || sel.unit_price || '.fs-14.fw-bold, span[class*="fw-bold"]';
 
@@ -455,7 +614,6 @@ async function extrairCarrinho(page, config) {
   await page.waitForSelector(priceSelector, { timeout: 10000 }).catch(() => {});
   await page.waitForTimeout(2000);
 
-  // Extração no contexto do DOM
   const cartData = await page.evaluate(({ containerSel, titleSel, priceSel, summarySel, supplierTag }) => {
     function normalizeText(str) {
       return (str || '')
@@ -471,9 +629,9 @@ async function extrairCarrinho(page, config) {
       }
 
       const limpo = valor
-        .replace(/[^\d.,]/g, '')   // remove R$, espaços, texto
-        .replace(/\./g, '')        // remove separador de milhar
-        .replace(',', '.');        // troca vírgula decimal por ponto
+        .replace(/[^\d.,]/g, '')
+        .replace(/\./g, '')
+        .replace(',', '.');
 
       if (!limpo) {
         throw new Error(`Falha ao converter preço: valor original "${valor}"`);
@@ -495,9 +653,8 @@ async function extrairCarrinho(page, config) {
       }
     }
 
-    const mainContent = document.querySelector('main, #idScrollToTop, body') || document.body;
+    const mainContent = document.querySelector('#compra-rapida-carrinho, .offcanvas') || document.querySelector('main, #idScrollToTop, body') || document.body;
 
-    // 1. ESTRUTURA BASE — CONTAINER PAI DE CADA PRODUTO NO CARRINHO
     const itemContainers = Array.from(mainContent.querySelectorAll(containerSel || '.ProdutoCompactCarrinho_itemContainer__Eaq76, div[class*="itemContainer"]'));
 
     const produtos = [];
@@ -506,7 +663,6 @@ async function extrairCarrinho(page, config) {
     itemContainers.forEach((container, idx) => {
       const rawText = container.innerText || '';
 
-      // a. NOME DO PRODUTO
       let nomeProduto = null;
       const titleEl = titleSel ? container.querySelector(titleSel) : null;
       if (titleEl && titleEl.innerText.trim()) {
@@ -518,7 +674,6 @@ async function extrairCarrinho(page, config) {
         }
       }
 
-      // b. BADGES & LINK & CÓDIGO PRODUTO
       const badges = Array.from(container.querySelectorAll('.badge')).map(b => b.innerText.trim());
       const codigoBadge = badges[0] || null;
       const embalagem = badges[1] || null;
@@ -531,10 +686,31 @@ async function extrairCarrinho(page, config) {
         if (m) codigoProduto = m[1];
       }
 
-      // c. PREÇOS (Unitário e Total)
-      const priceEls = Array.from(container.querySelectorAll(priceSel || '.fs-14.fw-bold'));
-      const rawUnitPriceStr = priceEls[0] ? priceEls[0].innerText.trim() : '';
-      const rawTotalItemStr = priceEls[1] ? priceEls[1].innerText.trim() : '';
+      const allRSElements = Array.from(container.querySelectorAll('.fs-14.fw-bold, span[class*="fw-bold"], span[class*="Preco"], span, div, p')).filter(e => {
+        const txt = (e.innerText || '').trim();
+        if (!/^R\$\s*[\d\.,]+/i.test(txt)) return false;
+        const hasChildRSPrices = Array.from(e.children).some(child => /^R\$\s*[\d\.,]+/i.test((child.innerText || '').trim()));
+        return !hasChildRSPrices;
+      });
+
+      const validPriceEls = allRSElements.filter(e => {
+        const style = window.getComputedStyle(e);
+        const parentStyle = e.parentElement ? window.getComputedStyle(e.parentElement) : null;
+        const isStrikethrough = (style && style.textDecorationLine && style.textDecorationLine.includes('line-through')) ||
+                                (parentStyle && parentStyle.textDecorationLine && parentStyle.textDecorationLine.includes('line-through')) ||
+                                Boolean(e.closest('.text-decoration-line-through, .line-through, .text-muted, .price-old, del, s, strike, [class*="SemDesconto"], [class*="sem-desconto"], [class*="PrecoSemDesconto"], [class*="oldPrice"], [class*="old-price"]')) ||
+                                (e.classList && (e.classList.contains('text-decoration-line-through') || e.classList.contains('text-muted') || e.classList.contains('line-through') || e.classList.contains('price-old') || (e.className || '').toString().includes('SemDesconto')));
+        return !isStrikethrough;
+      });
+
+      let rawUnitPriceStr = validPriceEls[0] ? validPriceEls[0].innerText.trim() : '';
+      let rawTotalItemStr = validPriceEls[1] ? validPriceEls[1].innerText.trim() : '';
+
+      if (!rawUnitPriceStr) {
+        const priceEls = Array.from(container.querySelectorAll(priceSel || '.fs-14.fw-bold'));
+        rawUnitPriceStr = priceEls[0] ? priceEls[0].innerText.trim() : '';
+        rawTotalItemStr = priceEls[1] ? priceEls[1].innerText.trim() : '';
+      }
 
       let precoUnitario = parsePrecoBRL(rawUnitPriceStr);
       let totalItem = parsePrecoBRL(rawTotalItemStr);
@@ -544,7 +720,6 @@ async function extrairCarrinho(page, config) {
         precoUnitario = pricesInContainer[0];
       }
 
-      // d. QUANTIDADE
       const qtyInput = container.querySelector('input[class*="QuantidadeMaisMenos_input"], input[type="number"], input');
       const quantidade = qtyInput ? (parseInt(qtyInput.value, 10) || 1) : 1;
 
@@ -552,7 +727,6 @@ async function extrairCarrinho(page, config) {
         totalItem = Math.round(precoUnitario * quantidade * 100) / 100;
       }
 
-      // Tratamento de erro se para algum itemContainer não conseguir localizar o nome OU o preço
       if (!nomeProduto || precoUnitario <= 0) {
         errosExtracao.push({
           itemIndex: idx + 1,
@@ -574,7 +748,6 @@ async function extrairCarrinho(page, config) {
       });
     });
 
-    // 2. RESUMO DO PEDIDO
     const summaryTable = mainContent.querySelector(summarySel || 'table.table-bordered, table, div[class*="resumo"], div[class*="Resumo"]');
     let totalItens = 0;
     let despesaAcessoria = 0;
@@ -604,12 +777,15 @@ async function extrairCarrinho(page, config) {
 
     if (!resumoTabelaEncontrada || totalPedido <= 0) {
       const bodyText = mainContent.innerText || '';
-      const totalMatch = bodyText.match(/Total pedido:\s*R\$\s*([\d\.,]+)/i) || bodyText.match(/Total:\s*R\$\s*([\d\.,]+)/i);
+      const totalMatch = bodyText.match(/Total\s*(?:do\s+pedido)?:?\s*R\$\s*([\d\.,]+)/i) ||
+                         bodyText.match(/Total:?\s*R\$\s*([\d\.,]+)/i) ||
+                         bodyText.match(/(\d+)\s*\|\s*itens\s*\|\s*R\$\s*([\d\.,]+)/i);
       if (totalMatch) {
-        totalPedido = parsePrecoBRL(totalMatch[1]);
+        totalPedido = parsePrecoBRL(totalMatch[1] || totalMatch[2]);
         resumoTabelaEncontrada = true;
       } else if (produtos.length > 0) {
         totalPedido = produtos.reduce((acc, p) => acc + p.totalItem, 0);
+        totalPedido = Math.round(totalPedido * 100) / 100;
         resumoTabelaEncontrada = true;
       } else {
         const matches = Array.from(bodyText.matchAll(/R\$\s*([\d\.,]+)/gi)).map(m => parsePrecoBRL(m[1])).filter(v => v > 0);
@@ -728,6 +904,69 @@ function parsePrecoBR(valor) {
   return Math.round(numero * 100) / 100;
 }
 
+async function limparCarrinho(page, config) {
+  const supplierSlug = (config.slug || config.nome || '').toLowerCase();
+  console.log(`[${new Date().toISOString()}] [QuoteEngine] Executando higiene/reset de carrinho para ${config.nome || supplierSlug}...`);
+
+  if (supplierSlug.includes('cofema')) {
+    return await cofemaLimparCarrinho(page, config);
+  }
+
+  if (supplierSlug.includes('mercadao')) {
+    return await mercadaoLimparCarrinho(page, config);
+  }
+
+  try {
+    const sel = config.selectors || {};
+    const cartUrl = config.cart_url || (config.base_url ? `${config.base_url}/carrinho` : `${page.url()}`);
+
+    const cartBtnSel = sel.abrir_carrinho_button || sel.ver_carrinho_button || '#botao-abrir-carrinho, button[aria-label="Carrinho"], a[href*="carrinho"]';
+    const abrirBtn = page.locator(cartBtnSel).first();
+    if (await abrirBtn.isVisible({ timeout: 2500 }).catch(() => false)) {
+      await abrirBtn.click({ force: true }).catch(() => {});
+      await page.waitForTimeout(2000);
+    } else if (!page.url().includes('carrinho')) {
+      await page.goto(cartUrl, { waitUntil: 'commit', timeout: 25000 }).catch(() => {});
+      await page.waitForTimeout(2000);
+    }
+
+    const clearCartBtnSel = sel.limpar_carrinho_button || 'button[title*="Limpar"], button:has-text("Limpar carrinho"), button:has-text("Esvaziar")';
+    const clearBtn = page.locator(clearCartBtnSel).first();
+    if (await clearBtn.isVisible({ timeout: 2500 }).catch(() => false)) {
+      await clearBtn.click({ force: true }).catch(() => {});
+      await page.waitForTimeout(1500);
+
+      const confirmBtn = page.locator('button:has-text("Sim"), button:has-text("Confirmar"), button:has-text("Excluir")').first();
+      if (await confirmBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
+        await confirmBtn.click({ force: true }).catch(() => {});
+        await page.waitForTimeout(2000);
+      }
+    }
+
+    const removeItemSel = sel.remove_item_button || 'button[aria-label="Remover item"], button[title*="Remover"], button[title*="Excluir"], .btn-remove, button.QuantidadeMaisMenos_lixeira__1Fm0w';
+    for (let loop = 0; loop < 15; loop++) {
+      const removeBtn = page.locator(removeItemSel).first();
+      if (await removeBtn.isVisible({ timeout: 1500 }).catch(() => false)) {
+        console.log(`[QuoteEngine RESET ${supplierSlug}] Removendo item residual ${loop + 1}...`);
+        await removeBtn.click({ force: true }).catch(() => {});
+        await page.waitForTimeout(1500);
+
+        const confirmBtn = page.locator('button:has-text("Sim"), button:has-text("Confirmar"), button:has-text("Excluir")').first();
+        if (await confirmBtn.isVisible({ timeout: 1500 }).catch(() => false)) {
+          await confirmBtn.click({ force: true }).catch(() => {});
+          await page.waitForTimeout(1500);
+        }
+      } else {
+        break;
+      }
+    }
+
+    console.log(`[QuoteEngine RESET ${supplierSlug}] ✅ Higiene do carrinho concluída com sucesso.`);
+  } catch (err) {
+    console.warn(`[QuoteEngine RESET WARN ${supplierSlug}] Aviso durante higiene do carrinho: ${err.message}`);
+  }
+}
+
 module.exports = {
   parsePrecoBR,
   calcularQuantidadeProxima,
@@ -735,5 +974,7 @@ module.exports = {
   realizarLogin,
   adicionarItem,
   extrairCarrinho,
-  persistirCotacaoSaracota
+  persistirCotacaoSaracota,
+  cofemaLimparCarrinho,
+  limparCarrinho
 };

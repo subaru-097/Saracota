@@ -1,0 +1,33 @@
+{
+  "752e18bd-4f41-414a-8f66-0d8f538de99e": [
+    {
+      "itemPedido": "Chave Inglesa 12 Brasfort",
+      "status": "CONFIRMADO",
+      "confianca": 95,
+      "produtoEncontrado": "BRASFORT",
+      "preco": 69.7,
+      "quantidade": 5,
+      "fornecedorId": "752e18bd-4f41-414a-8f66-0d8f538de99e"
+    }
+  ],
+  "33e03495-100d-45a3-9e34-899de56b0ab1": [
+    {
+      "itemPedido": "Chave Inglesa 12 Brasfort",
+      "status": "NAO_ENCONTRADO",
+      "confianca": 0,
+      "preco": 0,
+      "fornecedorId": "33e03495-100d-45a3-9e34-899de56b0ab1"
+    }
+  ],
+  "a1684c4d-d896-4ba9-a591-cda455c5ffe2": [
+    {
+      "itemPedido": "Chave Inglesa 12 Brasfort",
+      "status": "CONFIRMADO",
+      "confianca": 95,
+      "produtoEncontrado": "FERJA - CHAVE INGLESA 12 PRO C/EMBORR",
+      "preco": 60.99,
+      "quantidade": 5,
+      "fornecedorId": "a1684c4d-d896-4ba9-a591-cda455c5ffe2"
+    }
+  ]
+}

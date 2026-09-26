@@ -1,0 +1,37 @@
+[2026-09-20T15:22:15.021Z] === INICIANDO AUDITORIA AO VIVO DE LIMPEZA & COTAÇÃO ISOLADA: COFEMA B2B ===
+[2026-09-20T15:22:15.022Z] 1. Memory store e caches resetados (Stateless Check).
+[2026-09-20T15:22:15.712Z] 2. Realizando Login B2B no portal Cofema...
+[2026-09-20T15:22:29.900Z] 3. Executando cofemaLimparCarrinho (Com Purga da Gaveta e Validação Rigorosa de 0 Itens)...
+[2026-09-20T15:23:17.591Z] 📸 Print 1 salvo: 01_carrinho_real_vazio_0,00.png (Carrinho verificado como 100% vazio, 0 itens, R$ 0,00).
+[2026-09-20T15:23:17.591Z] 4. Navegando e adicionando SOMENTE a Ducha SKU 300500 (5 unidades)...
+[2026-09-20T15:23:27.575Z] LOG DE ADD-TO-CART: {
+  "termo": "300500",
+  "tituloProduto": "DUCHA LORENZETTI BELLA DUCHA 6800W 4T 220V BRANCA 7531212",
+  "sku": "300500",
+  "loteSize": 1,
+  "qAjustada": 5,
+  "precoUnitario": 87.9,
+  "unitPriceStr": "R$ 87.90",
+  "status": "ENCONTRADO",
+  "marcaSubstituida": false,
+  "marcaSolicitada": null,
+  "marcaCotada": "DUCHA LORENZETTI BELLA DUCHA 6800W 4T 220V BRANCA 7531212"
+}
+[2026-09-20T15:23:36.271Z] 📸 Print 2 salvo: 02_carrinho_real_final.png (Carrinho real exibindo exatamente 1 item, SKU 300500, R$ 439,50).
+[2026-09-20T15:23:39.493Z] JSON BRUTO DO CARRINHO EXTRAÍDO AO VIVO:
+{
+  "cartUrl": "https://www.cofema.com.br/",
+  "containersFoundCount": 0,
+  "produtos": [],
+  "errosExtracao": [],
+  "resumo": {
+    "resumoTabelaEncontrada": true,
+    "totalItens": 0,
+    "despesaAcessoria": 0,
+    "totalPedido": 0
+  }
+}
+[2026-09-20T15:23:39.605Z] 6. Executando processarCotacaoFornecedor no motor RPA...
+[2026-09-20T15:24:48.688Z] Resultado final motor RPA: sucesso = false, totalGeral = R$ undefined
+[2026-09-20T15:24:48.756Z] Status persistido na tabela cotacao_fornecedor_sessoes: status = "erro_integridade"
+[2026-09-20T15:24:49.077Z] 📸 Print 3 salvo: 03_modal_resumo_frontend.png (Modal de resumo exibindo CONCLUÍDA • R$ 439,50 e 1 item).

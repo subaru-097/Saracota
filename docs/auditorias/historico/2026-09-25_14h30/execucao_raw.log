@@ -1,0 +1,46 @@
+[2026-09-25T17:27:21.088Z] === INICIANDO AUDITORIA DO ZERO: COFEMA B2B ===
+[2026-09-25T17:27:21.431Z] Fornecedor: Cofema (ID: 752e18bd-4f41-414a-8f66-0d8f538de99e)
+[2026-09-25T17:27:21.431Z] Usuário B2B: 43.313.798/0001-34
+[2026-09-25T17:27:21.701Z] Cotação criada no banco com ID: "946075a3-63c8-43ef-b8c6-523b6c386834"
+[2026-09-25T17:27:21.870Z] Passo 1: Login no portal Cofema...
+[2026-09-25T17:27:24.983Z] Passo 2: Reset / Limpeza do carrinho Cofema...
+[2026-09-25T17:27:25.000Z] Passo 3: Adicionando 5 un de Chave Inglesa Brasfort (SKU 296511)...
+[2026-09-25T17:27:29.039Z] Resultado Adição: {
+  "termo": "296511",
+  "qPedida": 5,
+  "status": "FALHA",
+  "erro": "Nenhum produto na grade",
+  "unitPriceStr": "R$ 0,00"
+}
+[2026-09-25T17:27:29.104Z] Print do portal Cofema salvo em: C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-25_14h30\prints\01_carrinho_real_cofema.png
+[2026-09-25T17:27:29.217Z] Passo 4: Executando processarCotacaoFornecedor no motor Saracota...
+[2026-09-25T17:27:29.310Z] [PROGRESS] [Cofema] 🚀 Iniciando Motor Central de Cotação RPA (cofema)...
+[2026-09-25T17:27:29.315Z] [PROGRESS] [Cofema] 🔑 Autenticando e selecionando Filial B2B...
+[2026-09-25T17:28:22.910Z] [PROGRESS] [Cofema] 🔍 Cotando e ajustando quantidade em lote: Chave Inglesa 12 Brasfort...
+[2026-09-25T17:28:32.809Z] [PROGRESS] [Cofema] 🛒 Lendo dados do carrinho (itemContainer por itemContainer)...
+[2026-09-25T17:28:35.871Z] [PROGRESS] ⚠️ [RPA AVISO COFEMA] Resumo do pedido ou totalPedido zerado ou não localizado na página do carrinho (https://www.cofema.com.br/page/busca?q=Chave%20Inglesa%2012). Processando com totais dos itens adicionados...
+[2026-09-25T17:28:35.871Z] [PROGRESS] [Cofema] 📦 Par extraído do carrinho real: "CHAVE INGLESA BRASFORT CROMADA 12 8220" ➔ Qtd: 5 un | Preço Unitário: R$ 69.70 (Total Item: R$ 348.50)
+[2026-09-25T17:28:35.871Z] [PROGRESS] [Cofema] 📊 Resumo do Pedido: Total Itens: R$ 348.50 | Despesas: R$ 0.00 | Total Pedido: R$ 348.50
+[2026-09-25T17:28:35.871Z] [PROGRESS] [Cofema] 🔗 Link direto do carrinho montado: https://www.cofema.com.br/page/busca?q=Chave%20Inglesa%2012
+[2026-09-25T17:28:36.488Z] [PROGRESS] [Cofema] ✅ Cotação concluída no fornecedor! Total Geral: R$ 348.50
+[2026-09-25T17:28:36.584Z] === OBJETO BRUTO DO PROCESSAMENTO ANTES DA PERSISTÊNCIA ===
+[2026-09-25T17:28:36.584Z] {
+  "cotacaoId": "946075a3-63c8-43ef-b8c6-523b6c386834",
+  "fornecedorId": "752e18bd-4f41-414a-8f66-0d8f538de99e",
+  "fornecedorNome": "Cofema",
+  "sucesso": true,
+  "tempoTotalMs": 67269,
+  "itensProcessados": [
+    {
+      "itemPedido": "Chave Inglesa 12 Brasfort",
+      "status": "CONFIRMADO",
+      "confianca": 95,
+      "produtoEncontrado": "CHAVE INGLESA BRASFORT CROMADA 12 8220",
+      "preco": 69.7,
+      "quantidade": 5,
+      "fornecedorId": "752e18bd-4f41-414a-8f66-0d8f538de99e"
+    }
+  ]
+}
+[2026-09-25T17:28:36.584Z] Passo 5: Acessando Saracota Localhost (http://localhost:3000) para capturar modal/resumo...
+[2026-09-25T17:28:40.160Z] Print do modal/resumo da Saracota salvo em: C:\Users\User\Desktop\Saracota\docs\auditorias\historico\2026-09-25_14h30\prints\02_modal_resumo_saracota.png

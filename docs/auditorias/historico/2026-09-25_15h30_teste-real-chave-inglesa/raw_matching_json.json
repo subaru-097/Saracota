@@ -1,0 +1,48 @@
+{
+  "cofema": {
+    "fornecedorId": "752e18bd-4f41-414a-8f66-0d8f538de99e",
+    "fornecedorNome": "Cofema Atacadista B2B",
+    "status": "CONFIRMADO",
+    "objetoSalvo": [
+      {
+        "itemPedido": "Chave Inglesa 12 Brasfort",
+        "status": "CONFIRMADO",
+        "confianca": 95,
+        "produtoEncontrado": "CHAVE INGLESA BRASFORT CROMADA 15 8221",
+        "preco": 69.70,
+        "quantidade": 5,
+        "fornecedorId": "752e18bd-4f41-414a-8f66-0d8f538de99e"
+      }
+    ]
+  },
+  "cicalfer": {
+    "fornecedorId": "33e03495-100d-45a3-9e34-899de56b0ab1",
+    "fornecedorNome": "Cicalfer Material Elétrico",
+    "status": "NAO_ENCONTRADO",
+    "objetoSalvo": [
+      {
+        "itemPedido": "Chave Inglesa 12 Brasfort",
+        "status": "NAO_ENCONTRADO",
+        "confianca": 0,
+        "preco": 0,
+        "fornecedorId": "33e03495-100d-45a3-9e34-899de56b0ab1"
+      }
+    ]
+  },
+  "construja": {
+    "fornecedorId": "a1684c4d-d896-4ba9-a591-cda455c5ffe2",
+    "fornecedorNome": "Construjá",
+    "status": "CONFIRMADO",
+    "objetoSalvo": [
+      {
+        "itemPedido": "Chave Inglesa 12 Brasfort",
+        "status": "CONFIRMADO",
+        "confianca": 95,
+        "produtoEncontrado": "CHAVE INGLESA BRASFORT 12 (REF: 8220)",
+        "preco": 60.99,
+        "quantidade": 5,
+        "fornecedorId": "a1684c4d-d896-4ba9-a591-cda455c5ffe2"
+      }
+    ]
+  }
+}

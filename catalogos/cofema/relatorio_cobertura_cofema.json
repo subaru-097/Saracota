@@ -1,0 +1,101 @@
+[
+  {
+    "categoryName": "Promoções",
+    "code": "PROMO",
+    "totalEsperado": 194,
+    "totalColetado": 194,
+    "totalUnicos": 194,
+    "coveragePercent": 100,
+    "status": "COMPLETO"
+  },
+  {
+    "categoryName": "Outlet",
+    "code": "OUTLET",
+    "totalEsperado": 0,
+    "totalColetado": 0,
+    "totalUnicos": 0,
+    "coveragePercent": 100,
+    "status": "COMPLETO"
+  },
+  {
+    "categoryName": "Ferragens & Ferramentas",
+    "code": "01",
+    "totalEsperado": 12816,
+    "totalColetado": 12816,
+    "totalUnicos": 12816,
+    "coveragePercent": 100,
+    "status": "COMPLETO"
+  },
+  {
+    "categoryName": "Máquinas & Acessórios",
+    "code": "02",
+    "totalEsperado": 1136,
+    "totalColetado": 1136,
+    "totalUnicos": 1136,
+    "coveragePercent": 100,
+    "status": "COMPLETO"
+  },
+  {
+    "categoryName": "Hidráulica & Acessórios",
+    "code": "03",
+    "totalEsperado": 4466,
+    "totalColetado": 4466,
+    "totalUnicos": 4466,
+    "coveragePercent": 100,
+    "status": "COMPLETO"
+  },
+  {
+    "categoryName": "Elétrica & Iluminação",
+    "code": "04",
+    "totalEsperado": 7974,
+    "totalColetado": 7974,
+    "totalUnicos": 7974,
+    "coveragePercent": 100,
+    "status": "COMPLETO"
+  },
+  {
+    "categoryName": "Pintura",
+    "code": "05",
+    "totalEsperado": 1503,
+    "totalColetado": 1503,
+    "totalUnicos": 1503,
+    "coveragePercent": 100,
+    "status": "COMPLETO"
+  },
+  {
+    "categoryName": "Utilidades Domésticas",
+    "code": "06",
+    "totalEsperado": 637,
+    "totalColetado": 637,
+    "totalUnicos": 637,
+    "coveragePercent": 100,
+    "status": "COMPLETO"
+  },
+  {
+    "categoryName": "Segurança",
+    "code": "07",
+    "totalEsperado": 852,
+    "totalColetado": 852,
+    "totalUnicos": 852,
+    "coveragePercent": 100,
+    "status": "COMPLETO"
+  },
+  {
+    "categoryName": "Jardinagem & Acessórios",
+    "code": "08",
+    "totalEsperado": 222,
+    "totalColetado": 222,
+    "totalUnicos": 222,
+    "coveragePercent": 100,
+    "status": "COMPLETO"
+  },
+  {
+    "categoryName": "Limpeza",
+    "code": "10",
+    "totalEsperado": 219,
+    "totalColetado": 219,
+    "totalUnicos": 219,
+    "coveragePercent": 100,
+    "status": "COMPLETO"
+  }
+]

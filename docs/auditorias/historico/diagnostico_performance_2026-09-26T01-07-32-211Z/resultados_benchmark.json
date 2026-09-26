@@ -1,0 +1,277 @@
+[
+  {
+    "cenario": "Cenário 1: 1 Fornecedor(es)",
+    "supplierCount": 1,
+    "fornecedoresNomes": [
+      "Mercadão Lojista"
+    ],
+    "startTime": "2026-09-26T00:49:50.115Z",
+    "endTime": "2026-09-26T00:51:34.743Z",
+    "totalDurationMs": 104628,
+    "totalDurationSec": 104.63,
+    "avgDurationPerSupplierMs": 104628,
+    "cpuUsageBefore": {
+      "user": 875000,
+      "system": 265000
+    },
+    "cpuUsageAfter": {
+      "user": 1109000,
+      "system": 219000
+    },
+    "memHeapUsedMB": 55.94,
+    "memHeapTotalMB": 63.81,
+    "sysFreeMemMB": 2345.63,
+    "sysTotalMemMB": 32633.62,
+    "supplierTimings": [
+      {
+        "fornecedorId": "a4042203-b504-4a82-af41-8ffa19ae24a6",
+        "fornecedorNome": "Mercadão Lojista",
+        "startTime": 1790383790115,
+        "endTime": 1790383894742,
+        "durationMs": 104627,
+        "sucesso": true,
+        "itemCount": 1
+      }
+    ]
+  },
+  {
+    "cenario": "Cenário 2: 2 Fornecedor(es)",
+    "supplierCount": 2,
+    "fornecedoresNomes": [
+      "Mercadão Lojista",
+      "Construjá"
+    ],
+    "startTime": "2026-09-26T00:51:34.920Z",
+    "endTime": "2026-09-26T00:54:07.871Z",
+    "totalDurationMs": 152951,
+    "totalDurationSec": 152.95,
+    "avgDurationPerSupplierMs": 76475.5,
+    "cpuUsageBefore": {
+      "user": 1984000,
+      "system": 484000
+    },
+    "cpuUsageAfter": {
+      "user": 1422000,
+      "system": 219000
+    },
+    "memHeapUsedMB": 55.49,
+    "memHeapTotalMB": 64.06,
+    "sysFreeMemMB": 2113.99,
+    "sysTotalMemMB": 32633.62,
+    "supplierTimings": [
+      {
+        "fornecedorId": "a4042203-b504-4a82-af41-8ffa19ae24a6",
+        "fornecedorNome": "Mercadão Lojista",
+        "startTime": 1790383894921,
+        "endTime": 1790383995206,
+        "durationMs": 100285,
+        "sucesso": true,
+        "itemCount": 1
+      },
+      {
+        "fornecedorId": "a1684c4d-d896-4ba9-a591-cda455c5ffe2",
+        "fornecedorNome": "Construjá",
+        "startTime": 1790383995206,
+        "endTime": 1790384047870,
+        "durationMs": 52664,
+        "sucesso": false,
+        "itemCount": 1
+      }
+    ]
+  },
+  {
+    "cenario": "Cenário 3: 3 Fornecedor(es)",
+    "supplierCount": 3,
+    "fornecedoresNomes": [
+      "Mercadão Lojista",
+      "Construjá",
+      "Cofema"
+    ],
+    "startTime": "2026-09-26T00:54:08.014Z",
+    "endTime": "2026-09-26T00:58:02.417Z",
+    "totalDurationMs": 234403,
+    "totalDurationSec": 234.4,
+    "avgDurationPerSupplierMs": 78134.33,
+    "cpuUsageBefore": {
+      "user": 3406000,
+      "system": 703000
+    },
+    "cpuUsageAfter": {
+      "user": 1922000,
+      "system": 297000
+    },
+    "memHeapUsedMB": 56.65,
+    "memHeapTotalMB": 62.56,
+    "sysFreeMemMB": 2043.8,
+    "sysTotalMemMB": 32633.62,
+    "supplierTimings": [
+      {
+        "fornecedorId": "a4042203-b504-4a82-af41-8ffa19ae24a6",
+        "fornecedorNome": "Mercadão Lojista",
+        "startTime": 1790384048014,
+        "endTime": 1790384148674,
+        "durationMs": 100660,
+        "sucesso": true,
+        "itemCount": 1
+      },
+      {
+        "fornecedorId": "a1684c4d-d896-4ba9-a591-cda455c5ffe2",
+        "fornecedorNome": "Construjá",
+        "startTime": 1790384148674,
+        "endTime": 1790384200676,
+        "durationMs": 52002,
+        "sucesso": false,
+        "itemCount": 1
+      },
+      {
+        "fornecedorId": "752e18bd-4f41-414a-8f66-0d8f538de99e",
+        "fornecedorNome": "Cofema",
+        "startTime": 1790384200676,
+        "endTime": 1790384282416,
+        "durationMs": 81740,
+        "sucesso": true,
+        "itemCount": 1
+      }
+    ]
+  },
+  {
+    "cenario": "Cenário 4: 4 Fornecedor(es)",
+    "supplierCount": 4,
+    "fornecedoresNomes": [
+      "Mercadão Lojista",
+      "Construjá",
+      "Cofema",
+      "Cicalfer"
+    ],
+    "startTime": "2026-09-26T00:58:02.609Z",
+    "endTime": "2026-09-26T01:02:47.466Z",
+    "totalDurationMs": 284857,
+    "totalDurationSec": 284.86,
+    "avgDurationPerSupplierMs": 71214.25,
+    "cpuUsageBefore": {
+      "user": 5328000,
+      "system": 1000000
+    },
+    "cpuUsageAfter": {
+      "user": 2578000,
+      "system": 640000
+    },
+    "memHeapUsedMB": 56.05,
+    "memHeapTotalMB": 61.31,
+    "sysFreeMemMB": 2249.76,
+    "sysTotalMemMB": 32633.62,
+    "supplierTimings": [
+      {
+        "fornecedorId": "a4042203-b504-4a82-af41-8ffa19ae24a6",
+        "fornecedorNome": "Mercadão Lojista",
+        "startTime": 1790384282609,
+        "endTime": 1790384382669,
+        "durationMs": 100060,
+        "sucesso": true,
+        "itemCount": 1
+      },
+      {
+        "fornecedorId": "a1684c4d-d896-4ba9-a591-cda455c5ffe2",
+        "fornecedorNome": "Construjá",
+        "startTime": 1790384382669,
+        "endTime": 1790384434708,
+        "durationMs": 52039,
+        "sucesso": false,
+        "itemCount": 1
+      },
+      {
+        "fornecedorId": "752e18bd-4f41-414a-8f66-0d8f538de99e",
+        "fornecedorNome": "Cofema",
+        "startTime": 1790384434708,
+        "endTime": 1790384515198,
+        "durationMs": 80490,
+        "sucesso": true,
+        "itemCount": 1
+      },
+      {
+        "fornecedorId": "33e03495-100d-45a3-9e34-899de56b0ab1",
+        "fornecedorNome": "Cicalfer",
+        "startTime": 1790384515199,
+        "endTime": 1790384567466,
+        "durationMs": 52267,
+        "sucesso": false,
+        "itemCount": 1
+      }
+    ]
+  },
+  {
+    "cenario": "Cenário 5: 5 Fornecedor(es)",
+    "supplierCount": 5,
+    "fornecedoresNomes": [
+      "Mercadão Lojista",
+      "Construjá",
+      "Cofema",
+      "Cicalfer",
+      "Megaleste"
+    ],
+    "startTime": "2026-09-26T01:02:47.590Z",
+    "endTime": "2026-09-26T01:07:32.211Z",
+    "totalDurationMs": 284621,
+    "totalDurationSec": 284.62,
+    "avgDurationPerSupplierMs": 56924.2,
+    "cpuUsageBefore": {
+      "user": 7906000,
+      "system": 1640000
+    },
+    "cpuUsageAfter": {
+      "user": 2484000,
+      "system": 453000
+    },
+    "memHeapUsedMB": 59.12,
+    "memHeapTotalMB": 66.97,
+    "sysFreeMemMB": 2355.71,
+    "sysTotalMemMB": 32633.62,
+    "supplierTimings": [
+      {
+        "fornecedorId": "a4042203-b504-4a82-af41-8ffa19ae24a6",
+        "fornecedorNome": "Mercadão Lojista",
+        "startTime": 1790384567591,
+        "endTime": 1790384667761,
+        "durationMs": 100170,
+        "sucesso": true,
+        "itemCount": 1
+      },
+      {
+        "fornecedorId": "a1684c4d-d896-4ba9-a591-cda455c5ffe2",
+        "fornecedorNome": "Construjá",
+        "startTime": 1790384667762,
+        "endTime": 1790384719532,
+        "durationMs": 51770,
+        "sucesso": false,
+        "itemCount": 1
+      },
+      {
+        "fornecedorId": "752e18bd-4f41-414a-8f66-0d8f538de99e",
+        "fornecedorNome": "Cofema",
+        "startTime": 1790384719532,
+        "endTime": 1790384800140,
+        "durationMs": 80608,
+        "sucesso": true,
+        "itemCount": 1
+      },
+      {
+        "fornecedorId": "33e03495-100d-45a3-9e34-899de56b0ab1",
+        "fornecedorNome": "Cicalfer",
+        "startTime": 1790384800141,
+        "endTime": 1790384851987,
+        "durationMs": 51846,
+        "sucesso": false,
+        "itemCount": 1
+      },
+      {
+        "fornecedorId": "0e75b26e-6ff7-4fb0-a783-897ca1224f48",
+        "fornecedorNome": "Megaleste",
+        "startTime": 1790384851988,
+        "endTime": 1790384852211,
+        "durationMs": 223,
+        "sucesso": false,
+        "itemCount": 1
+      }
+    ]
+  }
+]

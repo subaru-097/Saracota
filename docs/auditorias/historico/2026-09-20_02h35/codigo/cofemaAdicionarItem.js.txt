@@ -1,0 +1,163 @@
+ce: true });
+      await page.waitForTimeout(3000);
+    } else if (addBtnCount > 0) {
+      await addButtons.first().click({ force: true });
+      await page.waitForTimeout(3000);
+    }
+  } else {
+    console.log(`[CofemaExtractor] Item ${melhorCandidato.sku} (${melhorCandidato.title}) já está presente no carrinho.`);
+  }
+
+  await garantirCarrinhoFechado(page);
+
+  const divergenciaMarca = Boolean(marcaEsperada && melhorResultadoMatching?.divergencias?.some((d) => d.includes('Marca')));
+
+  return {
+    termo: searchTerm,
+    tituloProduto: melhorCandidato.title,
+    sku: melhorCandidato.sku,
+    qPedida,
+    loteSize: mult,
+    qAjustada,
+    precoUnitario: melhorCandidato.precoUnitario,
+    unitPriceStr: `R$ ${melhorCandidato.precoUnitario.toFixed(2)}`,
+    status: divergenciaMarca ? 'MARCA_SUBSTITUIDA' : 'ENCONTRADO',
+    marcaSubstituida: divergenciaMarca,
+    marcaSolicitada: marcaEsperada || null,
+    marcaCotada: melhorCandidato.title,
+  };
+}
+
+/**
+ * 🔒 FLUXO DE EXTRAÇÃO DO CARRINHO COFEMA DO DOM (#130620 / MODAL / ROLAGEM / BADGES)
+ */
+async function cofemaExtrairCarrinho(page, config) {
+  console.log(`[${new Date().toISOString()}] [CofemaExtractor] Navegando para /page/pedidos...`);
+  await page.goto('https://www.cofema.com.br/page/pedidos', { waitUntil: 'domcontentloaded', timeout: 35000 });
+  await page.waitForTimeout(3000);
+
+  const tabCarrinhos = page.locator('button:has-text("Carrinhos"), span:has-text("Carrinhos"), a:has-text("Carrinhos")').last();
+  if (await tabCarrinhos.isVisible({ timeout: 3000 }).catch(() => false)) {
+    await tabCarrinhos.click();
+    await page.waitForTimeout(3000);
+  }
+
+  const actionEl = page.locator('tr td:has-text("#"), tr button, tr svg, tr .fa-eye').first();
+  if (await actionEl.isVisible({ timeout: 3000 }).catch(() => false)) {
+    await actionEl.click({ force: true }).catch(() => {});
+    await page.waitForTimeout(3000);
+  }
+
+  // ROLAGEM CRÍTICA DO CONTAINER DO MODAL
+  await page.evaluate(() => {
+    const dialog = document.querySelector('[role="dialog"], .modal-content, div[class*="modal"]');
+    if (dialog) {
+      const scrollable = dialog.querySelector('div[class*="overflow-y-auto"], div[class*="max-h-"], div[class*="scroll"]') || dialog;
+      scrollable.scrollTop = 2000;
+    }
+  });
+  await page.waitForTimeout(1000);
+
+  const cartData = await page.evaluate(() => {
+    const modal = document.querySelector('[role="dialog"], .modal-content, div[class*="modal"]') || document.body;
+
+    const cardNodes = Array.from(modal.querySelectorAll('div, tr'));
+    const items = [];
+    const seenCodes = new Set();
+
+    cardNodes.forEach((node) => {
+      const text = node.innerText || '';
+
+      if ((text.includes('Código:') || text.includes('SKU:')) && text.includes('R$')) {
+        const codeMatch = text.match(/(?:Código|SKU):\s*(\d+)/i);
+        const code = codeMatch ? codeMatch[1] : null;
+
+        if (code && !seenCodes.has(code)) {
+          seenCodes.add(code);
+
+          const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
+          const title = lines.find(l => !l.startsWith('SKU:') && !l.startsWith('Código:') && !l.startsWith('R$') && l.length > 3) || lines[0] || 'Produto Cofema';
+
+          // Procurar valor do input de quantidade no DOM do card
+          const inputEl = node.querySelector('input[type="number"], input[value]');
+          let qtd = 1;
+          if (inputEl && inputEl.value) {
+            qtd = parseInt(inputEl.value, 10) || 1;
+          } else {
+            const qtdMatch = text.match(/Quantidade:\s*(\d+)/i) || text.match(/Qtd:?\s*(\d+)/i);
+            if (qtdMatch) qtd = parseInt(qtdMatch[1], 10);
+          }
+
+          // Preço unitário exibido no card
+          const prices = Array.from(text.matchAll(/R\$\s*([\d\.,]+)/gi)).map(m => parseFloat(m[1].replace(/\./g, '').replace(',', '.')));
+          const unitPrice = prices.length > 0 ? prices[0] : 0;
+          const totalVal = prices.length > 1 ? prices[1] : (unitPrice * Math.max(qtd, 1));
+
+          const hasAbre = text.includes('Abre');
+          const hasNaoAbre = text.includes('Não Abre');
+          const badge = hasNaoAbre ? 'Não Abre' : hasAbre ? 'Abre' : 'N/A';
+
+          const packMatch = text.match(/(\d+)\s*un/i);
+          const packSize = packMatch ? parseInt(packMatch[1], 10) : 1;
+
+          items.push({
+            nomeProduto: title,
+            codigoProduto: code,
+            codigoBadge: badge,
+            quantidade: qtd,
+            embalagemTamanho: packSize,
+            precoUnitario: Math.round(unitPrice * 100) / 100,
+            totalItem: Math.round(totalVal * 100) / 100,
+            rawUnitPriceStr: `R$ ${unitPrice.toFixed(2)}`
+          });
+        }
+      }
+    });
+
+    const totalMatch = modal.innerText.match(/Total\s*Carrinho:?\s*R\$\s*([\d\.,]+)/i) || modal.innerText.match(/Total:?\s*R\$\s*([\d\.,]+)/i);
+    const totalPedido = totalMatch ? (parseFloat(totalMatch[1].replace(/\./g, '').replace(',', '.')) || 0) : items.reduce((a, b) => a + b.totalItem, 0);
+
+    return {
+      cartUrl: window.location.href,
+      containersFoundCount: items.length,
+      produtos: items,
+      errosExtracao: [],
+      resumo: {
+        resumoTabelaEncontrada: true,
+        totalItens: items.length,
+        despesaAcessoria: 0,
+        totalPedido: Math.round(totalPedido * 100) / 100
+      }
+    };
+  });
+
+  console.log(`[CofemaExtractor] ${cartData.produtos.length} item(ns) extraído(s) do carrinho real Cofema. Total: R$ ${cartData.resumo.totalPedido.toFixed(2)}`);
+  return cartData;
+}
+
+/**
+ * 🔒 FLUXO DE RESET / LIMPEZA DO CARRINHO COFEMA ANTES DA COTAÇÃO
+ */
+async function cofemaLimparCarrinho(page, config) {
+  console.log(`[${new Date().toISOString()}] [CofemaExtractor] Executando higiene/reset do carrinho B2B...`);
+  try {
+    await page.goto('https://www.cofema.com.br/page/pedidos', { waitUntil: 'domcontentloaded', timeout: 30000 }).catch(() => {});
+    await page.waitForTimeout(2500);
+
+    const tabCarrinhos = page.locator('button:has-text("Carrinhos"), span:has-text("Carrinhos"), a:has-text("Carrinhos")').last();
+    if (await tabCarrinhos.isVisible({ timeout: 3000 }).catch(() => false)) {
+      await tabCarrinhos.click().catch(() => {});
+      await page.waitForTimeout(2500);
+    }
+
+    const esvaziarBtn = page.locator('button:has-text("Esvaziar"), button:has-text("Excluir Carrinho"), button:has-text("Limpar"), button:has-text("Cancelar Carrinho"), button:has-text("Excluir Todos")').first();
+    if (await esvaziarBtn.isVisible({ timeout: 2500 }).catch(() => false)) {
+      await esvaziarBtn.click({ force: true }).catch(() => {});
+      await page.waitForTimeout(2000);
+
+      const confirmBtn = page.locator('button:has-text("Sim"), button:has-text("Confirmar"), button:has-text("Excluir")').first();
+      if (await confirmBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
+        await confirmBtn.click({ force: true }).catch(() => {});
+        await page.waitForTimeout(2000);
+      }
+      console.log(`[${new Date().toISO
